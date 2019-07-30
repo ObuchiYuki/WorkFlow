@@ -12,6 +12,7 @@
 #include "Node/Node.hpp"
 #include "AST/AST.hpp"
 #include "Parser/Parser.hpp"
+#include "Parser/Parser+Impl.hpp"
 
 
 #endif /* Tree_h */

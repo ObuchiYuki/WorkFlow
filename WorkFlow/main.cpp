@@ -27,17 +27,14 @@ int main() {
         p_identifier,
         p_string
     });
-                
-    var factor = rule().ors({
-        rule<ast::NegativeExpr>().skip("-").then(primary),
-        primary
-    });
     
     var expr = expr0.injected(
-        rule().then(factor).repeat(
-            rule().then(p_operator).then(factor)
+        rule().then(primary).repeat(
+            rule<ast::BinaryOperator>().then(p_operator).then(primary)
         )
     );
+    
+    
 
     var varStem = rule<ast::VarStem>()
         .skip("def")

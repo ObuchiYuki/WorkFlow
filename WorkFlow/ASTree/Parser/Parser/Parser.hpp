@@ -185,6 +185,8 @@ namespace wf {
                
               
         ExprElement(_ParserPtr _parser);
+        
+        auto shiftNext(Lexer& lexer) -> Element;
                
         auto parse(Lexer& lexer, std::vector<NodePtr> &res) -> void const override;
         auto match(Lexer& lexer) -> bool const override;

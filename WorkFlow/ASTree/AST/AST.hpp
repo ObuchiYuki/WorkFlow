@@ -14,33 +14,18 @@
 #include "Node/Node.hpp"
 #include "PrimaryNode/PrimaryNode.hpp"
 
+#include "BinaryOperation.hpp"
+
 namespace wf {
     namespace ast {
         // ====================================================================== //
         // MARK: - Type Structure Definitions -
         
-        class BinaryOperator: public Node {
-        public:
-            var right() -> NodePtr {
-                
-                return children[0];
-            }
-            
-            var left() -> NodePtr {
-                return children[2];
-            }
-            
-            var op() -> std::shared_ptr<Operator>{
-
-                return std::dynamic_pointer_cast<Operator>(children[1]);
-            }
-            
-            BinaryOperator(std::vector<NodePtr> _children, Location _location) : Node(_children, _location) {};
-        };
-        
         class Expression: public Node {
         public:
             Expression(std::vector<NodePtr> _children, Location _location) : Node(_children, _location) {};
+            
+            auto description() ->  std::string const override;
         };
         
         class VarStem: public Node {
