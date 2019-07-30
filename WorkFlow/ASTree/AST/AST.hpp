@@ -22,6 +22,7 @@ namespace wf {
         class BinaryOperator: public Node {
         public:
             var right() -> NodePtr {
+                
                 return children[0];
             }
             
