@@ -12,15 +12,35 @@ using namespace wf;
 
 // MARK: - Constructor -
 
-ExprElement::ExprElement(_ParserPtr _parser) : factor(_parser) {
+ExprElement::ExprElement(_ParserPtr _parser, Operators _ops) : factor(_parser) , ops(_ops) {
     
 }
 
 // MARK: - Methods - 
 auto ExprElement::parse(Lexer& lexer, std::vector<NodePtr> &res) -> void const {
-    let right = factor->parse(lexer);
-
-    res.push_back(right);
+    std::vector<std::vector<NodePtr>> pendings = {};
+    
+    while(ops.match(lexer.peek(1)->value)){
+        
+        pendings.push_back({factor->parse(lexer), p_operator.parse(lexer)});
+        
+    }
+    pendings.back().push_back(factor->parse(lexer));
+    
+    let last = pendings.back();
+    pendings.pop_back();
+    var currentOperation = NodePtr(new ast::BinaryOperation(last, last.back()->location));
+    
+    while(!pendings.empty()) {
+        
+        var next = pendings.back();
+        pendings.pop_back();
+        
+        next.push_back(currentOperation);
+        currentOperation = NodePtr(new ast::BinaryOperation(next, next.back()->location));
+    }
+    
+    res.push_back(currentOperation);
 }
 
 auto ExprElement::match(Lexer& lexer) -> bool const {

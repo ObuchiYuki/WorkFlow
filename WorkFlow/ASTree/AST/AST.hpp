@@ -14,27 +14,20 @@
 #include "Node/Node.hpp"
 #include "PrimaryNode/PrimaryNode.hpp"
 
-#include "BinaryOperation.hpp"
+#include "Expression.hpp"
 
 namespace wf {
     namespace ast {
         // ====================================================================== //
         // MARK: - Type Structure Definitions -
         
-        class Expression: public Node {
-        public:
-            Expression(std::vector<NodePtr> _children, Location _location) : Node(_children, _location) {};
-            
-            auto description() ->  std::string const override;
-        };
-        
         class VarStem: public Node {
         public:
-            var target() -> std::shared_ptr<Name> {
-                return std::dynamic_pointer_cast<Name>(children[0]);
+            var target() -> NodePtr {
+                return children[0];
             }
-            var init() -> std::shared_ptr<Expression> {
-                return std::dynamic_pointer_cast<Expression>(children[1]);
+            var init() -> NodePtr {
+                return children[1];
             }
             
             VarStem(std::vector<NodePtr> _children, Location _location) : Node(_children, _location) {};
@@ -44,11 +37,6 @@ namespace wf {
             }
         };
         
-        class NegativeExpr: public Node {
-        public:
-            NegativeExpr(std::vector<NodePtr> _children, Location _location) : Node(_children, _location) {};
-        };
-    
         class BlockStmnt: public Node {
         public:
             BlockStmnt(std::vector<NodePtr> _children, Location _location) : Node(_children, _location) {};

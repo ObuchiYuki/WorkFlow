@@ -19,6 +19,10 @@
 using namespace wf;
 
 int main() {
+    var ops = Operators();
+    ops.add("+");
+    ops.add("-");
+    
     var expr0 = rule<ast::Expression>();
     
     var primary = rule<ast::PrimaryNode>().ors({
@@ -28,19 +32,14 @@ int main() {
         p_string
     });
     
-    var expr = expr0.injected(
-        rule().then(primary).repeat(
-            rule<ast::BinaryOperator>().then(p_operator).then(primary)
-        )
-    );
-    
-    
+    var expr = expr0.expression(primary,ops);
 
     var varStem = rule<ast::VarStem>()
         .skip("def")
         .then(p_identifier)
         .skip("=")
         .then(expr);
+
 
     let path = "/Users/yuki/Developer/C++/WorkFlow/main.wf";
     var ifs = std::ifstream(path);

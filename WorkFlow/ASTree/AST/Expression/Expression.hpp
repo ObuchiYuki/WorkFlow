@@ -6,8 +6,8 @@
 //  Copyright © 2019 yuki. All rights reserved.
 //
 
-#ifndef BinaryOperation_hpp
-#define BinaryOperation_hpp
+#ifndef Expression_hpp
+#define Expression_hpp
 
 #include "Node.hpp"
 
@@ -23,14 +23,14 @@ public:
     
 };
 
-class BinaryOperator: public Expression {
+class BinaryOperation: public Expression {
 public:
     auto right() -> NodePtr;
     auto left() -> NodePtr;
     
     auto op() -> NodePtr;
             
-    BinaryOperator(std::vector<NodePtr> _children, Location _location);
+    BinaryOperation(std::vector<NodePtr> _children, Location _location);
     
     auto description() -> std::string const override;
 };

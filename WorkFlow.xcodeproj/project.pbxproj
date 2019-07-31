@@ -187,6 +187,7 @@
 				B6F1874622EFDECE002171F9 /* Node */,
 				B6F1874422EFDE32002171F9 /* PrimaryNode */,
 				B6CAFD9122F026B800F9B228 /* Expression */,
+				B6DECC9122F125C50089BEE1 /* Statement */,
 			);
 			path = AST;
 			sourceTree = "<group>";
@@ -225,6 +226,13 @@
 				B6CAFD9322F026C100F9B228 /* BinaryOperation.cpp */,
 			);
 			path = Expression;
+			sourceTree = "<group>";
+		};
+		B6DECC9122F125C50089BEE1 /* Statement */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Statement;
 			sourceTree = "<group>";
 		};
 		B6F1874422EFDE32002171F9 /* PrimaryNode */ = {

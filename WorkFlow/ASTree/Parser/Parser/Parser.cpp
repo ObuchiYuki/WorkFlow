@@ -69,8 +69,8 @@ auto Parser::then(Parser parserw) -> Parser{
 }
      
  
-auto Parser::injected(Parser subParserw) -> Parser{
-    let e_expr = ElementPtr(new ExprElement(subParserw.parser));
+auto Parser::expression(Parser subParserw, Operators ops) -> Parser{
+    let e_expr = ElementPtr(new ExprElement(subParserw.parser, ops));
             
     parser->addElement(e_expr);
             

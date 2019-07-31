@@ -62,10 +62,11 @@ namespace wf {
     /// 指定された構文木をパーサー以下に追加します。
     class ExprElement: public Element {
         _ParserPtr factor;
+        Operators ops;
     public:
                
               
-        ExprElement(_ParserPtr _parser);
+        ExprElement(_ParserPtr _parser, Operators ops);
         
         auto shiftNext(Lexer& lexer) -> Element;
                

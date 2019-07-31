@@ -10,22 +10,22 @@
 
 using namespace wf::ast;
 
-auto BinaryOperator::right() -> NodePtr {
+auto BinaryOperation::right() -> NodePtr {
     return children[0];
 }
 
-auto BinaryOperator::left() -> NodePtr {
+auto BinaryOperation::left() -> NodePtr {
     return children[2];
 }
 
-auto BinaryOperator::op() -> NodePtr {
+auto BinaryOperation::op() -> NodePtr {
     return children[1];
 }
 
-BinaryOperator::BinaryOperator(std::vector<NodePtr> _children, Location _location) :
+BinaryOperation::BinaryOperation(std::vector<NodePtr> _children, Location _location) :
 Expression(_children, _location)
 {}
 
-auto BinaryOperator::description() -> std::string const {
-    return right()->description() + " " + op()->description() + " " + left()->description();
+auto BinaryOperation::description() -> std::string const {
+    return "(" + right()->description() + " " + op()->description() + " " + left()->description() + ")"; 
 }

@@ -35,6 +35,7 @@ typedef std::shared_ptr<ast::Leaf>     LeafPtr;
 #include "Element.hpp"
 #include "_Parser.hpp"
 #include "_AnyParser.hpp"
+#include "Operators.hpp"
 #include "Elements/ParserElements.hpp"
 #include "PrimaryParsers.hpp"
 
@@ -55,7 +56,7 @@ namespace wf {
         auto repeat(Parser parserw) -> Parser;
         auto skip(std::string token) -> Parser;
         auto then(Parser parserw) -> Parser;
-        auto injected(Parser subParserw) -> Parser;
+        auto expression(Parser subParserw, Operators ops) -> Parser;
         auto optional(Parser parserw) -> Parser;
         
     };

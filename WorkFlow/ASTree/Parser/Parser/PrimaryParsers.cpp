@@ -38,7 +38,7 @@ auto StringParser::isMatch(TokenPtr token) -> bool const {
     return token->type == wf::token::TokenType::STRING;
 }
 auto IntegerParser::isMatch(TokenPtr token) -> bool const {
-         
+    
     return token->type == wf::token::TokenType::INTEGER;
 }
 auto DirectiveParser::isMatch(TokenPtr token) -> bool const {

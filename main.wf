@@ -1,1 +1,5 @@
-def hello = 12 + 14 + 11
+def hello = 12 + 14 + 11 - 1298 + 129
+
+if 12 > 1 {
+    print("hello")
+}

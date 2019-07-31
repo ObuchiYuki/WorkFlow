@@ -25,5 +25,5 @@ PrimaryNode(_children, _location)
 {}
 
 auto Operator::description() -> std::string const {
-    return "(" + value() + "(";
+    return value();
 }
