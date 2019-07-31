@@ -14,7 +14,7 @@
 #include "Common.hpp"
 
 #include "Lexer/Lexer.hpp"
-#include "Parser.hpp"
+#include "ASTree.hpp"
 
 using namespace wf;
 
