@@ -30,9 +30,7 @@ auto _PrimaryParser<T>::parse(Lexer& lexer) -> std::shared_ptr<T> const {
 
 
 auto IdentifierParser::isMatch(TokenPtr token) -> bool const {
-    if (token->value == "}") {
-        return false;
-    }
+    
     return token->type == wf::token::TokenType::IDENTIFIER;
 }
 auto StringParser::isMatch(TokenPtr token) -> bool const {
@@ -53,16 +51,7 @@ auto FloatParser::isMatch(TokenPtr token) -> bool const {
 }
 auto OperatorParser::isMatch(TokenPtr token) -> bool const {
     
-    if (token->type != wf::token::TokenType::IDENTIFIER) return false;
-            
-    for (let &i: {"|>", "+", "-", "*", "/", "<", ">", "<=", ">=", "=="}) {
-                
-        if (i == token->value) {
-            return true;
-        }
-    }
-            
-    return false;
+    return token->type == wf::token::TokenType::OPERATOR;
 }
 
 auto EOLParser::isMatch(TokenPtr token) -> bool const {
