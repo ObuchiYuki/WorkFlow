@@ -26,5 +26,5 @@ Node(_children, _location) {};
 PrimaryNode::~PrimaryNode(){};
 
 auto PrimaryNode::description() -> std::string const {
-    return "[PrimaryNode undefined]";
+    return children[0]->description();
 }

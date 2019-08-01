@@ -14,45 +14,65 @@
 #include "Common.hpp"
 
 #include "Lexer/Lexer.hpp"
-#include "Parser.hpp"
+#include "ASTree.hpp"
 
 using namespace wf;
 
 int main() {
+    var ops = Operators();
+    
+    ops.add("=", 1, Associative::RIGHT);
+    ops.add("==", 2, Associative::LEFT);
+    ops.add(">", 2, Associative::LEFT);
+    ops.add("<", 2, Associative::LEFT);
+    ops.add("+", 3, Associative::LEFT);
+    ops.add("-", 3, Associative::LEFT);
+    ops.add("*", 4, Associative::LEFT);
+    ops.add("/", 4, Associative::LEFT);
+    ops.add("%", 4, Associative::LEFT);
+    
     var expr0 = rule<ast::Expression>();
     
     var primary = rule<ast::PrimaryNode>().ors({
-        rule().skip("(").then(expr0).skip(")"),
+        rule<ast::Expression>().skip("(").then(expr0).skip(")"),
         p_integer,
         p_identifier,
         p_string
     });
-                
-    var factor = rule().ors({
-        rule<ast::NegativeExpr>().skip("-").then(primary),
-        primary
+    
+    var expr = expr0.expression(primary, ops);
+
+    var statement0 = rule();
+    var block = rule<ast::BlockStem>()
+        .skip("{").optional(statement0)
+        .repeat(
+            rule()
+                .skip(std::vector<std::string>({";", "EOL"}))
+                .optional(statement0)
+            )
+        .skip("}");
+    
+    
+    var simple = rule().then(expr);
+    
+    var statement = statement0.ors({
+        rule<ast::IfStem>()
+            .skip("if").then(expr).then(block).optional(rule().skip("else").then(block)),
+        
+        rule<ast::WhileStem>().skip("while").then(expr).then(block),
+        rule<ast::VarStem>().skip("def").then(p_identifier).skip("=").then(expr),
+        simple
     });
     
-    var expr = expr0.injected(
-        rule().then(factor).repeat(
-            rule().then(p_operator).then(factor)
-        )
-    );
+    var program = rule().optional(statement).skip(std::vector<std::string>({";", "EOL"}));
 
-    var varStem = rule<ast::VarStem>()
-        .skip("def")
-        .then(p_identifier)
-        .skip("=")
-        .then(expr);
 
     let path = "/Users/yuki/Developer/C++/WorkFlow/main.wf";
     var ifs = std::ifstream(path);
     
     var lexer = wf::Lexer(&ifs);
     
-    std::cout << varStem.match(lexer) << std::endl;
+    let ps = statement.parse(lexer);
     
-    let ps = varStem.parse(lexer);
-    
-    std::cout << ps->description() << std::endl;
+    print(ps->children[0]->description());
 }

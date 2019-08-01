@@ -9,9 +9,8 @@
 #ifndef Tree_h
 #define Tree_h
 
-#include "Node/Node.hpp"
 #include "AST/AST.hpp"
-#include "Parser/Parser.hpp"
+#include "Parser.hpp"
 
 
 #endif /* Tree_h */

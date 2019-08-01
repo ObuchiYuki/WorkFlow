@@ -38,7 +38,7 @@ auto StringParser::isMatch(TokenPtr token) -> bool const {
     return token->type == wf::token::TokenType::STRING;
 }
 auto IntegerParser::isMatch(TokenPtr token) -> bool const {
-         
+    
     return token->type == wf::token::TokenType::INTEGER;
 }
 auto DirectiveParser::isMatch(TokenPtr token) -> bool const {
@@ -51,16 +51,7 @@ auto FloatParser::isMatch(TokenPtr token) -> bool const {
 }
 auto OperatorParser::isMatch(TokenPtr token) -> bool const {
     
-    if (token->type != wf::token::TokenType::IDENTIFIER) return false;
-            
-    for (let &i: {"|>", "+", "-", "*", "/", "<", ">", "<=", ">=", "=="}) {
-                
-        if (i == token->value) {
-            return true;
-        }
-    }
-            
-    return false;
+    return token->type == wf::token::TokenType::OPERATOR;
 }
 
 auto EOLParser::isMatch(TokenPtr token) -> bool const {

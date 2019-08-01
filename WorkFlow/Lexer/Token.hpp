@@ -29,6 +29,10 @@ namespace wf {
             ENDLINE         = 202,
             /// 名前
             IDENTIFIER      = 0,
+            /// シンボル
+            SYMBOL          = 10,
+            /// 演算子
+            OPERATOR        = 20,
             /// 整数
             INTEGER         = 40,
             /// 文字列リテラル
