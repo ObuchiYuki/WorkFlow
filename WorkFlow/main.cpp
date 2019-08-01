@@ -36,10 +36,8 @@ int main() {
     
     var expr = expr0.expression(primary, ops);
 
-
-    
     var statement0 = rule();
-    var block = rule<ast::BlockStmnt>()
+    var block = rule<ast::BlockStem>()
         .skip("{").optional(statement0)
         .repeat(
             rule()
@@ -53,7 +51,7 @@ int main() {
     
     var statement = statement0.ors({
         rule<ast::IfStem>().skip("if").then(expr).then(block).optional(rule().skip("else").then(block)),
-        rule().skip("while").then(expr).then(block),
+        rule<ast::WhileStem>().skip("while").then(expr).then(block),
         rule<ast::VarStem>().skip("def").then(p_identifier).skip("=").then(expr),
         simple
     });

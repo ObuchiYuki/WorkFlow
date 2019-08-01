@@ -11,47 +11,38 @@
 
 #include "../Node/Node.hpp"
 
-#include <sstream>
+
 
 namespace wf {namespace ast {
     
     class IfStem:public Node {
     public:
-        auto condition() -> NodePtr {
-            return children[0];
-        }
-        auto block() -> NodePtr {
-            return children[1];
-        }
+        auto condition() -> NodePtr;
+        auto block() -> NodePtr;
         
-        auto description() -> std::string const override {
-            return "(if " + condition()->description() + " " + block()->description() + ")";
-        }
+        auto description() -> std::string const override;
         
         
-        IfStem(std::vector<NodePtr> _children, Location _location) :
-        Node(_children, _location) {}
+        IfStem(std::vector<NodePtr> _children, Location _location);
     };
 
-    class BlockStmnt: public Node {
+    class BlockStem: public Node {
     public:
         
-        BlockStmnt(std::vector<NodePtr> _children, Location _location) : Node(_children, _location) {};
+        BlockStem(std::vector<NodePtr> _children, Location _location);
         
-        auto description() -> std::string const override {
-            var sstr = std::stringstream();
+        auto description() -> std::string const override;
+    };
+    
+    class WhileStem: public Node {
+    public:
         
-            sstr << "(";
-            
-            for (let &statement: children){
-                sstr << statement->children[0]->children[0]->description();
-                sstr << " ";
-            }
-            
-            sstr << ")";
-            
-            return sstr.str();
-        }
+        auto condition() -> NodePtr;
+        auto block() -> NodePtr;
+        
+        WhileStem(std::vector<NodePtr> _children, Location _location);
+        
+        auto description() -> std::string const override;
     };
 
 }}
