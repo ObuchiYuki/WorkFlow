@@ -170,7 +170,7 @@ namespace wfh {
     TokenPtr readBracketType(_ReadingEnvironment& env) {
         let c = env.line[env.columun];
         
-        return TokenPtr(new wf::token::Token({env.lineno, env.columun}, TokenType::IDENTIFIER, std::string(1, c)));
+        return TokenPtr(new wf::token::Token({env.lineno, env.columun}, TokenType::SYMBOL, std::string(1, c)));
     }
     TokenPtr readSymbol(_ReadingEnvironment& env) {
         let s = std::string(env.line[env.columun], 1);
@@ -184,14 +184,14 @@ namespace wfh {
         
         if (isMultiCharSymbol(ops)){
             env.columun += 1;
-            let token = TokenPtr(new wf::token::Token({env.lineno, env.columun},TokenType::IDENTIFIER, ops));
+            let token = TokenPtr(new wf::token::Token({env.lineno, env.columun},TokenType::OPERATOR, ops));
             
             return token;
         }
         
         let op = new std::string(1, env.line[env.columun]);
         
-        let token = TokenPtr(new wf::token::Token({env.lineno, env.columun},TokenType::IDENTIFIER, *op));
+        let token = TokenPtr(new wf::token::Token({env.lineno, env.columun},TokenType::OPERATOR, *op));
         
         return token;
     }
