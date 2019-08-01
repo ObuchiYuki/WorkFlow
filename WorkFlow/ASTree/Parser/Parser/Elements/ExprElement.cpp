@@ -19,13 +19,13 @@ ExprElement::ExprElement(_ParserPtr _parser, Operators _ops) : factor(_parser) ,
 // MARK: - Methods - 
 auto ExprElement::parse(Lexer& lexer, std::vector<NodePtr> &res) -> void const {
     std::vector<std::vector<NodePtr>> pendings = {};
-    
     while(ops.match(lexer.peek(1)->value)){
-        
         pendings.push_back({factor->parse(lexer), p_operator.parse(lexer)});
         
     }
-    pendings.back().push_back(factor->parse(lexer));
+    
+    let u = factor->parse(lexer);
+    pendings.back().push_back(u);
     
     let last = pendings.back();
     pendings.pop_back();
@@ -40,6 +40,7 @@ auto ExprElement::parse(Lexer& lexer, std::vector<NodePtr> &res) -> void const {
         currentOperation = NodePtr(new ast::BinaryOperation(next, next.back()->location));
     }
     
+    print("Result Opr: ", currentOperation->description());
     res.push_back(currentOperation);
 }
 

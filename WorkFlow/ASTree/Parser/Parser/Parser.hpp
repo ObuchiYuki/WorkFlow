@@ -55,6 +55,7 @@ namespace wf {
         auto ors(std::vector<Parser> parserws) -> Parser;
         auto repeat(Parser parserw) -> Parser;
         auto skip(std::string token) -> Parser;
+        auto skip(std::vector<std::string> tokens) -> Parser;
         auto then(Parser parserw) -> Parser;
         auto expression(Parser subParserw, Operators ops) -> Parser;
         auto optional(Parser parserw) -> Parser;

@@ -15,6 +15,7 @@
 #include "PrimaryNode/PrimaryNode.hpp"
 
 #include "Expression.hpp"
+#include "Statement.hpp"
 
 namespace wf {
     namespace ast {
@@ -35,11 +36,6 @@ namespace wf {
             auto description() -> std::string const override {
                 return "(def " + target()->description() + " = " + init()->description() + ")";
             }
-        };
-        
-        class BlockStmnt: public Node {
-        public:
-            BlockStmnt(std::vector<NodePtr> _children, Location _location) : Node(_children, _location) {};
         };
     }
 }

@@ -39,10 +39,11 @@ namespace wf {
     /// 指定されたTokenを読み飛ばします。
     class SkipElement: public Element{
     private:
-        std::string skipToken;
+        std::vector<std::string> skipTokens;
                
     public:
         SkipElement(std::string _skipToken);
+        SkipElement(std::vector<std::string> _skipTokens);
                           
         auto match(Lexer& lexer) -> bool const override;
         auto parse(Lexer& lexer, std::vector<NodePtr> &res) -> void const override;

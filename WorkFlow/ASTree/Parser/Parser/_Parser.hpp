@@ -27,10 +27,13 @@ namespace wf {
         virtual auto parse(Lexer& lexer) -> std::shared_ptr<T> const {
             std::vector<NodePtr> results = {};
                        
-            for (int i=0; i<elements.size();i++) {
-                elements[i]->parse(lexer, results);
+            for (let &element: elements) {
+                element->parse(lexer, results);
             }
-       
+            
+            if (results.empty()) {
+                return std::shared_ptr<T>(new T(results, lexer.peek(0)->location));
+            }
             let node = std::shared_ptr<T>(new T(results, results[0]->location));
            
             return node;

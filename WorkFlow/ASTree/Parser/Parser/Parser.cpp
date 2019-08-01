@@ -59,6 +59,14 @@ auto Parser::skip(std::string token) -> Parser{
     return *this;
 }
 
+auto Parser::skip(std::vector<std::string> tokens) -> Parser {
+    let e_skip =  ElementPtr(new SkipElement(tokens));
+    
+    parser->addElement(e_skip);
+    
+    return *this;
+}
+
  
 auto Parser::then(Parser parserw) -> Parser{
     let e_tree = ElementPtr(new TreeElement(parserw.parser));

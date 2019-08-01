@@ -23,6 +23,8 @@
 #define guard_let_else(name, expression, elv) var _name = expression ; if (!_name.has_value())return elv; let name = _name.value()
 #define cast_let(name, value, clazz) var __name = dynamic_cast<clazz>(value);clazz name; if (__name == nullptr){ name = optinal<clazz>();}else{name = optinal<clazz>(__name);}
 
+
+
 template<class T>
 struct optinal{
 
@@ -97,4 +99,18 @@ std::ostream & operator << (std::ostream & outstream, const std::vector<T> vecto
     return outstream;
 }
 
+static void print() {
+    std::cout << std::endl;
+}
+template<class T, class... A>
+static void print(const T& first, const A&... rest) {
+    std::cout << first; print(rest...);
+}
+template<class... A>
+static void print(const A&... rest) {
+    print(rest...);
+}
+
+
 #endif /* IGCommonMacros_hpp */
+

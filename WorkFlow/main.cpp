@@ -22,6 +22,8 @@ int main() {
     var ops = Operators();
     ops.add("+");
     ops.add("-");
+    ops.add("<");
+    ops.add(">");
     
     var expr0 = rule<ast::Expression>();
     
@@ -32,13 +34,31 @@ int main() {
         p_string
     });
     
-    var expr = expr0.expression(primary,ops);
+    var expr = expr0.expression(primary, ops);
 
-    var varStem = rule<ast::VarStem>()
-        .skip("def")
-        .then(p_identifier)
-        .skip("=")
-        .then(expr);
+
+    
+    var statement0 = rule();
+    var block = rule<ast::BlockStmnt>()
+        .skip("{").optional(statement0)
+        .repeat(
+            rule()
+                .skip(std::vector<std::string>({";", "EOL"}))
+                .optional(statement0)
+            )
+        .skip("}");
+    
+    
+    var simple = rule().then(expr);
+    
+    var statement = statement0.ors({
+        rule<ast::IfStem>().skip("if").then(expr).then(block).optional(rule().skip("else").then(block)),
+        rule().skip("while").then(expr).then(block),
+        rule<ast::VarStem>().skip("def").then(p_identifier).skip("=").then(expr),
+        simple
+    });
+    
+    var program = rule().optional(statement).skip(std::vector<std::string>({";", "EOL"}));
 
 
     let path = "/Users/yuki/Developer/C++/WorkFlow/main.wf";
@@ -46,9 +66,7 @@ int main() {
     
     var lexer = wf::Lexer(&ifs);
     
-    std::cout << varStem.match(lexer) << std::endl;
+    let ps = statement.parse(lexer);
     
-    let ps = varStem.parse(lexer);
-    
-    std::cout << ps->description() << std::endl;
+    print(ps->children[0]->description());
 }

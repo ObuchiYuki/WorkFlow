@@ -30,7 +30,9 @@ auto _PrimaryParser<T>::parse(Lexer& lexer) -> std::shared_ptr<T> const {
 
 
 auto IdentifierParser::isMatch(TokenPtr token) -> bool const {
-    
+    if (token->value == "}") {
+        return false;
+    }
     return token->type == wf::token::TokenType::IDENTIFIER;
 }
 auto StringParser::isMatch(TokenPtr token) -> bool const {
