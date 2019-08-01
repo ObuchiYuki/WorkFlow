@@ -18,8 +18,18 @@ auto IfStem::block() -> NodePtr {
     return children[1];
 }
 
+auto IfStem::elseBlock() -> NodePtr {
+    return children[2]->children[0];
+}
+
 auto IfStem::description() -> std::string const {
-    return "(if " + condition()->description() + " " + block()->description() + ")";
+    if (elseBlock() != nullptr) {
+        return "(if " + condition()->description() + " " + block()->description() + ")" +
+        "(else)" + elseBlock()->description() + ")";
+    }else{
+        return "(if " + condition()->description() + " " + block()->description() + ")";
+    }
+    
 }
 
 IfStem::IfStem(std::vector<NodePtr> _children, Location _location) :

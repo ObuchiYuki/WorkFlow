@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B606974222F294F900D6951E /* NegativeExpr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B606974122F294F900D6951E /* NegativeExpr.cpp */; };
 		B66D435522F27D6000D48E16 /* BlockStem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B66D435422F27D6000D48E16 /* BlockStem.cpp */; };
 		B66D435722F27DF700D48E16 /* WhileStem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B66D435622F27DF700D48E16 /* WhileStem.cpp */; };
 		B66E5D9722EB3FBB0081AD76 /* RepeatElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B66E5D9222EB3FBB0081AD76 /* RepeatElement.cpp */; };
@@ -48,6 +49,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B606974122F294F900D6951E /* NegativeExpr.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = NegativeExpr.cpp; path = "../../../../../../../../../System/Volumes/Data/Users/yuki/Developer/C++/WorkFlow/WorkFlow/ASTree/AST/Expression/NegativeExpr.cpp"; sourceTree = "<group>"; };
 		B628598522E715200007A8F2 /* Node.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Node.hpp; sourceTree = "<group>"; };
 		B662C43F22E015B1009747DA /* ASTree.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ASTree.hpp; sourceTree = "<group>"; };
 		B662C44022E015ED009747DA /* Lexer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Lexer.hpp; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				B6CAFD9222F026C100F9B228 /* Expression.hpp */,
 				B6CAFD9422F026D900F9B228 /* Expression.cpp */,
 				B6CAFD9322F026C100F9B228 /* BinaryOperation.cpp */,
+				B606974122F294F900D6951E /* NegativeExpr.cpp */,
 			);
 			path = Expression;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B606974222F294F900D6951E /* NegativeExpr.cpp in Sources */,
 				B6F1875322EFE3D1002171F9 /* Operator.cpp in Sources */,
 				B692D3DC22DDC079001D4BA4 /* Token.hpp in Sources */,
 				B66E5D9B22EB3FBB0081AD76 /* SkipElement.cpp in Sources */,

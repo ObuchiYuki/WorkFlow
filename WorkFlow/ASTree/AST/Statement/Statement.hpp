@@ -20,6 +20,8 @@ namespace wf {namespace ast {
         auto condition() -> NodePtr;
         auto block() -> NodePtr;
         
+        auto elseBlock() -> NodePtr;
+        
         auto description() -> std::string const override;
         
         

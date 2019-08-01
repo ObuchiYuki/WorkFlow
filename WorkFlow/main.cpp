@@ -34,7 +34,7 @@ int main() {
     var expr0 = rule<ast::Expression>();
     
     var primary = rule<ast::PrimaryNode>().ors({
-        rule().skip("(").then(expr0).skip(")"),
+        rule<ast::Expression>().skip("(").then(expr0).skip(")"),
         p_integer,
         p_identifier,
         p_string
@@ -56,7 +56,9 @@ int main() {
     var simple = rule().then(expr);
     
     var statement = statement0.ors({
-        rule<ast::IfStem>().skip("if").then(expr).then(block).optional(rule().skip("else").then(block)),
+        rule<ast::IfStem>()
+            .skip("if").then(expr).then(block).optional(rule().skip("else").then(block)),
+        
         rule<ast::WhileStem>().skip("while").then(expr).then(block),
         rule<ast::VarStem>().skip("def").then(p_identifier).skip("=").then(expr),
         simple

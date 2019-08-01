@@ -35,6 +35,14 @@ public:
     auto description() -> std::string const override;
 };
 
+    
+class NegativeExpr: public Expression {
+public:
+    NegativeExpr(std::vector<NodePtr> _children, Location _location);
+    
+    auto description() -> std::string const override;
+};
+    
 }}
 
 #endif /* BinaryOperation_hpp */
