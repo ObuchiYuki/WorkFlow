@@ -9,6 +9,8 @@
 #ifndef ParserElements_h
 #define ParserElements_h
 
+#include <unordered_map>
+
 namespace wf {
     /// 登録されたパーサーの中からマッチするものを探します。
     class OrElement: public Element{
@@ -60,21 +62,51 @@ namespace wf {
         
     };
     
-    /// 指定された構文木をパーサー以下に追加します。
-    class ExprElement: public Element {
-        _ParserPtr factor;
-        Operators ops;
+    class Precedence {
     public:
-               
-              
-        ExprElement(_ParserPtr _parser, Operators ops);
+        int value;
+        bool leftAssoc;  // left associative
+        Precedence(int v, bool a) : value(v), leftAssoc(a) {};
+    };
+    
+    typedef std::shared_ptr<Precedence> PrecedencePtr;
+    
+    enum class Associative {
+        RIGHT, LEFT
+    };
+    
+    class Operators {
+        std::unordered_map<std::string, PrecedencePtr> map;
         
-        auto shiftNext(Lexer& lexer) -> Element;
-               
-        auto parse(Lexer& lexer, std::vector<NodePtr> &res) -> void const override;
+    public:
+        PrecedencePtr get(std::string name) {
+            return map[name];
+        }
+        void add(std::string name, int prec, Associative assoc) {
+            map[name] = PrecedencePtr(new Precedence(prec, (assoc == Associative::LEFT)));
+        }
+    };
+
+    
+    class ExprElement: public Element {
+    public:
+        ExprElement(_ParserPtr exp, Operators map);
+        
+        auto parse(Lexer& lexer, std::vector<NodePtr>& res) -> void const override;
+        
         auto match(Lexer& lexer) -> bool const override;
         
+    private:
+        Operators ops;
+        _ParserPtr factor;
+        
+        NodePtr doShift(Lexer& lexer, NodePtr left, int prec);
+        
+        PrecedencePtr nextOperator(Lexer& lexer);
+        
+        bool rightIsExpr(int prec, PrecedencePtr nextPrec);
     };
+
 }
 
 #endif /* ParserElements_h */

@@ -22,7 +22,6 @@
 		B692D3DB22DDC077001D4BA4 /* Lexer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B67A7D5E22DDBE2900ABA47C /* Lexer.cpp */; };
 		B692D3DC22DDC079001D4BA4 /* Token.hpp in Sources */ = {isa = PBXBuildFile; fileRef = B67A7D5B22DDBE2900ABA47C /* Token.hpp */; };
 		B692D3DD22DDC07A001D4BA4 /* Common.hpp in Sources */ = {isa = PBXBuildFile; fileRef = B67A7D6022DDBE3300ABA47C /* Common.hpp */; };
-		B6AFE19822F11E1D00AD3F54 /* Operators.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6AFE19622F11E1D00AD3F54 /* Operators.cpp */; };
 		B6B3C5AE22F12E8500B95A50 /* IfStem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6B3C5AD22F12E8500B95A50 /* IfStem.cpp */; };
 		B6C881C522EB3AFA00D541B8 /* _AnyParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6C881C422EB3AFA00D541B8 /* _AnyParser.cpp */; };
 		B6CAFD9522F026D900F9B228 /* Expression.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6CAFD9422F026D900F9B228 /* Expression.cpp */; };
@@ -71,8 +70,6 @@
 		B67A7D5E22DDBE2900ABA47C /* Lexer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Lexer.cpp; sourceTree = "<group>"; };
 		B67A7D5F22DDBE2900ABA47C /* Lexer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Lexer.hpp; sourceTree = "<group>"; };
 		B67A7D6022DDBE3300ABA47C /* Common.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Common.hpp; sourceTree = "<group>"; };
-		B6AFE19622F11E1D00AD3F54 /* Operators.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Operators.cpp; path = "../../../../../../../../../System/Volumes/Data/Users/yuki/Developer/C++/WorkFlow/WorkFlow/ASTree/Parser/Parser/Operators.cpp"; sourceTree = "<group>"; };
-		B6AFE19722F11E1D00AD3F54 /* Operators.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Operators.hpp; path = "../../../../../../../../../System/Volumes/Data/Users/yuki/Developer/C++/WorkFlow/WorkFlow/ASTree/Parser/Parser/Operators.hpp"; sourceTree = "<group>"; };
 		B6B3C5AC22F12E6E00B95A50 /* Statement.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Statement.hpp; path = "../../../../../../../../../System/Volumes/Data/Users/yuki/Developer/C++/WorkFlow/WorkFlow/ASTree/AST/Statement/Statement.hpp"; sourceTree = "<group>"; };
 		B6B3C5AD22F12E8500B95A50 /* IfStem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = IfStem.cpp; path = "../../../../../../../../../System/Volumes/Data/Users/yuki/Developer/C++/WorkFlow/WorkFlow/ASTree/AST/Statement/IfStem.cpp"; sourceTree = "<group>"; };
 		B6B84FBE22F1140D00CBAB0B /* Element.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Element.hpp; path = "../../../../../../../../../System/Volumes/Data/Users/yuki/Developer/C++/WorkFlow/WorkFlow/ASTree/Parser/Parser/Element.hpp"; sourceTree = "<group>"; };
@@ -211,8 +208,6 @@
 				B6B84FC322F1161F00CBAB0B /* PrimaryParsers.hpp */,
 				B66E5D9C22EB3FCD0081AD76 /* PrimaryParsers.cpp */,
 				B6B84FC222F1155300CBAB0B /* _Parser.hpp */,
-				B6AFE19622F11E1D00AD3F54 /* Operators.cpp */,
-				B6AFE19722F11E1D00AD3F54 /* Operators.hpp */,
 			);
 			path = Parser;
 			sourceTree = "<group>";
@@ -349,7 +344,6 @@
 				B6F1874D22EFE1E0002171F9 /* IntegerLiteral.cpp in Sources */,
 				B66E5D9922EB3FBB0081AD76 /* TreeElement.cpp in Sources */,
 				B66E5DA522EBD1FE0081AD76 /* Node.cpp in Sources */,
-				B6AFE19822F11E1D00AD3F54 /* Operators.cpp in Sources */,
 				B6F1874B22EFE14C002171F9 /* StringLiteral.cpp in Sources */,
 				B6F1874F22EFE257002171F9 /* Derective.cpp in Sources */,
 				B66D435722F27DF700D48E16 /* WhileStem.cpp in Sources */,

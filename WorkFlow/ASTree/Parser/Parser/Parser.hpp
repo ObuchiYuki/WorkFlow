@@ -23,7 +23,6 @@ template<class T>
 class _Parser;
 class Element;
 class _AnyParser;
-class Operators;
 
 // ==================================== //
 // MARK: - Type Linking -
@@ -35,7 +34,6 @@ typedef std::shared_ptr<ast::Leaf>     LeafPtr;
 #include "Element.hpp"
 #include "_Parser.hpp"
 #include "_AnyParser.hpp"
-#include "Operators.hpp"
 #include "Elements/ParserElements.hpp"
 #include "PrimaryParsers.hpp"
 

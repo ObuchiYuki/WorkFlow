@@ -10,40 +10,79 @@
 
 using namespace wf;
 
-// MARK: - Constructor -
 
-ExprElement::ExprElement(_ParserPtr _parser, Operators _ops) : factor(_parser) , ops(_ops) {
+
+// MARK: - Impl -
+ExprElement::ExprElement(_ParserPtr exp, Operators map) : ops(map), factor(exp) {};
+
+auto ExprElement::parse(Lexer& lexer, std::vector<NodePtr>& res) -> void const {
+    NodePtr right = factor->parse(lexer);
+    PrecedencePtr prec = nextOperator(lexer);
     
-}
-
-// MARK: - Methods - 
-auto ExprElement::parse(Lexer& lexer, std::vector<NodePtr> &res) -> void const {
-    std::vector<std::vector<NodePtr>> pendings = {};
-    while(ops.match(lexer.peek(1)->value)){
-        pendings.push_back({factor->parse(lexer), p_operator.parse(lexer)});
+    while(prec != nullptr) {
+        right = doShift(lexer, right, prec->value);
         
+        prec = nextOperator(lexer);
     }
     
-    let u = factor->parse(lexer);
-    pendings.back().push_back(u);
-    
-    let last = pendings.back();
-    pendings.pop_back();
-    var currentOperation = NodePtr(new ast::BinaryOperation(last, last.back()->location));
-    
-    while(!pendings.empty()) {
-        
-        var next = pendings.back();
-        pendings.pop_back();
-        
-        next.push_back(currentOperation);
-        currentOperation = NodePtr(new ast::BinaryOperation(next, next.back()->location));
-    }
-    
-    print("Result Opr: ", currentOperation->description());
-    res.push_back(currentOperation);
+    res.push_back(right);
 }
 
 auto ExprElement::match(Lexer& lexer) -> bool const {
     return factor->match(lexer);
 }
+
+// MARK: - Private -
+
+PrecedencePtr ExprElement::nextOperator(Lexer& lexer) {
+    let t = lexer.peek(0);
+    
+    if (t->type == token::TokenType::OPERATOR) {
+        return ops.get(t->value);
+    }else{
+        return nullptr;
+    }
+}
+
+bool ExprElement::rightIsExpr(int prec, PrecedencePtr nextPrec) {
+    if (nextPrec->leftAssoc){
+        return prec < nextPrec->value;
+    } else {
+        return prec <= nextPrec->value;
+    }
+}
+
+NodePtr ExprElement::doShift(Lexer& lexer, NodePtr left, int prec) {
+    var list = std::vector<NodePtr>();
+    
+    list.push_back(left);
+    let leafValue = lexer.readNext();
+    let leaf = LeafPtr(new ast::Leaf(leafValue, leafValue->location));
+    list.push_back(NodePtr(new ast::Operator({leaf}, leaf->location)));
+    
+    NodePtr right = factor->parse(lexer);
+    
+    PrecedencePtr next = nextOperator(lexer);
+    
+    while (next != nullptr && rightIsExpr(prec, next)) {
+        right = doShift(lexer, right, next->value);
+        
+        next = nextOperator(lexer);
+    }
+    
+    list.push_back(right);
+    
+    return NodePtr(new ast::BinaryOperation(list, list.front()->location));
+}
+    
+
+    
+    
+    
+    
+    
+
+
+// MARK: - Constructor -
+
+

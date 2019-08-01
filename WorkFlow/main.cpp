@@ -20,10 +20,16 @@ using namespace wf;
 
 int main() {
     var ops = Operators();
-    ops.add("+");
-    ops.add("-");
-    ops.add("<");
-    ops.add(">");
+    
+    ops.add("=", 1, Associative::RIGHT);
+    ops.add("==", 2, Associative::LEFT);
+    ops.add(">", 2, Associative::LEFT);
+    ops.add("<", 2, Associative::LEFT);
+    ops.add("+", 3, Associative::LEFT);
+    ops.add("-", 3, Associative::LEFT);
+    ops.add("*", 4, Associative::LEFT);
+    ops.add("/", 4, Associative::LEFT);
+    ops.add("%", 4, Associative::LEFT);
     
     var expr0 = rule<ast::Expression>();
     
