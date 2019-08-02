@@ -22,9 +22,7 @@
 using namespace wf;
 
 int main() {
-    rm::optional<int> value = 2;
     
-    return 0;
     var ops = Operators();
     
     ops.add("=", 1, Associative::RIGHT);
