@@ -38,7 +38,7 @@ class Value {
     auto floating() -> int;
 };
             
-class Node {
+class Node  {
 public:
     // MARK: - Properties -
     /// 子ノードです。

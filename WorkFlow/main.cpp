@@ -22,8 +22,6 @@
 using namespace wf;
 
 int main() {
-    
-    return 0;
     var ops = Operators();
     
     ops.add("=", 1, Associative::RIGHT);
@@ -79,6 +77,5 @@ int main() {
     let ps = statement.parse(lexer);
     
     print(ps->children[0]->description());
-    
     
 }
