@@ -22,6 +22,8 @@
 using namespace wf;
 
 int main() {
+    
+    return 0;
     var ops = Operators();
     
     ops.add("=", 1, Associative::RIGHT);
