@@ -12,5 +12,4 @@
 #include "Impl/optional.hpp"
 #include "Impl/any.hpp"
 
-
 #endif /* rmkit_h */

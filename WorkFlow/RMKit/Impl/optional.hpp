@@ -10,9 +10,7 @@
 #define rm_optional_h
 
 #include <iostream>
-#include <new>
 #include <type_traits>
-#include <functional>
 
 #define nil rm::_nil
 
@@ -23,6 +21,8 @@ class __nil {};
 static __nil _nil;
 
 template <typename T>
+/// 存在するか存在しないかのどちらかの状態を表します。
+/// 存在する場合は、`optional<T>(value)` 存在しない場合は、`nil`
 class optional {
     
 private:
