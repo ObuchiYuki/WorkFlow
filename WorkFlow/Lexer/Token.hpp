@@ -13,7 +13,6 @@
 #include <iostream>
 #include <memory>
 
-
 #include "../Common.hpp"
 
 namespace wf {
@@ -83,33 +82,4 @@ namespace wf {
     }
 }
 
-    
-// =============================================================== //
-// - Stream Extensions -
-static std::ostream & operator << (std::ostream & outstream, const wf::token::TokenType type) {
-    switch (type) {
-            /// ファイルの終端です。
-        case wf::token::TokenType::ENDFILE: outstream << "ENDFILE"; break;
-        case wf::token::TokenType::ENDLINE: outstream << "ENDLINE"; break;
-        case wf::token::TokenType::IDENTIFIER: outstream << "IDENTIFIER"; break;
-        case wf::token::TokenType::INTEGER: outstream << "INTEGER"; break;
-        case wf::token::TokenType::STRING: outstream << "STRING"; break;
-        case wf::token::TokenType::FLOAT: outstream << "FLOAT"; break;
-        case wf::token::TokenType::DIRECTIVE: outstream << "DIRECTIVE"; break;
-            
-        default: break;
-    }
-    
-    return outstream;
-}
-static std::ostream & operator << (std::ostream & outstream, const wf::token::Token* token) {
-    outstream << "<wf::Token ,type: ";
-    outstream << token->type;
-    outstream << ", value: \"" << token->value;
-    
-    outstream << "\">";
-    
-    return outstream;
-}
-    
-#endif /* Token_hpp */
+#endif

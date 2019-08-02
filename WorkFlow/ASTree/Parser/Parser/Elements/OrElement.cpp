@@ -8,6 +8,8 @@
 
 #include "../Parser.hpp"
 
+#include <vector>
+
 using namespace wf;
 
 // MARK: - Constructor -
@@ -17,25 +19,27 @@ OrElement::OrElement(std::vector<_ParserPtr> _parsers): parsers(_parsers) {
 
 // MARK: - Methods -
 auto OrElement::match(Lexer& lexer) -> bool const {
-    guard_let_else(parser, chooseParser(lexer), false);
-                          
-    return true;
+    
+    return chooseParser(lexer) != nil;
 }
 
 auto OrElement::parse(Lexer& lexer, std::vector<NodePtr> &res) -> void const {
-    guard_let(parser, chooseParser(lexer));
-                          
-    res.push_back(parser->parse(lexer));
-                   
+    const rm::optional<_ParserPtr> _parser = chooseParser(lexer);
+    
+    if (_parser) {
+        let parser = *_parser;
+        
+        res.push_back(parser->parse(lexer));
+    }
 }
 
 // MARK: - Private Methods -
 
-auto OrElement::chooseParser(Lexer& lexer) -> optinal<_ParserPtr> const {
+auto OrElement::chooseParser(Lexer& lexer) -> rm::optional<_ParserPtr> const {
     for (let &parser: parsers){
         if (parser->match(lexer)){
-            return optinal<_ParserPtr>(parser);
+            return rm::optional<_ParserPtr>(parser);
         }
     }
-    return nil(_ParserPtr);
+    return nil;
 }

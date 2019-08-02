@@ -42,6 +42,16 @@ public:
     
     auto description() -> std::string const override;
 };
+
+class Calling: public Expression {
+public:
+    auto target() -> NodePtr;
+    auto args() -> NodePtr;
+    
+    Calling(std::vector<NodePtr> _children, Location _location);
+        
+    auto description() -> std::string const override;
+};
     
 }}
 

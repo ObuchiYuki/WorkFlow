@@ -23,7 +23,7 @@ auto SkipElement::match(Lexer& lexer) -> bool const {
     if (skipTokens[0] == "EOL" && lexer.peek(0)->type == wf::token::TokenType::ENDLINE) {
         return true;
     }
-    for (let skipToken: skipTokens) {
+    for (let &skipToken: skipTokens) {
         if (lexer.peek(0)->value == skipToken) return true;
     }
     

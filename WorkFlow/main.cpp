@@ -11,14 +11,20 @@
 #include <vector>
 #include <string>
 
+#include "rmkit.h"
+
 #include "Common.hpp"
 
 #include "Lexer/Lexer.hpp"
 #include "ASTree.hpp"
+#include "Runner.hpp"
 
 using namespace wf;
 
 int main() {
+    rm::optional<int> value = 2;
+    
+    return 0;
     var ops = Operators();
     
     ops.add("=", 1, Associative::RIGHT);
@@ -56,12 +62,11 @@ int main() {
     var simple = rule().then(expr);
     
     var statement = statement0.ors({
-        rule<ast::IfStem>()
-            .skip("if").then(expr).then(block).optional(rule().skip("else").then(block)),
-        
+        rule<ast::IfStem>().skip("if").then(expr).then(block).optional(rule().skip("else").then(block)),
         rule<ast::WhileStem>().skip("while").then(expr).then(block),
         rule<ast::VarStem>().skip("def").then(p_identifier).skip("=").then(expr),
-        simple
+        rule<ast::Calling>().then(p_identifier).skip("(").then(expr).skip(")"),
+        simple,
     });
     
     var program = rule().optional(statement).skip(std::vector<std::string>({";", "EOL"}));

@@ -1,5 +1,9 @@
-if a == 212 {
-    def b = 12 * 12 + 12 * 1
-}else{
-    def v = 12 + 12
+if i % 3 == 0 {
+    print("Fizz")
+} else {
+    if i % 5 == 0 {
+        print("Buzz")
+    } else {
+        print(i)
+    }
 }

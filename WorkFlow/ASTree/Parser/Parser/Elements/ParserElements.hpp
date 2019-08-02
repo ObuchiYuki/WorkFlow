@@ -17,7 +17,7 @@ namespace wf {
     private:
         std::vector<_ParserPtr> parsers;
         
-        auto chooseParser(Lexer& lexer) -> optinal<_ParserPtr> const;
+        auto chooseParser(Lexer& lexer) -> rm::optional<_ParserPtr> const;
     public:
                    
         OrElement(std::vector<_ParserPtr> _parsers);
