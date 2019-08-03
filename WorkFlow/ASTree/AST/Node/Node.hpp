@@ -85,6 +85,7 @@ public:
     Node(std::vector<std::shared_ptr<Node>> _children, Location _location);
 
     virtual ~Node() {};
+    
 };
 
 typedef std::shared_ptr<Node> NodePtr;
@@ -105,6 +106,10 @@ public:
     auto description() -> const std::string override;
     auto eval(wf::run::Environment env) -> Value override;
 };
+
+LeafPtr nodeAsLeaf(NodePtr node){
+    return std::dynamic_pointer_cast<Leaf>(node);
+}
     
 }}
 

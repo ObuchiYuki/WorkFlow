@@ -284,8 +284,8 @@
 		B685E74F22F5277F0056BFF2 /* Node */ = {
 			isa = PBXGroup;
 			children = (
-				B685E75022F5277F0056BFF2 /* Node.cpp */,
 				B685E75122F5277F0056BFF2 /* Node.hpp */,
+				B685E75022F5277F0056BFF2 /* Node.cpp */,
 			);
 			path = Node;
 			sourceTree = "<group>";
