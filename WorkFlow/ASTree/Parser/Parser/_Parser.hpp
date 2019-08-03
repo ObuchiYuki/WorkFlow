@@ -11,7 +11,7 @@
 
 namespace wf {
     /// 実際にパースを行います。
-    template<class T> // T: Access
+    template<class T> // T: Node
     class _Parser {
     public:
         virtual ~_Parser() {};
@@ -24,7 +24,7 @@ namespace wf {
         }
                  
         /// Lexerの値を元に実際にパースを行います。
-        virtual auto parse(Lexer& lexer) -> std::shared_ptr<T> const {
+        virtual auto parse(Lexer& lexer) -> NodePtr const {
             std::vector<NodePtr> results = {};
                        
             for (let &element: elements) {
@@ -34,18 +34,8 @@ namespace wf {
             let rsize = results.size();
             print(rsize);
             print(rm::type::type_name<T>());
-            
-            if (rsize == 0) {
-                return std::shared_ptr<T>(new T({}, lexer.peek(0)->location));
-            } else
             if (rsize == 1) {
-                for (let &a:results.front()->children) {
-                    print(rm::type::type_name(*a));
-                }
-                
-                let node = std::shared_ptr<T>(new T(results.front()->children, results[0]->location));
-                
-                return node;
+                return results[0];
             } else {
                 let node = std::shared_ptr<T>(new T(results, results[0]->location));
                 

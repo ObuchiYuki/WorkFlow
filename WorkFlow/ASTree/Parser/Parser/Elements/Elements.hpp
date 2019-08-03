@@ -20,6 +20,7 @@
 
 
 namespace wf {
+
     /// 登録されたパーサーの中からマッチするものを探します。
     class OrElement: public Element{
     private:

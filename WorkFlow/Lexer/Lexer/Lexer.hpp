@@ -17,7 +17,6 @@
 #include "../Token.hpp"
 #include "../../Common.hpp"
 
-typedef std::shared_ptr<wf::token::Token> TokenPtr;
 
 namespace wf {
     class Lexer {
@@ -30,7 +29,7 @@ namespace wf {
         std::ifstream* reader;
         
         /// 現在の行のToken列です。
-        std::vector<TokenPtr> queue;
+        std::vector<token::TokenPtr> queue;
         
         /// 現在の行が最終行かどうかです。
         bool hasMoreLine;
@@ -55,10 +54,10 @@ namespace wf {
         // MARK: - Methods -
         
         /// 次のQueueを読みます。読んだところからメモリから消します。
-        TokenPtr readNext();
+        token::TokenPtr readNext();
         
         /// 先のQueueを先読みします。メモリから消すことはありません。
-        TokenPtr peek(int stride);
+        token::TokenPtr peek(int stride);
         
     };
 }

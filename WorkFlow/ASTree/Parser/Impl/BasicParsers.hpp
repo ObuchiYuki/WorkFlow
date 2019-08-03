@@ -28,11 +28,11 @@ public:
     
     Parser expr0 = rule<ast::Expression>();
     
-    Parser primary = rule<ast::PrimaryNode>().ors({
+    Parser primary = rule().ors({
         rule<ast::Expression>().skip("(").then(expr0).skip(")"),
-        p_integer,
-        p_identifier,
-        p_string
+        Parser::integer(),
+        Parser::name(),
+        Parser::string(),
     });
     
     Parser expr = expr0.expression(primary, ops);
@@ -54,8 +54,8 @@ public:
     Parser statement = statement0.ors({
         rule<ast::IfStem>().skip("if").then(expr).then(block).optional(rule().skip("else").then(block)),
         rule<ast::WhileStem>().skip("while").then(expr).then(block),
-        rule<ast::VarStem>().skip("def").then(p_identifier).skip("=").then(expr),
-        rule<ast::Calling>().then(p_identifier).skip("(").then(expr).skip(")"),
+        rule<ast::VarStem>().skip("def").then(Parser::name()).skip("=").then(expr),
+        rule<ast::Calling>().then(Parser::name()).skip("(").then(expr).skip(")"),
         simple,
     });
     

@@ -20,7 +20,6 @@
 #include "Lexer.hpp"
 
 using namespace wf::token;
-typedef std::shared_ptr<Token> TokenPtr;
 
 /// IGHelpers
 namespace wfh {

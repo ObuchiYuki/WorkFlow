@@ -40,47 +40,46 @@ typedef std::shared_ptr<ast::Node>     NodePtr;
 
 #include "Element.hpp"
 #include "Elements/Elements.hpp"
-#include "PrimaryParsers.hpp"
+#include "Elements/TokenElements.hpp"
 
 namespace wf {
     // MARK: - Parser -
 
     /// ABTをより良いAPIで使用できるようにすための、ラッパーです。
-    class Parser {
-    public:
-        _ParserPtr parser;
-        
-        Parser(): parser(nullptr) {};
-        Parser(_ParserPtr _parser);
-        
-        auto parse(Lexer& lexer) -> NodePtr;
-        auto match(Lexer& lexer) -> bool;
-        
-        auto ors(std::vector<Parser> parserws) -> Parser;
-        auto repeat(Parser parserw) -> Parser;
-        auto skip(std::string token) -> Parser;
-        auto skip(std::vector<std::string> tokens) -> Parser;
-        auto then(Parser parserw) -> Parser;
-        auto expression(Parser subParserw, Operators ops) -> Parser;
-        auto optional(Parser parserw) -> Parser;
-        
-    };
-
-    template<class T = wf::ast::Node>
-    Parser rule() {
-        
-        return Parser(_ParserPtr(new _AnyParser(new _Parser<T>)));
-    }
-
-    // MARK: - static Primary Parsers -
-
-    static Parser p_integer = Parser(_ParserPtr(new _AnyParser(new IntegerParser())));
-    static Parser p_string = Parser(_ParserPtr(new _AnyParser(new StringParser())));
-    static Parser p_operator = Parser(_ParserPtr(new _AnyParser(new OperatorParser())));
-    static Parser p_derective = Parser(_ParserPtr(new _AnyParser(new DirectiveParser())));
-    static Parser p_identifier = Parser(_ParserPtr(new _AnyParser(new IdentifierParser())));
+class Parser {
+private:
+    auto _integer() -> Parser;
+    auto _string() -> Parser;
+    auto _name() -> Parser;
+    auto _op() -> Parser;
+public:
+    _ParserPtr parser;
     
-    static Parser p_eol = Parser(_ParserPtr(new _AnyParser(new EOLParser())));
+    Parser(): parser(nullptr) {};
+    Parser(_ParserPtr _parser);
+    
+    auto parse(Lexer& lexer) -> NodePtr;
+    auto match(Lexer& lexer) -> bool;
+        
+    auto ors(std::vector<Parser> parserws) -> Parser;
+    auto repeat(Parser parserw) -> Parser;
+    auto skip(std::string token) -> Parser;
+    auto skip(std::vector<std::string> tokens) -> Parser;
+    auto then(Parser parserw) -> Parser;
+    auto expression(Parser subParserw, Operators ops) -> Parser;
+    auto optional(Parser parserw) -> Parser;
+            
+    static auto integer() -> Parser;
+    static auto string() -> Parser;
+    static auto name() -> Parser;
+    static auto op() -> Parser;
+};
+
+template<class T = wf::ast::Node>
+Parser rule() {
+    return Parser(_ParserPtr(new _AnyParser(new _Parser<T>)));
+}
+
 }
 
 

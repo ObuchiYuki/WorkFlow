@@ -60,9 +60,8 @@ NodePtr ExprElement::doShift(Lexer& lexer, NodePtr left, int prec) {
     var list = std::vector<NodePtr>();
     
     list.push_back(left);
-    let leafValue = lexer.readNext();
-    let leaf = LeafPtr(new ast::Leaf(leafValue, leafValue->location));
-    list.push_back(NodePtr(new ast::Operator({leaf}, leaf->location)));
+    let token = lexer.readNext();
+    list.push_back(NodePtr(new ast::Operator(token, token->location)));
     
     NodePtr right = factor->parse(lexer);
     

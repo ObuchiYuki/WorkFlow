@@ -15,6 +15,7 @@
 
 #include "location.hpp"
 #include "Node.hpp"
+#include "Token.hpp"
 
 namespace wf { namespace ast{
 
@@ -23,12 +24,14 @@ namespace wf { namespace ast{
 
 /// リテラル・識別子などを表すプライマリオブジェクトを表すノードです。
 class PrimaryNode : public Leaf {
-public:     
-    PrimaryNode(std::vector<NodePtr> _children, Location _location);
+public:
+    PrimaryNode(token::TokenPtr _token, Location _location) : Leaf(_token, _location) {}
             
-    virtual ~PrimaryNode();
+    virtual ~PrimaryNode() {};
     
-    auto description() -> const std::string override;
+    auto description() -> const std::string override {
+        return token->value;
+    };
 };
 
 /// 文字列リテラルを表します。
@@ -36,7 +39,7 @@ class StringLiteral: public PrimaryNode {
 public:
     auto value() -> std::string const;
             
-    StringLiteral(std::vector<NodePtr> _children, Location _location);
+    StringLiteral(token::TokenPtr _token, Location _location) : PrimaryNode(_token, _location) {}
 };
 
 
@@ -45,7 +48,7 @@ class IntegerLiteral: public PrimaryNode {
 public:
     auto value() -> int const;
             
-    IntegerLiteral(std::vector<NodePtr> _children, Location _location);
+    IntegerLiteral(token::TokenPtr _token, Location _location) : PrimaryNode(_token, _location) {}
 };
 
 /// 不動小数点リテラルを表します。
@@ -53,8 +56,7 @@ class FloatLiteral: public PrimaryNode {
 public:
     auto value() -> float const;
             
-    FloatLiteral(std::vector<NodePtr> _children, Location _location);
-    
+    FloatLiteral(token::TokenPtr _token, Location _location) : PrimaryNode(_token, _location) {}
 };
 
 /// コンパイラディレクティブを表します。
@@ -62,16 +64,14 @@ class Directive: public PrimaryNode {
 public:
     auto value() -> std::string const;
             
-    Directive(std::vector<NodePtr> _children, Location _location);
-    
+    Directive(token::TokenPtr _token, Location _location) : PrimaryNode(_token, _location) {}
 };
 
 class Operator: public PrimaryNode {
 public:
     auto value() -> std::string  const;
             
-    Operator(std::vector<NodePtr> _children, Location _location);
-    
+    Operator(token::TokenPtr _token, Location _location) : PrimaryNode(_token, _location) {}
 };
 
 class Name: public PrimaryNode {
@@ -79,8 +79,7 @@ public:
         
     auto value() -> std::string const;
             
-    Name(std::vector<NodePtr> _children, Location _location);
-    
+    Name(token::TokenPtr _token, Location _location) : PrimaryNode(_token, _location) {}
 };
 
 

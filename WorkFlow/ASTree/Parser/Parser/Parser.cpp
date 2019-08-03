@@ -57,7 +57,7 @@ auto Parser::repeat(Parser parserw) -> Parser{
 
  
 auto Parser::skip(std::string token) -> Parser{
-    let e_skip =  ElementPtr(new SkipElement(token));
+    let e_skip = ElementPtr(new SkipElement(token));
             
     parser->addElement(e_skip);
         
@@ -95,4 +95,47 @@ auto Parser::optional(Parser parserw) -> Parser{
     parser->addElement(e_repeat);
                 
     return *this;
+}
+
+auto Parser::_integer() -> Parser {
+    let e_int = ElementPtr(new IntegerElement());
+    
+    parser->addElement(e_int);
+    
+    return *this;
+}
+auto Parser::_string() -> Parser {
+    let e_str = ElementPtr(new StringElement());
+    
+    parser->addElement(e_str);
+    
+    return *this;
+}
+auto Parser::_name() -> Parser {
+    let e_id = ElementPtr(new IDElement());
+    
+    parser->addElement(e_id);
+    
+    return *this;
+}
+auto Parser::_op() -> Parser {
+    let e_ops = ElementPtr(new OperatorElement());
+    
+    parser->addElement(e_ops);
+    
+    return *this;
+}
+
+
+auto Parser::integer() -> Parser {
+    return rule()._integer();
+}
+auto Parser::string() -> Parser {
+    return rule()._string();
+}
+auto Parser::name() -> Parser {
+    return rule()._name();
+}
+auto Parser::op() -> Parser {
+    return rule()._op();
 }

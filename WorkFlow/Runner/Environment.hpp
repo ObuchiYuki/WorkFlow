@@ -13,22 +13,21 @@
 #include <memory>
 #include <unordered_map>
 
-#include "../Lexer/Token.hpp"
+#include "Token.hpp"
+
 
 
 namespace wf {namespace run{
 
-typedef std::shared_ptr<wf::token::Token> TokenPtr;
-
 class Environment {
 private:
-    std::unordered_map<std::string, TokenPtr> variables;
+    std::unordered_map<std::string, token::TokenPtr> variables;
 
 public:
-    auto get(std::string name) -> TokenPtr {
+    auto get(std::string name) -> token::TokenPtr {
         return variables[name];
     }
-    auto set(std::string name, TokenPtr token) {
+    auto set(std::string name, token::TokenPtr token) {
         variables[name] = token;
     }
 };
