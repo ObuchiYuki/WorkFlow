@@ -119,7 +119,7 @@
 		B685E74E22F5277F0056BFF2 /* BinaryOperation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BinaryOperation.cpp; sourceTree = "<group>"; };
 		B685E75022F5277F0056BFF2 /* Node.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Node.cpp; sourceTree = "<group>"; };
 		B685E75122F5277F0056BFF2 /* Node.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Node.hpp; sourceTree = "<group>"; };
-		B685E75222F5277F0056BFF2 /* BinaryOperation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BinaryOperation.cpp; sourceTree = "<group>"; };
+		B685E75222F5277F0056BFF2 /* BinaryOperation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = BinaryOperation.cpp; path = ../BinaryOperation.cpp; sourceTree = "<group>"; };
 		B685E75322F5277F0056BFF2 /* AST.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AST.hpp; sourceTree = "<group>"; };
 		B685E75522F5277F0056BFF2 /* Environment.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Environment.cpp; sourceTree = "<group>"; };
 		B685E75622F5277F0056BFF2 /* Runner.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Runner.hpp; sourceTree = "<group>"; };
@@ -165,13 +165,13 @@
 		B685E71A22F5277F0056BFF2 /* WorkFlow */ = {
 			isa = PBXGroup;
 			children = (
-				B685E71B22F5277F0056BFF2 /* Lexer */,
+				B685E76022F5277F0056BFF2 /* main.cpp */,
+				B685E75822F5277F0056BFF2 /* RMKit */,
 				B685E72122F5277F0056BFF2 /* ASTree */,
 				B685E75422F5277F0056BFF2 /* Runner */,
-				B685E75822F5277F0056BFF2 /* RMKit */,
+				B685E71B22F5277F0056BFF2 /* Lexer */,
 				B685E75D22F5277F0056BFF2 /* DataClass */,
 				B685E75F22F5277F0056BFF2 /* Common.hpp */,
-				B685E76022F5277F0056BFF2 /* main.cpp */,
 			);
 			path = WorkFlow;
 			sourceTree = "<group>";
@@ -257,12 +257,10 @@
 			isa = PBXGroup;
 			children = (
 				B685E73922F5277F0056BFF2 /* Impl */,
-				B685E73A22F5277F0056BFF2 /* BinaryOperation.hpp */,
 				B685E73B22F5277F0056BFF2 /* PrimaryNode */,
 				B685E74422F5277F0056BFF2 /* Statement */,
 				B685E74922F5277F0056BFF2 /* Expression */,
 				B685E74F22F5277F0056BFF2 /* Node */,
-				B685E75222F5277F0056BFF2 /* BinaryOperation.cpp */,
 				B685E75322F5277F0056BFF2 /* AST.hpp */,
 			);
 			path = AST;
@@ -304,6 +302,8 @@
 		B685E74922F5277F0056BFF2 /* Expression */ = {
 			isa = PBXGroup;
 			children = (
+				B685E73A22F5277F0056BFF2 /* BinaryOperation.hpp */,
+				B685E75222F5277F0056BFF2 /* BinaryOperation.cpp */,
 				B685E74A22F5277F0056BFF2 /* Expression.hpp */,
 				B685E74B22F5277F0056BFF2 /* NegativeExpr.cpp */,
 				B685E74C22F5277F0056BFF2 /* Calling.cpp */,
