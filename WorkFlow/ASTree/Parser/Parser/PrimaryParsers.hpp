@@ -9,6 +9,9 @@
 #ifndef PrimaryParsers_h
 #define PrimaryParsers_h
 
+#include <memory>
+#include "Parser.hpp"
+
 namespace wf {
 // MARK: - Primary Parsers -
     /// Primitiveな値にマッチするパーサーです。

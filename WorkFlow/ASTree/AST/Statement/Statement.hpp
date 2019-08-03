@@ -12,8 +12,22 @@
 #include "../Node/Node.hpp"
 
 
-
 namespace wf {namespace ast {
+    class VarStem: public Node {
+    public:
+        var target() -> NodePtr {
+            return children[0];
+        }
+        var init() -> NodePtr {
+            return children[1];
+        }
+            
+        VarStem(std::vector<NodePtr> _children, Location _location) : Node(_children, _location) {};
+            
+        auto description() -> std::string const override {
+            return "(def " + target()->description() + " = " + init()->description() + ")";
+        }
+    };
     
     class IfStem:public Node {
     public:

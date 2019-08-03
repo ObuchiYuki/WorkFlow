@@ -9,24 +9,12 @@
 #ifndef _Common_hpp
 #define _Common_hpp
 
-#include <stdio.h>
 #include <vector>
 #include <string>
 #include <iostream>
 
-#include "rmkit.h"
-
 #define var auto
 #define let const auto
-
-namespace wf {
-    struct Location {
-        int line;
-        int colmun;
-        
-        Location(int _line, int _colmun) : line(_line), colmun(_colmun) {};
-    };
-}
 
 template <typename T>
 std::ostream & operator << (std::ostream & outstream, const std::vector<T> vector) {

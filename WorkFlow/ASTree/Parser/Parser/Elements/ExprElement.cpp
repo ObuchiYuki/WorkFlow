@@ -6,11 +6,15 @@
 //  Copyright © 2019 yuki. All rights reserved.
 //
 
+#include "ParserElements.hpp"
+
+#include <vector>
+
+#include "Token.hpp"
 #include "Parser.hpp"
+#include "Lexer.hpp"
 
 using namespace wf;
-
-
 
 // MARK: - Impl -
 ExprElement::ExprElement(_ParserPtr exp, Operators map) : ops(map), factor(exp) {};

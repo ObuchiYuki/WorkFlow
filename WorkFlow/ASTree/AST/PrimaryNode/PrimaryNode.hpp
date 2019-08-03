@@ -9,9 +9,11 @@
 #ifndef PrimaryNode_h
 #define PrimaryNode_h
 
+#include <string>
 #include <memory>
 #include <vector>
 
+#include "location.hpp"
 #include "Node.hpp"
 
 namespace wf { namespace ast{
@@ -20,7 +22,7 @@ namespace wf { namespace ast{
 // MARK: - PrimaryNode -
 
 /// リテラル・識別子などを表すプライマリオブジェクトを表すノードです。
-class PrimaryNode : public Node{
+class PrimaryNode : public Node {
 public:
     auto child() -> LeafPtr const;
             

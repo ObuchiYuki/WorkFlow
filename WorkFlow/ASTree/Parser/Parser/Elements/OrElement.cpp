@@ -6,9 +6,13 @@
 //  Copyright © 2019 yuki. All rights reserved.
 //
 
-#include "../Parser.hpp"
+#include "ParserElements.hpp"
 
 #include <vector>
+
+#include "rmkit.h"
+#include "Parser.hpp"
+#include "Lexer.hpp"
 
 using namespace wf;
 

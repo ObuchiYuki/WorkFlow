@@ -23,7 +23,9 @@
 		B692D3DB22DDC077001D4BA4 /* Lexer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B67A7D5E22DDBE2900ABA47C /* Lexer.cpp */; };
 		B692D3DC22DDC079001D4BA4 /* Token.hpp in Sources */ = {isa = PBXBuildFile; fileRef = B67A7D5B22DDBE2900ABA47C /* Token.hpp */; };
 		B692D3DD22DDC07A001D4BA4 /* Common.hpp in Sources */ = {isa = PBXBuildFile; fileRef = B67A7D6022DDBE3300ABA47C /* Common.hpp */; };
+		B69F319722F41C07008A6AEA /* location.hpp in Sources */ = {isa = PBXBuildFile; fileRef = B69F319622F41B3D008A6AEA /* location.hpp */; };
 		B6B3C5AE22F12E8500B95A50 /* IfStem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6B3C5AD22F12E8500B95A50 /* IfStem.cpp */; };
+		B6C6B2BA22F420D0000DCEBF /* ParserImpl.h in Sources */ = {isa = PBXBuildFile; fileRef = B6C6B2B922F420CE000DCEBF /* ParserImpl.h */; };
 		B6C79C0922F2B6C600D3B113 /* Environment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6C79C0722F2B6C600D3B113 /* Environment.cpp */; };
 		B6C881C522EB3AFA00D541B8 /* _AnyParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6C881C422EB3AFA00D541B8 /* _AnyParser.cpp */; };
 		B6CAFD9522F026D900F9B228 /* Expression.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6CAFD9422F026D900F9B228 /* Expression.cpp */; };
@@ -77,6 +79,7 @@
 		B67A7D5E22DDBE2900ABA47C /* Lexer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Lexer.cpp; sourceTree = "<group>"; };
 		B67A7D5F22DDBE2900ABA47C /* Lexer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Lexer.hpp; sourceTree = "<group>"; };
 		B67A7D6022DDBE3300ABA47C /* Common.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Common.hpp; sourceTree = "<group>"; };
+		B69F319622F41B3D008A6AEA /* location.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = location.hpp; path = "../../../../../../../System/Volumes/Data/Users/yuki/Developer/C++/WorkFlow/WorkFlow/DataClass/location.hpp"; sourceTree = "<group>"; };
 		B6B3C5AC22F12E6E00B95A50 /* Statement.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Statement.hpp; path = "../../../../../../../../../System/Volumes/Data/Users/yuki/Developer/C++/WorkFlow/WorkFlow/ASTree/AST/Statement/Statement.hpp"; sourceTree = "<group>"; };
 		B6B3C5AD22F12E8500B95A50 /* IfStem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = IfStem.cpp; path = "../../../../../../../../../System/Volumes/Data/Users/yuki/Developer/C++/WorkFlow/WorkFlow/ASTree/AST/Statement/IfStem.cpp"; sourceTree = "<group>"; };
 		B6B84FBE22F1140D00CBAB0B /* Element.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Element.hpp; path = "../../../../../../../../../System/Volumes/Data/Users/yuki/Developer/C++/WorkFlow/WorkFlow/ASTree/Parser/Parser/Element.hpp"; sourceTree = "<group>"; };
@@ -84,11 +87,12 @@
 		B6B84FC222F1155300CBAB0B /* _Parser.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = _Parser.hpp; path = "../../../../../../../../../System/Volumes/Data/Users/yuki/Developer/C++/WorkFlow/WorkFlow/ASTree/Parser/Parser/_Parser.hpp"; sourceTree = "<group>"; };
 		B6B84FC322F1161F00CBAB0B /* PrimaryParsers.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = PrimaryParsers.hpp; path = "../../../../../../../../../System/Volumes/Data/Users/yuki/Developer/C++/WorkFlow/WorkFlow/ASTree/Parser/Parser/PrimaryParsers.hpp"; sourceTree = "<group>"; };
 		B6B84FC422F1162800CBAB0B /* ParserElements.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ParserElements.hpp; sourceTree = "<group>"; };
+		B6C6B2B922F420CE000DCEBF /* ParserImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ParserImpl.h; path = "../../../../../../../../../System/Volumes/Data/Users/yuki/Developer/C++/WorkFlow/WorkFlow/ASTree/Parser/Impl/ParserImpl.h"; sourceTree = "<group>"; };
+		B6C6B2BC22F420E5000DCEBF /* BasicParsers.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = BasicParsers.hpp; path = "../../../../../../../../../System/Volumes/Data/Users/yuki/Developer/C++/WorkFlow/WorkFlow/ASTree/Parser/Impl/BasicParsers.hpp"; sourceTree = "<group>"; };
 		B6C79C0522F2B68A00D3B113 /* Runner.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Runner.hpp; path = "../../../../../../../System/Volumes/Data/Users/yuki/Developer/C++/WorkFlow/WorkFlow/Runner/Runner.hpp"; sourceTree = "<group>"; };
 		B6C79C0722F2B6C600D3B113 /* Environment.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Environment.cpp; path = "../../../../../../../System/Volumes/Data/Users/yuki/Developer/C++/WorkFlow/WorkFlow/Runner/Environment.cpp"; sourceTree = "<group>"; };
 		B6C79C0822F2B6C600D3B113 /* Environment.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Environment.hpp; path = "../../../../../../../System/Volumes/Data/Users/yuki/Developer/C++/WorkFlow/WorkFlow/Runner/Environment.hpp"; sourceTree = "<group>"; };
 		B6C881C422EB3AFA00D541B8 /* _AnyParser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = _AnyParser.cpp; sourceTree = "<group>"; };
-		B6CAFD8B22F0254000F9B228 /* Parser+Impl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Parser+Impl.h"; sourceTree = "<group>"; };
 		B6CAFD9222F026C100F9B228 /* Expression.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Expression.hpp; sourceTree = "<group>"; };
 		B6CAFD9322F026C100F9B228 /* BinaryOperation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BinaryOperation.cpp; sourceTree = "<group>"; };
 		B6CAFD9422F026D900F9B228 /* Expression.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Expression.cpp; path = "../../../../../../../../../System/Volumes/Data/Users/yuki/Developer/C++/WorkFlow/WorkFlow/ASTree/AST/Expression/Expression.cpp"; sourceTree = "<group>"; };
@@ -128,8 +132,8 @@
 			isa = PBXGroup;
 			children = (
 				B662C43F22E015B1009747DA /* ASTree.hpp */,
-				B6C428C322E6F70C002A4E34 /* Parser */,
 				B6C881C622EB3EC200D541B8 /* AST */,
+				B6C428C322E6F70C002A4E34 /* Parser */,
 			);
 			path = ASTree;
 			sourceTree = "<group>";
@@ -168,12 +172,13 @@
 		B67A7D5022DDBDDA00ABA47C /* WorkFlow */ = {
 			isa = PBXGroup;
 			children = (
-				B6D593B822F2C6A600735F8E /* RMKit */,
 				B67A7D5122DDBDDA00ABA47C /* main.cpp */,
 				B67A7D6022DDBE3300ABA47C /* Common.hpp */,
+				B6D593B822F2C6A600735F8E /* RMKit */,
 				B65C7C9922DE06E6006E2D89 /* ASTree */,
 				B6C79C0422F2B67900D3B113 /* Runner */,
 				B67A7D5922DDBE2900ABA47C /* Lexer */,
+				B69F319522F41B24008A6AEA /* DataClass */,
 			);
 			path = WorkFlow;
 			sourceTree = "<group>";
@@ -197,31 +202,40 @@
 			path = Lexer;
 			sourceTree = "<group>";
 		};
+		B69F319522F41B24008A6AEA /* DataClass */ = {
+			isa = PBXGroup;
+			children = (
+				B69F319622F41B3D008A6AEA /* location.hpp */,
+			);
+			path = DataClass;
+			sourceTree = "<group>";
+		};
 		B6C428C322E6F70C002A4E34 /* Parser */ = {
 			isa = PBXGroup;
 			children = (
-				B6CAFD8A22F0253D00F9B228 /* Impl */,
+				B6C6B2B822F420C2000DCEBF /* Impl */,
 				B6CAFD8922F0253300F9B228 /* Parser */,
 			);
 			path = Parser;
+			sourceTree = "<group>";
+		};
+		B6C6B2B822F420C2000DCEBF /* Impl */ = {
+			isa = PBXGroup;
+			children = (
+				B6C6B2B922F420CE000DCEBF /* ParserImpl.h */,
+				B6C6B2BC22F420E5000DCEBF /* BasicParsers.hpp */,
+			);
+			path = Impl;
 			sourceTree = "<group>";
 		};
 		B6C79C0422F2B67900D3B113 /* Runner */ = {
 			isa = PBXGroup;
 			children = (
 				B6C79C0522F2B68A00D3B113 /* Runner.hpp */,
-				B6C79C0622F2B69900D3B113 /* Expression */,
 				B6C79C0722F2B6C600D3B113 /* Environment.cpp */,
 				B6C79C0822F2B6C600D3B113 /* Environment.hpp */,
 			);
 			path = Runner;
-			sourceTree = "<group>";
-		};
-		B6C79C0622F2B69900D3B113 /* Expression */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Expression;
 			sourceTree = "<group>";
 		};
 		B6C881C622EB3EC200D541B8 /* AST */ = {
@@ -250,14 +264,6 @@
 				B6B84FC222F1155300CBAB0B /* _Parser.hpp */,
 			);
 			path = Parser;
-			sourceTree = "<group>";
-		};
-		B6CAFD8A22F0253D00F9B228 /* Impl */ = {
-			isa = PBXGroup;
-			children = (
-				B6CAFD8B22F0254000F9B228 /* Parser+Impl.h */,
-			);
-			path = Impl;
 			sourceTree = "<group>";
 		};
 		B6CAFD9122F026B800F9B228 /* Expression */ = {
@@ -372,15 +378,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B67A7D5222DDBDDA00ABA47C /* main.cpp in Sources */,
 				B606974222F294F900D6951E /* NegativeExpr.cpp in Sources */,
 				B6F1875322EFE3D1002171F9 /* Operator.cpp in Sources */,
 				B692D3DC22DDC079001D4BA4 /* Token.hpp in Sources */,
 				B66E5D9B22EB3FBB0081AD76 /* SkipElement.cpp in Sources */,
 				B692D3DB22DDC077001D4BA4 /* Lexer.cpp in Sources */,
 				B6C881C522EB3AFA00D541B8 /* _AnyParser.cpp in Sources */,
+				B6C6B2BA22F420D0000DCEBF /* ParserImpl.h in Sources */,
 				B6F1875122EFE326002171F9 /* FloatLiteral.cpp in Sources */,
 				B66D435522F27D6000D48E16 /* BlockStem.cpp in Sources */,
 				B66E5D9722EB3FBB0081AD76 /* RepeatElement.cpp in Sources */,
+				B69F319722F41C07008A6AEA /* location.hpp in Sources */,
 				B6CAFD9522F026D900F9B228 /* Expression.cpp in Sources */,
 				B6F87D9C22F2B4BA008E6E49 /* Calling.cpp in Sources */,
 				B6C79C0922F2B6C600D3B113 /* Environment.cpp in Sources */,
@@ -388,7 +397,6 @@
 				B6F1875622EFE49B002171F9 /* Name.cpp in Sources */,
 				B6B3C5AE22F12E8500B95A50 /* IfStem.cpp in Sources */,
 				B6CAFD9622F035C100F9B228 /* BinaryOperation.cpp in Sources */,
-				B67A7D5222DDBDDA00ABA47C /* main.cpp in Sources */,
 				B66E5D9822EB3FBB0081AD76 /* OrElement.cpp in Sources */,
 				B692D3DA22DDC076001D4BA4 /* Lexer.hpp in Sources */,
 				B6F1874822EFDEFC002171F9 /* PrimaryNode.cpp in Sources */,

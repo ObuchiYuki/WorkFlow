@@ -9,6 +9,7 @@
 #ifndef Parser_h
 #define Parser_h
 
+#include <string>
 #include <memory>
 #include <vector>
 
@@ -23,12 +24,15 @@ template<class T>
 class _Parser;
 class Element;
 class _AnyParser;
+class Operators;
 
 // ==================================== //
 // MARK: - Type Linking -
 typedef std::shared_ptr<_AnyParser>    _ParserPtr;
 typedef std::shared_ptr<Element>       ElementPtr;
 typedef std::shared_ptr<ast::Leaf>     LeafPtr;
+typedef std::shared_ptr<ast::Node>     NodePtr;
+
 }
 
 #include "Element.hpp"
@@ -45,6 +49,7 @@ namespace wf {
     public:
         _ParserPtr parser;
         
+        Parser(): parser(nullptr) {};
         Parser(_ParserPtr _parser);
         
         auto parse(Lexer& lexer) -> NodePtr;

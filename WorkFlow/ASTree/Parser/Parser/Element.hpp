@@ -9,9 +9,12 @@
 #ifndef Element_h
 #define Element_h
 
-namespace wf {
-    typedef std::shared_ptr<ast::Node>     NodePtr;
+#include "Parser.hpp"
+#include "Lexer.hpp"
 
+#include <vector>
+
+namespace wf {
     /// パーサーが実際にパースする際の行動を決定します。
     /// Elementを継承して、match、parseを失踪してください。
     class Element{
