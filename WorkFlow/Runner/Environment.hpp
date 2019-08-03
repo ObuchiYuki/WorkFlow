@@ -30,6 +30,14 @@ public:
     auto set(std::string name, Value token) {
         variables[name] = token;
     }
+    
+    friend std::ostream& operator << (std::ostream &os, const Environment self) {
+        for (const auto &item: self.variables){
+            os << item.first << " => " << item.second << "\n";
+        }
+        
+        return os;
+    }
 };
 
 }}

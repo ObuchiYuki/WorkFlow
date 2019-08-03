@@ -38,4 +38,8 @@ int main() {
     let env = wf::run::Environment();
     
     ps->eval(env);
+    
+    
+    
+    print(env);
 }
