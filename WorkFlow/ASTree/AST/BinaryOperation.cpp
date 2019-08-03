@@ -27,16 +27,16 @@ Node(_children, _location)
 {};
 
 
-Value BinaryOperation::eval(wf::run::Environment env) {
+wf::run::Value BinaryOperation::eval(wf::run::Environment env) {
     let op_s = wf::ast::nodeAsLeaf(op())->token->value;
     let lsh = left()->eval(env);
     let rsh = right()->eval(env);
 
     if (op_s == "<") {
-        return Value(lsh.integer() < rsh.integer());
+        return wf::run::Value(lsh.integer() < rsh.integer());
     }else if (op_s == ">") {
-        return Value(lsh.integer() > rsh.integer());
+        return wf::run::Value(lsh.integer() > rsh.integer());
     }
     
-    return Value::voidValue();
+    return wf::run::Value::voidValue();
 }

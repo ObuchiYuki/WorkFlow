@@ -21,7 +21,7 @@ public:
             
     auto description() -> std::string const override;
     
-    virtual auto eval(wf::run::Environment env) -> Value override {
+    virtual auto eval(wf::run::Environment env) -> wf::run::Value override {
         return children[0]->eval(env);
     }
 };
@@ -42,7 +42,7 @@ public:
         
     auto description() -> std::string const override;
     
-    auto eval(wf::run::Environment env) -> Value override;
+    auto eval(wf::run::Environment env) -> wf::run::Value override;
 };
     
 }}

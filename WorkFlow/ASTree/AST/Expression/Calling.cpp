@@ -25,10 +25,10 @@ auto Calling::description() -> std::string const {
     return "(" + target()->description() + "(" + args()->description() + ")" + ")";
 }
 
-auto Calling::eval(wf::run::Environment env) -> Value {
+auto Calling::eval(wf::run::Environment env) -> wf::run::Value {
     let leaf = nodeAsLeaf(target());
     
-    if (!leaf) return Value::voidValue();
+    if (!leaf) return wf::run::Value::voidValue();
     
     let fnname = leaf->token->value;
     if (fnname == "print") {
@@ -37,5 +37,5 @@ auto Calling::eval(wf::run::Environment env) -> Value {
         
     }
     
-    return Value::voidValue();
+    return wf::run::Value::voidValue();
 }

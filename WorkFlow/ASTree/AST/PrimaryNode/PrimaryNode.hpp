@@ -51,8 +51,8 @@ public:
             
     IntegerLiteral(token::TokenPtr _token, Location _location) : PrimaryNode(_token, _location) {}
     
-    Value eval(wf::run::Environment env) override {
-        return Value(value());
+    wf::run::Value eval(wf::run::Environment env) override {
+        return wf::run::Value(value());
     }
 };
 
@@ -65,8 +65,8 @@ public:
             
     FloatLiteral(token::TokenPtr _token, Location _location) : PrimaryNode(_token, _location) {}
     
-    Value eval(wf::run::Environment env) override {
-        return Value(value());
+    wf::run::Value eval(wf::run::Environment env) override {
+        return wf::run::Value(value());
     }
 };
 

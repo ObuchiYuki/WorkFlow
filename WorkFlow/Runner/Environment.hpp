@@ -14,20 +14,20 @@
 #include <unordered_map>
 
 #include "Token.hpp"
-
+#include "Value.hpp"
 
 
 namespace wf {namespace run{
 
 class Environment {
 private:
-    std::unordered_map<std::string, token::TokenPtr> variables;
+    std::unordered_map<std::string, Value> variables = {};
 
 public:
-    auto get(std::string name) -> token::TokenPtr {
+    auto get(std::string name) -> Value {
         return variables[name];
     }
-    auto set(std::string name, token::TokenPtr token) {
+    auto set(std::string name, Value token) {
         variables[name] = token;
     }
 };

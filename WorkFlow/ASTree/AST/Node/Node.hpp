@@ -33,39 +33,6 @@ typedef std::shared_ptr<Node> NodePtr;
 // ====================================================================== //
 // MARK: - Type Structure Definitions -
 
-/// evalの実行に使用される値です。
-class Value {
-private:
-    rm::any _value;
-public:
-    Value(rm::any __value): _value(__value) {};
-    
-    static auto voidValue() -> Value {
-        return Value(nil);
-    }
-    
-    int integer() const {
-        return _value.as<int>();
-    }
-    std::string string() const{
-        return _value.as<std::string>();
-    }
-    bool boolean() const{
-        return _value.as<bool>();
-    }
-    float floating() const{
-        return _value.as<float>();
-    }
-    
-    friend std::ostream& operator << (std::ostream &os, const Value a) {
-        os << a._value;
-        
-        return os;
-    }
-};
-            
-
-
 class Node  {
 public:
     // MARK: - Properties -
@@ -81,7 +48,7 @@ public:
     auto numChildren() -> int;
             
     virtual auto description() -> const std::string;
-    virtual auto eval(wf::run::Environment env) -> Value;
+    virtual auto eval(wf::run::Environment env) -> wf::run::Value;
     
     // MARK: - Constructor -
     Node(std::vector<std::shared_ptr<Node>> _children, Location _location);
@@ -106,7 +73,7 @@ public:
     virtual ~Leaf(){}
             
     auto description() -> const std::string override;
-    auto eval(wf::run::Environment env) -> Value override;
+    auto eval(wf::run::Environment env) -> wf::run::Value override;
 };
 
 inline LeafPtr nodeAsLeaf(NodePtr node){
