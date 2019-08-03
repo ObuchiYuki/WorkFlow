@@ -296,8 +296,8 @@
 		B685E75422F5277F0056BFF2 /* Runner */ = {
 			isa = PBXGroup;
 			children = (
-				B685E75522F5277F0056BFF2 /* Environment.cpp */,
 				B685E75622F5277F0056BFF2 /* Runner.hpp */,
+				B685E75522F5277F0056BFF2 /* Environment.cpp */,
 				B685E75722F5277F0056BFF2 /* Environment.hpp */,
 			);
 			path = Runner;

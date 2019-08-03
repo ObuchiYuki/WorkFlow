@@ -34,5 +34,9 @@ int main() {
     var lexer = wf::Lexer(&ifs);
     
     let ps = BasicParsers().statement.parse(lexer);
+    
+    let env = wf::run::Environment();
+    
+    ps->eval(env);
 
 }

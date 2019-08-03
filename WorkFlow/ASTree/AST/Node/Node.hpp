@@ -54,8 +54,16 @@ public:
     auto floating() -> float const{
         return std::stod(_value);
     }
+    
+    friend std::ostream& operator << (std::ostream &os, const Value a) {
+        os << a._value;
+        
+        return os;
+    }
 };
             
+
+
 class Node  {
 public:
     // MARK: - Properties -

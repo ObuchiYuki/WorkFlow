@@ -32,8 +32,7 @@ namespace wf {
             }
             
             let rsize = results.size();
-            print(rsize);
-            print(rm::type::type_name<T>());
+
             if (rsize == 1) {
                 return results[0];
             } else {
