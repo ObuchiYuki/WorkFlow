@@ -20,7 +20,7 @@ auto IfStem::block() -> NodePtr {
 
 auto IfStem::elseBlock() -> NodePtr {
     if (numChildren() == 3) {
-        return children[2]->children[0];
+        return children[2];
     }
     return nullptr;
 }

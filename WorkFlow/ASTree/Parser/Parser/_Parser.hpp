@@ -33,12 +33,15 @@ namespace wf {
             
             let rsize = results.size();
 
+            if (rsize == 0) {
+                return std::shared_ptr<T>(new T({}, lexer.peek(0)->location));
+                
+            }else
             if (rsize == 1) {
                 return results[0];
             } else {
-                let node = std::shared_ptr<T>(new T(results, results[0]->location));
                 
-                return node;
+                return std::shared_ptr<T>(new T(results, results[0]->location));
             }
         }
           

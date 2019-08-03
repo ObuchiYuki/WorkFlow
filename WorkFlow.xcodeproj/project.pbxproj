@@ -36,7 +36,6 @@
 		B685E78522F527840056BFF2 /* NegativeExpr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E74B22F5277F0056BFF2 /* NegativeExpr.cpp */; };
 		B685E78622F527840056BFF2 /* Calling.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E74C22F5277F0056BFF2 /* Calling.cpp */; };
 		B685E78722F527840056BFF2 /* Expression.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E74D22F5277F0056BFF2 /* Expression.cpp */; };
-		B685E78822F527840056BFF2 /* BinaryOperation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E74E22F5277F0056BFF2 /* BinaryOperation.cpp */; };
 		B685E78922F527840056BFF2 /* Node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E75022F5277F0056BFF2 /* Node.cpp */; };
 		B685E78A22F527840056BFF2 /* Node.hpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E75122F5277F0056BFF2 /* Node.hpp */; };
 		B685E78B22F527840056BFF2 /* BinaryOperation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E75222F5277F0056BFF2 /* BinaryOperation.cpp */; };
@@ -98,7 +97,6 @@
 		B685E74B22F5277F0056BFF2 /* NegativeExpr.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = NegativeExpr.cpp; sourceTree = "<group>"; };
 		B685E74C22F5277F0056BFF2 /* Calling.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Calling.cpp; sourceTree = "<group>"; };
 		B685E74D22F5277F0056BFF2 /* Expression.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Expression.cpp; sourceTree = "<group>"; };
-		B685E74E22F5277F0056BFF2 /* BinaryOperation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BinaryOperation.cpp; sourceTree = "<group>"; };
 		B685E75022F5277F0056BFF2 /* Node.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Node.cpp; sourceTree = "<group>"; };
 		B685E75122F5277F0056BFF2 /* Node.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Node.hpp; sourceTree = "<group>"; };
 		B685E75222F5277F0056BFF2 /* BinaryOperation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = BinaryOperation.cpp; path = ../BinaryOperation.cpp; sourceTree = "<group>"; };
@@ -262,9 +260,9 @@
 		B685E74422F5277F0056BFF2 /* Statement */ = {
 			isa = PBXGroup;
 			children = (
+				B685E74722F5277F0056BFF2 /* Statement.hpp */,
 				B685E74522F5277F0056BFF2 /* IfStem.cpp */,
 				B685E74622F5277F0056BFF2 /* WhileStem.cpp */,
-				B685E74722F5277F0056BFF2 /* Statement.hpp */,
 				B685E74822F5277F0056BFF2 /* BlockStem.cpp */,
 			);
 			path = Statement;
@@ -279,7 +277,6 @@
 				B685E74B22F5277F0056BFF2 /* NegativeExpr.cpp */,
 				B685E74C22F5277F0056BFF2 /* Calling.cpp */,
 				B685E74D22F5277F0056BFF2 /* Expression.cpp */,
-				B685E74E22F5277F0056BFF2 /* BinaryOperation.cpp */,
 			);
 			path = Expression;
 			sourceTree = "<group>";
@@ -415,7 +412,6 @@
 				B685E78522F527840056BFF2 /* NegativeExpr.cpp in Sources */,
 				B685E78622F527840056BFF2 /* Calling.cpp in Sources */,
 				B685E78722F527840056BFF2 /* Expression.cpp in Sources */,
-				B685E78822F527840056BFF2 /* BinaryOperation.cpp in Sources */,
 				B685E78922F527840056BFF2 /* Node.cpp in Sources */,
 				B685E78A22F527840056BFF2 /* Node.hpp in Sources */,
 				B685E78B22F527840056BFF2 /* BinaryOperation.cpp in Sources */,
