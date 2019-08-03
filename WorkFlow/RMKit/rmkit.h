@@ -14,5 +14,6 @@ class optional;
 
 #include "Impl/optional.hpp"
 #include "Impl/any.hpp"
+#include "Impl/type.hpp"
 
 #endif /* rmkit_h */

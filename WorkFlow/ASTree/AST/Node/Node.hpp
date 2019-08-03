@@ -79,6 +79,8 @@ public:
     virtual ~Node() {};
 };
 
+typedef std::shared_ptr<Node> NodePtr;
+
 /// 子ノードを持たない端のノードを表します。
 /// tokenとしての値を持ちます。
 class Leaf: public Node {

@@ -13,13 +13,9 @@ using namespace wf::ast;
 // MARK: - Impl
 
 auto FloatLiteral::value() -> float const {
-    return std::stod(child()->token->value);
+    return std::stod(token->value);
 }
 
 FloatLiteral::FloatLiteral(std::vector<NodePtr> _children, Location _location) :
 PrimaryNode(_children, _location)
 {};
-
-auto FloatLiteral::description() -> std::string const{
-    return child()->token->value;
-}

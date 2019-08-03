@@ -35,10 +35,11 @@ typedef std::shared_ptr<ast::Node>     NodePtr;
 
 }
 
-#include "Element.hpp"
 #include "_Parser.hpp"
 #include "_AnyParser.hpp"
-#include "Elements/ParserElements.hpp"
+
+#include "Element.hpp"
+#include "Elements/Elements.hpp"
 #include "PrimaryParsers.hpp"
 
 namespace wf {

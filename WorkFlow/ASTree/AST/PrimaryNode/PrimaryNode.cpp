@@ -23,5 +23,5 @@ Node(_children, _location) {};
 PrimaryNode::~PrimaryNode(){};
 
 auto PrimaryNode::description() -> std::string const {
-    return children[0]->description();
+    return token->value;
 }

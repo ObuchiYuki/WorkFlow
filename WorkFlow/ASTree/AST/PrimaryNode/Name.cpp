@@ -11,13 +11,9 @@
 using namespace wf::ast;
 
 auto Name::value() -> std::string const {
-    return child()->token->value;
+    return token->value;
 }
 
 Name::Name(std::vector<NodePtr> _children, Location _location) :
 PrimaryNode(_children, _location)
 {}
-
-auto Name::description() -> std::string const {
-    return value();
-}

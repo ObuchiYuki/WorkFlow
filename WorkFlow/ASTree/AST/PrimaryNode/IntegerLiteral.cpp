@@ -12,13 +12,9 @@ using namespace wf::ast;
 
 auto IntegerLiteral::value() -> int const {
         
-    return std::stoi(child()->token->value);
+    return std::stoi(token->value);
 }
 
 IntegerLiteral::IntegerLiteral(std::vector<NodePtr> _children, Location _location) :
 PrimaryNode(_children, _location)
 {}
-
-auto IntegerLiteral::description() -> std::string const{
-    return child()->token->value;
-}

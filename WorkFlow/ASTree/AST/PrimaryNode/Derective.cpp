@@ -13,13 +13,9 @@ using namespace wf::ast;
 
 auto Directive::value() -> std::string const {
                 
-    return child()->token->value;
+    return token->value;
 }
 
 Directive::Directive(std::vector<NodePtr> _children, Location _location) :
 PrimaryNode(_children, _location)
 {}
-
-auto Directive::description() -> std::string const{
-    return "@" + child()->token->value;
-}

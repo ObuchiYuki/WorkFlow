@@ -31,12 +31,26 @@ namespace wf {
                 element->parse(lexer, results);
             }
             
-            if (results.empty()) {
-                return std::shared_ptr<T>(new T(results, lexer.peek(0)->location));
+            let rsize = results.size();
+            print(rsize);
+            print(rm::type::type_name<T>());
+            
+            if (rsize == 0) {
+                return std::shared_ptr<T>(new T({}, lexer.peek(0)->location));
+            } else
+            if (rsize == 1) {
+                for (let &a:results.front()->children) {
+                    print(rm::type::type_name(*a));
+                }
+                
+                let node = std::shared_ptr<T>(new T(results.front()->children, results[0]->location));
+                
+                return node;
+            } else {
+                let node = std::shared_ptr<T>(new T(results, results[0]->location));
+                
+                return node;
             }
-            let node = std::shared_ptr<T>(new T(results, results[0]->location));
-           
-            return node;
         }
           
         auto addElement(ElementPtr element) -> void{

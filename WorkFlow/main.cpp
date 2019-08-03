@@ -37,6 +37,6 @@ int main() {
     
     var env = wf::run::Environment();
 
-    ps->children[0]->eval(env);
+    
     
 }

@@ -14,13 +14,9 @@ using namespace wf::ast;
 
 
 auto Operator::value() -> std::string const {
-    return child()->token->value;
+    return token->value;
 }
 
 Operator::Operator(std::vector<NodePtr> _children, Location _location) :
 PrimaryNode(_children, _location)
 {}
-
-auto Operator::description() -> std::string const {
-    return value();
-}

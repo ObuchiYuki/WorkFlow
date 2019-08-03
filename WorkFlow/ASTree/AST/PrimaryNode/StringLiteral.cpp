@@ -13,13 +13,9 @@ using namespace wf::ast;
 
 auto StringLiteral::value() -> std::string const {
 
-    return child()->token->value;
+    return token->value;
 }
 
 StringLiteral::StringLiteral(std::vector<NodePtr> _children, Location _location) :
 PrimaryNode(_children, _location)
 {};
-
-auto StringLiteral::description() -> std::string const {
-    return value();
-}

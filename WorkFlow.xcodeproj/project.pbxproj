@@ -22,13 +22,12 @@
 		B685E76D22F527840056BFF2 /* RepeatElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E72E22F5277F0056BFF2 /* RepeatElement.cpp */; };
 		B685E76E22F527840056BFF2 /* OrElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E72F22F5277F0056BFF2 /* OrElement.cpp */; };
 		B685E76F22F527840056BFF2 /* TreeElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E73022F5277F0056BFF2 /* TreeElement.cpp */; };
-		B685E77022F527840056BFF2 /* ParserElements.hpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E73122F5277F0056BFF2 /* ParserElements.hpp */; };
+		B685E77022F527840056BFF2 /* Elements.hpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E73122F5277F0056BFF2 /* Elements.hpp */; };
 		B685E77122F527840056BFF2 /* ExprElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E73222F5277F0056BFF2 /* ExprElement.cpp */; };
 		B685E77222F527840056BFF2 /* SkipElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E73322F5277F0056BFF2 /* SkipElement.cpp */; };
 		B685E77322F527840056BFF2 /* _AnyParser.hpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E73422F5277F0056BFF2 /* _AnyParser.hpp */; };
 		B685E77422F527840056BFF2 /* PrimaryParsers.hpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E73522F5277F0056BFF2 /* PrimaryParsers.hpp */; };
 		B685E77522F527840056BFF2 /* Parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E73622F5277F0056BFF2 /* Parser.cpp */; };
-		B685E77622F527840056BFF2 /* _AnyParser.hpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E73722F5277F0056BFF2 /* _AnyParser.hpp */; };
 		B685E77722F527840056BFF2 /* BinaryOperation.hpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E73A22F5277F0056BFF2 /* BinaryOperation.hpp */; };
 		B685E77822F527840056BFF2 /* FloatLiteral.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E73C22F5277F0056BFF2 /* FloatLiteral.cpp */; };
 		B685E77922F527840056BFF2 /* Name.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E73D22F5277F0056BFF2 /* Name.cpp */; };
@@ -75,6 +74,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B63C209A22F569DF0070C83A /* type.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = type.hpp; sourceTree = "<group>"; };
 		B67A7D4E22DDBDDA00ABA47C /* WorkFlow */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = WorkFlow; sourceTree = BUILT_PRODUCTS_DIR; };
 		B67A7D5822DDBDF200ABA47C /* main.wf */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.wf; sourceTree = "<group>"; };
 		B685E71C22F5277F0056BFF2 /* Token.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Token.hpp; sourceTree = "<group>"; };
@@ -92,13 +92,12 @@
 		B685E72E22F5277F0056BFF2 /* RepeatElement.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RepeatElement.cpp; sourceTree = "<group>"; };
 		B685E72F22F5277F0056BFF2 /* OrElement.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OrElement.cpp; sourceTree = "<group>"; };
 		B685E73022F5277F0056BFF2 /* TreeElement.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TreeElement.cpp; sourceTree = "<group>"; };
-		B685E73122F5277F0056BFF2 /* ParserElements.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ParserElements.hpp; sourceTree = "<group>"; };
+		B685E73122F5277F0056BFF2 /* Elements.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Elements.hpp; sourceTree = "<group>"; };
 		B685E73222F5277F0056BFF2 /* ExprElement.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ExprElement.cpp; sourceTree = "<group>"; };
 		B685E73322F5277F0056BFF2 /* SkipElement.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SkipElement.cpp; sourceTree = "<group>"; };
 		B685E73422F5277F0056BFF2 /* _AnyParser.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = _AnyParser.hpp; sourceTree = "<group>"; };
 		B685E73522F5277F0056BFF2 /* PrimaryParsers.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PrimaryParsers.hpp; sourceTree = "<group>"; };
 		B685E73622F5277F0056BFF2 /* Parser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Parser.cpp; sourceTree = "<group>"; };
-		B685E73722F5277F0056BFF2 /* _AnyParser.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = _AnyParser.hpp; sourceTree = "<group>"; };
 		B685E73A22F5277F0056BFF2 /* BinaryOperation.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BinaryOperation.hpp; sourceTree = "<group>"; };
 		B685E73C22F5277F0056BFF2 /* FloatLiteral.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FloatLiteral.cpp; sourceTree = "<group>"; };
 		B685E73D22F5277F0056BFF2 /* Name.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Name.cpp; sourceTree = "<group>"; };
@@ -208,7 +207,6 @@
 			children = (
 				B685E72422F5277F0056BFF2 /* Impl */,
 				B685E72722F5277F0056BFF2 /* Parser */,
-				B685E73722F5277F0056BFF2 /* _AnyParser.hpp */,
 			);
 			path = Parser;
 			sourceTree = "<group>";
@@ -225,15 +223,15 @@
 		B685E72722F5277F0056BFF2 /* Parser */ = {
 			isa = PBXGroup;
 			children = (
-				B685E72822F5277F0056BFF2 /* Element.hpp */,
-				B685E72922F5277F0056BFF2 /* _AnyParser.cpp */,
-				B685E72A22F5277F0056BFF2 /* PrimaryParsers.cpp */,
 				B685E72B22F5277F0056BFF2 /* Parser.hpp */,
+				B685E73622F5277F0056BFF2 /* Parser.cpp */,
 				B685E72C22F5277F0056BFF2 /* _Parser.hpp */,
+				B685E72822F5277F0056BFF2 /* Element.hpp */,
 				B685E72D22F5277F0056BFF2 /* Elements */,
+				B685E72922F5277F0056BFF2 /* _AnyParser.cpp */,
 				B685E73422F5277F0056BFF2 /* _AnyParser.hpp */,
 				B685E73522F5277F0056BFF2 /* PrimaryParsers.hpp */,
-				B685E73622F5277F0056BFF2 /* Parser.cpp */,
+				B685E72A22F5277F0056BFF2 /* PrimaryParsers.cpp */,
 			);
 			path = Parser;
 			sourceTree = "<group>";
@@ -241,10 +239,10 @@
 		B685E72D22F5277F0056BFF2 /* Elements */ = {
 			isa = PBXGroup;
 			children = (
+				B685E73122F5277F0056BFF2 /* Elements.hpp */,
 				B685E72E22F5277F0056BFF2 /* RepeatElement.cpp */,
 				B685E72F22F5277F0056BFF2 /* OrElement.cpp */,
 				B685E73022F5277F0056BFF2 /* TreeElement.cpp */,
-				B685E73122F5277F0056BFF2 /* ParserElements.hpp */,
 				B685E73222F5277F0056BFF2 /* ExprElement.cpp */,
 				B685E73322F5277F0056BFF2 /* SkipElement.cpp */,
 			);
@@ -274,14 +272,14 @@
 		B685E73B22F5277F0056BFF2 /* PrimaryNode */ = {
 			isa = PBXGroup;
 			children = (
+				B685E74122F5277F0056BFF2 /* PrimaryNode.hpp */,
+				B685E74322F5277F0056BFF2 /* PrimaryNode.cpp */,
 				B685E73C22F5277F0056BFF2 /* FloatLiteral.cpp */,
 				B685E73D22F5277F0056BFF2 /* Name.cpp */,
 				B685E73E22F5277F0056BFF2 /* StringLiteral.cpp */,
 				B685E73F22F5277F0056BFF2 /* IntegerLiteral.cpp */,
 				B685E74022F5277F0056BFF2 /* Operator.cpp */,
-				B685E74122F5277F0056BFF2 /* PrimaryNode.hpp */,
 				B685E74222F5277F0056BFF2 /* Derective.cpp */,
-				B685E74322F5277F0056BFF2 /* PrimaryNode.cpp */,
 			);
 			path = PrimaryNode;
 			sourceTree = "<group>";
@@ -344,6 +342,7 @@
 			children = (
 				B685E75A22F5277F0056BFF2 /* any.hpp */,
 				B685E75B22F5277F0056BFF2 /* optional.hpp */,
+				B63C209A22F569DF0070C83A /* type.hpp */,
 			);
 			path = Impl;
 			sourceTree = "<group>";
@@ -427,13 +426,12 @@
 				B685E76D22F527840056BFF2 /* RepeatElement.cpp in Sources */,
 				B685E76E22F527840056BFF2 /* OrElement.cpp in Sources */,
 				B685E76F22F527840056BFF2 /* TreeElement.cpp in Sources */,
-				B685E77022F527840056BFF2 /* ParserElements.hpp in Sources */,
+				B685E77022F527840056BFF2 /* Elements.hpp in Sources */,
 				B685E77122F527840056BFF2 /* ExprElement.cpp in Sources */,
 				B685E77222F527840056BFF2 /* SkipElement.cpp in Sources */,
 				B685E77322F527840056BFF2 /* _AnyParser.hpp in Sources */,
 				B685E77422F527840056BFF2 /* PrimaryParsers.hpp in Sources */,
 				B685E77522F527840056BFF2 /* Parser.cpp in Sources */,
-				B685E77622F527840056BFF2 /* _AnyParser.hpp in Sources */,
 				B685E77722F527840056BFF2 /* BinaryOperation.hpp in Sources */,
 				B685E77822F527840056BFF2 /* FloatLiteral.cpp in Sources */,
 				B685E77922F527840056BFF2 /* Name.cpp in Sources */,

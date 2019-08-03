@@ -22,10 +22,8 @@ namespace wf { namespace ast{
 // MARK: - PrimaryNode -
 
 /// リテラル・識別子などを表すプライマリオブジェクトを表すノードです。
-class PrimaryNode : public Node {
-public:
-    auto child() -> LeafPtr const;
-            
+class PrimaryNode : public Leaf {
+public:     
     PrimaryNode(std::vector<NodePtr> _children, Location _location);
             
     virtual ~PrimaryNode();
@@ -39,8 +37,6 @@ public:
     auto value() -> std::string const;
             
     StringLiteral(std::vector<NodePtr> _children, Location _location);
-    
-    auto description() -> const std::string override;
 };
 
 
@@ -50,8 +46,6 @@ public:
     auto value() -> int const;
             
     IntegerLiteral(std::vector<NodePtr> _children, Location _location);
-    
-    auto description() -> const std::string override;
 };
 
 /// 不動小数点リテラルを表します。
@@ -61,7 +55,6 @@ public:
             
     FloatLiteral(std::vector<NodePtr> _children, Location _location);
     
-    auto description() -> const std::string override;
 };
 
 /// コンパイラディレクティブを表します。
@@ -71,7 +64,6 @@ public:
             
     Directive(std::vector<NodePtr> _children, Location _location);
     
-    auto description() -> const std::string override;
 };
 
 class Operator: public PrimaryNode {
@@ -80,7 +72,6 @@ public:
             
     Operator(std::vector<NodePtr> _children, Location _location);
     
-    auto description() -> const std::string override;
 };
 
 class Name: public PrimaryNode {
@@ -90,7 +81,6 @@ public:
             
     Name(std::vector<NodePtr> _children, Location _location);
     
-    auto description() -> const std::string override;
 };
 
 
