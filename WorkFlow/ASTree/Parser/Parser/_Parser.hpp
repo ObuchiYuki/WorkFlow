@@ -37,7 +37,7 @@ namespace wf {
                 return std::shared_ptr<T>(new T({}, lexer.peek(0)->location));
                 
             }else
-            if (rsize == 1) {
+            if (rsize == 1 and rm::type::equals<ast::Node, T>()) {
                 return results[0];
             } else {
                 

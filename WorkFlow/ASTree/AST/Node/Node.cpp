@@ -25,7 +25,7 @@ int Node::numChildren() {
 }
 
 auto Node::eval(wf::run::Environment& env) -> wf::run::Value {
-    return children[0]->eval(env);
+    return wf::run::Value::voidValue();
 }
 
 

@@ -33,13 +33,12 @@ int main() {
     
     var lexer = wf::Lexer(&ifs);
     
-    let ps = BasicParsers().statement.parse(lexer);
-    
     var env = wf::run::Environment();
     
-    ps->eval(env);
     
-    
-    
-    print(env);
+    while (lexer.peek(0)->type != token::TokenType::ENDFILE) {
+        let ps = BasicParsers().statement.parse(lexer);
+        
+        ps->eval(env);
+    }
 }

@@ -87,6 +87,10 @@ class Name: public PrimaryNode {
 public:
             
     Name(token::TokenPtr _token, Location _location) : PrimaryNode(_token, _location) {}
+    
+    auto eval(wf::run::Environment& env) -> wf::run::Value override {
+        return env.get(token->value);
+    }
 };
 
 
