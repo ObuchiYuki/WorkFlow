@@ -14,6 +14,7 @@
 #include <memory>
 
 #include "../Common.hpp"
+#include "location.hpp"
 
 namespace wf {
     

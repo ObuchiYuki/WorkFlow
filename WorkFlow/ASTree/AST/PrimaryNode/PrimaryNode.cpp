@@ -8,9 +8,6 @@
 
 #include "PrimaryNode.hpp"
 
-#include <memory>
-#include <vector>
-
 using namespace wf::ast;
 
 // MARK: - Impl

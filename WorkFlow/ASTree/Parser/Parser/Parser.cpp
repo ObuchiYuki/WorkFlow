@@ -8,6 +8,11 @@
 
 #include "Parser.hpp"
 
+#include <vector>
+#include <string>
+
+#include "rmkit.h"
+
 using namespace wf;
 
 // MARK: - Constructor -
@@ -22,7 +27,7 @@ auto Parser::parse(Lexer& lexer) -> NodePtr {
 }
         
  
-auto Parser::match(Lexer& lexer) -> bool{
+auto Parser::match(Lexer& lexer) -> bool {
     return parser->match(lexer);
 }
 

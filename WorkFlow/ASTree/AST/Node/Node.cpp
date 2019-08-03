@@ -24,11 +24,17 @@ int Node::numChildren() {
     return static_cast<int>(children.size());
 }
 
+auto Node::eval(wf::run::Environment env) -> const Value {
+    return children[0]->eval(env);
+}
+
 
 auto Node::description() -> std::string const{
     return "[undefined]";
 }
 // MARK: - Leaf - 
+
+
 
 Leaf::Leaf(std::shared_ptr<wf::token::Token> _token, Location _location):
 Node({}, _location) ,token(_token) {
@@ -37,4 +43,8 @@ Node({}, _location) ,token(_token) {
 
 auto Leaf::description() -> std::string const {
     return "[Leaf undefined]";
+}
+
+auto Leaf::eval(wf::run::Environment env) -> const Value {
+    return Value(token->value);
 }

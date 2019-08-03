@@ -8,9 +8,6 @@
 
 #include "PrimaryNode.hpp"
 
-#include <memory>
-#include <vector>
-
 using namespace wf::ast;
 
 
@@ -24,5 +21,5 @@ PrimaryNode(_children, _location)
 {};
 
 auto StringLiteral::description() -> std::string const {
-    return "\"" + value() + "\"";
+    return value();
 }

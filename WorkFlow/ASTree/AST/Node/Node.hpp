@@ -12,7 +12,11 @@
 #include <vector>
 #include <memory>
 
+#include "rmkit.h"
+
 #include "Lexer.hpp"
+#include "location.hpp"
+#include "Environment.hpp"
 
 namespace wf {namespace ast {
     
@@ -30,15 +34,29 @@ typedef std::shared_ptr<Node> NodePtr;
 // ====================================================================== //
 // MARK: - Type Structure Definitions -
 
+/// evalの実行に使用される値です。
 class Value {
+private:
+    std::string _value;
+public:
+    Value(){};
+    Value(std::string __value): _value(__value) {};
     
-    
-    auto integer() -> int;
-    auto string() -> int;
-    auto floating() -> int;
+    auto integer() -> int {
+        return std::stoi(_value);
+    }
+    auto string() -> std::string {
+        return _value;
+    }
+    auto boolean() -> bool {
+        return integer() != 0;
+    }
+    auto floating() -> float {
+        return std::stod(_value);
+    }
 };
             
-class Node {
+class Node  {
 public:
     // MARK: - Properties -
     /// 子ノードです。
@@ -49,18 +67,16 @@ public:
         
     // MARK: - Methods -
             
-            
     auto appendChild(std::shared_ptr<Node> child) -> void;
-            
     auto numChildren() -> int;
             
     virtual auto description() -> const std::string;
+    virtual auto eval(wf::run::Environment env) -> const Value;
     
     // MARK: - Constructor -
     Node(std::vector<std::shared_ptr<Node>> _children, Location _location);
-    
+
     virtual ~Node() {};
-        
 };
 
 /// 子ノードを持たない端のノードを表します。
@@ -77,6 +93,7 @@ public:
     virtual ~Leaf(){}
             
     auto description() -> const std::string override;
+    auto eval(wf::run::Environment env) -> const Value override;
 };
     
 }}

@@ -8,9 +8,6 @@
 
 #include "PrimaryNode.hpp"
 
-#include <memory>
-#include <vector>
-
 using namespace wf::ast;
 
 auto Name::value() -> std::string const {

@@ -21,6 +21,7 @@ public:
             
     auto description() -> std::string const override;
     
+    virtual auto eval(wf::run::Environment env) -> Value const override {return Value();}
 };
 
 class BinaryOperation: public Expression {
@@ -51,6 +52,20 @@ public:
     Calling(std::vector<NodePtr> _children, Location _location);
         
     auto description() -> std::string const override;
+    
+    virtual auto eval(wf::run::Environment env) -> Value const override {
+        
+        let leaf = std::dynamic_pointer_cast<Leaf>(target()->children[0]);
+        if (leaf) {
+            let name = leaf->token->value;
+            if (name == "print") {
+                
+                print(args()->children[0]->description());
+            }
+        }
+        
+        return Value();
+    }
 };
     
 }}
