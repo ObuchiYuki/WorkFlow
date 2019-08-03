@@ -35,7 +35,7 @@ auto IfStem::description() -> std::string const {
     
 }
 
-auto IfStem::eval(wf::run::Environment env) -> wf::run::Value {
+auto IfStem::eval(wf::run::Environment& env) -> wf::run::Value {
     
     if (condition()->eval(env).boolean()) {
         block()->eval(env);

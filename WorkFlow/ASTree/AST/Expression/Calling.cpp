@@ -25,7 +25,7 @@ auto Calling::description() -> std::string const {
     return "(" + target()->description() + "(" + args()->description() + ")" + ")";
 }
 
-auto Calling::eval(wf::run::Environment env) -> wf::run::Value {
+auto Calling::eval(wf::run::Environment& env) -> wf::run::Value {
     let leaf = nodeAsLeaf(target());
     
     if (!leaf) return wf::run::Value::voidValue();

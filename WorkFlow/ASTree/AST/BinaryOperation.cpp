@@ -27,7 +27,7 @@ Node(_children, _location)
 {};
 
 
-wf::run::Value BinaryOperation::eval(wf::run::Environment env) {
+wf::run::Value BinaryOperation::eval(wf::run::Environment& env) {
     let op_s = wf::ast::nodeAsLeaf(op())->token->value;
     let lsh = left()->eval(env);
     let rsh = right()->eval(env);

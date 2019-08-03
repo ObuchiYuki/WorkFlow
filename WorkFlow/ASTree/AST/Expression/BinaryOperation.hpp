@@ -22,7 +22,7 @@ public:
             
     BinaryOperation(std::vector<NodePtr> _children, Location _location);
     
-    wf::run::Value eval(wf::run::Environment env) override;
+    wf::run::Value eval(wf::run::Environment& env) override;
 };
 
 }}

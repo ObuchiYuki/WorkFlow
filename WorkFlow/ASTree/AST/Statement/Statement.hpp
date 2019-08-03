@@ -28,7 +28,7 @@ namespace wf {namespace ast {
             return "(def " + target()->description() + " = " + init()->description() + ")";
         }
         
-        auto eval(wf::run::Environment env) -> wf::run::Value override {
+        auto eval(wf::run::Environment& env) -> wf::run::Value override {
             let s_target = nodeAsLeaf(target())->token->value;
             var r_value = init()->eval(env);
             
@@ -49,7 +49,7 @@ namespace wf {namespace ast {
         
         IfStem(std::vector<NodePtr> _children, Location _location);
         
-        auto eval(wf::run::Environment env) -> wf::run::Value override;
+        auto eval(wf::run::Environment& env) -> wf::run::Value override;
     };
 
     class BlockStem: public Node {
