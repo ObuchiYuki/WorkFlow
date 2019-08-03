@@ -56,6 +56,7 @@ public:
     virtual auto eval(wf::run::Environment env) -> Value const override {
         
         let leaf = std::dynamic_pointer_cast<Leaf>(target()->children[0]);
+        
         if (leaf) {
             let name = leaf->token->value;
             if (name == "print") {

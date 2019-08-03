@@ -23,15 +23,15 @@ using namespace wf;
 int main() {
     
 
-    let path = "/Users/yuki/Developer/C++/WorkFlow/main.wf";
+    let path = "/Users/yuki/Developer/Git/WorkFlow/main.wf";
     var ifs = std::ifstream(path);
     
     var lexer = wf::Lexer(&ifs);
     
     let ps = BasicParsers().statement.parse(lexer);
     
-    
     var env = wf::run::Environment();
+
     ps->children[0]->eval(env);
     
 }
