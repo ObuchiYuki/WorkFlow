@@ -18,6 +18,7 @@ Now Developing.
   - If Statement :heavy_check_mark:
   - Expression :heavy_check_mark:
 - Evaluation △
-  - Print function :heavy_check_mark:
+  - Print function (String only) :heavy_check_mark:
   - If Statement :heavy_check_mark:
-  - 
+  - Def Statement​ :heavy_check_mark:
+  - Comparison Expression ("<", ">") (Int only) :heavy_check_mark:
