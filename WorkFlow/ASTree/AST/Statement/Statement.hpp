@@ -40,6 +40,17 @@ namespace wf {namespace ast {
         
         
         IfStem(std::vector<NodePtr> _children, Location _location);
+        
+        auto eval(wf::run::Environment env) -> Value override {
+            let c = condition()->children[0];
+            
+            if (c->eval(env).boolean()) {
+                block()->eval(env);
+            }else{
+                elseBlock()->eval(env);
+            }
+            return Value();
+        }
     };
 
     class BlockStem: public Node {

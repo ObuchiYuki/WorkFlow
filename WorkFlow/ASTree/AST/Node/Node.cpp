@@ -24,7 +24,7 @@ int Node::numChildren() {
     return static_cast<int>(children.size());
 }
 
-auto Node::eval(wf::run::Environment env) -> const Value {
+auto Node::eval(wf::run::Environment env) -> Value {
     return children[0]->eval(env);
 }
 
@@ -45,6 +45,6 @@ auto Leaf::description() -> std::string const {
     return "[Leaf undefined]";
 }
 
-auto Leaf::eval(wf::run::Environment env) -> const Value {
+auto Leaf::eval(wf::run::Environment env) -> Value {
     return Value(token->value);
 }

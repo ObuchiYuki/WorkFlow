@@ -42,16 +42,16 @@ public:
     Value(){};
     Value(std::string __value): _value(__value) {};
     
-    auto integer() -> int {
+    auto integer() -> int const {
         return std::stoi(_value);
     }
-    auto string() -> std::string {
+    auto string() -> std::string const{
         return _value;
     }
-    auto boolean() -> bool {
+    auto boolean() -> bool const{
         return integer() != 0;
     }
-    auto floating() -> float {
+    auto floating() -> float const{
         return std::stod(_value);
     }
 };
@@ -71,7 +71,7 @@ public:
     auto numChildren() -> int;
             
     virtual auto description() -> const std::string;
-    virtual auto eval(wf::run::Environment env) -> const Value;
+    virtual auto eval(wf::run::Environment env) -> Value;
     
     // MARK: - Constructor -
     Node(std::vector<std::shared_ptr<Node>> _children, Location _location);
@@ -93,7 +93,7 @@ public:
     virtual ~Leaf(){}
             
     auto description() -> const std::string override;
-    auto eval(wf::run::Environment env) -> const Value override;
+    auto eval(wf::run::Environment env) -> Value override;
 };
     
 }}

@@ -6,6 +6,11 @@
 //  Copyright © 2019 yuki. All rights reserved.
 //
 
+
+/**
+ // TODO: - 各オブジェクトのネストを浅くする。
+ */
+
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -21,10 +26,10 @@
 using namespace wf;
 
 int main() {
-    
 
     let path = "/Users/yuki/Developer/Git/WorkFlow/main.wf";
     var ifs = std::ifstream(path);
+
     
     var lexer = wf::Lexer(&ifs);
     
