@@ -13,5 +13,4 @@
 #include "Parser.hpp"
 #include "ParserImpl.h"
 
-
 #endif /* Tree_h */

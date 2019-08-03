@@ -21,5 +21,5 @@ PrimaryNode(_children, _location)
 {};
 
 auto StringLiteral::description() -> std::string const {
-    return "\"" + value() + "\"";
+    return value();
 }

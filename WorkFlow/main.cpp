@@ -30,6 +30,8 @@ int main() {
     
     let ps = BasicParsers().statement.parse(lexer);
     
-    print(ps->children[0]->description());
+    
+    var env = wf::run::Environment();
+    ps->children[0]->eval(env);
     
 }

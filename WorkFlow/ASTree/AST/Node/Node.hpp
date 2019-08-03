@@ -12,8 +12,11 @@
 #include <vector>
 #include <memory>
 
+#include "rmkit.h"
+
 #include "Lexer.hpp"
 #include "location.hpp"
+#include "Environment.hpp"
 
 namespace wf {namespace ast {
     
@@ -68,7 +71,7 @@ public:
     auto numChildren() -> int;
             
     virtual auto description() -> const std::string;
-    virtual auto eval() -> const Value;
+    virtual auto eval(wf::run::Environment env) -> const Value;
     
     // MARK: - Constructor -
     Node(std::vector<std::shared_ptr<Node>> _children, Location _location);
@@ -90,7 +93,7 @@ public:
     virtual ~Leaf(){}
             
     auto description() -> const std::string override;
-    auto eval() -> const Value override;
+    auto eval(wf::run::Environment env) -> const Value override;
 };
     
 }}

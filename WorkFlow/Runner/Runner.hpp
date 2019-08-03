@@ -9,13 +9,8 @@
 #ifndef Runner_h
 #define Runner_h
 
-#include "../ASTree/AST/AST.hpp"
 #include "Environment.hpp"
 
-namespace wf {namespace run{
 
-
-
-}}
 
 #endif /* Runner_h */

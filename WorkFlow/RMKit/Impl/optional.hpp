@@ -76,6 +76,10 @@ public:
     // ======================================================================== //
     // MARK: - Connstructors -
     
+    /// ポインタ`optional`の初期化です。nullptrだった場合は、nilになります。
+    optional(const T* it) :
+    data_pointer(it) {}
+    
     /// 存在するものからの`optional`の初期化です。
     optional(const T& it) :
     data_pointer(new(&data) T(it)) {}
