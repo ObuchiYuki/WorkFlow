@@ -147,6 +147,11 @@ public:
         return data_pointer;
     }
     
+    /// 自身を表すポインタを返します。
+    T* pointer() const {
+        return data_pointer;
+    }
+    
     /// 実態が`nil`なのかを判別する`bool`を返します。
     /// `nil`の時、`false`, `some`の時`true`となります。
     operator bool() const {

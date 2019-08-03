@@ -30,29 +30,31 @@ class Leaf;
 typedef std::shared_ptr<Leaf> LeafPtr;
 typedef std::shared_ptr<Node> NodePtr;
     
-
 // ====================================================================== //
 // MARK: - Type Structure Definitions -
 
 /// evalの実行に使用される値です。
 class Value {
 private:
-    std::string _value;
+    rm::any _value;
 public:
-    Value(){};
-    Value(std::string __value): _value(__value) {};
+    Value(rm::any __value): _value(__value) {};
     
-    auto integer() -> int const {
-        return std::stoi(_value);
+    static auto voidValue() -> Value {
+        return Value(nil);
     }
-    auto string() -> std::string const{
-        return _value;
+    
+    int integer() const {
+        return _value.as<int>();
     }
-    auto boolean() -> bool const{
-        return integer() != 0;
+    std::string string() const{
+        return _value.as<std::string>();
     }
-    auto floating() -> float const{
-        return std::stod(_value);
+    bool boolean() const{
+        return _value.as<bool>();
+    }
+    float floating() const{
+        return _value.as<float>();
     }
     
     friend std::ostream& operator << (std::ostream &os, const Value a) {
@@ -107,7 +109,7 @@ public:
     auto eval(wf::run::Environment env) -> Value override;
 };
 
-LeafPtr nodeAsLeaf(NodePtr node){
+inline LeafPtr nodeAsLeaf(NodePtr node){
     return std::dynamic_pointer_cast<Leaf>(node);
 }
     

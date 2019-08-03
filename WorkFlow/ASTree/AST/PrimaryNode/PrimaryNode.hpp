@@ -37,7 +37,6 @@ public:
 /// 文字列リテラルを表します。
 class StringLiteral: public PrimaryNode {
 public:
-    auto value() -> std::string const;
             
     StringLiteral(token::TokenPtr _token, Location _location) : PrimaryNode(_token, _location) {}
 };
@@ -46,38 +45,46 @@ public:
 /// 整数リテラルを表します。
 class IntegerLiteral: public PrimaryNode {
 public:
-    auto value() -> int const;
+    auto value() -> int const {
+        return std::stoi(token->value);
+    }
             
     IntegerLiteral(token::TokenPtr _token, Location _location) : PrimaryNode(_token, _location) {}
+    
+    Value eval(wf::run::Environment env) override {
+        return Value(value());
+    }
 };
 
 /// 不動小数点リテラルを表します。
 class FloatLiteral: public PrimaryNode {
 public:
-    auto value() -> float const;
+    auto value() -> float const {
+        return std::stod(token->value);
+    }
             
     FloatLiteral(token::TokenPtr _token, Location _location) : PrimaryNode(_token, _location) {}
+    
+    Value eval(wf::run::Environment env) override {
+        return Value(value());
+    }
 };
 
 /// コンパイラディレクティブを表します。
 class Directive: public PrimaryNode {
 public:
-    auto value() -> std::string const;
-            
+    
     Directive(token::TokenPtr _token, Location _location) : PrimaryNode(_token, _location) {}
 };
 
 class Operator: public PrimaryNode {
 public:
-    auto value() -> std::string  const;
             
     Operator(token::TokenPtr _token, Location _location) : PrimaryNode(_token, _location) {}
 };
 
 class Name: public PrimaryNode {
 public:
-        
-    auto value() -> std::string const;
             
     Name(token::TokenPtr _token, Location _location) : PrimaryNode(_token, _location) {}
 };

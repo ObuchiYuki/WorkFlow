@@ -11,8 +11,12 @@
 
 #include <typeinfo>
 #include <memory>
+#include <string>
 #include <cxxabi.h>
+#include <exception>
+#include <stdexcept>
 
+#include "type.hpp"
 #include "optional.hpp"
 
 namespace rm {
@@ -75,10 +79,13 @@ private:
     // MARK: - Private Methods -
     
     /// 型名をデマングルします。
-    /// 使用後帰り値を解放してください。
-    static char* demangle(const char *demangle) {
+    static std::string demangle(const char *demangle) {
         int status;
-        return abi::__cxa_demangle(demangle, 0, 0, &status);
+        auto rawName = abi::__cxa_demangle(demangle, 0, 0, &status);
+        auto result = std::string(rawName);
+        
+        delete rawName;
+        return result;
     }
         
     // MARK: - Private Field -
@@ -95,6 +102,10 @@ private:
     /// 自身の型情報を返します。
     std::type_info const& type() const {
         return _obj->type();
+    }
+    
+    const std::string type_name() const {
+        return demangle(type().name());
     }
     
     // MARK: - Constructor -
@@ -137,19 +148,17 @@ private:
         
     template<class T>
     /// 自身をキャストして返却します。失敗したら`nil`を返します。
-    const optional<T> as() const {
+    T as() const {
         const auto casted = dynamic_cast<_any<T>*>(_obj.get());
                         
-        if (casted) return optional<T>(casted->_value);
-        else        return nil;
+        if (!casted){
+            throw std::runtime_error("Cannot cast value type \"" + type_name() + "\" to type \"" + rm::type::type_name<T>() + "\"");
+        }
+        return casted->_value;
     }
     
     friend std::ostream& operator << (std::ostream &os, const any a) {
-        const auto name = demangle(a.type().name());
-        
-        os << "any<" << name << ">";
-        
-        delete name;
+        os << "any<" << a.type_name() << ">";
             
         return os;
     }

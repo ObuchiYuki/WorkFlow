@@ -13,6 +13,7 @@
 #include "Token.hpp"
 #include "Parser.hpp"
 #include "Lexer.hpp"
+#include "BinaryOperation.hpp"
 
 using namespace wf;
 

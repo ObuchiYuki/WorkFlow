@@ -232,7 +232,6 @@
 		B685E73822F5277F0056BFF2 /* AST */ = {
 			isa = PBXGroup;
 			children = (
-				B685E73922F5277F0056BFF2 /* Impl */,
 				B685E73B22F5277F0056BFF2 /* PrimaryNode */,
 				B685E74422F5277F0056BFF2 /* Statement */,
 				B685E74922F5277F0056BFF2 /* Expression */,
@@ -240,13 +239,6 @@
 				B685E75322F5277F0056BFF2 /* AST.hpp */,
 			);
 			path = AST;
-			sourceTree = "<group>";
-		};
-		B685E73922F5277F0056BFF2 /* Impl */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Impl;
 			sourceTree = "<group>";
 		};
 		B685E73B22F5277F0056BFF2 /* PrimaryNode */ = {

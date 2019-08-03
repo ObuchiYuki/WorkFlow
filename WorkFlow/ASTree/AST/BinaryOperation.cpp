@@ -10,18 +10,33 @@
 
 using namespace wf::ast;
 
-auto BinaryOperator::right() -> NodePtr {
-    return children[0];
-}
-
-auto BinaryOperator::left() -> NodePtr {
+auto BinaryOperation::right() -> NodePtr {
     return children[2];
 }
 
-auto BinaryOperator::op() -> NodePtr {
+auto BinaryOperation::left() -> NodePtr {
+    return children[0];
+}
+
+auto BinaryOperation::op() -> NodePtr {
     return children[1];
 }
     
-BinaryOperator::BinaryOperator(std::vector<NodePtr> _children, Location _location) :
+BinaryOperation::BinaryOperation(std::vector<NodePtr> _children, Location _location) :
 Node(_children, _location)
 {};
+
+
+Value BinaryOperation::eval(wf::run::Environment env) {
+    let op_s = wf::ast::nodeAsLeaf(op())->token->value;
+    let lsh = left()->eval(env);
+    let rsh = right()->eval(env);
+
+    if (op_s == "<") {
+        return Value(lsh.integer() < rsh.integer());
+    }else if (op_s == ">") {
+        return Value(lsh.integer() > rsh.integer());
+    }
+    
+    return Value::voidValue();
+}

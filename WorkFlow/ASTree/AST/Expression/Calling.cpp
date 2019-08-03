@@ -24,3 +24,18 @@ auto Calling::args() -> NodePtr {
 auto Calling::description() -> std::string const {
     return "(" + target()->description() + "(" + args()->description() + ")" + ")";
 }
+
+auto Calling::eval(wf::run::Environment env) -> Value {
+    let leaf = nodeAsLeaf(target());
+    
+    if (!leaf) return Value::voidValue();
+    
+    let fnname = leaf->token->value;
+    if (fnname == "print") {
+
+        print(args()->eval(env).string());
+        
+    }
+    
+    return Value::voidValue();
+}

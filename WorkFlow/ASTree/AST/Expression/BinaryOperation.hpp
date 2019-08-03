@@ -13,14 +13,16 @@
 
 namespace wf { namespace ast {
 
-class BinaryOperator: public Node {
+class BinaryOperation: public Node {
 public:
-    auto right() -> NodePtr;
     auto left() -> NodePtr;
+    auto right() -> NodePtr;
     
     auto op() -> NodePtr;
             
-    BinaryOperator(std::vector<NodePtr> _children, Location _location);
+    BinaryOperation(std::vector<NodePtr> _children, Location _location);
+    
+    Value eval(wf::run::Environment env) override;
 };
 
 }}
