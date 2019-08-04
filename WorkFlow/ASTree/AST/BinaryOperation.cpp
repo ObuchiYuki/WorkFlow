@@ -26,6 +26,9 @@ BinaryOperation::BinaryOperation(std::vector<NodePtr> _children, Location _locat
 Node(_children, _location)
 {};
 
+const std::string BinaryOperation::description() {
+    return "(" + left()->description() + " " + op()->description() + " " + right()->description() + ")";
+}
 
 wf::run::Value BinaryOperation::eval(wf::run::Environment& env) {
     let op_s = wf::ast::nodeAsLeaf(op())->token->value;
@@ -36,6 +39,10 @@ wf::run::Value BinaryOperation::eval(wf::run::Environment& env) {
         return wf::run::Value(lsh.integer() < rsh.integer());
     }else if (op_s == ">") {
         return wf::run::Value(lsh.integer() > rsh.integer());
+    }else if (op_s == "%") {
+        return wf::run::Value(lsh.integer() % rsh.integer());
+    }else if (op_s == "==") {
+        return wf::run::Value(lsh.integer() == rsh.integer());
     }
     
     return wf::run::Value::voidValue();

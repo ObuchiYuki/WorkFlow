@@ -31,10 +31,11 @@ auto Calling::eval(wf::run::Environment& env) -> wf::run::Value {
     if (!leaf) return wf::run::Value::voidValue();
     
     let fnname = leaf->token->value;
-    if (fnname == "print") {
-
-        print(args()->eval(env).string());
+    if (fnname == "prints") {
         
+        print(args()->eval(env).string());
+    }else if (fnname == "printi") {
+        print(args()->eval(env).integer());
     }
     
     return wf::run::Value::voidValue();

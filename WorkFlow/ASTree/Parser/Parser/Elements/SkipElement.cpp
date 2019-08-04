@@ -28,7 +28,6 @@ SkipElement::SkipElement(std::vector<std::string> _skipTokens) : skipTokens(_ski
 auto SkipElement::match(Lexer& lexer) -> bool const {
     for (let &skipToken: skipTokens) {
         if (skipToken == "EOL" && lexer.peek(0)->type == wf::token::TokenType::ENDLINE) {
-            print("call");
             return true;
         }
         if (lexer.peek(0)->value == skipToken) return true;
@@ -38,5 +37,5 @@ auto SkipElement::match(Lexer& lexer) -> bool const {
 }
 auto SkipElement::parse(Lexer& lexer, std::vector<NodePtr> &res) -> void const {
     
-    lexer.readNext();               
+    lexer.readNext();
 }

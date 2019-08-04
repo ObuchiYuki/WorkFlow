@@ -27,7 +27,7 @@ auto BlockStem::description() -> std::string const {
     sstr << "(";
     
     for (let &statement: children){
-        sstr << statement->children[0]->children[0]->description();
+        sstr << statement->description();
         sstr << " ";
     }
     

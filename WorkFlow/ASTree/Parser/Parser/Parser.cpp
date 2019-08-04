@@ -54,7 +54,13 @@ auto Parser::repeat(Parser parserw) -> Parser{
             
     return *this;
 }
-
+auto Parser::optional(Parser parserw) -> Parser{
+    let e_repeat = ElementPtr(new RepeatElement(parserw.parser, true));
+                
+    parser->addElement(e_repeat);
+                
+    return *this;
+}
  
 auto Parser::skip(std::string token) -> Parser{
     let e_skip = ElementPtr(new SkipElement(token));
@@ -86,14 +92,6 @@ auto Parser::expression(Parser subParserw, Operators ops) -> Parser{
             
     parser->addElement(e_expr);
             
-    return *this;
-}
-
-auto Parser::optional(Parser parserw) -> Parser{
-    let e_repeat = ElementPtr(new RepeatElement(parserw.parser, true));
-                
-    parser->addElement(e_repeat);
-                
     return *this;
 }
 

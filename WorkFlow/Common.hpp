@@ -36,10 +36,18 @@ std::ostream & operator << (std::ostream & outstream, const std::vector<T> vecto
     return outstream;
 }
 
-template<class T>
-void print(const T item) {
-    std::cout << item << std::endl;
+inline void print() { std::cout << std::endl; }
+        
+template<class T, class... A>
+inline void print(const T& first, const A&... rest) {
+    std::cout << first; print(rest...);
 }
+        
+template<class... A>
+inline void print(const A&... rest) {
+    print(rest...);
+}
+
 
 
 #endif /* IGCommonMacros_hpp */

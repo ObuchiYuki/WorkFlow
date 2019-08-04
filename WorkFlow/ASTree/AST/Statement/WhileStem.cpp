@@ -22,3 +22,12 @@ Node(_children, _location) {}
 auto WhileStem::description() -> std::string const {
     return "(while " + condition()->description() + " " + block()->description() + ")";
 }
+
+wf::run::Value WhileStem::eval(wf::run::Environment &env) {
+    while (condition()->eval(env).boolean()) {
+        print("roop");
+        block()->eval(env);
+    }
+    
+    return wf::run::Value::voidValue();
+}

@@ -17,6 +17,7 @@ public:
     Operators ops = Operators({
         Operator("=", 1, Associative::RIGHT),
         Operator("==", 2, Associative::LEFT),
+        Operator("+=", 2, Associative::LEFT),
         Operator(">", 2, Associative::LEFT),
         Operator("<", 2, Associative::LEFT),
         Operator("+", 3, Associative::LEFT),
@@ -48,15 +49,12 @@ public:
             )
     .skip("}");
     
-    
-    Parser simple = rule().then(expr);
-    
     Parser statement = statement0.ors({
         rule<ast::IfStem>().skip("if").then(expr).then(block).optional(rule().skip("else").then(block)),
         rule<ast::WhileStem>().skip("while").then(expr).then(block),
         rule<ast::VarStem>().skip("def").then(Parser::name()).skip("=").then(expr),
         rule<ast::Calling>().then(Parser::name()).skip("(").then(expr).skip(")"),
-        simple,
+        rule<ast::Assgin>().then(Parser::name()).skip("=").then(expr),
     });
     
     Parser program = rule().then(statement).skip(std::vector<std::string>({";", "EOL"}));

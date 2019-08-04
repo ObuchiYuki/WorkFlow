@@ -30,7 +30,7 @@ auto Node::eval(wf::run::Environment& env) -> wf::run::Value {
 
 
 auto Node::description() -> std::string const{
-    return "[undefined]";
+    return "[space]";
 }
 // MARK: - Leaf - 
 

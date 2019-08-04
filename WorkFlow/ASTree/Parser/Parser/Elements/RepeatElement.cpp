@@ -28,11 +28,32 @@ auto RepeatElement::match(Lexer& lexer) -> bool const {
 }
 
 auto RepeatElement::parse(Lexer& lexer, std::vector<NodePtr> &res) -> void const {
-                   
+    
     while (parser->match(lexer)) {
         let node = parser->parse(lexer);
+        print("node::", node->description());
         
         if (node->numChildren() > 0) res.push_back(node);
         if (once) break;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
