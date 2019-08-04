@@ -21,13 +21,12 @@ class _AnyParser {
 private:
     class holder {
     public:
-        
         virtual auto parse(Lexer& lexer) -> NodePtr const = 0;
         virtual auto match(Lexer& lexer, int gap) -> bool const = 0;
         virtual auto rstride(Lexer& lexer, int gap) -> int const = 0;
         virtual auto addElement(ElementPtr element) -> void = 0;
         
-        
+        virtual auto description() -> std::string const = 0;
     };
     
     template<typename T> // T: Parser<S>
@@ -54,6 +53,10 @@ private:
             
             parser->addElement(element);
         }
+        
+        auto description() -> std::string const override {
+            return parser->description();
+        }
     };
     
     std::shared_ptr<holder> _holder;
@@ -72,7 +75,13 @@ private:
     auto addElement(ElementPtr element) -> void;
     
     auto rstride(Lexer& lexer, int gap) -> int const;
-    };
+    
+    auto description() -> std::string const {
+        return _holder->description();
+    }
+};
+
+
 }
 
 

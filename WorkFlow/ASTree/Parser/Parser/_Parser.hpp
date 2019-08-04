@@ -9,6 +9,8 @@
 #ifndef _Parser_h
 #define _Parser_h
 
+#include "rmkit.h"
+
 namespace wf {
     /// 実際にパースを行います。
     template<class T> // T: Node
@@ -45,8 +47,8 @@ namespace wf {
             let rsize = results.size();
 
             if (rsize == 0) {
-                return nullptr;
                 
+                throw "";
             } else if (rsize == 1 and rm::type::equals<ast::Node, T>()) {
                 
                 return results[0];
@@ -73,6 +75,10 @@ namespace wf {
         auto addElement(ElementPtr element) -> void{
            
             elements.push_back(element);
+        }
+        
+        auto description() -> std::string const {
+            return "_Parser<" + rm::type::type_name<T>() + ">(elements.size() = " + std::to_string(elements.size()) + ")";
         }
     };
 }

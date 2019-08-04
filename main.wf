@@ -1,6 +1,3 @@
-a = 3
-printi(a)
-
-if a < 5 {
-    prints("a < 5")
+if 1 < 5 {
+    prints("1 < 5")
 }

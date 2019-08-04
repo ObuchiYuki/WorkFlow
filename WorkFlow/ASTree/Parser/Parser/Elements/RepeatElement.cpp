@@ -39,6 +39,7 @@ auto RepeatElement::rstride(Lexer& lexer, int gap) -> int const {
 }
 
 auto RepeatElement::match(Lexer& lexer, int gap) -> bool const {
+    if (once) return true;
     return parser->match(lexer, gap);
 }
 

@@ -42,11 +42,10 @@ public:
     
     Parser block = rule<ast::BlockStem>()
     .skip("{").optional(statement0)
-    .repeat(
-            rule()
-            .skip(std::vector<std::string>({";", "EOL"}))
-            .optional(statement0)
-            )
+    .repeat(rule()
+        .skip(std::vector<std::string>({";", "EOL"}))
+        .optional(statement0)
+    )
     .skip("}");
     
     Parser statement = statement0.ors({

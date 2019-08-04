@@ -40,7 +40,6 @@ int main() {
         let ps = BasicParsers().program.parse(lexer);
         
         ps->eval(env);
-
     }
     
 }
