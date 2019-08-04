@@ -32,3 +32,7 @@ auto TreeElement::parse(Lexer& lexer, std::vector<NodePtr> &res) -> void const {
                    
     res.push_back(parser->parse(lexer));
 }
+
+auto rstride(Lexer& lexer, int gap) -> int const {
+    return parser->rstride(lexer, gap);
+}

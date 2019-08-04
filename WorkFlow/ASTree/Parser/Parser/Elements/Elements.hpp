@@ -26,15 +26,14 @@ namespace wf {
     private:
         std::vector<_ParserPtr> parsers;
         
-        auto chooseParser(Lexer& lexer) -> rm::optional<_ParserPtr> const;
+        auto chooseParser(Lexer& lexer, int gap) -> rm::optional<_ParserPtr> const;
     public:
                    
         OrElement(std::vector<_ParserPtr> _parsers);
                
         auto match(Lexer& lexer, int stride) -> bool const override;
         auto parse(Lexer& lexer, std::vector<NodePtr>& res) -> void const override;
-        auto rpeek(Lexer& lexer) -> int const override;
-
+        auto rstride(Lexer& lexer, int gap) -> int const override;
         
         
     };
@@ -49,7 +48,7 @@ namespace wf {
         
         auto match(Lexer& lexer, int stride) -> bool const override;
         auto parse(Lexer& lexer, std::vector<NodePtr>& res) -> void const override;
-        auto rpeek(Lexer& lexer) -> int const override;
+        auto rstride(Lexer& lexer, int gap) -> int const override;
     };
 
     /// 指定されたTokenを読み飛ばします。
@@ -63,7 +62,7 @@ namespace wf {
 
         auto match(Lexer& lexer, int stride) -> bool const override;
         auto parse(Lexer& lexer, std::vector<NodePtr>& res) -> void const override;
-        auto rpeek(Lexer& lexer) -> int const override;
+        auto rstride(Lexer& lexer, int gap) -> int const override;
         
     };
 
@@ -75,7 +74,8 @@ namespace wf {
         
         auto match(Lexer& lexer, int stride) -> bool const override;
         auto parse(Lexer& lexer, std::vector<NodePtr>& res) -> void const override;
-        auto rpeek(Lexer& lexer) -> int const override;
+        auto rstride(Lexer& lexer, int gap) -> int const override;
+        
     };
     
     class Precedence {
@@ -129,7 +129,8 @@ namespace wf {
     
         auto match(Lexer& lexer, int stride) -> bool const override;
         auto parse(Lexer& lexer, std::vector<NodePtr>& res) -> void const override;
-        auto rpeek(Lexer& lexer) -> int const override;
+        auto rstride(Lexer& lexer, int gap) -> int const override;
+        
     private:
         Operators ops;
         _ParserPtr factor;

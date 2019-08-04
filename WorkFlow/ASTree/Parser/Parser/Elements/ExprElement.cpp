@@ -80,9 +80,22 @@ NodePtr ExprElement::doShift(Lexer& lexer, NodePtr left, int prec) {
 }
     
 
+auto ExprElement::rstride(Lexer& lexer, int gap) -> int const {
+    auto rstride = 0;
+    auto rgap = gap;
     
+    if (factor->match(lexer, rgap)){
+        auto a = factor->rstride(lexer, rgap);
+        rstride += a;
+        rgap += a;
+          
+    }else if (op->match(lexer, rgap)){
+         rstride += 1;
+         rgap += 1;
+    }
     
-    
+    return rstride
+}
     
     
 

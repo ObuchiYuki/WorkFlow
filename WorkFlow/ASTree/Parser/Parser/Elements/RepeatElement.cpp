@@ -23,16 +23,19 @@ RepeatElement::RepeatElement(_ParserPtr _parser, bool _once) : parser(_parser), 
 }
 
 // MARK: - Methods -
-auto RepeatElement::rpeek(Lexer& lexer) -> int const {
-    int stride = 0;
-    while (parser->match(lexer, stride)) {
-        stride = parser.rpeek(lexer);
+auto RepeatElement::rstride(Lexer& lexer, int gap) -> int const {
+    var rgap = gap;
+    var rstride = 0;
+    
+    while(parsar->match(lexer, rgap)) {
+        let a = parser->rstride(lexer, rgap)
+        rstride += a
+        rgap += a
         
-        let node = parser->parse(lexer);
-        
-        if (node->numChildren() > 0) res.push_back(node);
         if (once) break;
     }
+    
+    return rstride;
 }
 
 auto RepeatElement::match(Lexer& lexer, int stride) -> bool const {

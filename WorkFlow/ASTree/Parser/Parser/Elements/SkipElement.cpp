@@ -39,3 +39,7 @@ auto SkipElement::parse(Lexer& lexer, std::vector<NodePtr> &res) -> void const {
     
     lexer.readNext();
 }
+
+auto SkipElement::rstride(Lexer& lexer, int gap) -> int const {
+    return 1;
+}

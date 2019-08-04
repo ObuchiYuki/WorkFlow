@@ -31,6 +31,9 @@ public:
         
         res.push_back(leaf);
     }
+    auto rstride(Lexer& lexer, int gap) -> int const override {
+        return 1;
+    }
 };
 
 class IntegerElement: public TokenElement<ast::IntegerLiteral> {
