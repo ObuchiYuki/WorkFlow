@@ -19,8 +19,8 @@ namespace wf {
                  
         /// Lexer& が Perserにマッチしているかを調べます。
         auto match(Lexer& lexer, int stride) -> bool const {
-           
-            return elements[0]->match(lexer);
+            
+            
         }
                  
         /// Lexerの値を元に実際にパースを行います。
@@ -45,8 +45,15 @@ namespace wf {
             }
         }
         
-        auto rpeek(Lexer& lexer) -> int const {
+        auto rpeek(Lexer& lexer, int stride) -> int const {
+            var _stride = stride;
+              
+            for (let &element: elements) {
+                _stride += element.rpeek(lexer, _stride)
+
+            }
             
+            return _stride;
         }
           
         auto addElement(ElementPtr element) -> void{
