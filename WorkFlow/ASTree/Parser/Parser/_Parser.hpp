@@ -18,8 +18,19 @@ namespace wf {
         std::vector<ElementPtr> elements;
                  
         /// Lexer& が Perserにマッチしているかを調べます。
-        auto match(Lexer& lexer, int stride) -> bool const {
+        auto match(Lexer& lexer, int gap) -> bool const {
+            var rstride = 0;
+            var rgap = gap;
             
+            for (let &element: elements) {
+                if (!element->match(lexer, rgap)) return false;
+                let a = element.rstride(rgap);
+                    
+                rstride += a;
+                rgap += a;
+            }
+            
+            return true;
             
         }
                  

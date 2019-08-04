@@ -23,7 +23,7 @@ private:
     public:
         
         virtual auto parse(Lexer& lexer) -> NodePtr const = 0;
-        virtual auto match(Lexer& lexer, int stride) -> bool const = 0;
+        virtual auto match(Lexer& lexer, int gap) -> bool const = 0;
         virtual auto rstride(Lexer& lexer, int gap) -> int const = 0;
         virtual auto addElement(ElementPtr element) -> void = 0;
         
@@ -41,9 +41,9 @@ private:
             return parser->parse(lexer);
         }
         
-        auto match(Lexer& lexer, int stride) -> bool const override {
+        auto match(Lexer& lexer, int gap) -> bool const override {
             
-            return parser->match(lexer, stride);
+            return parser->match(lexer, gap);
         }
         
         auto rstride(Lexer& lexer, int gap) -> int const override {
@@ -67,7 +67,7 @@ private:
         
     auto parse(Lexer& lexer) -> NodePtr const;
                 
-    auto match(Lexer &lexer, int stride) -> bool const;
+    auto match(Lexer &lexer, int gap) -> bool const;
         
     auto addElement(ElementPtr element) -> void;
     
