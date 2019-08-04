@@ -9,33 +9,20 @@
 #ifndef Statement_h
 #define Statement_h
 
-#include "../Node/Node.hpp"
+#include "Node.hpp"
 
 
 namespace wf {namespace ast {
     class VarStem: public Node {
     public:
-        var target() -> NodePtr {
-            return children[0];
-        }
-        var init() -> NodePtr {
-            return children[1];
-        }
+        var target() -> NodePtr;
+        var init() -> NodePtr;
             
-        VarStem(std::vector<NodePtr> _children, Location _location) : Node(_children, _location) {};
+        VarStem(std::vector<NodePtr> _children, Location _location);
             
-        auto description() -> std::string const override {
-            return "(def " + target()->description() + " = " + init()->description() + ")";
-        }
+        var description() -> std::string const override;
         
-        auto eval(wf::run::Environment& env) -> wf::run::Value override {
-            let s_target = nodeAsLeaf(target())->token->value;
-            var r_value = init()->eval(env);
-            
-            env.set(s_target, r_value);
-            
-            return wf::run::Value::voidValue();
-        }
+        auto eval(wf::run::Environment& env) -> wf::run::Value override;
     };
     
     class IfStem:public Node {

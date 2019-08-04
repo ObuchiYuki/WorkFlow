@@ -37,8 +37,10 @@ int main() {
     
     
     while (lexer.peek(0)->type != token::TokenType::ENDFILE) {
-        let ps = BasicParsers().statement.parse(lexer);
+        let ps = BasicParsers().program.parse(lexer);
         
         ps->eval(env);
     }
+    
+    
 }

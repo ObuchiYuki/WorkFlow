@@ -26,7 +26,7 @@ public:
         Operator("%", 4, Associative::LEFT),
     });
     
-    Parser expr0 = rule<ast::Expression>();
+    Parser expr0 = rule();
     
     Parser primary = rule().ors({
         rule<ast::Expression>().skip("(").then(expr0).skip(")"),
@@ -59,7 +59,7 @@ public:
         simple,
     });
     
-    Parser program = rule().optional(statement).skip(std::vector<std::string>({";", "EOL"}));
+    Parser program = rule().then(statement).skip(std::vector<std::string>({";", "EOL"}));
 
 };
 

@@ -147,7 +147,7 @@ private:
     }
         
     template<class T>
-    /// 自身をキャストして返却します。失敗したら`nil`を返します。
+    /// 自身をキャストして返却します。失敗したら例外を投げます 。
     T as() const {
         const auto casted = dynamic_cast<_any<T>*>(_obj.get());
                         
