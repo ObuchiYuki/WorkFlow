@@ -45,15 +45,18 @@ namespace wf {
             }
         }
         
-        auto rpeek(Lexer& lexer, int stride) -> int const {
-            var _stride = stride;
-              
-            for (let &element: elements) {
-                _stride += element.rpeek(lexer, _stride)
-
-            }
+        auto rstride(Lexer& lexer, int gap) -> int const {
+            auto rgap = gap;
+            auto rstride = 0;
             
-            return _stride;
+            for (const auto &element: elements) {
+                auto a = element.rstride(rgap);
+              
+                rgap += a;
+                rstride += a;
+            }
+
+            return rstride;
         }
           
         auto addElement(ElementPtr element) -> void{

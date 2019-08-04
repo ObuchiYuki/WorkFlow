@@ -24,7 +24,7 @@ private:
         
         virtual auto parse(Lexer& lexer) -> NodePtr const = 0;
         virtual auto match(Lexer& lexer, int stride) -> bool const = 0;
-        virtual auto rpeek(Lexer& lexer) -> int const = 0;
+        virtual auto rstride(Lexer& lexer, int gap) -> int const = 0;
         virtual auto addElement(ElementPtr element) -> void = 0;
         
         
@@ -46,8 +46,8 @@ private:
             return parser->match(lexer, stride);
         }
         
-        virtual auto rpeek(Lexer& lexer) -> int const override {
-            return parser->rpeek(lexer);
+        auto rstride(Lexer& lexer, int gap) -> int const override {
+            return parser->rpeek(lexer, gap);
         }
         
         auto addElement(ElementPtr element) -> void override {
@@ -70,6 +70,8 @@ private:
     auto match(Lexer &lexer, int stride) -> bool const;
         
     auto addElement(ElementPtr element) -> void;
+    
+    auto rstride(Lexer& lexer, int gap) -> int const;
     };
 }
 

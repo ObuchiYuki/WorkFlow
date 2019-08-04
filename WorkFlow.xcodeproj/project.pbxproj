@@ -207,10 +207,10 @@
 				B685E72B22F5277F0056BFF2 /* Parser.hpp */,
 				B685E73622F5277F0056BFF2 /* Parser.cpp */,
 				B685E72C22F5277F0056BFF2 /* _Parser.hpp */,
+				B685E73422F5277F0056BFF2 /* _AnyParser.hpp */,
+				B685E72922F5277F0056BFF2 /* _AnyParser.cpp */,
 				B685E72822F5277F0056BFF2 /* Element.hpp */,
 				B685E72D22F5277F0056BFF2 /* Elements */,
-				B685E72922F5277F0056BFF2 /* _AnyParser.cpp */,
-				B685E73422F5277F0056BFF2 /* _AnyParser.hpp */,
 			);
 			path = Parser;
 			sourceTree = "<group>";

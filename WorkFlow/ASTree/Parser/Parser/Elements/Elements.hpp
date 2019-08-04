@@ -130,7 +130,6 @@ namespace wf {
         auto match(Lexer& lexer, int stride) -> bool const override;
         auto parse(Lexer& lexer, std::vector<NodePtr>& res) -> void const override;
         auto rpeek(Lexer& lexer) -> int const override;
-        
     private:
         Operators ops;
         _ParserPtr factor;

@@ -24,3 +24,7 @@ auto _AnyParser::match(Lexer &lexer, int stride) -> bool const {
 auto _AnyParser::addElement(ElementPtr element) -> void {
     _holder->addElement(element);
 }
+
+auto _AnyParser::rstride(Lexer& lexer, int gap) -> int const {
+    _holder->rstride(lexer, gap);
+}
