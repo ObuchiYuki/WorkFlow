@@ -38,8 +38,8 @@ auto RepeatElement::rstride(Lexer& lexer, int gap) -> int const {
     return rstride;
 }
 
-auto RepeatElement::match(Lexer& lexer, int stride) -> bool const {
-    return parser->match(lexer);
+auto RepeatElement::match(Lexer& lexer, int gap) -> bool const {
+    return parser->match(lexer, gap);
 }
 
 auto RepeatElement::parse(Lexer& lexer, std::vector<NodePtr> &res) -> void const {

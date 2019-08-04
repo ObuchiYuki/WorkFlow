@@ -23,9 +23,9 @@ TreeElement::TreeElement(_ParserPtr _parser): parser(_parser) {
 
 // MARK: - Methods -
 
-auto TreeElement::match(Lexer& lexer) -> bool const {
+auto TreeElement::match(Lexer& lexer, int gap) -> bool const {
                    
-    return parser->match(lexer);
+    return parser->match(lexer, gap);
 }
 
 auto TreeElement::parse(Lexer& lexer, std::vector<NodePtr> &res) -> void const {

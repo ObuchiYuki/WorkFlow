@@ -22,8 +22,8 @@ public:
     TokenElement() {}
     virtual ~TokenElement(){}
     
-    auto match(Lexer& lexer) -> bool const override {
-        return isMatch(lexer.peek(0));
+    auto match(Lexer& lexer, int gap) -> bool const override {
+        return isMatch(lexer.peek(gap));
     }
     auto parse(Lexer& lexer, std::vector<NodePtr> &res) -> void const override {
         let token = lexer.readNext();

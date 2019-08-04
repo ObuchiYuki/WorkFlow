@@ -33,8 +33,8 @@ auto ExprElement::parse(Lexer& lexer, std::vector<NodePtr>& res) -> void const {
     res.push_back(right);
 }
 
-auto ExprElement::match(Lexer& lexer) -> bool const {
-    return factor->match(lexer);
+auto ExprElement::match(Lexer& lexer, int gap) -> bool const {
+    return factor->match(lexer, gap);
 }
 
 // MARK: - Private -

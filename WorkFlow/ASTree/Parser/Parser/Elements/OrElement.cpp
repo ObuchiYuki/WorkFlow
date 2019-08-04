@@ -22,9 +22,15 @@ OrElement::OrElement(std::vector<_ParserPtr> _parsers): parsers(_parsers) {
 }
 
 // MARK: - Methods -
-auto OrElement::match(Lexer& lexer) -> bool const {
+auto OrElement::match(Lexer& lexer, int gap) -> bool const {
     
-    return chooseParser(lexer) != nil;
+    for (let &parser: parsers){
+        if (parser->match(lexer, gap)){
+            return true;
+        }
+    }
+          
+    return false;
 }
 
 auto OrElement::parse(Lexer& lexer, std::vector<NodePtr> &res) -> void const {

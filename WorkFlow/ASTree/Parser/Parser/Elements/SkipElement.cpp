@@ -25,12 +25,13 @@ SkipElement::SkipElement(std::vector<std::string> _skipTokens) : skipTokens(_ski
 }
 // MARK: - Methods -
 
-auto SkipElement::match(Lexer& lexer) -> bool const {
+auto SkipElement::match(Lexer& lexer, int gap) -> bool const {
     for (let &skipToken: skipTokens) {
-        if (skipToken == "EOL" && lexer.peek(0)->type == wf::token::TokenType::ENDLINE) {
+        if (skipToken == "EOL" && lexer.peek(gap)->type == wf::token::TokenType::ENDLINE) {
             return true;
         }
-        if (lexer.peek(0)->value == skipToken) return true;
+        
+        if (lexer.peek(gap)->value == skipToken) return true;
     }
     
     return false;
