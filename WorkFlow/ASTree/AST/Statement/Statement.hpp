@@ -45,6 +45,8 @@ namespace wf {namespace ast {
         BlockStem(std::vector<NodePtr> _children, Location _location);
         
         auto description() -> std::string const override;
+        
+        wf::run::Value eval(wf::run::Environment &env) override;
     };
     
     class WhileStem: public Node {
@@ -56,6 +58,7 @@ namespace wf {namespace ast {
         WhileStem(std::vector<NodePtr> _children, Location _location);
         
         auto description() -> std::string const override;
+
     };
 
 }}

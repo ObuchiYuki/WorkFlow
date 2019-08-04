@@ -26,25 +26,6 @@ public:
     }
 };
     
-class NegativeExpr: public Expression {
-public:
-    NegativeExpr(std::vector<NodePtr> _children, Location _location);
-    
-    auto description() -> std::string const override;
-};
-
-class Calling: public Expression {
-public:
-    auto target() -> NodePtr;
-    auto args() -> NodePtr;
-    
-    Calling(std::vector<NodePtr> _children, Location _location);
-        
-    auto description() -> std::string const override;
-    
-    auto eval(wf::run::Environment& env) -> wf::run::Value override;
-};
-    
 }}
 
 #endif /* BinaryOperation_hpp */

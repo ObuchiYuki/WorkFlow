@@ -12,6 +12,8 @@
 #include "Node.hpp"
 #include "PrimaryNode.hpp"
 #include "Expression.hpp"
+#include "BinaryOperation.hpp"
+#include "Calling.hpp"
 #include "Statement.hpp"
 
 #endif /* AST_h */

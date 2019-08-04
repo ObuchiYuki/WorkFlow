@@ -27,7 +27,7 @@ var VarStem::description() -> std::string const {
 auto VarStem::eval(wf::run::Environment& env) -> wf::run::Value {
     let s_target = nodeAsLeaf(target())->token->value;
     var r_value = init()->eval(env);
-    
+
     env.set(s_target, r_value);
     
     

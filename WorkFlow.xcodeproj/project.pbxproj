@@ -34,7 +34,6 @@
 		B685E78222F527840056BFF2 /* Statement.hpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E74722F5277F0056BFF2 /* Statement.hpp */; };
 		B685E78322F527840056BFF2 /* BlockStem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E74822F5277F0056BFF2 /* BlockStem.cpp */; };
 		B685E78422F527840056BFF2 /* Expression.hpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E74A22F5277F0056BFF2 /* Expression.hpp */; };
-		B685E78522F527840056BFF2 /* NegativeExpr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E74B22F5277F0056BFF2 /* NegativeExpr.cpp */; };
 		B685E78622F527840056BFF2 /* Calling.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E74C22F5277F0056BFF2 /* Calling.cpp */; };
 		B685E78722F527840056BFF2 /* Expression.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E74D22F5277F0056BFF2 /* Expression.cpp */; };
 		B685E78922F527840056BFF2 /* Node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E75022F5277F0056BFF2 /* Node.cpp */; };
@@ -68,6 +67,7 @@
 		B63C209A22F569DF0070C83A /* type.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = type.hpp; sourceTree = "<group>"; };
 		B63C20A022F574DE0070C83A /* TokenElements.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TokenElements.hpp; sourceTree = "<group>"; };
 		B65CACCE22F6634100350646 /* VarStem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = VarStem.cpp; sourceTree = "<group>"; };
+		B65CACD022F6651C00350646 /* Calling.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Calling.hpp; sourceTree = "<group>"; };
 		B67A7D4E22DDBDDA00ABA47C /* WorkFlow */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = WorkFlow; sourceTree = BUILT_PRODUCTS_DIR; };
 		B67A7D5822DDBDF200ABA47C /* main.wf */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.wf; sourceTree = "<group>"; };
 		B685E71C22F5277F0056BFF2 /* Token.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Token.hpp; sourceTree = "<group>"; };
@@ -96,7 +96,6 @@
 		B685E74722F5277F0056BFF2 /* Statement.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Statement.hpp; sourceTree = "<group>"; };
 		B685E74822F5277F0056BFF2 /* BlockStem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BlockStem.cpp; sourceTree = "<group>"; };
 		B685E74A22F5277F0056BFF2 /* Expression.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Expression.hpp; sourceTree = "<group>"; };
-		B685E74B22F5277F0056BFF2 /* NegativeExpr.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = NegativeExpr.cpp; sourceTree = "<group>"; };
 		B685E74C22F5277F0056BFF2 /* Calling.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Calling.cpp; sourceTree = "<group>"; };
 		B685E74D22F5277F0056BFF2 /* Expression.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Expression.cpp; sourceTree = "<group>"; };
 		B685E75022F5277F0056BFF2 /* Node.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Node.cpp; sourceTree = "<group>"; };
@@ -233,11 +232,11 @@
 		B685E73822F5277F0056BFF2 /* AST */ = {
 			isa = PBXGroup;
 			children = (
+				B685E75322F5277F0056BFF2 /* AST.hpp */,
 				B685E73B22F5277F0056BFF2 /* PrimaryNode */,
 				B685E74422F5277F0056BFF2 /* Statement */,
 				B685E74922F5277F0056BFF2 /* Expression */,
 				B685E74F22F5277F0056BFF2 /* Node */,
-				B685E75322F5277F0056BFF2 /* AST.hpp */,
 			);
 			path = AST;
 			sourceTree = "<group>";
@@ -268,9 +267,9 @@
 				B685E73A22F5277F0056BFF2 /* BinaryOperation.hpp */,
 				B685E75222F5277F0056BFF2 /* BinaryOperation.cpp */,
 				B685E74A22F5277F0056BFF2 /* Expression.hpp */,
-				B685E74B22F5277F0056BFF2 /* NegativeExpr.cpp */,
-				B685E74C22F5277F0056BFF2 /* Calling.cpp */,
 				B685E74D22F5277F0056BFF2 /* Expression.cpp */,
+				B65CACD022F6651C00350646 /* Calling.hpp */,
+				B685E74C22F5277F0056BFF2 /* Calling.cpp */,
 			);
 			path = Expression;
 			sourceTree = "<group>";
@@ -403,7 +402,6 @@
 				B685E78222F527840056BFF2 /* Statement.hpp in Sources */,
 				B685E78322F527840056BFF2 /* BlockStem.cpp in Sources */,
 				B685E78422F527840056BFF2 /* Expression.hpp in Sources */,
-				B685E78522F527840056BFF2 /* NegativeExpr.cpp in Sources */,
 				B685E78622F527840056BFF2 /* Calling.cpp in Sources */,
 				B685E78722F527840056BFF2 /* Expression.cpp in Sources */,
 				B685E78922F527840056BFF2 /* Node.cpp in Sources */,

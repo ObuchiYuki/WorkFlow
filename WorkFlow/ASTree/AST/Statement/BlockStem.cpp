@@ -13,6 +13,14 @@ using namespace wf::ast;
 
 BlockStem::BlockStem(std::vector<NodePtr> _children, Location _location) : Node(_children, _location) {};
 
+wf::run::Value BlockStem::eval(wf::run::Environment &env) {
+    for (let &child: children){
+        child->eval(env);
+    }
+    
+    return wf::run::Value::voidValue();
+}
+
 auto BlockStem::description() -> std::string const {
     var sstr = std::stringstream();
     
