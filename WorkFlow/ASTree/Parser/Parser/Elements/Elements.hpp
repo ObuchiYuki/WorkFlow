@@ -31,8 +31,12 @@ namespace wf {
                    
         OrElement(std::vector<_ParserPtr> _parsers);
                
-        auto match(Lexer& lexer) -> bool const override;
-        auto parse(Lexer& lexer, std::vector<NodePtr> &res) -> void const override;
+        auto match(Lexer& lexer, int stride) -> bool const override;
+        auto parse(Lexer& lexer, std::vector<NodePtr>& res) -> void const override;
+        auto rpeek(Lexer& lexer) -> int const override;
+
+        
+        
     };
 
     /// 登録されたパーサーに複数回マッチするかを調べます。
@@ -42,9 +46,10 @@ namespace wf {
         bool once;
     public:
         RepeatElement(_ParserPtr _parser, bool _once);
-                          
-        auto match(Lexer& lexer) -> bool const override;
-        auto parse(Lexer& lexer, std::vector<NodePtr> &res) -> void const override;
+        
+        auto match(Lexer& lexer, int stride) -> bool const override;
+        auto parse(Lexer& lexer, std::vector<NodePtr>& res) -> void const override;
+        auto rpeek(Lexer& lexer) -> int const override;
     };
 
     /// 指定されたTokenを読み飛ばします。
@@ -55,9 +60,11 @@ namespace wf {
     public:
         SkipElement(std::string _skipToken);
         SkipElement(std::vector<std::string> _skipTokens);
-                          
-        auto match(Lexer& lexer) -> bool const override;
-        auto parse(Lexer& lexer, std::vector<NodePtr> &res) -> void const override;
+
+        auto match(Lexer& lexer, int stride) -> bool const override;
+        auto parse(Lexer& lexer, std::vector<NodePtr>& res) -> void const override;
+        auto rpeek(Lexer& lexer) -> int const override;
+        
     };
 
     /// 指定された構文木をパーサー以下に追加します。
@@ -65,10 +72,10 @@ namespace wf {
         _ParserPtr parser;
     public:
         TreeElement(_ParserPtr _parser);
-                   
-        auto parse(Lexer& lexer, std::vector<NodePtr> &res) -> void const override;
-        auto match(Lexer& lexer) -> bool const override;
         
+        auto match(Lexer& lexer, int stride) -> bool const override;
+        auto parse(Lexer& lexer, std::vector<NodePtr>& res) -> void const override;
+        auto rpeek(Lexer& lexer) -> int const override;
     };
     
     class Precedence {
@@ -119,10 +126,10 @@ namespace wf {
     class ExprElement: public Element {
     public:
         ExprElement(_ParserPtr exp, Operators map);
-        
+    
+        auto match(Lexer& lexer, int stride) -> bool const override;
         auto parse(Lexer& lexer, std::vector<NodePtr>& res) -> void const override;
-        
-        auto match(Lexer& lexer) -> bool const override;
+        auto rpeek(Lexer& lexer) -> int const override;
         
     private:
         Operators ops;

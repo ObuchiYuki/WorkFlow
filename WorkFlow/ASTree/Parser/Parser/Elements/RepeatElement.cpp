@@ -23,7 +23,19 @@ RepeatElement::RepeatElement(_ParserPtr _parser, bool _once) : parser(_parser), 
 }
 
 // MARK: - Methods -
-auto RepeatElement::match(Lexer& lexer) -> bool const {
+auto RepeatElement::rpeek(Lexer& lexer) -> int const {
+    int stride = 0;
+    while (parser->match(lexer, stride)) {
+        stride = parser.rpeek(lexer);
+        
+        let node = parser->parse(lexer);
+        
+        if (node->numChildren() > 0) res.push_back(node);
+        if (once) break;
+    }
+}
+
+auto RepeatElement::match(Lexer& lexer, int stride) -> bool const {
     return parser->match(lexer);
 }
 
@@ -31,7 +43,6 @@ auto RepeatElement::parse(Lexer& lexer, std::vector<NodePtr> &res) -> void const
     
     while (parser->match(lexer)) {
         let node = parser->parse(lexer);
-        print("node::", node->description());
         
         if (node->numChildren() > 0) res.push_back(node);
         if (once) break;

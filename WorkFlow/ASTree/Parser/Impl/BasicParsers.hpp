@@ -53,6 +53,7 @@ public:
         rule<ast::IfStem>().skip("if").then(expr).then(block).optional(rule().skip("else").then(block)),
         rule<ast::WhileStem>().skip("while").then(expr).then(block),
         rule<ast::VarStem>().skip("def").then(Parser::name()).skip("=").then(expr),
+        
         rule<ast::Calling>().then(Parser::name()).skip("(").then(expr).skip(")"),
         rule<ast::Assgin>().then(Parser::name()).skip("=").then(expr),
     });
@@ -60,10 +61,6 @@ public:
     Parser program = rule().then(statement).skip(std::vector<std::string>({";", "EOL"}));
 
 };
-
-    
-    
-    
 
 
 

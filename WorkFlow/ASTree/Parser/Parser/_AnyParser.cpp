@@ -17,8 +17,8 @@ auto _AnyParser::parse(Lexer& lexer) -> NodePtr const {
     return _holder->parse(lexer);
 }
                 
-auto _AnyParser::match(Lexer &lexer) -> bool const {
-    return _holder->match(lexer);
+auto _AnyParser::match(Lexer &lexer, int stride) -> bool const {
+    return _holder->match(lexer, stride);
 }
     
 auto _AnyParser::addElement(ElementPtr element) -> void {

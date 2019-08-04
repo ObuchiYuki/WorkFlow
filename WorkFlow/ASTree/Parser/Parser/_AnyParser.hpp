@@ -21,10 +21,12 @@ class _AnyParser {
 private:
     class holder {
     public:
-
+        
         virtual auto parse(Lexer& lexer) -> NodePtr const = 0;
-        virtual auto match(Lexer& lexer) -> bool const = 0;
+        virtual auto match(Lexer& lexer, int stride) -> bool const = 0;
+        virtual auto rpeek(Lexer& lexer) -> int const = 0;
         virtual auto addElement(ElementPtr element) -> void = 0;
+        
         
     };
     
@@ -39,9 +41,13 @@ private:
             return parser->parse(lexer);
         }
         
-        auto match(Lexer& lexer) -> bool const override {
+        auto match(Lexer& lexer, int stride) -> bool const override {
             
-            return parser->match(lexer);
+            return parser->match(lexer, stride);
+        }
+        
+        virtual auto rpeek(Lexer& lexer) -> int const override {
+            return parser->rpeek(lexer);
         }
         
         auto addElement(ElementPtr element) -> void override {
@@ -61,7 +67,7 @@ private:
         
     auto parse(Lexer& lexer) -> NodePtr const;
                 
-    auto match(Lexer &lexer) -> bool const;
+    auto match(Lexer &lexer, int stride) -> bool const;
         
     auto addElement(ElementPtr element) -> void;
     };

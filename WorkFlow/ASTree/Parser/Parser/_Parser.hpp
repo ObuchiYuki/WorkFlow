@@ -18,13 +18,13 @@ namespace wf {
         std::vector<ElementPtr> elements;
                  
         /// Lexer& が Perserにマッチしているかを調べます。
-        virtual auto match(Lexer& lexer) -> bool const {
+        auto match(Lexer& lexer, int stride) -> bool const {
            
             return elements[0]->match(lexer);
         }
                  
         /// Lexerの値を元に実際にパースを行います。
-        virtual auto parse(Lexer& lexer) -> NodePtr const {
+        auto parse(Lexer& lexer) -> NodePtr const {
             std::vector<NodePtr> results = {};
                        
             for (let &element: elements) {
@@ -34,15 +34,19 @@ namespace wf {
             let rsize = results.size();
 
             if (rsize == 0) {
-                return std::shared_ptr<T>(new T({}, lexer.peek(0)->location));
+                return nullptr;
                 
-            }else
-            if (rsize == 1 and rm::type::equals<ast::Node, T>()) {
+            } else if (rsize == 1 and rm::type::equals<ast::Node, T>()) {
+                
                 return results[0];
             } else {
                 
                 return std::shared_ptr<T>(new T(results, results[0]->location));
             }
+        }
+        
+        auto rpeek(Lexer& lexer) -> int const {
+            
         }
           
         auto addElement(ElementPtr element) -> void{
