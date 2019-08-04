@@ -40,7 +40,7 @@ inline void print() { std::cout << std::endl; }
         
 template<class T, class... A>
 inline void print(const T& first, const A&... rest) {
-    std::cout << first; print(rest...);
+    std::cout << first << " "; print(rest...);
 }
         
 template<class... A>

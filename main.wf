@@ -1,5 +1,6 @@
-def i = 0
-while i < 100 {
-    i = i + 1     
-    prints("hello")
+a = 3
+printi(a)
+
+if a < 5 {
+    prints("a < 5")
 }

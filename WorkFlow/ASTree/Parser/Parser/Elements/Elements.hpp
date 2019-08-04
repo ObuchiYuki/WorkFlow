@@ -25,8 +25,7 @@ namespace wf {
     class OrElement: public Element{
     private:
         std::vector<_ParserPtr> parsers;
-        
-        auto chooseParser(Lexer& lexer, int gap) -> rm::optional<_ParserPtr> const;
+    
     public:
                    
         OrElement(std::vector<_ParserPtr> _parsers);

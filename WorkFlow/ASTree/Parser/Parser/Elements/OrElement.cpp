@@ -34,33 +34,23 @@ auto OrElement::match(Lexer& lexer, int gap) -> bool const {
 }
 
 auto OrElement::parse(Lexer& lexer, std::vector<NodePtr> &res) -> void const {
-    const rm::optional<_ParserPtr> _parser = chooseParser(lexer, 0);
-    
-    if (_parser) {
-        let parser = *_parser;
-        
-        res.push_back(parser->parse(lexer));
+    for (let &parser: parsers){
+        if (parser->match(lexer, 0)){
+            res.push_back(parser->parse(lexer));
+        }
     }
+    
 }
 
 // MARK: - Private Methods -
 
-auto OrElement::chooseParser(Lexer& lexer, int gap) -> rm::optional<_ParserPtr> const {
+auto OrElement::rstride(Lexer& lexer, int gap) -> int const {
     for (let &parser: parsers){
         if (parser->match(lexer, gap)){
-            return rm::optional<_ParserPtr>(parser);
+            return parser->rstride(lexer, gap);
         }
     }
-    return nil;
-}
-
-auto OrElement::rstride(Lexer& lexer, int gap) -> int const {
-    let _parser = chooseParser(lexer, gap);
-    if (_parser){
-        return (*_parser)->rstride(lexer, gap);
-    }else{
-        // TODO: - 直す - 
-        throw "Error";
-    }
-            
+    
+    // TODO: - 直す -
+    throw "Error";
 }
