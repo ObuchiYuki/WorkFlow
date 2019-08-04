@@ -120,6 +120,10 @@ namespace wf {
         void add(std::string name, int prec, Associative assoc) {
             map[name] = PrecedencePtr(new Precedence(prec, (assoc == Associative::LEFT)));
         }
+        bool match(std::string name) const {
+            auto itr = map.find(name);
+            return itr != map.end();
+        }
     };
 
     

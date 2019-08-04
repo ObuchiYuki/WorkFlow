@@ -24,7 +24,7 @@ namespace wf {
             
             for (let &element: elements) {
                 if (!element->match(lexer, rgap)) return false;
-                let a = element.rstride(rgap);
+                let a = element->rstride(lexer, rgap);
                     
                 rstride += a;
                 rgap += a;
@@ -61,7 +61,7 @@ namespace wf {
             auto rstride = 0;
             
             for (const auto &element: elements) {
-                auto a = element.rstride(rgap);
+                auto a = element->rstride(lexer, rgap);
               
                 rgap += a;
                 rstride += a;

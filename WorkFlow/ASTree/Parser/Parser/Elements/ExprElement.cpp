@@ -89,12 +89,12 @@ auto ExprElement::rstride(Lexer& lexer, int gap) -> int const {
         rstride += a;
         rgap += a;
           
-    }else if (op->match(lexer, rgap)){
+    }else if (ops.match(lexer.peek(rgap)->value)){
          rstride += 1;
          rgap += 1;
     }
     
-    return rstride
+    return rstride;
 }
     
     

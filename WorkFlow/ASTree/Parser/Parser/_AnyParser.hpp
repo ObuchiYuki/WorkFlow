@@ -47,7 +47,7 @@ private:
         }
         
         auto rstride(Lexer& lexer, int gap) -> int const override {
-            return parser->rpeek(lexer, gap);
+            return parser->rstride(lexer, gap);
         }
         
         auto addElement(ElementPtr element) -> void override {

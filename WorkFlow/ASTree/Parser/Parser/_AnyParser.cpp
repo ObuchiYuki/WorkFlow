@@ -26,5 +26,5 @@ auto _AnyParser::addElement(ElementPtr element) -> void {
 }
 
 auto _AnyParser::rstride(Lexer& lexer, int gap) -> int const {
-    _holder->rstride(lexer, gap);
+    return _holder->rstride(lexer, gap);
 }

@@ -27,10 +27,10 @@ auto RepeatElement::rstride(Lexer& lexer, int gap) -> int const {
     var rgap = gap;
     var rstride = 0;
     
-    while(parsar->match(lexer, rgap)) {
-        let a = parser->rstride(lexer, rgap)
-        rstride += a
-        rgap += a
+    while(parser->match(lexer, rgap)) {
+        let a = parser->rstride(lexer, rgap);
+        rstride += a;
+        rgap += a;
         
         if (once) break;
     }
@@ -44,7 +44,7 @@ auto RepeatElement::match(Lexer& lexer, int gap) -> bool const {
 
 auto RepeatElement::parse(Lexer& lexer, std::vector<NodePtr> &res) -> void const {
     
-    while (parser->match(lexer)) {
+    while (parser->match(lexer, 0)) {
         let node = parser->parse(lexer);
         
         if (node->numChildren() > 0) res.push_back(node);

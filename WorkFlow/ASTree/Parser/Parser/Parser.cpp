@@ -28,7 +28,7 @@ auto Parser::parse(Lexer& lexer) -> NodePtr {
         
  
 auto Parser::match(Lexer& lexer) -> bool {
-    return parser->match(lexer);
+    return parser->match(lexer, 0);
 }
 
 
