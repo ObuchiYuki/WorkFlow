@@ -31,7 +31,7 @@ namespace wf {
                    
         OrElement(std::vector<_ParserPtr> _parsers);
                
-        auto match(Lexer& lexer, int stride) -> bool const override;
+        auto match(Lexer& lexer, int gap) -> bool const override;
         auto parse(Lexer& lexer, std::vector<NodePtr>& res) -> void const override;
         auto rstride(Lexer& lexer, int gap) -> int const override;
         
@@ -46,7 +46,7 @@ namespace wf {
     public:
         RepeatElement(_ParserPtr _parser, bool _once);
         
-        auto match(Lexer& lexer, int stride) -> bool const override;
+        auto match(Lexer& lexer, int gap) -> bool const override;
         auto parse(Lexer& lexer, std::vector<NodePtr>& res) -> void const override;
         auto rstride(Lexer& lexer, int gap) -> int const override;
     };
@@ -60,7 +60,7 @@ namespace wf {
         SkipElement(std::string _skipToken);
         SkipElement(std::vector<std::string> _skipTokens);
 
-        auto match(Lexer& lexer, int stride) -> bool const override;
+        auto match(Lexer& lexer, int gap) -> bool const override;
         auto parse(Lexer& lexer, std::vector<NodePtr>& res) -> void const override;
         auto rstride(Lexer& lexer, int gap) -> int const override;
         
@@ -72,7 +72,7 @@ namespace wf {
     public:
         TreeElement(_ParserPtr _parser);
         
-        auto match(Lexer& lexer, int stride) -> bool const override;
+        auto match(Lexer& lexer, int gap) -> bool const override;
         auto parse(Lexer& lexer, std::vector<NodePtr>& res) -> void const override;
         auto rstride(Lexer& lexer, int gap) -> int const override;
         
@@ -127,7 +127,7 @@ namespace wf {
     public:
         ExprElement(_ParserPtr exp, Operators map);
     
-        auto match(Lexer& lexer, int stride) -> bool const override;
+        auto match(Lexer& lexer, int gap) -> bool const override;
         auto parse(Lexer& lexer, std::vector<NodePtr>& res) -> void const override;
         auto rstride(Lexer& lexer, int gap) -> int const override;
         
