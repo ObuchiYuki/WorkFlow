@@ -22,7 +22,7 @@ namespace wf {
                
         virtual auto match(Lexer& lexer, int stride) -> bool const = 0;
         virtual auto parse(Lexer& lexer, std::vector<NodePtr>& res) -> void const = 0;
-        virtual auto rpeek(Lexer& lexer) -> int const = 0;
+        virtual auto rpeek(Lexer& lexer, int stride) -> int const = 0;
     };
 }
 
