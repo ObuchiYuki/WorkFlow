@@ -41,7 +41,7 @@ namespace wf {
     class RepeatElement: public Element{
     private:
         _ParserPtr parser;
-        bool once;
+        bool isOptional;
     public:
         RepeatElement(_ParserPtr _parser, bool _once);
         

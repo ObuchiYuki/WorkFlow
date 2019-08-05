@@ -18,7 +18,7 @@
 using namespace wf;
 
 // MARK: - Constructor -
-RepeatElement::RepeatElement(_ParserPtr _parser, bool _once) : parser(_parser), once(_once) {
+RepeatElement::RepeatElement(_ParserPtr _parser, bool _once) : parser(_parser), isOptional(_once) {
     
 }
 
@@ -32,14 +32,14 @@ auto RepeatElement::rstride(Lexer& lexer, int gap) -> int const {
         rstride += a;
         rgap += a;
         
-        if (once) break;
+        if (isOptional) break;
     }
     
     return rstride;
 }
 
 auto RepeatElement::match(Lexer& lexer, int gap) -> bool const {
-    if (once) return true;
+    if (isOptional) return true;
     return parser->match(lexer, gap);
 }
 
@@ -49,7 +49,7 @@ auto RepeatElement::parse(Lexer& lexer, std::vector<NodePtr> &res) -> void const
         let node = parser->parse(lexer);
         
         if (node->numChildren() > 0) res.push_back(node);
-        if (once) break;
+        if (isOptional) break;
     }
 }
 

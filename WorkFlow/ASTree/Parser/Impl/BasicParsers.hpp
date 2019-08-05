@@ -30,10 +30,10 @@ public:
     Parser expr0 = rule();
     
     Parser primary = rule().ors({
-        rule<ast::Expression>().skip("(").then(expr0).skip(")"),
         Parser::integer(),
         Parser::name(),
         Parser::string(),
+        rule<ast::Expression>().skip("(").then(expr0).skip(")"),
     });
     
     Parser expr = expr0.expression(primary, ops);
@@ -41,12 +41,12 @@ public:
     Parser statement0 = rule();
     
     Parser block = rule<ast::BlockStem>()
-    .skip("{").optional(statement0)
-    .repeat(rule()
-        .skip(std::vector<std::string>({";", "EOL"}))
-        .optional(statement0)
-    )
-    .skip("}");
+        .skip("{").optional(statement0)
+        .repeat(rule()
+            .skip(std::vector<std::string>({";", "EOL"}))
+            .optional(statement0)
+        )
+        .skip("}");
     
     Parser statement = statement0.ors({
         rule<ast::IfStem>().skip("if").then(expr).then(block).optional(rule().skip("else").then(block)),

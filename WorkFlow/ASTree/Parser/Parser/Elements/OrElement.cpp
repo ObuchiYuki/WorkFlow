@@ -37,12 +37,12 @@ auto OrElement::match(Lexer& lexer, int gap) -> bool const {
 auto OrElement::parse(Lexer& lexer, std::vector<NodePtr> &res) -> void const {
     for (let &parser: parsers){
         if (parser->match(lexer, 0)){
-            print("OR", "peek(0):", lexer.peek(0)->value, ",match:", parser->description());
+            print("[OrElement::parse]", "peek(0):", lexer.peek(0)->value, ",match:", parser->description());
             
             res.push_back(parser->parse(lexer));
         }
     }
-    let msg = std::string("[OrElement] Nothing matched.") + " Top token is '" + lexer.peek(0)->value + "'";
+    let msg = std::string("[OrElement::parse] Nothing matched.") + " Top token is '" + lexer.peek(0)->value + "'";
     
     throw std::runtime_error(msg);
 }

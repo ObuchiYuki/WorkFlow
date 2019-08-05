@@ -34,7 +34,8 @@ auto ExprElement::parse(Lexer& lexer, std::vector<NodePtr>& res) -> void const {
 }
 
 auto ExprElement::match(Lexer& lexer, int gap) -> bool const {
-    print("[ExprElement::match]", "matched:", factor->match(lexer, gap) ? "true" : "false", "checked from:", lexer.peek(gap)->value);
+    print("[ExprElement::match]", "matched:", factor->match(lexer, gap) ? "true" : "false", "checked:", lexer.peek(gap)->value);
+    
     return factor->match(lexer, gap);
 }
 
@@ -84,9 +85,9 @@ NodePtr ExprElement::doShift(Lexer& lexer, NodePtr left, int prec) {
 auto ExprElement::rstride(Lexer& lexer, int gap) -> int const {
     auto rstride = 0;
     auto rgap = gap;
+    auto repeatFlag = true;
     
-    while (factor->match(lexer, rgap) || ops.match(lexer.peek(rgap)->value)) {
-
+    while (repeatFlag) {
         if (factor->match(lexer, rgap)){
             auto a = factor->rstride(lexer, rgap);
             rstride += a;
@@ -95,10 +96,15 @@ auto ExprElement::rstride(Lexer& lexer, int gap) -> int const {
         }else if (ops.match(lexer.peek(rgap)->value)){
              rstride += 1;
              rgap += 1;
+        }else{
+            repeatFlag = false;
         }
     }
     
-    print("[ExprElement::rstride]", "rstride:", rstride);
+    print("===================================================");
+    print("[ExprElement::rstride]", "rstride:", rstride, "from:", lexer.peek(gap)->value, "to:", lexer.peek(gap + rstride)->value);
+    print("===================================================");
+    
     return rstride;
 }
     
