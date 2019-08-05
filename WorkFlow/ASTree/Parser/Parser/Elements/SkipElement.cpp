@@ -33,6 +33,7 @@ auto SkipElement::match(Lexer& lexer, int gap) -> bool const {
         }
         rm::dprint("[SkipElement::match]","matched:", lexer.peek(gap)->value == skipToken ? "true" : "false"
               ,"skipToken: " , skipToken , "check:" , lexer.peek(gap)->value);
+        
         if (lexer.peek(gap)->value == skipToken) return true;
     }
     

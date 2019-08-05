@@ -9,21 +9,31 @@
 #ifndef rm_debug_h
 #define rm_debug_h
 
-namespace rm {
+namespace rm {namespace debug {
 
-inline void dprint() {
-    //std::cout << std::endl ;
+static constexpr bool use_debug = false;
+
+}
+
+inline constexpr void dprint() {
+    if (rm::debug::use_debug) {
+        std::cout << std::endl ;
+    }
 }
         
 template<class T, class... A>
-inline void dprint(const T& first, const A&... rest) {
-    //std::cout << first << " ";
-    //dprint(rest...);
+inline constexpr void dprint(const T& first, const A&... rest) {
+    if (rm::debug::use_debug) {
+        std::cout << first << " ";
+        dprint(rest...);
+    }
 }
         
 template<class... A>
-inline void dprint(const A&... rest) {
-    //dprint(rest...);
+inline constexpr void dprint(const A&... rest) {
+    if (rm::debug::use_debug) {
+        dprint(rest...);
+    }
 }
 
 

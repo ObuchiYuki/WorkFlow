@@ -41,9 +41,9 @@ public:
     Parser statement0 = rule();
     
     Parser block = rule<ast::BlockStem>()
-        .skip("{").optional(statement0)
+        .skip("{")
         .repeat(rule()
-            .skip(std::vector<std::string>({";", "EOL"}))
+            .skip("EOL")
             .optional(statement0)
         )
         .skip("}");
@@ -58,7 +58,7 @@ public:
         expr,
     });
     
-    Parser program = rule().then(statement).skip(std::vector<std::string>({";", "EOL"}));
+    Parser program = rule().ors({statement, rule()}).skip("EOL");
 
 };
 

@@ -236,6 +236,7 @@ TokenPtr wf::Lexer::peek(int stride) {
 }
 
 const void wf::Lexer::readLine() {
+    index += 1;
     var lineBuffer = new std::string();
     
     if (!getline(*reader, *lineBuffer)) {

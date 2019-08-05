@@ -8,6 +8,8 @@
 
 #include "Calling.hpp"
 
+#include <exception>
+
 using namespace wf::ast;
 
 Calling::Calling(std::vector<NodePtr> _children, Location _location) :
@@ -36,6 +38,8 @@ auto Calling::eval(wf::run::Environment& env) -> wf::run::Value {
         print(args()->eval(env).string());
     }else if (fnname == "printi") {
         print(args()->eval(env).integer());
+    }else{
+        throw std::runtime_error("Build-in funtion named " + fnname + "not found.");
     }
     
     return wf::run::Value::voidValue();

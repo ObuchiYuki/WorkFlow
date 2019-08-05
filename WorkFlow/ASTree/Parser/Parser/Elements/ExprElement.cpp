@@ -34,9 +34,10 @@ auto ExprElement::parse(Lexer& lexer, std::vector<NodePtr>& res) -> void const {
 }
 
 auto ExprElement::match(Lexer& lexer, int gap) -> bool const {
-    rm::dprint("[ExprElement::match]", "matched:", factor->match(lexer, gap) ? "true" : "false", "checked:", lexer.peek(gap)->value);
+    let a = factor->match(lexer, gap);
+    rm::dprint("[ExprElement::match]", "matched:", a ? "true" : "false", "checked:", lexer.peek(gap)->value);
     
-    return factor->match(lexer, gap);
+    return a;
 }
 
 // MARK: - Private -
@@ -88,6 +89,7 @@ auto ExprElement::rstride(Lexer& lexer, int gap) -> int const {
     auto repeatFlag = true;
     
     while (repeatFlag) {
+        
         if (factor->match(lexer, rgap)){
             auto a = factor->rstride(lexer, rgap);
             rstride += a;

@@ -145,6 +145,8 @@ namespace wf {
         Operators ops;
         _ParserPtr factor;
         
+        std::unordered_map<int, int> memo = {};
+        
         NodePtr doShift(Lexer& lexer, NodePtr left, int prec);
         
         PrecedencePtr nextOperator(Lexer& lexer);

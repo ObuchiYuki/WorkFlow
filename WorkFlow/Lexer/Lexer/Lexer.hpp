@@ -23,9 +23,10 @@ namespace wf {
         // MARK: - Private -
     private:
         // MARK: - Properties -
-        /// Fileの読み取り&用のReaderです。
+        
         int lineNumber;
         
+        /// Fileの読み取り&用のReaderです。
         std::ifstream* reader;
         
         /// 現在の行のToken列です。
@@ -44,6 +45,8 @@ namespace wf {
         
         // MARK: - Public -
     public:
+        int index = 0;
+
         // ======================================================= //
         // MARK: - Constructor -
         
@@ -58,6 +61,9 @@ namespace wf {
         
         /// 先のQueueを先読みします。メモリから消すことはありません。
         token::TokenPtr peek(int stride);
+        
+        /// 先頭のTokenのIndexです。
+        int currentIndex();
         
     };
 }
