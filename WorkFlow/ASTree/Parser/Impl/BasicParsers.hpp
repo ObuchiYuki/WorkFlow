@@ -55,7 +55,6 @@ public:
         
         rule<ast::Calling>().then(Parser::name()).skip("(").then(expr).skip(")"),
         rule<ast::Assgin>().then(Parser::name()).skip("=").then(expr),
-        expr,
     });
     
     Parser program = rule().ors({statement, rule()}).skip("EOL");

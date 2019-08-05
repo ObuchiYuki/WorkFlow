@@ -15,9 +15,6 @@
 #include <string>
 #include <chrono>
 
-
-#define rm_debug_on 1
-
 #include "Common.hpp"
 #include "rmkit.h"
 
@@ -54,7 +51,7 @@ int main() {
 
     auto duration = std::chrono::duration_cast<std::chrono::microseconds>(t2 - t1).count();
 
-    print(duration / double(1000 * 1000), "s");
+    print("⏰", duration / double(1000 * 1000), "s");
     
     // take almost 1 sec....
     

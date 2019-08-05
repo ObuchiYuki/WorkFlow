@@ -47,8 +47,9 @@ namespace wf {
             let rsize = results.size();
 
             if (rsize == 0) {
-                
+                rm::dprint("[_Parser::parse] Nothing matched. Something wrong...? This node will be omitted.");
                 return std::shared_ptr<T>(new T({}, lexer.peek(0)->location));
+                
             } else if (rsize == 1 and rm::type::equals<ast::Node, T>()) {
                 
                 return results[0];
@@ -78,15 +79,15 @@ namespace wf {
         }
         
         auto description() -> std::string const {
-            auto dec = std::string("[");
+            auto dec = std::vector<std::string>();
             
-            for (let &e: elements) {
-                dec += e->description() + ",";
+            for (let &e:elements) {
+                dec.push_back(e->description());
             }
-            dec += "]";
+            
             
             return "_Parser<" + rm::type::type_name<T>() + ">(elements = " +
-            dec
+           rm::description::vector(dec)
             + ")";
         }
     };

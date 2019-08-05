@@ -11,29 +11,29 @@
 
 namespace rm {namespace debug {
 
-static constexpr bool use_debug = false;
+static bool use_debug = true;
 
-}
 
-inline constexpr void dprint() {
+static inline void _dprint() {
     if (rm::debug::use_debug) {
         std::cout << std::endl ;
     }
 }
         
 template<class T, class... A>
-inline constexpr void dprint(const T& first, const A&... rest) {
+static inline void _dprint(const T& first, const A&... rest) {
     if (rm::debug::use_debug) {
+        
         std::cout << first << " ";
-        dprint(rest...);
+        _dprint(rest...);
     }
 }
-        
-template<class... A>
-inline constexpr void dprint(const A&... rest) {
-    if (rm::debug::use_debug) {
-        dprint(rest...);
-    }
+
+}
+
+template<class... T>
+void dprint(const T&... rest) {
+    rm::debug::_dprint(rest...);
 }
 
 

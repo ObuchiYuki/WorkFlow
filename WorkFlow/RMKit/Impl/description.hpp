@@ -14,8 +14,7 @@
 
 namespace rm {namespace description {
     
-template<typename T>
-std::string vector(std::vector<T> vector, std::function<T(std::string)> tranceform){
+inline std::string vector(std::vector<std::string> vector){
     std::string decra = "";
     if (vector.empty()) {
         decra += "[]";
@@ -23,11 +22,11 @@ std::string vector(std::vector<T> vector, std::function<T(std::string)> trancefo
     }
     
     decra += "[";
-    decra += tranceform(vector.front());
+    decra += vector.front();
     
     for (decltype(vector.size()) i = 1, c = vector.size(); i < c; ++i) {
         decra += ", ";
-        decra += tranceform(vector[i]);
+        decra += vector[i];
     }
     
     decra += "]";

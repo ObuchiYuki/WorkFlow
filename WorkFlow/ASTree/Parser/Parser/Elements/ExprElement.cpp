@@ -9,6 +9,7 @@
 #include "Elements.hpp"
 
 #include <vector>
+#include <exception>
 
 #include "Token.hpp"
 #include "Parser.hpp"
@@ -84,6 +85,13 @@ NodePtr ExprElement::doShift(Lexer& lexer, NodePtr left, int prec) {
     
 
 auto ExprElement::rstride(Lexer& lexer, int gap) -> int const {
+    let rindex = lexer.index + gap;
+    try {
+        return memo.at(rindex);
+    } catch (std::exception e) {
+        // おにぎり
+    }
+    
     auto rstride = 0;
     auto rgap = gap;
     auto repeatFlag = true;
@@ -105,7 +113,11 @@ auto ExprElement::rstride(Lexer& lexer, int gap) -> int const {
     
     rm::dprint("===================================================");
     rm::dprint("[ExprElement::rstride]", "rstride:", rstride, "from:", lexer.peek(gap)->value, "to:", lexer.peek(gap + rstride)->value);
+    rm::dprint("[ExprElement::rstride]", "set index at:", rindex, "rstride:", rstride);
     rm::dprint("===================================================");
+    
+    
+    memo[rindex] = rstride;
     
     return rstride;
 }

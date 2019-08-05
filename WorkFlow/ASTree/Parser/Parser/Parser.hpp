@@ -35,12 +35,12 @@ typedef std::shared_ptr<ast::Node>     NodePtr;
 
 }
 
-#include "_Parser.hpp"
-#include "_AnyParser.hpp"
-
 #include "Element.hpp"
 #include "Elements/Elements.hpp"
 #include "Elements/TokenElements.hpp"
+
+#include "_Parser.hpp"
+#include "_AnyParser.hpp"
 
 namespace wf {
     // MARK: - Parser -
