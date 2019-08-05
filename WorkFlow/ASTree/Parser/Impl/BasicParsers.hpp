@@ -55,6 +55,7 @@ public:
         
         rule<ast::Calling>().then(Parser::name()).skip("(").then(expr).skip(")"),
         rule<ast::Assgin>().then(Parser::name()).skip("=").then(expr),
+        expr,
     });
     
     Parser program = rule().then(statement).skip(std::vector<std::string>({";", "EOL"}));

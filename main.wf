@@ -1,14 +1,17 @@
-def i = 15
-if i % 3 == 0 {
-    if (i % 5) == 0 {
-        prints("FizzBuzz")
+def i = 0
+while(i < 100) {
+    i += 1
+    if i % 3 == 0 {
+        if (i % 5) == 0 {
+            prints("FizzBuzz")
+        }else{
+            prints("Fizz")
+        }
     }else{
-        prints("Fizz")
-    }
-}else{
-    if (i % 5) == 0 {
-        prints("Buzz")
-    }else{
-        printi(i)
+        if (i % 5) == 0 {
+            prints("Buzz")
+        }else{
+            printi(i)
+        }
     }
 }

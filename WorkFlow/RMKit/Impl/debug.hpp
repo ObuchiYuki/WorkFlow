@@ -12,12 +12,13 @@
 namespace rm {
 
 inline void dprint() {
-    //std::cout << std::endl;
+    //std::cout << std::endl ;
 }
         
 template<class T, class... A>
 inline void dprint(const T& first, const A&... rest) {
-    //std::cout << first << " "; dprint(rest...);
+    //std::cout << first << " ";
+    //dprint(rest...);
 }
         
 template<class... A>

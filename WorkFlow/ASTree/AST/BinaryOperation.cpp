@@ -43,6 +43,8 @@ wf::run::Value BinaryOperation::eval(wf::run::Environment& env) {
         return wf::run::Value(lsh.integer() % rsh.integer());
     }else if (op_s == "==") {
         return wf::run::Value(lsh.integer() == rsh.integer());
+    }else if (op_s == "+=") {
+        env.set(wf::ast::nodeAsLeaf(left())->token->value, wf::run::Value(lsh.integer() + rsh.integer()));
     }
     
     return wf::run::Value::voidValue();
