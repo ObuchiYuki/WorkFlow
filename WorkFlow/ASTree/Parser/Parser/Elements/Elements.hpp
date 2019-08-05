@@ -34,7 +34,7 @@ namespace wf {
         auto parse(Lexer& lexer, std::vector<NodePtr>& res) -> void const override;
         auto rstride(Lexer& lexer, int gap) -> int const override;
         
-        
+        auto description() -> std::string const override;
     };
 
     /// 登録されたパーサーに複数回マッチするかを調べます。
@@ -48,6 +48,8 @@ namespace wf {
         auto match(Lexer& lexer, int gap) -> bool const override;
         auto parse(Lexer& lexer, std::vector<NodePtr>& res) -> void const override;
         auto rstride(Lexer& lexer, int gap) -> int const override;
+        
+        auto description() -> std::string const override;
     };
 
     /// 指定されたTokenを読み飛ばします。
@@ -63,6 +65,8 @@ namespace wf {
         auto parse(Lexer& lexer, std::vector<NodePtr>& res) -> void const override;
         auto rstride(Lexer& lexer, int gap) -> int const override;
         
+        auto description() -> std::string const override;
+        
     };
 
     /// 指定された構文木をパーサー以下に追加します。
@@ -75,6 +79,7 @@ namespace wf {
         auto parse(Lexer& lexer, std::vector<NodePtr>& res) -> void const override;
         auto rstride(Lexer& lexer, int gap) -> int const override;
         
+        auto description() -> std::string const override;
     };
     
     class Precedence {
@@ -133,6 +138,8 @@ namespace wf {
         auto match(Lexer& lexer, int gap) -> bool const override;
         auto parse(Lexer& lexer, std::vector<NodePtr>& res) -> void const override;
         auto rstride(Lexer& lexer, int gap) -> int const override;
+        
+        auto description() -> std::string const override;
         
     private:
         Operators ops;

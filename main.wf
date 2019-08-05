@@ -1,3 +1,14 @@
-if 1 < 5 {
-    prints("1 < 5")
+def i = 15
+if i % 3 == 0 {
+    if (i % 5) == 0 {
+        prints("FizzBuzz")
+    }else{
+        prints("Fizz")
+    }
+}else{
+    if (i % 5) == 0 {
+        prints("Buzz")
+    }else{
+        printi(i)
+    }
 }

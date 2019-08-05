@@ -48,7 +48,7 @@ namespace wf {
 
             if (rsize == 0) {
                 
-                throw "";
+                return std::shared_ptr<T>(new T({}, lexer.peek(0)->location));
             } else if (rsize == 1 and rm::type::equals<ast::Node, T>()) {
                 
                 return results[0];
@@ -78,7 +78,16 @@ namespace wf {
         }
         
         auto description() -> std::string const {
-            return "_Parser<" + rm::type::type_name<T>() + ">(elements.size() = " + std::to_string(elements.size()) + ")";
+            auto dec = std::string("[");
+            
+            for (let &e: elements) {
+                dec += e->description() + ",";
+            }
+            dec += "]";
+            
+            return "_Parser<" + rm::type::type_name<T>() + ">(elements = " +
+            dec
+            + ")";
         }
     };
 }

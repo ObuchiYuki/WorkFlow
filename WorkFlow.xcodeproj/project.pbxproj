@@ -63,6 +63,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B604B05022F7DB4E00AA6B16 /* description.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = description.hpp; sourceTree = "<group>"; };
+		B604B05122F7E60100AA6B16 /* debug.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = debug.hpp; sourceTree = "<group>"; };
 		B60691EF22F5C77900AA2063 /* Value.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Value.hpp; sourceTree = "<group>"; };
 		B63C209A22F569DF0070C83A /* type.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = type.hpp; sourceTree = "<group>"; };
 		B63C20A022F574DE0070C83A /* TokenElements.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TokenElements.hpp; sourceTree = "<group>"; };
@@ -308,6 +310,8 @@
 				B685E75A22F5277F0056BFF2 /* any.hpp */,
 				B685E75B22F5277F0056BFF2 /* optional.hpp */,
 				B63C209A22F569DF0070C83A /* type.hpp */,
+				B604B05022F7DB4E00AA6B16 /* description.hpp */,
+				B604B05122F7E60100AA6B16 /* debug.hpp */,
 			);
 			path = Impl;
 			sourceTree = "<group>";
@@ -351,6 +355,7 @@
 				TargetAttributes = {
 					B67A7D4D22DDBDDA00ABA47C = {
 						CreatedOnToolsVersion = 10.2.1;
+						LastSwiftMigration = 1100;
 					};
 				};
 			};
@@ -537,18 +542,33 @@
 		B67A7D5622DDBDDA00ABA47C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4NN4TCPLE3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		B67A7D5722DDBDDA00ABA47C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4NN4TCPLE3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

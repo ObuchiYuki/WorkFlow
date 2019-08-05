@@ -34,7 +34,7 @@ auto ExprElement::parse(Lexer& lexer, std::vector<NodePtr>& res) -> void const {
 }
 
 auto ExprElement::match(Lexer& lexer, int gap) -> bool const {
-    print("[ExprElement::match]", "matched:", factor->match(lexer, gap) ? "true" : "false", "checked:", lexer.peek(gap)->value);
+    rm::dprint("[ExprElement::match]", "matched:", factor->match(lexer, gap) ? "true" : "false", "checked:", lexer.peek(gap)->value);
     
     return factor->match(lexer, gap);
 }
@@ -101,13 +101,17 @@ auto ExprElement::rstride(Lexer& lexer, int gap) -> int const {
         }
     }
     
-    print("===================================================");
-    print("[ExprElement::rstride]", "rstride:", rstride, "from:", lexer.peek(gap)->value, "to:", lexer.peek(gap + rstride)->value);
-    print("===================================================");
+    rm::dprint("===================================================");
+    rm::dprint("[ExprElement::rstride]", "rstride:", rstride, "from:", lexer.peek(gap)->value, "to:", lexer.peek(gap + rstride)->value);
+    rm::dprint("===================================================");
     
     return rstride;
 }
     
+auto ExprElement::description() -> std::string const{
+    return "[Expr]";
+}
+
     
 
 

@@ -14,6 +14,7 @@
 #include <memory>
 #include <fstream>
 
+#include "rmkit.h"
 #include "../Token.hpp"
 #include "../../Common.hpp"
 
@@ -219,7 +220,7 @@ TokenPtr wf::Lexer::readNext() {
         
         return removingQ;
     } else {
-        printf("EOF");
+        rm::dprint("EOF");
         return wf::token::EOFToken;
     }
 }

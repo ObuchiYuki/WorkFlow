@@ -31,7 +31,7 @@ auto SkipElement::match(Lexer& lexer, int gap) -> bool const {
         if (skipToken == "EOL" && lexer.peek(gap)->type == wf::token::TokenType::ENDLINE) {
             return true;
         }
-        print("[SkipElement::match]","matched:", lexer.peek(gap)->value == skipToken ? "true" : "false"
+        rm::dprint("[SkipElement::match]","matched:", lexer.peek(gap)->value == skipToken ? "true" : "false"
               ,"skipToken: " , skipToken , "check:" , lexer.peek(gap)->value);
         if (lexer.peek(gap)->value == skipToken) return true;
     }
@@ -39,10 +39,19 @@ auto SkipElement::match(Lexer& lexer, int gap) -> bool const {
     return false;
 }
 auto SkipElement::parse(Lexer& lexer, std::vector<NodePtr> &res) -> void const {
-    
-    lexer.readNext();
+    auto t = lexer.readNext();
+    rm::dprint("[SkipElement::parse]", "🔥skipped:", t->value);
 }
 
 auto SkipElement::rstride(Lexer& lexer, int gap) -> int const {
     return 1;
+}
+
+auto SkipElement::description() -> std::string const{
+    auto de = std::string("");
+    for (let &skipToken: skipTokens) {
+        de += "'" + skipToken + "' ";
+    }
+    
+    return de;
 }

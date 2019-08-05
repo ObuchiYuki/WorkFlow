@@ -39,6 +39,20 @@ namespace wf {namespace token {
         /// コンパイラディレクティブ
         DIRECTIVE       = 70,
     };
+inline std::string TokenTypeDescription(TokenType tokenType){
+    switch (tokenType) {
+        case TokenType::ENDFILE: return "EOF";
+        case TokenType::ENDLINE: return "EOL";
+        case TokenType::IDENTIFIER: return "IDENTIFIER";
+        case TokenType::SYMBOL: return "SYMBOL";
+        case TokenType::OPERATOR: return "OPERATOR";
+        case TokenType::INTEGER: return "INTEGER";
+        case TokenType::STRING: return "STRING";
+        case TokenType::FLOAT: return "FLOAT";
+        case TokenType::DIRECTIVE: return "DIRECTIVE";
+        default: break;
+    }
+}
     // =============================================================== //
     // MARK: - Token -
             

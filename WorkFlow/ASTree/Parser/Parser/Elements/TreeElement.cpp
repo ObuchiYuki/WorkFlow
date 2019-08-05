@@ -36,3 +36,7 @@ auto TreeElement::parse(Lexer& lexer, std::vector<NodePtr> &res) -> void const {
 auto TreeElement::rstride(Lexer& lexer, int gap) -> int const {
     return parser->rstride(lexer, gap);
 }
+
+auto TreeElement::description() -> std::string const{
+    return "[Tree]";
+}

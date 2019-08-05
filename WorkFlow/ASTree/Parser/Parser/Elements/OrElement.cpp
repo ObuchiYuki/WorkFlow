@@ -35,13 +35,23 @@ auto OrElement::match(Lexer& lexer, int gap) -> bool const {
 }
 
 auto OrElement::parse(Lexer& lexer, std::vector<NodePtr> &res) -> void const {
+    rm::dprint("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+    rm::dprint("+++++++++++++++++++++++ Start OR ++++++++++++++++++++++");
     for (let &parser: parsers){
         if (parser->match(lexer, 0)){
-            print("[OrElement::parse]", "peek(0):", lexer.peek(0)->value, ",match:", parser->description());
+            rm::dprint("[OrElement::parse]", "⭕️ matched:", lexer.peek(0)->value, ",match:", parser->description());
             
             res.push_back(parser->parse(lexer));
+            return;
+        }else{
+            rm::dprint("[OrElement::parse]", "✖️ not matched:",lexer.peek(0)->value,"parser:", parser->description());
+            rm::dprint();
         }
     }
+    
+    rm::dprint("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+    rm::dprint("+++++++++++++++++++++++ End OR ++++++++++++++++++++++");
+    
     let msg = std::string("[OrElement::parse] Nothing matched.") + " Top token is '" + lexer.peek(0)->value + "'";
     
     throw std::runtime_error(msg);
@@ -58,4 +68,8 @@ auto OrElement::rstride(Lexer& lexer, int gap) -> int const {
     
     // TODO: - 直す -
     throw "Error";
+}
+
+auto OrElement::description() -> std::string const{
+    return "[Or]";
 }

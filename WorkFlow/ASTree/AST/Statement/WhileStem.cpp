@@ -25,7 +25,6 @@ auto WhileStem::description() -> std::string const {
 
 wf::run::Value WhileStem::eval(wf::run::Environment &env) {
     while (condition()->eval(env).boolean()) {
-        print("roop");
         block()->eval(env);
     }
     

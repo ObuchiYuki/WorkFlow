@@ -54,10 +54,9 @@ auto RepeatElement::parse(Lexer& lexer, std::vector<NodePtr> &res) -> void const
 }
 
 
-
-
-
-
+auto RepeatElement::description() -> std::string const{
+    return "[Repeat " + parser->description() + "]";
+}
 
 
 

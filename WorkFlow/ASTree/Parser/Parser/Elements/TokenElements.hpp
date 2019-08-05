@@ -17,13 +17,17 @@ namespace wf {
 template<class T>
 class TokenElement: public Element {
 public:
-    virtual bool isMatch(token::TokenPtr token) const = 0 ;
+    virtual token::TokenType matchType() const = 0;
+    
+    bool isMatch(token::TokenPtr token) const {
+        return matchType() == token->type;
+    };
     
     TokenElement() {}
     virtual ~TokenElement(){}
     
     auto match(Lexer& lexer, int gap) -> bool const override {
-        print("[TokenElement::match]", "matched:", isMatch(lexer.peek(gap)) ? "true" : "false", "checked: ", lexer.peek(gap)->value);
+        rm::dprint("[TokenElement::match]", "matched:", isMatch(lexer.peek(gap)) ? "true" : "false", "checked: ", lexer.peek(gap)->value);
         
         return isMatch(lexer.peek(gap));
     }
@@ -36,35 +40,39 @@ public:
     auto rstride(Lexer& lexer, int gap) -> int const override {
         return 1;
     }
+    
+    auto description() -> std::string const override {
+        return "[Token " + token::TokenTypeDescription(matchType()) + "]";
+    }
 };
 
 class IntegerElement: public TokenElement<ast::IntegerLiteral> {
-    bool isMatch(token::TokenPtr token) const override {
-        return token->type == token::TokenType::INTEGER;
+    token::TokenType matchType() const override {
+        return token::TokenType::INTEGER;
     }
 };
 
 class StringElement: public TokenElement<ast::StringLiteral> {
-    bool isMatch(token::TokenPtr token) const override {
-        return token->type == token::TokenType::STRING;
+    token::TokenType matchType() const override {
+        return token::TokenType::STRING;
     }
 };
 
 class OperatorElement: public TokenElement<ast::Operator> {
-    bool isMatch(token::TokenPtr token) const override {
-        return token->type == token::TokenType::OPERATOR;
+    token::TokenType matchType() const override {
+        return token::TokenType::OPERATOR;
     }
 };
 
 class IDElement: public TokenElement<ast::Name> {
-    bool isMatch(token::TokenPtr token) const override {
-        return token->type == token::TokenType::IDENTIFIER;
+    token::TokenType matchType() const override {
+        return token::TokenType::IDENTIFIER;
     }
 };
 
 class DerectiveElement: public TokenElement<ast::Directive> {
-    bool isMatch(token::TokenPtr token) const override {
-        return token->type == token::TokenType::DIRECTIVE;
+    token::TokenType matchType() const override {
+        return token::TokenType::DIRECTIVE;
     }
 };
 

@@ -12,5 +12,7 @@
 #include "Impl/optional.hpp"
 #include "Impl/any.hpp"
 #include "Impl/type.hpp"
+#include "Impl/description.hpp"
+#include "Impl/debug.hpp"
 
 #endif /* rmkit_h */
