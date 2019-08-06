@@ -24,52 +24,59 @@ OrElement::OrElement(std::vector<_ParserPtr> _parsers): parsers(_parsers) {
 
 // MARK: - Methods -
 auto OrElement::match(Lexer& lexer, int gap) -> bool const {
-    
-    for (let &parser: parsers){
-        if (parser->match(lexer, gap)){
-            return true;
-        }
+    rm::dprint("------------------------ OR match Start ------------------------");
+    try {
+        chooseParser(lexer, gap);
+        rm::dprint("------------------------ OR match End ------------------------");
+        return true;
+    }catch(std::exception e){
+        rm::dprint("------------------------ OR match End ------------------------");
+        return false;
     }
-          
-    return false;
+    
 }
 
 auto OrElement::parse(Lexer& lexer, std::vector<NodePtr> &res) -> void const {
     rm::dprint("------------------------ OR parse Start ------------------------");
-    for (let &parser: parsers){
-        if (parser->match(lexer, 0)){
-            rm::dprint("[OrElement::parse]", "⭕️ matched:", lexer.peek(0)->value, ",match:", parser->description());
-            
-            res.push_back(parser->parse(lexer));
-            rm::dprint("------------------------ OR parse End ------------------------");
-            return;
-        }else{
-            rm::dprint("[OrElement::parse]", "✖️ not matched:",lexer.peek(0)->value,"parser:", parser->description());
-            rm::dprint();
-        }
-    }
+
+    auto parser = chooseParser(lexer, lexer.index);
     
-    let msg = std::string("[OrElement::parse] Nothing matched.") + " Top token is '" + lexer.peek(0)->value + "'";
+    rm::dprint("[OrElement::parse]", "⭕️ matched:", lexer.peek(0)->value, ",match:", parser->description());
     
-    throw std::runtime_error(msg);
+    res.push_back(parser->parse(lexer));
+    
+    rm::dprint("------------------------ OR parse End ------------------------");
 }
 
 // MARK: - Private Methods -
 
 auto OrElement::rstride(Lexer& lexer, int gap) -> int const {
     rm::dprint("------------------------ OR rstride Start ------------------------");
-    for (let &parser: parsers){
-        if (parser->match(lexer, gap)){
-            rm::dprint("------------------------ OR rstride End ------------------------");
-            return parser->rstride(lexer, gap);
-        }
-    }
+    auto parser = chooseParser(lexer, gap);
+    rm::dprint("------------------------ OR rstride End ------------------------");
+    return parser->rstride(lexer, gap);
     
-    
-    // TODO: - 直す -
-    throw "Error";
 }
 
 auto OrElement::description() -> std::string const{
     return "[Or]";
+}
+
+auto OrElement::chooseParser(Lexer& lexer, int index) -> _ParserPtr const {
+    rm::dprint("[OrElement::chooseParser]", "peek(",index,"):", lexer.peek(index)->value);
+    try {
+        auto parser = matched_parser_memo.at(index);
+        rm::dprint("[OrElement::chooseParser]", "ALREADY");
+        return parser;
+    } catch (std::exception e) {
+        for (let &parser: parsers){
+            if (parser->match(lexer, index)){
+                matched_parser_memo[index] = parser;
+                print("[OrElement::chooseParser]", "NEW");
+                return parser;
+            }
+        }
+        
+        throw std::runtime_error("[OrElement::chooseParser] cannot find any matching parser.");
+    }
 }

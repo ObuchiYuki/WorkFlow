@@ -30,10 +30,7 @@ public:
     
     
     auto match(Lexer& lexer, int gap) -> bool const override {
-        if (lexer.peek(gap)->value == "Hello World"){
-            
-        }
-        rm::dprint("[TokenElement::match]", "matched:", isMatch(lexer.peek(gap)) ? "true" : "false", "checked: ", lexer.peek(gap)->value);
+        rm::dprint("[TokenElement<"+ token::TokenTypeDescription(matchType()) +">::match]", "matched:", isMatch(lexer.peek(gap)) ? "true" : "false", "checked: ", lexer.peek(gap)->value);
         
         return isMatch(lexer.peek(gap));
     }

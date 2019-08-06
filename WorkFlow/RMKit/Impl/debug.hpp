@@ -15,25 +15,22 @@ static bool use_debug = true;
 
 
 static inline void _dprint() {
-    if (rm::debug::use_debug) {
-        std::cout << std::endl ;
-    }
+    std::cout << std::endl ;
 }
         
 template<class T, class... A>
 static inline void _dprint(const T& first, const A&... rest) {
-    if (rm::debug::use_debug) {
-        
-        std::cout << first << " ";
-        _dprint(rest...);
-    }
+    std::cout << first << " ";
+    _dprint(rest...);
 }
 
 }
 
 template<class... T>
 void dprint(const T&... rest) {
-    rm::debug::_dprint(rest...);
+    if (rm::debug::use_debug){
+        rm::debug::_dprint(rest...);
+    }
 }
 
 

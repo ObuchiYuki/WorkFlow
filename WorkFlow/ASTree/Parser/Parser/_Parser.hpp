@@ -87,8 +87,8 @@ namespace wf {
             
             
             return "_Parser<" + rm::type::type_name<T>() + ">(elements = " +
-           rm::description::vector(dec)
-            + ")";
+                        rm::description::vector(dec)
+                    + ")";
         }
     };
 }

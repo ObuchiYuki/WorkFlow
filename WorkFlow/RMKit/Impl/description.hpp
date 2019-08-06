@@ -14,7 +14,7 @@
 
 namespace rm {namespace description {
     
-inline std::string vector(std::vector<std::string> vector){
+inline std::string vector(std::vector<std::string>& vector){
     std::string decra = "";
     if (vector.empty()) {
         decra += "[]";

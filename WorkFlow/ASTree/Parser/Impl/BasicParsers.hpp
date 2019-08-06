@@ -42,10 +42,11 @@ public:
     
     Parser block = rule<ast::BlockStem>()
         .skip("{")
-        .repeat(rule()
+        .optional(rule().repeat(rule()
+                               
             .skip("EOL")
             .optional(statement0)
-        )
+        ))
         .skip("}");
     
     Parser statement = statement0.ors({

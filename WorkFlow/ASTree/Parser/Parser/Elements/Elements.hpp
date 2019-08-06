@@ -11,7 +11,7 @@
 
 #include <vector>
 #include <string>
-
+#include <exception>
 #include <unordered_map>
 
 #include "rmkit.h"
@@ -25,6 +25,9 @@ namespace wf {
     class OrElement: public Element{
     private:
         std::vector<_ParserPtr> parsers;
+        std::unordered_map<int, _ParserPtr> matched_parser_memo;
+        
+        auto chooseParser(Lexer& lexer, int index) -> _ParserPtr const;
     
     public:
                    

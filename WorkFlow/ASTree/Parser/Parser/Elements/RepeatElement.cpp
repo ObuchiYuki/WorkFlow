@@ -29,6 +29,7 @@ auto RepeatElement::rstride(Lexer& lexer, int gap) -> int const {
     
     rm::dprint("------------------------ Repeat rstride Start ------------------------");
     while(parser->match(lexer, rgap)) {
+        print(gap);
         let a = parser->rstride(lexer, rgap);
         rstride += a;
         rgap += a;

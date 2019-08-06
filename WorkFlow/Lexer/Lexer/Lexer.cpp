@@ -214,9 +214,11 @@ const bool wf::Lexer::loadNext(int stride) {
 };
 
 TokenPtr wf::Lexer::readNext() {
+    
     if (loadNext(0)){
         let removingQ = queue[0];
         queue.erase(queue.begin(), queue.begin()+1);
+        index += 1;
         
         return removingQ;
     } else {
@@ -236,7 +238,6 @@ TokenPtr wf::Lexer::peek(int stride) {
 }
 
 const void wf::Lexer::readLine() {
-    index += 1;
     var lineBuffer = new std::string();
     
     if (!getline(*reader, *lineBuffer)) {
