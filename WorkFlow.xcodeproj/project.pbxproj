@@ -116,6 +116,7 @@
 		B69E882F22FA6B5E0064BE9B /* OrElement.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OrElement.hpp; sourceTree = "<group>"; };
 		B69E884322FA74890064BE9B /* Element.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Element.cpp; sourceTree = "<group>"; };
 		B69F406C22FA799000795378 /* ExprElement.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ExprElement.hpp; sourceTree = "<group>"; };
+		B69F406D22FABAF600795378 /* RepeatElement.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RepeatElement.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +231,7 @@
 				B685E72F22F5277F0056BFF2 /* OrElement.cpp */,
 				B69F406C22FA799000795378 /* ExprElement.hpp */,
 				B685E73222F5277F0056BFF2 /* ExprElement.cpp */,
+				B69F406D22FABAF600795378 /* RepeatElement.hpp */,
 				B685E72E22F5277F0056BFF2 /* RepeatElement.cpp */,
 				B685E73022F5277F0056BFF2 /* TreeElement.cpp */,
 				B685E73322F5277F0056BFF2 /* SkipElement.cpp */,
