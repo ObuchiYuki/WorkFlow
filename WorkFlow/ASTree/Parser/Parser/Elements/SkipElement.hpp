@@ -1,15 +1,16 @@
 //
-//  TreeElement.hpp
+//  SkipElement.hpp
 //  WorkFlow
 //
 //  Created by yuki on 2019/08/07.
 //  Copyright © 2019 yuki. All rights reserved.
 //
 
-#ifndef TreeElement_h
-#define TreeElement_h
+#ifndef SkipElement_h
+#define SkipElement_h
 
 #include <vector>
+#include <string>
 
 #include "Element.hpp"
 #include "Lexer.hpp"
@@ -17,21 +18,24 @@
 
 namespace wf {
 
-
-/// 指定された構文木をパーサー以下に追加します。
-class TreeElement: public Element {
-    _ParserPtr parser;
+/// 指定されたTokenを読み飛ばします。
+class SkipElement: public Element{
+private:
+    std::vector<std::string> skipTokens;
+           
 public:
-    TreeElement(_ParserPtr _parser);
-    
+    SkipElement(std::string _skipToken);
+    SkipElement(std::vector<std::string> _skipTokens);
+
     auto match(Lexer& lexer, int gap) const -> const bool override;
     auto parse(Lexer& lexer, std::vector<NodePtr>& res) const -> void override;
     auto rstride(Lexer& lexer, int gap) const -> const int override;
     
     auto description() const -> const std::string override;
+    
 };
 
 
 }
 
-#endif /* TreeElement_h */
+#endif /* SkipElement_h */

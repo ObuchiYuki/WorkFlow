@@ -9,7 +9,13 @@
 #ifndef OrElement_h
 #define OrElement_h
 
+#include <vector>
+#include <string>
+#include <unordered_map>
+
 #include "Element.hpp"
+#include "Lexer.hpp"
+#include "Parser.hpp"
 
 namespace wf {
 
