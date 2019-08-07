@@ -1,2 +1,2 @@
-def i = 0
+def i = 1 + 2 * 2
 prints("Hello")

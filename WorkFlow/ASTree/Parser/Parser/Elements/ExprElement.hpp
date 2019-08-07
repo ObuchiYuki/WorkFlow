@@ -32,18 +32,22 @@ public:
     /// 演算子の結合方向
     const Associative associative;
 
-    
+    // MARK: - Constructor -
     Operator(const std::string _value, const int _priority, const Associative _associative) :
     value(_value), priority(_priority), associative(_associative)
     {}
 };
 
+/// 演算子をまとめて表します。
 class Operators {
 public:
     
+    /// 演算子
     std::vector<Operator> operators;
     
     // MARK: - Methods -
+    
+    /// 演算子が存在するかを返します。
     auto match(std::string value) const -> const bool {
         for (let &op: operators){
             if (op.value == value) return true;
@@ -51,15 +55,16 @@ public:
         return false;
     }
     
+    // MARK: - Constructor -
     Operators(std::vector<Operator> _operators) : operators(_operators) {}
 
 };
 
-
+/// 式を評価します。
 class ExprElement: public Element {
 private:
     
-    Operators operators; // FIXME: とる
+    Operators operators;
     _ParserPtr factor;
 public:
     ExprElement(_ParserPtr _factor, Operators _operators) : factor(_factor), operators(_operators) {}
