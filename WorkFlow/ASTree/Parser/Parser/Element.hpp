@@ -23,14 +23,14 @@ namespace wf {
         // =============================================================== //
         // MARK: - Properties -
         
-        std::unordered_map<int, int>  rstride_memo;
-        std::unordered_map<int, bool> match_memo;
+        std::unordered_map<int, int> mutable rstride_memo;
+        std::unordered_map<int, bool> mutable match_memo;
         
         // =============================================================== //
         // MARK: - Methods -
         
         /// 要素が現在のLexer+gapにマッチするかを返します。
-        auto isMatch(Lexer& lexer, int gap) -> bool const {
+        auto isMatch(Lexer& lexer, int gap) const -> bool const {
             let absIndex = lexer.absIndex(gap);
             try {
                 return match_memo.at(absIndex);
@@ -44,7 +44,7 @@ namespace wf {
         }
         
         /// 現在のLexer+gapに関しての相対的トークン量を返します。
-        auto getRstride(Lexer& lexer, int gap) -> int const {
+        auto getRstride(Lexer& lexer, int gap) const -> int const {
             let absIndex = lexer.absIndex(gap);
             try {
                 return rstride_memo.at(absIndex);
@@ -57,13 +57,13 @@ namespace wf {
         }
         
         
-        virtual auto parse(Lexer& lexer, std::vector<NodePtr>& res) -> void const = 0;
-        virtual auto description() -> std::string const = 0;
+        virtual auto parse(Lexer& lexer, std::vector<NodePtr>& res) const -> void = 0;
+        virtual auto description() const -> const std::string = 0;
         
     private:
         
-        virtual auto match(Lexer& lexer, int gap) -> bool const = 0;
-        virtual auto rstride(Lexer& lexer, int gap) -> int const = 0;
+        virtual auto match(Lexer& lexer, int gap) const -> const bool = 0;
+        virtual auto rstride(Lexer& lexer, int gap) const -> const int = 0;
     };
 }
 

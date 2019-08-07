@@ -25,7 +25,7 @@ private:
     
     /// 分岐にマッチしたパーサーが入ります。
     /// memo[absIndex: MatchedParser]
-    std::unordered_map<int, _ParserPtr> matched_parser_memo;
+    std::unordered_map<int, _ParserPtr> mutable matched_parser_memo;
     
 public:
                
@@ -33,11 +33,11 @@ public:
     OrElement(std::vector<_ParserPtr> _parsers) : parsers(_parsers) {}
     
     // MARK: - Overrided Methods -
-    auto match(Lexer& lexer, int gap) -> bool const override;
-    auto parse(Lexer& lexer, std::vector<NodePtr>& res) -> void const override;
-    auto rstride(Lexer& lexer, int gap) -> int const override;
+    auto match(Lexer& lexer, int gap) const -> bool const override;
+    auto parse(Lexer& lexer, std::vector<NodePtr>& res) const -> void override;
+    auto rstride(Lexer& lexer, int gap) const -> int const override;
     
-    auto description() -> std::string const override;
+    auto description() const -> const std::string override;
     
 private:
     
@@ -45,7 +45,7 @@ private:
     
     /// 現在のLexer + gap にマッチするパーサーを探します。
     /// 結果は保持されます。
-    auto chooseParser(Lexer& lexer, int gap) -> _ParserPtr const;
+    auto chooseParser(Lexer& lexer, int gap) const -> const _ParserPtr;
 
 };
 

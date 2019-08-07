@@ -23,21 +23,21 @@ TreeElement::TreeElement(_ParserPtr _parser): parser(_parser) {
 
 // MARK: - Methods -
 
-auto TreeElement::match(Lexer& lexer, int gap) -> bool const {
+auto TreeElement::match(Lexer& lexer, int gap) const -> bool const {
     
     return parser->match(lexer, gap);
 }
 
-auto TreeElement::parse(Lexer& lexer, std::vector<NodePtr> &res) -> void const {
+auto TreeElement::parse(Lexer& lexer, std::vector<NodePtr> &res) const -> void {
                    
     res.push_back(parser->parse(lexer));
 }
 
-auto TreeElement::rstride(Lexer& lexer, int gap) -> int const {
+auto TreeElement::rstride(Lexer& lexer, int gap) const -> int const {
     
     return parser->rstride(lexer, gap);
 }
 
-auto TreeElement::description() -> std::string const{
+auto TreeElement::description() const -> const std::string{
     return "[Tree]";
 }

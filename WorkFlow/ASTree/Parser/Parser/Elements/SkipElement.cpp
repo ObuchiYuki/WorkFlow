@@ -25,7 +25,7 @@ SkipElement::SkipElement(std::vector<std::string> _skipTokens) : skipTokens(_ski
 }
 // MARK: - Methods -
 
-auto SkipElement::match(Lexer& lexer, int gap) -> bool const {
+auto SkipElement::match(Lexer& lexer, int gap) const -> bool const {
     
     for (let &skipToken: skipTokens) {
         if (skipToken == "EOL" && lexer.peek(gap)->type == wf::token::TokenType::ENDLINE) {
@@ -37,16 +37,16 @@ auto SkipElement::match(Lexer& lexer, int gap) -> bool const {
     
     return false;
 }
-auto SkipElement::parse(Lexer& lexer, std::vector<NodePtr> &res) -> void const {
+auto SkipElement::parse(Lexer& lexer, std::vector<NodePtr> &res) const -> void {
     
     auto t = lexer.readNext();
 }
 
-auto SkipElement::rstride(Lexer& lexer, int gap) -> int const {
+auto SkipElement::rstride(Lexer& lexer, int gap) const -> int const {
     return 1;
 }
 
-auto SkipElement::description() -> std::string const{
+auto SkipElement::description() const -> const std::string{
     auto de = std::string("");
     for (let &skipToken: skipTokens) {
         de += "'" + skipToken + "' ";

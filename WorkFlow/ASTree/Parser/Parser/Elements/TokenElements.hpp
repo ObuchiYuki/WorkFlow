@@ -30,23 +30,23 @@ public:
     virtual ~TokenElement(){}
     
     // MARK: - Overrided Methods -
-    auto match(Lexer& lexer, int gap) -> bool const override {
+    auto match(Lexer& lexer, int gap) const -> bool const override {
         
         return isMatch(lexer.peek(gap));
     }
-    auto rstride(Lexer& lexer, int gap) -> int const override {
+    auto rstride(Lexer& lexer, int gap) const -> int const override {
         
         return 1;
     }
     
-    auto parse(Lexer& lexer, std::vector<NodePtr> &res) -> void const override {
+    auto parse(Lexer& lexer, std::vector<NodePtr> &res) const -> void override {
         let token = lexer.readNext();
         let leaf = ast::LeafPtr(new T(token, token->location));
         
         res.push_back(leaf);
     }
     
-    auto description() -> std::string const override {
+    auto description() const -> const std::string override {
         return "[Token " + token::TokenTypeDescription(matchType()) + "]";
     }
 private:

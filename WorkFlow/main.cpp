@@ -7,7 +7,13 @@
 //
 
 
-// TODO: - 計算量を小さくする -
+/**
+ - Expr 分割
+ 
+ - 各所 const に
+ - 後置に
+ 
+ */
 
 #include <iostream>
 #include <fstream>

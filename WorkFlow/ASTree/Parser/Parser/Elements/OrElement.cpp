@@ -18,7 +18,7 @@
 using namespace wf;
 
 // MARK: - Methods -
-auto OrElement::match(Lexer& lexer, int gap) -> bool const {
+auto OrElement::match(Lexer& lexer, int gap) const -> bool const {
     try {
         chooseParser(lexer, gap);
         return true;
@@ -27,23 +27,23 @@ auto OrElement::match(Lexer& lexer, int gap) -> bool const {
     }
 }
 
-auto OrElement::rstride(Lexer& lexer, int gap) -> int const {
+auto OrElement::rstride(Lexer& lexer, int gap) const -> int const {
     auto parser = chooseParser(lexer, gap);
     
     return parser->rstride(lexer, gap);
 }
 
-auto OrElement::parse(Lexer& lexer, std::vector<NodePtr> &res) -> void const {
+auto OrElement::parse(Lexer& lexer, std::vector<NodePtr> &res) const -> void {
     auto parser = chooseParser(lexer, 0);
     
     res.push_back(parser->parse(lexer));
 }
 
-auto OrElement::description() -> std::string const{
+auto OrElement::description() const -> const std::string {
     return "[Or]";
 }
 
-auto OrElement::chooseParser(Lexer& lexer, int index) -> _ParserPtr const {
+auto OrElement::chooseParser(Lexer& lexer, int index) const -> _ParserPtr const {
     int absIndex = lexer.absIndex(index);
     
     try {

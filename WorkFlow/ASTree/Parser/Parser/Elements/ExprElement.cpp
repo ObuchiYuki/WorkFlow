@@ -21,7 +21,7 @@ using namespace wf;
 // MARK: - Impl -
 ExprElement::ExprElement(_ParserPtr exp, Operators map) : ops(map), factor(exp) {};
 
-auto ExprElement::parse(Lexer& lexer, std::vector<NodePtr>& res) -> void const {
+auto ExprElement::parse(Lexer& lexer, std::vector<NodePtr>& res) const -> void {
     NodePtr right = factor->parse(lexer);
     PrecedencePtr prec = nextOperator(lexer);
     
@@ -34,12 +34,12 @@ auto ExprElement::parse(Lexer& lexer, std::vector<NodePtr>& res) -> void const {
     res.push_back(right);
 }
 
-auto ExprElement::match(Lexer& lexer, int gap) -> bool const {
+auto ExprElement::match(Lexer& lexer, int gap) const -> const bool {
     
     return factor->match(lexer, gap);
 }
 
-auto ExprElement::rstride(Lexer& lexer, int gap) -> int const {
+auto ExprElement::rstride(Lexer& lexer, int gap) const -> const int {
     auto rstride = 0;
     auto rgap = gap;
     auto repeatFlag = true;
@@ -62,7 +62,7 @@ auto ExprElement::rstride(Lexer& lexer, int gap) -> int const {
     return rstride;
 }
     
-auto ExprElement::description() -> std::string const{
+auto ExprElement::description() const -> const std::string{
     return "[Expr]";
 }
 
@@ -70,7 +70,7 @@ auto ExprElement::description() -> std::string const{
 
 // MARK: - Private -
 
-PrecedencePtr ExprElement::nextOperator(Lexer& lexer) {
+PrecedencePtr ExprElement::nextOperator(Lexer& lexer) const  {
     let t = lexer.peek(0);
     
     if (t->type == token::TokenType::OPERATOR) {
@@ -80,7 +80,7 @@ PrecedencePtr ExprElement::nextOperator(Lexer& lexer) {
     }
 }
 
-bool ExprElement::rightIsExpr(int prec, PrecedencePtr nextPrec) {
+bool ExprElement::rightIsExpr(int prec, PrecedencePtr nextPrec) const {
     if (nextPrec->leftAssoc){
         return prec < nextPrec->value;
     } else {
@@ -88,7 +88,7 @@ bool ExprElement::rightIsExpr(int prec, PrecedencePtr nextPrec) {
     }
 }
 
-NodePtr ExprElement::doShift(Lexer& lexer, NodePtr left, int prec) {
+NodePtr ExprElement::doShift(Lexer& lexer, NodePtr left, int prec) const{
     var list = std::vector<NodePtr>();
     
     list.push_back(left);

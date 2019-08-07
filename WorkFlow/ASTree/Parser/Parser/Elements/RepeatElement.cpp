@@ -23,7 +23,7 @@ RepeatElement::RepeatElement(_ParserPtr _parser, bool _once) : parser(_parser), 
 }
 
 // MARK: - Methods -
-auto RepeatElement::rstride(Lexer& lexer, int gap) -> int const {
+auto RepeatElement::rstride(Lexer& lexer, int gap) const -> int const {
     var rgap = gap;
     var rstride = 0;
     
@@ -38,13 +38,13 @@ auto RepeatElement::rstride(Lexer& lexer, int gap) -> int const {
     return rstride;
 }
 
-auto RepeatElement::match(Lexer& lexer, int gap) -> bool const {
+auto RepeatElement::match(Lexer& lexer, int gap) const -> const bool {
     if (isOptional) return true;
     
     return parser->match(lexer, gap);
 }
 
-auto RepeatElement::parse(Lexer& lexer, std::vector<NodePtr> &res) -> void const {
+auto RepeatElement::parse(Lexer& lexer, std::vector<NodePtr> &res) const -> void {
     
     while (parser->match(lexer, 0)) {
         let node = parser->parse(lexer);
@@ -55,7 +55,7 @@ auto RepeatElement::parse(Lexer& lexer, std::vector<NodePtr> &res) -> void const
 }
 
 
-auto RepeatElement::description() -> std::string const{
+auto RepeatElement::description() const -> const std::string {
     return "[Repeat " + parser->description() + "]";
 }
 
