@@ -44,8 +44,6 @@ namespace wf {
     class RepeatElement: public Element{
     private:
         _ParserPtr parser;
-        std::unordered_map<int, bool> match_memo;
-        std::unordered_map<int, int> rstride_memo;
         
         bool isOptional;
     public:
@@ -80,8 +78,6 @@ namespace wf {
         _ParserPtr parser;
     public:
         TreeElement(_ParserPtr _parser);
-        std::unordered_map<int, bool> match_memo;
-        std::unordered_map<int, int> rstride_memo;
         
         auto match(Lexer& lexer, int gap) -> bool const override;
         auto parse(Lexer& lexer, std::vector<NodePtr>& res) -> void const override;
@@ -153,8 +149,6 @@ namespace wf {
         Operators ops;
         _ParserPtr factor;
         
-        std::unordered_map<int, int> rstride_memo;
-        std::unordered_map<int, bool> match_memo;
         
         NodePtr doShift(Lexer& lexer, NodePtr left, int prec);
         

@@ -36,9 +36,7 @@ int main() {
     var lexer = wf::Lexer(&ifs);
     
     var env = wf::run::Environment();
-    
-    rm::setting::use_warn = false;
-    
+        
     while (lexer.peek(0)->type != token::TokenType::ENDFILE) {
         
         let ps = BasicParsers().program.parse(lexer);        

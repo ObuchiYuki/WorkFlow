@@ -27,13 +27,13 @@ static inline void dprint(const T& first, const A&... rest) {
 // ============================================== //
 // MARK: - Settings -
 static bool use_debag = false;
-static bool use_warn = false;
+static bool use_warn = true;
 
 // 与えられた引数をdebug出力します。
 // 引数の型に指定はありません。
 template<class... T>
 void debug(const T&... rest) {
-    if (rm::setting::use_debag){
+    if (rm::use_debag){
         rm::__debug::dprint(rest...);
     }
 }
@@ -42,7 +42,7 @@ void debug(const T&... rest) {
 // 引数の型に指定はありません。
 template<class... T>
 void warn(const T&... rest) {
-    if (rm::setting::use_warn){
+    if (rm::use_warn){
         std::cout << "⚠️ ";
         rm::__debug::dprint(rest...);
     }

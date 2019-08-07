@@ -24,39 +24,24 @@ OrElement::OrElement(std::vector<_ParserPtr> _parsers): parsers(_parsers) {
 
 // MARK: - Methods -
 auto OrElement::match(Lexer& lexer, int gap) -> bool const {
-    rm::debug("------------------------ OR match Start ------------------------");
     try {
         chooseParser(lexer, gap);
-        rm::debug("------------------------ OR match End ------------------------");
         return true;
     }catch(std::exception e){
-        rm::debug("------------------------ OR match End ------------------------");
         return false;
     }
+}
+
+auto OrElement::rstride(Lexer& lexer, int gap) -> int const {
+    auto parser = chooseParser(lexer, gap);
     
+    return parser->rstride(lexer, gap);
 }
 
 auto OrElement::parse(Lexer& lexer, std::vector<NodePtr> &res) -> void const {
-    rm::debug("------------------------ OR parse Start ------------------------");
-    rm::debug("[OrElement::parse] parsers.size", parsers.size());
-
     auto parser = chooseParser(lexer, 0);
     
-    rm::debug("[OrElement::parse]", "⭕️ matched:", lexer.peek(0)->value, ",match:", parser->description());
-    
     res.push_back(parser->parse(lexer));
-    
-    rm::debug("------------------------ OR parse End ------------------------");
-}
-
-// MARK: - Private Methods -
-
-auto OrElement::rstride(Lexer& lexer, int gap) -> int const {
-    rm::debug("------------------------ OR rstride Start ------------------------");
-    auto parser = chooseParser(lexer, gap);
-    rm::debug("------------------------ OR rstride End ------------------------");
-    return parser->rstride(lexer, gap);
-    
 }
 
 auto OrElement::description() -> std::string const{
@@ -66,7 +51,6 @@ auto OrElement::description() -> std::string const{
 auto OrElement::chooseParser(Lexer& lexer, int index) -> _ParserPtr const {
     int absIndex = lexer.absIndex(index);
     
-    rm::debug("[OrElement::chooseParser]", "peek(",absIndex,"):", lexer.peek(index)->value);
     try {
         auto parser = matched_parser_memo.at(absIndex);
         return parser;
@@ -75,7 +59,6 @@ auto OrElement::chooseParser(Lexer& lexer, int index) -> _ParserPtr const {
             if (parser->match(lexer, index)){
                 matched_parser_memo[absIndex] = parser;
                 
-                rm::debug("[OrElement::chooseParser]", "NEW", "peek(",absIndex,"):", lexer.peek(absIndex)->value, "parser:" ,parser->description());
                 return parser;
             }
         }

@@ -35,17 +35,38 @@ auto ExprElement::parse(Lexer& lexer, std::vector<NodePtr>& res) -> void const {
 }
 
 auto ExprElement::match(Lexer& lexer, int gap) -> bool const {
-    let absIndex = lexer.absIndex(gap);
-    try {
-        return match_memo.at(absIndex);
-    }catch(std::exception e){
-        let a = factor->match(lexer, gap);
-        rm::debug("[ExprElement::match]", "matched:", a ? "true" : "false", "checked:", lexer.peek(gap)->value);
-            
-        match_memo[absIndex] = a;
-        return a;
-    }
+    
+    return factor->match(lexer, gap);
 }
+
+auto ExprElement::rstride(Lexer& lexer, int gap) -> int const {
+    auto rstride = 0;
+    auto rgap = gap;
+    auto repeatFlag = true;
+    
+    while (repeatFlag) {
+        
+        if (factor->match(lexer, rgap)){
+            auto a = factor->rstride(lexer, rgap);
+            rstride += a;
+            rgap += a;
+              
+        }else if (ops.match(lexer.peek(rgap)->value)){
+             rstride += 1;
+             rgap += 1;
+        }else{
+            repeatFlag = false;
+        }
+    }
+    
+    return rstride;
+}
+    
+auto ExprElement::description() -> std::string const{
+    return "[Expr]";
+}
+
+
 
 // MARK: - Private -
 
@@ -89,52 +110,3 @@ NodePtr ExprElement::doShift(Lexer& lexer, NodePtr left, int prec) {
     return NodePtr(new ast::BinaryOperation(list, list.front()->location));
 }
     
-
-auto ExprElement::rstride(Lexer& lexer, int gap) -> int const {
-    let rindex = lexer.absIndex(gap);
-    try {
-        return rstride_memo.at(rindex);
-    } catch (std::exception e) {
-        // おにぎり
-    }
-    
-    auto rstride = 0;
-    auto rgap = gap;
-    auto repeatFlag = true;
-    
-    while (repeatFlag) {
-        
-        if (factor->match(lexer, rgap)){
-            auto a = factor->rstride(lexer, rgap);
-            rstride += a;
-            rgap += a;
-              
-        }else if (ops.match(lexer.peek(rgap)->value)){
-             rstride += 1;
-             rgap += 1;
-        }else{
-            repeatFlag = false;
-        }
-    }
-    
-    rm::debug("===================================================");
-    rm::debug("[ExprElement::rstride]", "rstride:", rstride, "from:", lexer.peek(gap)->value, "to:", lexer.peek(gap + rstride)->value);
-    rm::debug("[ExprElement::rstride]", "set index at:", rindex, "rstride:", rstride);
-    rm::debug("===================================================");
-    
-    
-    rstride_memo[rindex] = rstride;
-    
-    return rstride;
-}
-    
-auto ExprElement::description() -> std::string const{
-    return "[Expr]";
-}
-
-    
-
-
-// MARK: - Constructor -
-
-

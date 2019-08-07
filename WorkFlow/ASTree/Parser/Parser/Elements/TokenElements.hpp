@@ -31,38 +31,32 @@ public:
     
     // MARK: - Overrided Methods -
     auto match(Lexer& lexer, int gap) -> bool const override {
-        let absIndex = lexer.absIndex(gap);
-        try {
-            return match_memo.at(absIndex);
-        } catch (std::exception e) {
-            let a = isMatch(lexer.peek(gap));
-            match_memo[absIndex] = a;
-            
-            rm::debug("[TokenElement<"+ token::TokenTypeDescription(matchType()) +">::match]", "matched:", a ? "true" : "false", "checked: ", lexer.peek(gap)->value);
-            
-            return a;
-        }
+        
+        return isMatch(lexer.peek(gap));
     }
+    auto rstride(Lexer& lexer, int gap) -> int const override {
+        
+        return 1;
+    }
+    
     auto parse(Lexer& lexer, std::vector<NodePtr> &res) -> void const override {
         let token = lexer.readNext();
         let leaf = ast::LeafPtr(new T(token, token->location));
         
         res.push_back(leaf);
     }
-    auto rstride(Lexer& lexer, int gap) -> int const override {
-        return 1;
-    }
     
     auto description() -> std::string const override {
         return "[Token " + token::TokenTypeDescription(matchType()) + "]";
     }
 private:
-    std::unordered_map<int, bool> match_memo;
     
     bool isMatch(token::TokenPtr token) const {
         return matchType() == token->type;
     };
 };
+
+
 
 class IntegerElement: public TokenElement<ast::IntegerLiteral> {
     token::TokenType matchType() const override {
