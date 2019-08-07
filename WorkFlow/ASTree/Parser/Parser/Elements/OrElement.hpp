@@ -46,7 +46,7 @@ private:
     // MARK: - Private Methods -
     
     auto match(Lexer& lexer, int gap) const -> bool const override;
-    auto parse(Lexer& lexer, std::vector<NodePtr>& res) const -> void override;
+    auto parse(Lexer& lexer, std::vector<ast::NodePtr>& res) const -> void override;
     
     /// 現在のLexer + gap にマッチするパーサーを探します。
     /// 結果は保持されます。

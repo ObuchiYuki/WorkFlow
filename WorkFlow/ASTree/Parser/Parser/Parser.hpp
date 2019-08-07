@@ -9,43 +9,13 @@
 #ifndef Parser_h
 #define Parser_h
 
-#include <string>
-#include <memory>
-#include <vector>
-
-#include "Node.hpp"
-#include "Lexer.hpp"
-#include "AST.hpp"
-
-namespace wf {
-// ====================================================================== //
-// MARK: - Type Definitions -
-template<class T>
-class _Parser;
-class Element;
-class _AnyParser;
-class Operators;
-
-// ==================================== //
-// MARK: - Type Linking -
-typedef std::shared_ptr<_AnyParser>    _ParserPtr;
-typedef std::shared_ptr<Element>       ElementPtr;
-typedef std::shared_ptr<ast::Leaf>     LeafPtr;
-typedef std::shared_ptr<ast::Node>     NodePtr;
-
-}
-
-#include "Element.hpp"
-#include "Elements/Elements.hpp"
-#include "Elements/TokenElements.hpp"
-
-#include "_Parser.hpp"
+#include "Elements/ExprElement.hpp"
 #include "_AnyParser.hpp"
 
 namespace wf {
-    // MARK: - Parser -
+// MARK: - Parser -
 
-    /// ABTをより良いAPIで使用できるようにすための、ラッパーです。
+/// ABTをより良いAPIで使用できるようにするためのラッパーです。
 class Parser {
 private:
     auto _integer() -> Parser;
@@ -58,7 +28,7 @@ public:
     Parser(): parser(nullptr) {};
     Parser(_ParserPtr _parser);
     
-    auto parse(Lexer& lexer) -> NodePtr;
+    auto parse(Lexer& lexer) -> wf::ast::NodePtr;
     auto match(Lexer& lexer) -> bool;
         
     auto ors(std::vector<Parser> parserws) -> Parser;

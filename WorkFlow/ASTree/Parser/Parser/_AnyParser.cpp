@@ -13,7 +13,7 @@ using namespace wf;
 
 // MARK: - _AnyParser -
 
-auto _AnyParser::parse(Lexer& lexer) -> NodePtr const {
+auto _AnyParser::parse(Lexer& lexer) -> ast::NodePtr const {
     return _holder->parse(lexer);
 }
                 

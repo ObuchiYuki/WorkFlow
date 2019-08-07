@@ -37,8 +37,8 @@ namespace wf {
         }
                  
         /// Lexerの値を元に実際にパースを行います。
-        auto parse(Lexer& lexer) -> NodePtr const {
-            std::vector<NodePtr> results = {};
+        auto parse(Lexer& lexer) -> ast::NodePtr const {
+            std::vector<ast::NodePtr> results = {};
                        
             for (let &element: elements) {
                 element->parse(lexer, results);

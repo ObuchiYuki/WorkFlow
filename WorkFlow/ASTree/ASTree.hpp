@@ -10,7 +10,7 @@
 #define Tree_h
 
 #include "AST/AST.hpp"
-#include "Parser.hpp"
+#include "Parser_umbrella.hpp"
 #include "ParserImpl.h"
 
 #endif /* Tree_h */

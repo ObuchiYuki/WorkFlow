@@ -28,7 +28,7 @@ auto TreeElement::match(Lexer& lexer, int gap) const -> bool const {
     return parser->match(lexer, gap);
 }
 
-auto TreeElement::parse(Lexer& lexer, std::vector<NodePtr> &res) const -> void {
+auto TreeElement::parse(Lexer& lexer, std::vector<ast::NodePtr> &res) const -> void {
                    
     res.push_back(parser->parse(lexer));
 }

@@ -21,7 +21,7 @@ Parser::Parser(_ParserPtr _parser) : parser(_parser) {};
 
 // MARK: - Methods -
  
-auto Parser::parse(Lexer& lexer) -> NodePtr {
+auto Parser::parse(Lexer& lexer) -> ast::NodePtr {
     
     return parser->parse(lexer);
 }

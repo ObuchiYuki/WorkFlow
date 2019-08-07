@@ -11,6 +11,8 @@
 
 #include "Lexer.hpp"
 #include "Parser.hpp"
+#include "Element.hpp"
+#include "Parser_umbrella.hpp"
 
 namespace wf {
 
@@ -69,7 +71,7 @@ private:
 public:
     ExprElement(_ParserPtr _factor, Operators _operators) : factor(_factor), operators(_operators) {}
 
-    auto parse(Lexer& lexer, std::vector<NodePtr>& res) const -> void override;
+    auto parse(Lexer& lexer, std::vector<ast::NodePtr>& res) const -> void override;
     auto match(Lexer& lexer, int gap) const -> const bool override;
     auto rstride(Lexer& lexer, int gap) const -> const int override;
     

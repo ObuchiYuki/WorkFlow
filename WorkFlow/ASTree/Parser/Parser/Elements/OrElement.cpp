@@ -33,7 +33,7 @@ auto OrElement::rstride(Lexer& lexer, int gap) const -> int const {
     return parser->rstride(lexer, gap);
 }
 
-auto OrElement::parse(Lexer& lexer, std::vector<NodePtr> &res) const -> void {
+auto OrElement::parse(Lexer& lexer, std::vector<ast::NodePtr> &res) const -> void {
     auto parser = chooseParser(lexer, 0);
     
     res.push_back(parser->parse(lexer));

@@ -44,7 +44,7 @@ auto RepeatElement::match(Lexer& lexer, int gap) const -> const bool {
     return parser->match(lexer, gap);
 }
 
-auto RepeatElement::parse(Lexer& lexer, std::vector<NodePtr> &res) const -> void {
+auto RepeatElement::parse(Lexer& lexer, std::vector<ast::NodePtr> &res) const -> void {
     
     while (parser->match(lexer, 0)) {
         let node = parser->parse(lexer);

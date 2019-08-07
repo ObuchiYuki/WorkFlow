@@ -11,7 +11,7 @@
 
 #include <memory>
 
-#include "Parser.hpp"
+#include "Parser_umbrella.hpp"
 #include "Lexer.hpp"
 
 // MARK: - AnyParsr
@@ -21,7 +21,7 @@ class _AnyParser {
 private:
     class holder {
     public:
-        virtual auto parse(Lexer& lexer) -> NodePtr const = 0;
+        virtual auto parse(Lexer& lexer) -> ast::NodePtr const = 0;
         virtual auto match(Lexer& lexer, int gap) -> bool const = 0;
         virtual auto rstride(Lexer& lexer, int gap) -> int const = 0;
         virtual auto addElement(ElementPtr element) -> void = 0;
@@ -35,7 +35,7 @@ private:
         std::shared_ptr<T> parser;
         holder_sub(std::shared_ptr<T> _parser) : parser(_parser) {};
         
-        auto parse(Lexer& lexer) -> NodePtr const override {
+        auto parse(Lexer& lexer) -> ast::NodePtr const override {
             
             return parser->parse(lexer);
         }
@@ -68,7 +68,7 @@ private:
         _holder(std::shared_ptr<holder>( new holder_sub<_Parser<T>>( std::shared_ptr<_Parser<T>>(parser)) ))
         {};
         
-    auto parse(Lexer& lexer) -> NodePtr const;
+    auto parse(Lexer& lexer) -> ast::NodePtr const;
                 
     auto match(Lexer &lexer, int gap) -> bool const;
         

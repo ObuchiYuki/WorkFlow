@@ -83,9 +83,9 @@ class ExprParser {
 public:
     ExprParser(_ParserPtr _factor, Operators _ops) : factor(_factor), ops(_ops) {}
     
-    auto parse(Lexer& lexer, std::vector<NodePtr>& res) const -> void;
+    auto parse(Lexer& lexer, std::vector<ast::NodePtr>& res) const -> void;
     
-    auto doShift(Lexer& lexer, NodePtr left, int prec) const -> NodePtr;
+    auto doShift(Lexer& lexer, ast::NodePtr left, int prec) const -> ast::NodePtr;
     auto nextOperator(Lexer& lexer) const -> const PrecedencePtr;
     auto rightIsExpr(int prec, PrecedencePtr nextPrec) const -> const bool;
 };
@@ -112,14 +112,14 @@ auto ExprParser::rightIsExpr(int prec, PrecedencePtr nextPrec) const -> const bo
     }
 }
 
-auto ExprParser::doShift(Lexer& lexer, NodePtr left, int prec) const -> NodePtr {
-    var list = std::vector<NodePtr>();
+auto ExprParser::doShift(Lexer& lexer, ast::NodePtr left, int prec) const -> ast::NodePtr {
+    var list = std::vector<ast::NodePtr>();
     
     list.push_back(left);
     let token = lexer.readNext();
-    list.push_back(NodePtr(new ast::Operator(token, token->location)));
+    list.push_back(ast::NodePtr(new ast::Operator(token, token->location)));
     
-    NodePtr right = factor->parse(lexer);
+    ast::NodePtr right = factor->parse(lexer);
     
     PrecedencePtr next = nextOperator(lexer);
     
@@ -131,11 +131,11 @@ auto ExprParser::doShift(Lexer& lexer, NodePtr left, int prec) const -> NodePtr 
     
     list.push_back(right);
     
-    return NodePtr(new ast::BinaryOperation(list, list.front()->location));
+    return ast::NodePtr(new ast::BinaryOperation(list, list.front()->location));
 }
 
-auto ExprParser::parse(Lexer& lexer, std::vector<NodePtr>& res) const -> void {
-    NodePtr right = factor->parse(lexer);
+auto ExprParser::parse(Lexer& lexer, std::vector<ast::NodePtr>& res) const -> void {
+    ast::NodePtr right = factor->parse(lexer);
     PrecedencePtr prec = nextOperator(lexer);
     
     while(prec != nullptr) {
@@ -151,7 +151,7 @@ auto ExprParser::parse(Lexer& lexer, std::vector<NodePtr>& res) const -> void {
 // MARK: - ExprElement Impl -
 // ====================================================================== //
 
-auto ExprElement::parse(Lexer& lexer, std::vector<NodePtr>& res) const -> void {
+auto ExprElement::parse(Lexer& lexer, std::vector<ast::NodePtr>& res) const -> void {
     let parser = ExprParser(factor, operators);
     parser.parse(lexer, res);
 }

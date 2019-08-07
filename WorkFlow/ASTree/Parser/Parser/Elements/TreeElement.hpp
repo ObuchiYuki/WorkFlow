@@ -25,7 +25,7 @@ public:
     TreeElement(_ParserPtr _parser);
     
     auto match(Lexer& lexer, int gap) const -> const bool override;
-    auto parse(Lexer& lexer, std::vector<NodePtr>& res) const -> void override;
+    auto parse(Lexer& lexer, std::vector<ast::NodePtr>& res) const -> void override;
     auto rstride(Lexer& lexer, int gap) const -> const int override;
     
     auto description() const -> const std::string override;

@@ -39,7 +39,7 @@ public:
         return 1;
     }
     
-    auto parse(Lexer& lexer, std::vector<NodePtr> &res) const -> void override {
+    auto parse(Lexer& lexer, std::vector<ast::NodePtr> &res) const -> void override {
         let token = lexer.readNext();
         let leaf = ast::LeafPtr(new T(token, token->location));
         

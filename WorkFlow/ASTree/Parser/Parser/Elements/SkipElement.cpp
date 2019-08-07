@@ -37,7 +37,7 @@ auto SkipElement::match(Lexer& lexer, int gap) const -> bool const {
     
     return false;
 }
-auto SkipElement::parse(Lexer& lexer, std::vector<NodePtr> &res) const -> void {
+auto SkipElement::parse(Lexer& lexer, std::vector<ast::NodePtr> &res) const -> void {
     
     auto t = lexer.readNext();
 }
