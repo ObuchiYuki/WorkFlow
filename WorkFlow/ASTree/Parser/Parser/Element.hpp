@@ -9,60 +9,47 @@
 #ifndef Element_h
 #define Element_h
 
-#include "Parser.hpp"
 #include "Lexer.hpp"
+#include "Node.hpp"
 
 #include <unordered_map>
 #include <vector>
 
 namespace wf {
     /// パーサーが実際にパースする際の行動を決定します。
-    /// Elementを継承して、match、parseを失踪してください。
+    /// Elementを継承して、match、parseを実装してください。
     class Element{
-    public:
-        // =============================================================== //
-        // MARK: - Properties -
+    private:
+        // MARK: - Private Properties -
         
-        std::unordered_map<int, int> mutable rstride_memo;
+        /// match結果のメモ
         std::unordered_map<int, bool> mutable match_memo;
         
-        // =============================================================== //
+        /// rstride結果のメモ
+        std::unordered_map<int, int> mutable rstride_memo;
+        
+    public:
         // MARK: - Methods -
         
         /// 要素が現在のLexer+gapにマッチするかを返します。
-        auto isMatch(Lexer& lexer, int gap) const -> bool const {
-            let absIndex = lexer.absIndex(gap);
-            try {
-                return match_memo.at(absIndex);
-                
-            } catch (std::exception e) {
-                let result = match(lexer, gap);
-                match_memo[absIndex] = result;
-                
-                return result;
-            }
-        }
+        auto isMatch(Lexer& lexer, int gap) const -> bool const;
         
         /// 現在のLexer+gapに関しての相対的トークン量を返します。
-        auto getRstride(Lexer& lexer, int gap) const -> int const {
-            let absIndex = lexer.absIndex(gap);
-            try {
-                return rstride_memo.at(absIndex);
-            } catch (std::exception e) {
-                let result = rstride(lexer, gap);
-                rstride_memo[absIndex] = result;
-                
-                return result;
-            }
-        }
+        auto getRstride(Lexer& lexer, int gap) const -> int const;
         
+        /// lexerを元に要素をパースします。結果はresに収納されます。
+        virtual auto parse(Lexer& lexer, std::vector<wf::ast::NodePtr>& res) const -> void = 0;
         
-        virtual auto parse(Lexer& lexer, std::vector<NodePtr>& res) const -> void = 0;
+        /// Elementの詳細情報を返します。
         virtual auto description() const -> const std::string = 0;
         
     private:
         
+        // MARK: - Private Methods -
+        /// ElementがLexer+gapにマッチするかを返します。
         virtual auto match(Lexer& lexer, int gap) const -> const bool = 0;
+        
+        /// Elementがどこまでのトークンにマッチするかを返します。
         virtual auto rstride(Lexer& lexer, int gap) const -> const int = 0;
     };
 }
