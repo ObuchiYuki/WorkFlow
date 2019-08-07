@@ -20,5 +20,8 @@ Now Developing.
 - Evaluation △
   - Print function (String only) :heavy_check_mark:
   - If Statement :heavy_check_mark:
-  - Def Statement​ :heavy_check_mark:
+  - Def Statement :heavy_check_mark:
   - Comparison Expression ("<", ">") (Int only) :heavy_check_mark:
+  
+  
+  (Gitの使い方は個人なので適当です)
