@@ -9,56 +9,50 @@
 #ifndef BasicParsers_h
 #define BasicParsers_h
 
-// TODO: - 消す - 
-using namespace wf;
-
 class BasicParsers {
 public:
-    Operators ops = Operators({
-        Operator("=", 1, Associative::RIGHT),
-        Operator("==", 2, Associative::LEFT),
-        Operator("+=", 2, Associative::LEFT),
-        Operator(">", 2, Associative::LEFT),
-        Operator("<", 2, Associative::LEFT),
-        Operator("+", 3, Associative::LEFT),
-        Operator("-", 3, Associative::LEFT),
-        Operator("*", 4, Associative::LEFT),
-        Operator("/", 4, Associative::LEFT),
-        Operator("%", 4, Associative::LEFT),
+    wf::Operators ops = wf::Operators({
+        wf::Operator("=", 1, wf::Associative::RIGHT),
+        wf::Operator("==", 2, wf::Associative::LEFT),
+        wf::Operator("+=", 2, wf::Associative::LEFT),
+        wf::Operator(">", 2, wf::Associative::LEFT),
+        wf::Operator("<", 2, wf::Associative::LEFT),
+        wf::Operator("+", 3, wf::Associative::LEFT),
+        wf::Operator("-", 3, wf::Associative::LEFT),
+        wf::Operator("*", 4, wf::Associative::LEFT),
+        wf::Operator("/", 4, wf::Associative::LEFT),
+        wf::Operator("%", 4, wf::Associative::LEFT),
     });
     
-    Parser expr0 = rule();
+    wf::Parser expr0 = wf::rule();
     
-    Parser primary = rule().ors({
-        Parser::integer(),
-        Parser::name(),
-        Parser::string(),
-        rule<ast::Expression>().skip("(").then(expr0).skip(")"),
+    wf::Parser primary = wf::rule().ors({
+        wf::Parser::integer(),
+        wf::Parser::name(),
+        wf::Parser::string(),
+        wf::rule<wf::ast::Expression>().skip("(").then(expr0).skip(")"),
     });
     
-    Parser expr = expr0.expression(primary, ops);
+    wf::Parser expr = expr0.expression(primary, ops);
     
-    Parser statement0 = rule();
+    wf::Parser statement0 = wf::rule();
     
-    Parser block = rule<ast::BlockStem>()
-        .skip("{")
-        .optional(rule().repeat(rule()
-            .skip("EOL")
-            .optional(statement0)
-        ))
+    wf::Parser block = wf::rule<wf::ast::BlockStem>()
+        .skip("{").optional(statement0)
+        .repeat(wf::rule().skip("EOL").optional(statement0))
         .skip("}");
     
-    Parser statement = statement0.ors({
-        rule<ast::IfStem>().skip("if").then(expr).then(block).optional(rule().skip("else").then(block)),
-        rule<ast::WhileStem>().skip("while").then(expr).then(block),
-        rule<ast::VarStem>().skip("def").then(Parser::name()).skip("=").then(expr),
+    wf::Parser statement = statement0.ors({
+        wf::rule<wf::ast::IfStem>().skip("if").then(expr).then(block).optional(wf::rule().skip("else").then(block)),
+        wf::rule<wf::ast::WhileStem>().skip("while").then(expr).then(block),
+        wf::rule<wf::ast::VarStem>().skip("def").then(wf::Parser::name()).skip("=").then(expr),
         
-        rule<ast::Calling>().then(Parser::name()).skip("(").then(expr).skip(")"),
-        rule<ast::Assgin>().then(Parser::name()).skip("=").then(expr),
+        wf::rule<wf::ast::Calling>().then(wf::Parser::name()).skip("(").then(expr).skip(")"),
+        wf::rule<wf::ast::Assgin>().then(wf::Parser::name()).skip("=").then(expr),
         expr,
     });
     
-    Parser program = rule().ors({statement, rule<ast::NullStem>()}).skip("EOL");
+    wf::Parser program = wf::rule().ors({statement, wf::rule<wf::ast::NullStem>()}).skip("EOL");
 
 };
 

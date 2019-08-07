@@ -97,6 +97,10 @@ public:
     auto description() -> std::string const override {
         return "[NullStem]";
     }
+    
+    wf::run::Value eval(wf::run::Environment &env) override {
+        return wf::run::Value::voidValue();
+    }
 };
 
 

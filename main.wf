@@ -1,9 +1,5 @@
-def i = 1 + 2 * 2
-if i == 5 {
-    prints("1 + 2 * 2 == 5")
-}
-
+def i = 0
 while (i < 100) {
-    i += 4
+    i += 1
     printi(i)
 }
