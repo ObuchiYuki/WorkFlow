@@ -20,7 +20,9 @@
 
 
 #include "Element.hpp"
+
 #include "OrElement.hpp"
+#include "ExprElement.hpp"
 
 namespace wf {
     
@@ -68,77 +70,6 @@ namespace wf {
         auto rstride(Lexer& lexer, int gap) const -> const int override;
         
         auto description() const -> const std::string override;
-    };
-    
-    class Precedence {
-    public:
-        int value;
-        bool leftAssoc;  // left associative
-        Precedence(int v, bool a) : value(v), leftAssoc(a) {};
-    };
-    
-    typedef std::shared_ptr<Precedence> PrecedencePtr;
-    
-    enum class Associative {
-        RIGHT, LEFT
-    };
-
-    class Operator {
-    public:
-        std::string name;
-        Associative associative;
-        
-        int priority;
-        
-        Operator(std::string _name, int prec, Associative assoc) :
-        name(_name), priority(prec), associative(assoc)
-        {}
-        
-    };
-    class Operators {
-        std::unordered_map<std::string, PrecedencePtr> map;
-        
-    public:
-        Operators(){}
-        Operators(std::vector<Operator> operators) {
-            for (let &op: operators) {
-                map[op.name] = PrecedencePtr(new Precedence(op.priority, (op.associative == Associative::LEFT)));
-            }
-        }
-        
-        PrecedencePtr get(std::string name) {
-            return map[name];
-        }
-        void add(std::string name, int prec, Associative assoc) {
-            map[name] = PrecedencePtr(new Precedence(prec, (assoc == Associative::LEFT)));
-        }
-        bool match(std::string name) const {
-            auto itr = map.find(name);
-            return itr != map.end();
-        }
-    };
-
-    
-    class ExprElement: public Element {
-    public:
-        ExprElement(_ParserPtr exp, Operators map);
-    
-        auto match(Lexer& lexer, int gap) const -> const bool override;
-        auto parse(Lexer& lexer, std::vector<NodePtr>& res) const -> void override;
-        auto rstride(Lexer& lexer, int gap) const -> const int override;
-        
-        auto description() const -> const std::string override;
-        
-    private:
-        Operators mutable ops; // FIXME: とる
-        _ParserPtr factor;
-        
-        
-        NodePtr doShift(Lexer& lexer, NodePtr left, int prec) const;
-        
-        PrecedencePtr nextOperator(Lexer& lexer) const;
-        
-        bool rightIsExpr(int prec, PrecedencePtr nextPrec) const;
     };
 
 }

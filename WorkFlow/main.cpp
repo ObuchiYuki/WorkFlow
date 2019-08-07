@@ -49,6 +49,7 @@ int main() {
         
         ps->eval(env);
         
+        print(ps->description());
     }
     
 
