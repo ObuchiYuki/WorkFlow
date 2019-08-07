@@ -13,43 +13,41 @@
 #include <typeinfo>
 
 namespace rm {
+
+/// 型名の比較など型情報に関する処理を提供します。
 class type {
 private:
-    // Result is in heap memory. Deallocate after use.
-    static char* type_name_demangle(const char* demangle) {
+    // 型名をデマングルします。
+    static std::string demangle_type_name(const char* undemangled) {
         int status;
-        return abi::__cxa_demangle(demangle, 0, 0, &status);
-    }
-    
-    static std::string get_type_name(const char* rawname) {
-        auto typeNameChars = type_name_demangle(rawname);
+        auto char_list = abi::__cxa_demangle(undemangled, 0, 0, &status);
         
-        auto realTypeName = std::string(typeNameChars);
+        auto result = std::string(char_list);
+        delete char_list;
         
-        delete typeNameChars;
-        
-        return realTypeName;
+        return result;
     }
 public:
     
-    /// Returns if given types equal.
+    /// テンプレートに与えられた型が等しいかを比較します。
     template<typename T, typename S>
     static const bool equals() {
         return typeid(T) == typeid(S);
     }
     
-    /// Returns the name of the type
+    /// テンプレート型の型名を取得します。
     template<typename T>
     static const std::string type_name() {
         
-        return get_type_name(typeid(T).name());
+        return demangle_type_name(typeid(T).name());
     }
     
     
+    /// 引数の型名を取得します。
     template<typename T>
     static const std::string type_name(T value) {
         
-        return get_type_name(typeid(value).name());
+        return demangle_type_name(typeid(T).name());
     }
 };
 

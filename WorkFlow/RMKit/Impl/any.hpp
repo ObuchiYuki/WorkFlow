@@ -157,6 +157,7 @@ private:
         return casted->_value;
     }
     
+    /// For print Operation.
     friend std::ostream& operator << (std::ostream &os, const any a) {
         os << "any<" << a.type_name() << ">";
             

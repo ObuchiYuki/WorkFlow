@@ -37,7 +37,9 @@ public:
         } catch (std::exception e) {
             let a = isMatch(lexer.peek(gap));
             match_memo[absIndex] = a;
+            
             rm::debug("[TokenElement<"+ token::TokenTypeDescription(matchType()) +">::match]", "matched:", a ? "true" : "false", "checked: ", lexer.peek(gap)->value);
+            
             return a;
         }
     }

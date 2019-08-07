@@ -158,7 +158,7 @@ public:
         return data_pointer;
     }
     
-    ///　optionalを出力します。
+    /// For print Operation.
     friend std::ostream& operator << (std::ostream &os,const optional<T>& n) {
         if (n) os << "optinal(" << *n << ")";
         else   os << "nil";

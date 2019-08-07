@@ -11,13 +11,11 @@
 
 namespace rm {namespace __debug {
 
-
-
-
+// ============================================== //
+// MARK: - Private Mathods -
 static inline void dprint() {
     std::cout << std::endl ;
 }
-        
 template<class T, class... A>
 static inline void dprint(const T& first, const A&... rest) {
     std::cout << first << " ";
@@ -26,14 +24,13 @@ static inline void dprint(const T& first, const A&... rest) {
 
 }
 
-namespace setting {
-    
+// ============================================== //
+// MARK: - Settings -
 static bool use_debag = false;
 static bool use_warn = false;
 
-}
-
-
+// 与えられた引数をdebug出力します。
+// 引数の型に指定はありません。
 template<class... T>
 void debug(const T&... rest) {
     if (rm::setting::use_debag){
@@ -41,6 +38,8 @@ void debug(const T&... rest) {
     }
 }
 
+// 与えられた引数をwarn出力します。
+// 引数の型に指定はありません。
 template<class... T>
 void warn(const T&... rest) {
     if (rm::setting::use_warn){
