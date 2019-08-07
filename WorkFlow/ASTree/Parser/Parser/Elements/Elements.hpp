@@ -19,27 +19,11 @@
 #include "Lexer.hpp"
 
 
+#include "Element.hpp"
+#include "OrElement.hpp"
+
 namespace wf {
     
-    /// 登録されたパーサーの中からマッチするものを探します。
-    class OrElement: public Element{
-    private:
-        std::vector<_ParserPtr> parsers;
-        std::unordered_map<int, _ParserPtr> matched_parser_memo;
-        
-        auto chooseParser(Lexer& lexer, int index) -> _ParserPtr const;
-    
-    public:
-                   
-        OrElement(std::vector<_ParserPtr> _parsers);
-               
-        auto match(Lexer& lexer, int gap) -> bool const override;
-        auto parse(Lexer& lexer, std::vector<NodePtr>& res) -> void const override;
-        auto rstride(Lexer& lexer, int gap) -> int const override;
-        
-        auto description() -> std::string const override;
-    };
-
     /// 登録されたパーサーに複数回マッチするかを調べます。
     class RepeatElement: public Element{
     private:

@@ -112,6 +112,7 @@
 		B685E75E22F5277F0056BFF2 /* location.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = location.hpp; sourceTree = "<group>"; };
 		B685E75F22F5277F0056BFF2 /* Common.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Common.hpp; sourceTree = "<group>"; };
 		B685E76022F5277F0056BFF2 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		B69E882F22FA6B5E0064BE9B /* OrElement.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OrElement.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				B685E73122F5277F0056BFF2 /* Elements.hpp */,
+				B69E882F22FA6B5E0064BE9B /* OrElement.hpp */,
 				B685E72E22F5277F0056BFF2 /* RepeatElement.cpp */,
 				B685E72F22F5277F0056BFF2 /* OrElement.cpp */,
 				B685E73022F5277F0056BFF2 /* TreeElement.cpp */,

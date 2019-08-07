@@ -6,8 +6,6 @@
 //  Copyright © 2019 yuki. All rights reserved.
 //
 
-#include "Elements.hpp"
-
 #include <exception>
 #include <vector>
 
@@ -15,12 +13,9 @@
 #include "Parser.hpp"
 #include "Lexer.hpp"
 
-using namespace wf;
+#include "OrElement.hpp"
 
-// MARK: - Constructor -
-OrElement::OrElement(std::vector<_ParserPtr> _parsers): parsers(_parsers) {
-    
-}
+using namespace wf;
 
 // MARK: - Methods -
 auto OrElement::match(Lexer& lexer, int gap) -> bool const {

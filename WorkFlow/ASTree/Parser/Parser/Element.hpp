@@ -12,6 +12,7 @@
 #include "Parser.hpp"
 #include "Lexer.hpp"
 
+#include <unordered_map>
 #include <vector>
 
 namespace wf {
