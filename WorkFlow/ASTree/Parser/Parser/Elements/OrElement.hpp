@@ -11,11 +11,10 @@
 
 #include "Element.hpp"
 
-/// 登録されたパーサーの中からマッチするものを探します。
-/// 結果を保持されます。
-
 namespace wf {
 
+/// 登録されたパーサーの中からマッチするものを探します。
+/// 結果を保持されます。
 class OrElement: public Element{
 private:
     // MARK: - Private Properties -
@@ -33,15 +32,15 @@ public:
     OrElement(std::vector<_ParserPtr> _parsers) : parsers(_parsers) {}
     
     // MARK: - Overrided Methods -
-    auto match(Lexer& lexer, int gap) const -> bool const override;
-    auto parse(Lexer& lexer, std::vector<NodePtr>& res) const -> void override;
-    auto rstride(Lexer& lexer, int gap) const -> int const override;
     
+    auto rstride(Lexer& lexer, int gap) const -> int const override;
     auto description() const -> const std::string override;
     
 private:
-    
     // MARK: - Private Methods -
+    
+    auto match(Lexer& lexer, int gap) const -> bool const override;
+    auto parse(Lexer& lexer, std::vector<NodePtr>& res) const -> void override;
     
     /// 現在のLexer + gap にマッチするパーサーを探します。
     /// 結果は保持されます。
