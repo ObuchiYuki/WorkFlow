@@ -7,14 +7,6 @@
 //
 
 
-/**
- - Expr 分割
- 
- - 各所 const に
- - 後置に
- 
- */
-
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -48,8 +40,6 @@ int main() {
         let ps = BasicParsers().program.parse(lexer);        
         
         ps->eval(env);
-        
-        print(ps->description());
     }
     
 

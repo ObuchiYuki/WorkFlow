@@ -39,7 +39,7 @@ auto Calling::eval(wf::run::Environment& env) -> wf::run::Value {
     }else if (fnname == "printi") {
         print(args()->eval(env).integer());
     }else{
-        throw std::runtime_error("Build-in funtion named " + fnname + "not found.");
+        throw std::runtime_error("Build-in funtion named " + fnname + " not found.");
     }
     
     return wf::run::Value::voidValue();

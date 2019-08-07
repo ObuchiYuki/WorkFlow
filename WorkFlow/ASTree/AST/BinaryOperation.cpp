@@ -41,6 +41,14 @@ wf::run::Value BinaryOperation::eval(wf::run::Environment& env) {
         return wf::run::Value(lsh.integer() > rsh.integer());
     }else if (op_s == "%") {
         return wf::run::Value(lsh.integer() % rsh.integer());
+    }else if (op_s == "+") {
+        return wf::run::Value(lsh.integer() + rsh.integer());
+    }else if (op_s == "-") {
+        return wf::run::Value(lsh.integer() - rsh.integer());
+    }else if (op_s == "*") {
+        return wf::run::Value(lsh.integer() * rsh.integer());
+    }else if (op_s == "/") {
+        return wf::run::Value(lsh.integer() / rsh.integer());
     }else if (op_s == "==") {
         return wf::run::Value(lsh.integer() == rsh.integer());
     }else if (op_s == "+=") {
