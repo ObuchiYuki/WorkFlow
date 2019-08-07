@@ -35,10 +35,16 @@ auto ExprElement::parse(Lexer& lexer, std::vector<NodePtr>& res) -> void const {
 }
 
 auto ExprElement::match(Lexer& lexer, int gap) -> bool const {
-    let a = factor->match(lexer, gap);
-    rm::dprint("[ExprElement::match]", "matched:", a ? "true" : "false", "checked:", lexer.peek(gap)->value);
-    
-    return a;
+    let absIndex = lexer.absIndex(gap);
+    try {
+        return match_memo.at(absIndex);
+    }catch(std::exception e){
+        let a = factor->match(lexer, gap);
+        rm::debug("[ExprElement::match]", "matched:", a ? "true" : "false", "checked:", lexer.peek(gap)->value);
+            
+        match_memo[absIndex] = a;
+        return a;
+    }
 }
 
 // MARK: - Private -
@@ -85,9 +91,9 @@ NodePtr ExprElement::doShift(Lexer& lexer, NodePtr left, int prec) {
     
 
 auto ExprElement::rstride(Lexer& lexer, int gap) -> int const {
-    let rindex = lexer.index + gap;
+    let rindex = lexer.absIndex(gap);
     try {
-        return memo.at(rindex);
+        return rstride_memo.at(rindex);
     } catch (std::exception e) {
         // おにぎり
     }
@@ -111,13 +117,13 @@ auto ExprElement::rstride(Lexer& lexer, int gap) -> int const {
         }
     }
     
-    rm::dprint("===================================================");
-    rm::dprint("[ExprElement::rstride]", "rstride:", rstride, "from:", lexer.peek(gap)->value, "to:", lexer.peek(gap + rstride)->value);
-    rm::dprint("[ExprElement::rstride]", "set index at:", rindex, "rstride:", rstride);
-    rm::dprint("===================================================");
+    rm::debug("===================================================");
+    rm::debug("[ExprElement::rstride]", "rstride:", rstride, "from:", lexer.peek(gap)->value, "to:", lexer.peek(gap + rstride)->value);
+    rm::debug("[ExprElement::rstride]", "set index at:", rindex, "rstride:", rstride);
+    rm::debug("===================================================");
     
     
-    memo[rindex] = rstride;
+    rstride_memo[rindex] = rstride;
     
     return rstride;
 }

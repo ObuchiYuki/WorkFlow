@@ -222,7 +222,7 @@ TokenPtr wf::Lexer::readNext() {
         
         return removingQ;
     } else {
-        rm::dprint("EOF");
+        rm::debug("EOF");
         return wf::token::EOFToken;
     }
 }

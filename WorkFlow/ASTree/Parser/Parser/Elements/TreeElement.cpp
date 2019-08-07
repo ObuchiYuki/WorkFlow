@@ -24,8 +24,16 @@ TreeElement::TreeElement(_ParserPtr _parser): parser(_parser) {
 // MARK: - Methods -
 
 auto TreeElement::match(Lexer& lexer, int gap) -> bool const {
-                   
-    return parser->match(lexer, gap);
+    let absIndex = lexer.absIndex(gap);
+    try {
+        return match_memo.at(absIndex);
+    } catch (std::exception e) {
+        let a = parser->match(lexer, gap);
+        match_memo[absIndex] = a;
+        
+        return a;
+    }
+    
 }
 
 auto TreeElement::parse(Lexer& lexer, std::vector<NodePtr> &res) -> void const {
@@ -34,7 +42,15 @@ auto TreeElement::parse(Lexer& lexer, std::vector<NodePtr> &res) -> void const {
 }
 
 auto TreeElement::rstride(Lexer& lexer, int gap) -> int const {
-    return parser->rstride(lexer, gap);
+    let absIndex = lexer.absIndex(gap);
+    try {
+        return rstride_memo.at(absIndex);
+    } catch (std::exception e) {
+        let rs = parser->rstride(lexer, gap);
+        rstride_memo[absIndex] = rs;
+        
+        return rs;
+    }
 }
 
 auto TreeElement::description() -> std::string const{

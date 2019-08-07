@@ -9,30 +9,45 @@
 #ifndef rm_debug_h
 #define rm_debug_h
 
-namespace rm {namespace debug {
-
-static bool use_debug = true;
+namespace rm {namespace __debug {
 
 
-static inline void _dprint() {
+
+
+static inline void dprint() {
     std::cout << std::endl ;
 }
         
 template<class T, class... A>
-static inline void _dprint(const T& first, const A&... rest) {
+static inline void dprint(const T& first, const A&... rest) {
     std::cout << first << " ";
-    _dprint(rest...);
+    dprint(rest...);
 }
 
 }
+
+namespace setting {
+    
+static bool use_debag = false;
+static bool use_warn = false;
+
+}
+
 
 template<class... T>
-void dprint(const T&... rest) {
-    if (rm::debug::use_debug){
-        rm::debug::_dprint(rest...);
+void debug(const T&... rest) {
+    if (rm::setting::use_debag){
+        rm::__debug::dprint(rest...);
     }
 }
 
+template<class... T>
+void warn(const T&... rest) {
+    if (rm::setting::use_warn){
+        std::cout << "⚠️ ";
+        rm::__debug::dprint(rest...);
+    }
+}
 
 }
 

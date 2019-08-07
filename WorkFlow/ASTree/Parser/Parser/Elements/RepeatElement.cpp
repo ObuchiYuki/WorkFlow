@@ -24,30 +24,48 @@ RepeatElement::RepeatElement(_ParserPtr _parser, bool _once) : parser(_parser), 
 
 // MARK: - Methods -
 auto RepeatElement::rstride(Lexer& lexer, int gap) -> int const {
+    let absIndex = lexer.absIndex(gap);
+    try {
+        return rstride_memo.at(absIndex);
+    }catch(std::exception e){}
+    
     var rgap = gap;
     var rstride = 0;
     
-    rm::dprint("------------------------ Repeat rstride Start ------------------------");
+    
+    rm::debug("------------------------ Repeat rstride Start ------------------------");
     while(parser->match(lexer, rgap)) {
-        print(gap);
         let a = parser->rstride(lexer, rgap);
         rstride += a;
         rgap += a;
         
         if (isOptional) break;
     }
-    rm::dprint("------------------------ Repeat rstride End ------------------------");
+    rm::debug("------------------------ Repeat rstride End ------------------------");
+    
+    rstride_memo[absIndex] = rstride;
     return rstride;
 }
 
 auto RepeatElement::match(Lexer& lexer, int gap) -> bool const {
     if (isOptional) return true;
-    return parser->match(lexer, gap);
+    
+    auto asbIndex = lexer.absIndex(gap);
+    
+    try {
+        return match_memo.at(asbIndex);
+        
+    } catch (std::exception e) {
+        let a = parser->match(lexer, gap);
+        
+        match_memo[asbIndex] = a;
+        return a;
+    }
 }
 
 auto RepeatElement::parse(Lexer& lexer, std::vector<NodePtr> &res) -> void const {
     
-    rm::dprint("------------------------ Repeat parse Start ------------------------");
+    rm::debug("------------------------ Repeat parse Start ------------------------");
     while (parser->match(lexer, 0)) {
         let node = parser->parse(lexer);
         
@@ -55,7 +73,7 @@ auto RepeatElement::parse(Lexer& lexer, std::vector<NodePtr> &res) -> void const
         if (isOptional) break;
     }
     
-    rm::dprint("------------------------ Repeat parse End ------------------------");
+    rm::debug("------------------------ Repeat parse End ------------------------");
 }
 
 

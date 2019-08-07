@@ -1,3 +1,18 @@
-if 1 > 0 {
-
+def i = 0
+while i < 100 {
+    i += 1
+    if i % 3 == 0 {
+        if i % 5 == 0 {
+            prints("FizzBizz")
+        }else{
+            prints("Fizz")
+        }
+    }else{
+        if i % 5 == 0 {
+            prints("Bizz")
+        }else{
+            printi(i)
+        }
+    }
+    
 }

@@ -89,6 +89,16 @@ public:
     }
 };
 
+class NullStem: public Node {
+public:
+    NullStem(std::vector<NodePtr> _children, Location _location) :
+    Node(_children, _location) {}
+    
+    auto description() -> std::string const override {
+        return "[NullStem]";
+    }
+};
+
 
 }}
 

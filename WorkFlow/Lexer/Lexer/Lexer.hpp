@@ -44,8 +44,16 @@ namespace wf {
         const void readLine();
         
         // MARK: - Public -
-    public:
+        
+        /// 現在読み終わったトークンの場所です。
         int index = 0;
+        
+    public:
+        
+        
+        int absIndex(int gap) {
+            return index + gap;
+        }
 
         // ======================================================= //
         // MARK: - Constructor -

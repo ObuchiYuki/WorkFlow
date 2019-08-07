@@ -25,6 +25,10 @@ int Node::numChildren() {
 }
 
 auto Node::eval(wf::run::Environment& env) -> wf::run::Value {
+    rm::warn("[Node] Node with no class must not be evalated. This node run all children's eval.");
+    for (let &child: children) {
+        child->eval(env);
+    }
     return wf::run::Value::voidValue();
 }
 

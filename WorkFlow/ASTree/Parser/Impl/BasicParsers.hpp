@@ -43,7 +43,6 @@ public:
     Parser block = rule<ast::BlockStem>()
         .skip("{")
         .optional(rule().repeat(rule()
-                               
             .skip("EOL")
             .optional(statement0)
         ))
@@ -56,9 +55,10 @@ public:
         
         rule<ast::Calling>().then(Parser::name()).skip("(").then(expr).skip(")"),
         rule<ast::Assgin>().then(Parser::name()).skip("=").then(expr),
+        expr,
     });
     
-    Parser program = rule().ors({statement, rule()}).skip("EOL");
+    Parser program = rule().ors({statement, rule<ast::NullStem>()}).skip("EOL");
 
 };
 

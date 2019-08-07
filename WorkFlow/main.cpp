@@ -37,12 +37,14 @@ int main() {
     
     var env = wf::run::Environment();
     
+    rm::setting::use_warn = false;
     
     while (lexer.peek(0)->type != token::TokenType::ENDFILE) {
         
-        let ps = BasicParsers().program.parse(lexer);
-        print("----------------------------------------------------------------------------------------");
+        let ps = BasicParsers().program.parse(lexer);        
+        
         ps->eval(env);
+        
     }
     
 

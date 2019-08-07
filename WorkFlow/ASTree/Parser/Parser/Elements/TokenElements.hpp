@@ -19,20 +19,27 @@ namespace wf {
 template<class T>
 class TokenElement: public Element {
 public:
+    
+    // MARK: - Overriable Methods -
     virtual token::TokenType matchType() const = 0;
     
-    bool isMatch(token::TokenPtr token) const {
-        return matchType() == token->type;
-    };
+    
+    // MARK: - Constructors -
     
     TokenElement() {}
     virtual ~TokenElement(){}
     
-    
+    // MARK: - Overrided Methods -
     auto match(Lexer& lexer, int gap) -> bool const override {
-        rm::dprint("[TokenElement<"+ token::TokenTypeDescription(matchType()) +">::match]", "matched:", isMatch(lexer.peek(gap)) ? "true" : "false", "checked: ", lexer.peek(gap)->value);
-        
-        return isMatch(lexer.peek(gap));
+        let absIndex = lexer.absIndex(gap);
+        try {
+            return match_memo.at(absIndex);
+        } catch (std::exception e) {
+            let a = isMatch(lexer.peek(gap));
+            match_memo[absIndex] = a;
+            rm::debug("[TokenElement<"+ token::TokenTypeDescription(matchType()) +">::match]", "matched:", a ? "true" : "false", "checked: ", lexer.peek(gap)->value);
+            return a;
+        }
     }
     auto parse(Lexer& lexer, std::vector<NodePtr> &res) -> void const override {
         let token = lexer.readNext();
@@ -47,6 +54,12 @@ public:
     auto description() -> std::string const override {
         return "[Token " + token::TokenTypeDescription(matchType()) + "]";
     }
+private:
+    std::unordered_map<int, bool> match_memo;
+    
+    bool isMatch(token::TokenPtr token) const {
+        return matchType() == token->type;
+    };
 };
 
 class IntegerElement: public TokenElement<ast::IntegerLiteral> {
