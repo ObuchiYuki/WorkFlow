@@ -10,6 +10,7 @@
 #define Statement_h
 
 #include "Node.hpp"
+#include "FuncStem.hpp"
 
 
 namespace wf {namespace ast {

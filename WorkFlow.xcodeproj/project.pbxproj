@@ -14,7 +14,7 @@
 		B685E76422F527840056BFF2 /* Lexer.hpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E72022F5277F0056BFF2 /* Lexer.hpp */; };
 		B685E76522F527840056BFF2 /* ASTree.hpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E72222F5277F0056BFF2 /* ASTree.hpp */; };
 		B685E76622F527840056BFF2 /* ParserImpl.h in Sources */ = {isa = PBXBuildFile; fileRef = B685E72522F5277F0056BFF2 /* ParserImpl.h */; };
-		B685E76722F527840056BFF2 /* BasicParsers.hpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E72622F5277F0056BFF2 /* BasicParsers.hpp */; };
+		B685E76722F527840056BFF2 /* BasicParser.hpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E72622F5277F0056BFF2 /* BasicParser.hpp */; };
 		B685E76822F527840056BFF2 /* Element.hpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E72822F5277F0056BFF2 /* Element.hpp */; };
 		B685E76922F527840056BFF2 /* _AnyParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E72922F5277F0056BFF2 /* _AnyParser.cpp */; };
 		B685E76B22F527840056BFF2 /* Parser.hpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E72B22F5277F0056BFF2 /* Parser.hpp */; };
@@ -49,6 +49,7 @@
 		B685E79422F527840056BFF2 /* Common.hpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E75F22F5277F0056BFF2 /* Common.hpp */; };
 		B685E79522F527840056BFF2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E76022F5277F0056BFF2 /* main.cpp */; };
 		B69E884422FA74890064BE9B /* Element.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B69E884322FA74890064BE9B /* Element.cpp */; };
+		B69F407722FBA61200795378 /* FuncStem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B69F407522FBA61200795378 /* FuncStem.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -79,7 +80,7 @@
 		B685E72022F5277F0056BFF2 /* Lexer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Lexer.hpp; sourceTree = "<group>"; };
 		B685E72222F5277F0056BFF2 /* ASTree.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ASTree.hpp; sourceTree = "<group>"; };
 		B685E72522F5277F0056BFF2 /* ParserImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParserImpl.h; sourceTree = "<group>"; };
-		B685E72622F5277F0056BFF2 /* BasicParsers.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BasicParsers.hpp; sourceTree = "<group>"; };
+		B685E72622F5277F0056BFF2 /* BasicParser.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BasicParser.hpp; sourceTree = "<group>"; };
 		B685E72822F5277F0056BFF2 /* Element.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Element.hpp; sourceTree = "<group>"; };
 		B685E72922F5277F0056BFF2 /* _AnyParser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = _AnyParser.cpp; sourceTree = "<group>"; };
 		B685E72B22F5277F0056BFF2 /* Parser.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Parser.hpp; sourceTree = "<group>"; };
@@ -120,6 +121,11 @@
 		B69F406E22FAFA6100795378 /* TreeElement.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TreeElement.hpp; sourceTree = "<group>"; };
 		B69F406F22FAFAE500795378 /* SkipElement.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SkipElement.hpp; sourceTree = "<group>"; };
 		B69F407022FAFC5600795378 /* Parser_umbrella.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Parser_umbrella.hpp; sourceTree = "<group>"; };
+		B69F407122FB9FBD00795378 /* FuncParser.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = FuncParser.hpp; sourceTree = "<group>"; };
+		B69F407322FBA49300795378 /* ParameterList.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ParameterList.hpp; sourceTree = "<group>"; };
+		B69F407522FBA61200795378 /* FuncStem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FuncStem.cpp; sourceTree = "<group>"; };
+		B69F407622FBA61200795378 /* FuncStem.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = FuncStem.hpp; sourceTree = "<group>"; };
+		B69F407822FBBBE500795378 /* vector.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = vector.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,7 +212,8 @@
 			isa = PBXGroup;
 			children = (
 				B685E72522F5277F0056BFF2 /* ParserImpl.h */,
-				B685E72622F5277F0056BFF2 /* BasicParsers.hpp */,
+				B685E72622F5277F0056BFF2 /* BasicParser.hpp */,
+				B69F407122FB9FBD00795378 /* FuncParser.hpp */,
 			);
 			path = Impl;
 			sourceTree = "<group>";
@@ -262,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				B685E74122F5277F0056BFF2 /* PrimaryNode.hpp */,
+				B69F407322FBA49300795378 /* ParameterList.hpp */,
 			);
 			path = PrimaryNode;
 			sourceTree = "<group>";
@@ -274,6 +282,8 @@
 				B685E74622F5277F0056BFF2 /* WhileStem.cpp */,
 				B685E74822F5277F0056BFF2 /* BlockStem.cpp */,
 				B65CACCE22F6634100350646 /* VarStem.cpp */,
+				B69F407622FBA61200795378 /* FuncStem.hpp */,
+				B69F407522FBA61200795378 /* FuncStem.cpp */,
 			);
 			path = Statement;
 			sourceTree = "<group>";
@@ -327,6 +337,7 @@
 				B63C209A22F569DF0070C83A /* type.hpp */,
 				B604B05022F7DB4E00AA6B16 /* description.hpp */,
 				B604B05122F7E60100AA6B16 /* debug.hpp */,
+				B69F407822FBBBE500795378 /* vector.hpp */,
 			);
 			path = Impl;
 			sourceTree = "<group>";
@@ -402,7 +413,7 @@
 				B685E76422F527840056BFF2 /* Lexer.hpp in Sources */,
 				B685E76522F527840056BFF2 /* ASTree.hpp in Sources */,
 				B685E76622F527840056BFF2 /* ParserImpl.h in Sources */,
-				B685E76722F527840056BFF2 /* BasicParsers.hpp in Sources */,
+				B685E76722F527840056BFF2 /* BasicParser.hpp in Sources */,
 				B685E76822F527840056BFF2 /* Element.hpp in Sources */,
 				B685E76922F527840056BFF2 /* _AnyParser.cpp in Sources */,
 				B685E76B22F527840056BFF2 /* Parser.hpp in Sources */,
@@ -437,6 +448,7 @@
 				B685E79222F527840056BFF2 /* rmkit.h in Sources */,
 				B685E79322F527840056BFF2 /* location.hpp in Sources */,
 				B685E79422F527840056BFF2 /* Common.hpp in Sources */,
+				B69F407722FBA61200795378 /* FuncStem.cpp in Sources */,
 				B685E79522F527840056BFF2 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

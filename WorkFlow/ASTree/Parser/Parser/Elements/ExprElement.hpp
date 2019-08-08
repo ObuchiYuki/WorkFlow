@@ -57,7 +57,12 @@ public:
         return false;
     }
     
+    auto add(std::string value, int priority, Associative associative) {
+        operators.push_back(Operator(value, priority, associative));
+    }
+    
     // MARK: - Constructor -
+    Operators(){}
     Operators(std::vector<Operator> _operators) : operators(_operators) {}
 
 };
@@ -66,10 +71,10 @@ public:
 class ExprElement: public Element {
 private:
     
-    Operators operators;
+    Operators& operators;
     _ParserPtr factor;
 public:
-    ExprElement(_ParserPtr _factor, Operators _operators) : factor(_factor), operators(_operators) {}
+    ExprElement(_ParserPtr _factor, Operators& _operators) : factor(_factor), operators(_operators) {}
 
     auto parse(Lexer& lexer, std::vector<ast::NodePtr>& res) const -> void override;
     auto match(Lexer& lexer, int gap) const -> const bool override;

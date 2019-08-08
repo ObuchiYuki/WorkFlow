@@ -87,7 +87,7 @@ auto Parser::then(Parser parserw) -> Parser{
     return *this;
 }
      
-auto Parser::expression(Parser subParserw, Operators ops) -> Parser{
+auto Parser::expression(Parser subParserw, Operators& ops) -> Parser{
     let e_expr = ElementPtr(new ExprElement(subParserw.parser, ops));
             
     parser->addElement(e_expr);
@@ -148,4 +148,12 @@ auto Parser::name() -> Parser {
 }
 auto Parser::op() -> Parser {
     return rule()._op();
+}
+
+auto Parser::addReservedWord(std::string word) -> void {
+    IDElement::addReservedWord(word);
+}
+
+auto Parser::description() const -> const std::string {
+    return parser->description();
 }

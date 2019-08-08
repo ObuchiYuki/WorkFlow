@@ -56,6 +56,7 @@ public:
     /// Operatorsから初期化します。
     _Operators(Operators operators) {
         for (let &op: operators.operators) {
+            
             map[op.value] = PrecedencePtr(new Precedence(op.priority, (op.associative == Associative::LEFT)));
         }
     }
@@ -63,8 +64,11 @@ public:
     // MARK: - Methods -
     /// 演算子名から優先順位を取り出します。
     auto get(std::string name) const -> PrecedencePtr {
-        
-        return map.at(name);
+        try {
+            return map.at(name);
+        }catch(std::out_of_range e) {
+            throw std::runtime_error("[_Operators::get] operator named " + name + " not found.");
+        }
     }
     
     /// 演算子が存在するかを返します。
@@ -153,6 +157,7 @@ auto ExprParser::parse(Lexer& lexer, std::vector<ast::NodePtr>& res) const -> vo
 
 auto ExprElement::parse(Lexer& lexer, std::vector<ast::NodePtr>& res) const -> void {
     let parser = ExprParser(factor, operators);
+    
     parser.parse(lexer, res);
 }
 auto ExprElement::match(Lexer& lexer, int gap) const -> const bool {
@@ -161,12 +166,13 @@ auto ExprElement::match(Lexer& lexer, int gap) const -> const bool {
 }
 
 auto ExprElement::rstride(Lexer& lexer, int gap) const -> const int {
+    
     auto rstride = 0;
     auto rgap = gap;
     auto repeatFlag = true;
     
     while (repeatFlag) {
-        
+
         if (factor->match(lexer, rgap)){
             auto a = factor->rstride(lexer, rgap);
             rstride += a;

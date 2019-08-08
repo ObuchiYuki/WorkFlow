@@ -36,7 +36,7 @@ public:
     auto skip(std::string token) -> Parser;
     auto skip(std::vector<std::string> tokens) -> Parser;
     auto then(Parser parserw) -> Parser;
-    auto expression(Parser subParserw, Operators ops) -> Parser;
+    auto expression(Parser subParserw, Operators& ops) -> Parser;
     auto optional(Parser parserw) -> Parser;
     auto insertChoise(Parser parserw) -> Parser;
             
@@ -44,6 +44,10 @@ public:
     static auto string() -> Parser;
     static auto name() -> Parser;
     static auto op() -> Parser;
+    
+    auto description() const -> const std::string;
+    
+    static auto addReservedWord(std::string word) -> void;
 };
 
 template<class T = wf::ast::Node>

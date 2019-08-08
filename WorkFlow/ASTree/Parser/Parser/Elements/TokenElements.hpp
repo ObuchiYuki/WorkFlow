@@ -9,8 +9,10 @@
 #ifndef TokenElements_hpp
 #define TokenElements_hpp
 
+#include <string>
 
 #include "Elements.hpp"
+#include "rmkit.h"
 
 
 namespace wf {
@@ -51,7 +53,7 @@ public:
     }
 private:
     
-    bool isMatch(token::TokenPtr token) const {
+    virtual bool isMatch(token::TokenPtr token) const {
         return matchType() == token->type;
     };
 };
@@ -76,7 +78,18 @@ class OperatorElement: public TokenElement<ast::Operator> {
     }
 };
 
+static rm::vector<std::string> __reservedWords;
+
 class IDElement: public TokenElement<ast::Name> {
+public:
+    static auto addReservedWord(std::string word) {
+        __reservedWords.push_back(word);
+    }
+    
+    auto isMatch(token::TokenPtr token) const -> bool override {
+        return (token->type == token::TokenType::IDENTIFIER && !__reservedWords.contains(token->value));
+        
+    };
     token::TokenType matchType() const override {
         return token::TokenType::IDENTIFIER;
     }

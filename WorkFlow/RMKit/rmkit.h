@@ -14,5 +14,6 @@
 #include "Impl/type.hpp"
 #include "Impl/description.hpp"
 #include "Impl/debug.hpp"
+#include "Impl/vector.hpp"
 
 #endif /* rmkit_h */

@@ -9,6 +9,7 @@
 #ifndef ParserImpl_h
 #define ParserImpl_h
 
-#include "BasicParsers.hpp"
+#include "BasicParser.hpp"
+#include "FuncParser.hpp"
 
 #endif /* ParserImpl_h */

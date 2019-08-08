@@ -40,11 +40,16 @@ auto OrElement::parse(Lexer& lexer, std::vector<ast::NodePtr> &res) const -> voi
 }
 
 auto OrElement::insertChoise(_ParserPtr parser) -> void {
-    parsers.push_back(parser);
+    parsers.insert(parsers.begin(), parser);
 }
 
 auto OrElement::description() const -> const std::string {
-    return "[Or]";
+    std::vector<std::string> dec;
+    for (let &ps: parsers) {
+        dec.push_back(ps->description());
+    }
+    
+    return "[Or](parsers = " + rm::description::vector(dec) + ")";
 }
 
 auto OrElement::chooseParser(Lexer& lexer, int index) const -> _ParserPtr const {
@@ -58,6 +63,7 @@ auto OrElement::chooseParser(Lexer& lexer, int index) const -> _ParserPtr const 
             if (parser->match(lexer, index)){
                 matched_parser_memo[absIndex] = parser;
                 
+                rm::debug("[OrElement::chooseParser]", "⭕️ parser selected.", parser->description());
                 return parser;
             }
         }

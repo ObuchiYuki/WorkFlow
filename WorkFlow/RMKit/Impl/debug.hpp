@@ -26,7 +26,7 @@ static inline void dprint(const T& first, const A&... rest) {
 
 // ============================================== //
 // MARK: - Settings -
-static bool use_debag = false;
+static bool use_debag = true;
 static bool use_warn = true;
 
 // 与えられた引数をdebug出力します。

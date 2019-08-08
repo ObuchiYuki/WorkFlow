@@ -29,15 +29,14 @@ int main() {
 
     let path = "/Users/yuki/Developer/Git/WorkFlow/main.wf";
     var ifs = std::ifstream(path);
-
     
     var lexer = wf::Lexer(&ifs);
     
     var env = wf::run::Environment();
-        
+             
     while (lexer.peek(0)->type != token::TokenType::ENDFILE) {
         
-        let ps = BasicParsers().program.parse(lexer);        
+        let ps = FuncParser().program.parse(lexer);        
         
         ps->eval(env);
     }
