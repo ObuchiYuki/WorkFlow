@@ -54,8 +54,17 @@ auto Parser::repeat(Parser parserw) -> Parser{
             
     return *this;
 }
+
+auto Parser::optionalRepeat(Parser parserw) -> Parser{
+    let e_repeat = ElementPtr(new RepeatElement(parserw.parser, false, true));
+                
+    parser->addElement(e_repeat);
+                
+    return *this;
+}
+
 auto Parser::optional(Parser parserw) -> Parser{
-    let e_repeat = ElementPtr(new RepeatElement(parserw.parser, true));
+    let e_repeat = ElementPtr(new RepeatElement(parserw.parser, true, true));
                 
     parser->addElement(e_repeat);
                 

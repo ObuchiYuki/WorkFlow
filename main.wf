@@ -1,3 +1,7 @@
 def hello(world) {
     prints(world)
 }
+
+hello("Hello")
+hello("World")
+

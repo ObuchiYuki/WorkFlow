@@ -23,9 +23,14 @@ class RepeatElement: public Element{
 private:
     _ParserPtr parser;
     
+    /// 0以上でマッチ (マッチは常にする)　なかったときは、res = []
     bool isOptional;
+    
+    /// 1回のみマッチ
+    bool isOnce;
 public:
-    RepeatElement(_ParserPtr _parser, bool _once);
+    RepeatElement(_ParserPtr _parser, bool _once = false, bool _optional = false) :
+    parser(_parser), isOnce(_once), isOptional(_optional) {}
     
     auto match(Lexer& lexer, int gap) const -> const bool override;
     auto parse(Lexer& lexer, std::vector<ast::NodePtr>& res) const -> void override;

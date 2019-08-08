@@ -15,10 +15,10 @@
 
 class FuncParser: public BasicParser {
 public:
-    wf::Parser param = wf::rule().then(wf::Parser::name());
+    wf::Parser param = wf::Parser::name();
     
     wf::Parser params = wf::rule<wf::ast::ParameterList>()
-                        .then(param).repeat(wf::rule().skip(",").then(param));
+                        .then(param).optionalRepeat(wf::rule().skip(",").then(param));
     
     wf::Parser paramList = wf::rule().skip("(").optional(params).skip(")");
     

@@ -22,3 +22,8 @@ var FuncStem::body() const -> NodePtr {
     return children[2];
 }
 
+auto FuncStem::eval(wf::run::Environment& env) -> wf::run::Value {
+    env.set(name(), wf::run::Value(body()));
+    
+    return wf::run::Value::voidValue();
+}

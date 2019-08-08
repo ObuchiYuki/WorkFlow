@@ -7,6 +7,7 @@
 //
 
 #include "Calling.hpp"
+#include "Statement.hpp"
 
 #include <exception>
 
@@ -38,7 +39,9 @@ auto Calling::eval(wf::run::Environment& env) -> wf::run::Value {
         print(args()->eval(env).string());
     }else if (fnname == "printi") {
         print(args()->eval(env).integer());
+        
     }else{
+        
         throw std::runtime_error("Build-in funtion named " + fnname + " not found.");
     }
     

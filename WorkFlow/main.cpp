@@ -39,6 +39,8 @@ int main() {
         let ps = FuncParser().program.parse(lexer);        
         
         ps->eval(env);
+        
+        print(ps->description());
     }
     
 

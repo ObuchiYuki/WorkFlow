@@ -12,7 +12,16 @@
 #include <string>
 #include <iostream>
 
+#include "Node.hpp"
 #include "rmkit.h"
+
+
+namespace wf {namespace ast {
+
+class Node;
+typedef std::shared_ptr<Node> NodePtr;
+
+}}
 
 namespace wf {namespace run {
 
@@ -40,6 +49,10 @@ public:
     }
     float floating() const{
         return _value.as<float>();
+    }
+    
+    wf::ast::NodePtr runnable() const {
+        return _value.as<wf::ast::NodePtr>();
     }
     
     friend std::ostream& operator << (std::ostream &os, const Value a) {

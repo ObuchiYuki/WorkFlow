@@ -25,7 +25,7 @@ private:
 
 public:
     auto get(std::string name) -> Value {
-        return variables[name];
+        return variables.at(name);
     }
     auto set(std::string name, Value token) {
         variables[name] = token;

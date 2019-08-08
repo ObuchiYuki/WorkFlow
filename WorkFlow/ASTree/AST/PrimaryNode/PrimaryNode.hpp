@@ -89,7 +89,12 @@ public:
     Name(token::TokenPtr _token, Location _location) : PrimaryNode(_token, _location) {}
     
     auto eval(wf::run::Environment& env) -> wf::run::Value override {
-        return env.get(token->value);
+        try {
+            return env.get(token->value);
+        } catch (std::out_of_range e) {
+            throw std::runtime_error("[Name] Variable named '" + token->value + "' is not defined.");
+        }
+        
     }
 };
 

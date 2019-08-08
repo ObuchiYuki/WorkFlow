@@ -68,6 +68,6 @@ auto OrElement::chooseParser(Lexer& lexer, int index) const -> _ParserPtr const 
             }
         }
         
-        throw std::runtime_error("[OrElement::chooseParser] cannot find any matching parser.");
+        throw std::runtime_error("[OrElement::chooseParser] cannot find any matching parser. For line "+lexer.description(absIndex));
     }
 }

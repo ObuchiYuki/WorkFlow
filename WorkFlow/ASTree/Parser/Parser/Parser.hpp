@@ -38,6 +38,7 @@ public:
     auto then(Parser parserw) -> Parser;
     auto expression(Parser subParserw, Operators& ops) -> Parser;
     auto optional(Parser parserw) -> Parser;
+    auto optionalRepeat(Parser parserw) -> Parser;
     auto insertChoise(Parser parserw) -> Parser;
             
     static auto integer() -> Parser;

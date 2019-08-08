@@ -70,6 +70,16 @@ namespace wf {
         /// 先のQueueを先読みします。メモリから消すことはありません。
         token::TokenPtr peek(int stride);
         
+        
+        auto description(int gap) -> const std::string{
+            return "'" +
+            peek(gap)->description() + " " +
+            peek(gap+1)->description() + " " +
+            peek(gap+2)->description() + " " +
+            peek(gap+3)->description() + "...'";
+            
+        }
+        
         /// 先頭のTokenのIndexです。
         int currentIndex();
         

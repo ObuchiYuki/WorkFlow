@@ -29,7 +29,7 @@ public:
 
     wf::Parser basicexpr = expr0.expression(primary, operators);
     
-    wf::Parser expr = wf::rule<wf::ast::Expression>().ors({
+    wf::Parser expr = wf::rule().ors({
         basicexpr,
         calling0,
     });
@@ -53,7 +53,8 @@ public:
         expr,
     });
     
-    wf::Parser program = wf::rule().ors({statement, wf::rule<wf::ast::NullStem>()}).skip("EOL");
+    wf::Parser nullLine = wf::rule<wf::ast::NullStem>().skip("EOL");
+    wf::Parser program = wf::rule().ors({statement, nullLine}).skip("EOL");
 
     BasicParser() {
         operators.add("=", 1,   wf::Associative::RIGHT);

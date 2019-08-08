@@ -81,6 +81,14 @@ inline std::string TokenTypeDescription(TokenType tokenType){
             return type == TokenType::ENDFILE || type == TokenType::ENDLINE;
         }
         
+        auto description() const -> std::string {
+            if (type == TokenType::ENDLINE) {
+                return "\\n";
+            }else{
+                return value;
+            }
+        }
+        
     };
         
     /// END OF FILE

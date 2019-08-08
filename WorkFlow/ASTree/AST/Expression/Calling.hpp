@@ -23,6 +23,8 @@ public:
     auto description() -> std::string const override;
     
     auto eval(wf::run::Environment& env) -> wf::run::Value override;
+    
+    auto call(NodePtr arg, wf::run::Environment& env) -> wf::run::Value; 
 };
 
 
