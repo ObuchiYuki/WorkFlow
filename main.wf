@@ -1,7 +1,15 @@
-def hello(world) {
-    prints(world)
+def fizzbizz(i) {
+    if i % 3 == 0 {
+        if i % 5 == 0 {
+            prints("FizzBizz")
+        } else {
+            prints("Fizz")
+        }
+    } else {
+        if i % 5 == 0 {
+            prints("Bizz")
+        } else {
+            printi(i)
+        }
+    }
 }
-
-hello("Hello")
-hello("World")
-

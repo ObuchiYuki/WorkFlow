@@ -219,7 +219,7 @@ TokenPtr wf::Lexer::readNext() {
         let removingQ = queue[0];
         queue.erase(queue.begin(), queue.begin()+1);
         index += 1;
-        
+
         return removingQ;
     } else {
         rm::debug("EOF");

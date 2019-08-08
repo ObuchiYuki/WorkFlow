@@ -36,11 +36,10 @@ int main() {
              
     while (lexer.peek(0)->type != token::TokenType::ENDFILE) {
         
-        let ps = FuncParser().program.parse(lexer);        
+        let ps = FuncParser().program.parse(lexer);
         
         ps->eval(env);
         
-        print(ps->description());
     }
     
 

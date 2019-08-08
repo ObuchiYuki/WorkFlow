@@ -76,7 +76,9 @@ namespace wf {
             peek(gap)->description() + " " +
             peek(gap+1)->description() + " " +
             peek(gap+2)->description() + " " +
-            peek(gap+3)->description() + "...'";
+            peek(gap+3)->description() + " " +
+            peek(gap+4)->description() + " " +
+            peek(gap+5)->description() + "...'";
             
         }
         

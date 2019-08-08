@@ -49,7 +49,7 @@ auto OrElement::description() const -> const std::string {
         dec.push_back(ps->description());
     }
     
-    return "[Or](parsers = " + rm::description::vector(dec) + ")";
+    return "[Or]";
 }
 
 auto OrElement::chooseParser(Lexer& lexer, int index) const -> _ParserPtr const {

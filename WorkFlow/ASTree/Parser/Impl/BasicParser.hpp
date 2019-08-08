@@ -24,23 +24,14 @@ public:
         wf::Parser::string(),
         wf::rule<wf::ast::Expression>().skip("(").then(expr0).skip(")"),
     });
-    
-    wf::Parser calling0 = wf::rule();
 
-    wf::Parser basicexpr = expr0.expression(primary, operators);
-    
-    wf::Parser expr = wf::rule().ors({
-        basicexpr,
-        calling0,
-    });
-    
-    wf::Parser calling = calling0.then(wf::rule<wf::ast::Calling>().then(wf::Parser::name()).skip("(").then(expr).skip(")"));
+    wf::Parser expr = expr0.expression(primary, operators);
     
     wf::Parser statement0 = wf::rule();
     
     wf::Parser block = wf::rule<wf::ast::BlockStem>()
         .skip("{").optional(statement0)
-        .repeat(wf::rule().skip("EOL").optional(statement0))
+        .optionalRepeat(wf::rule().skip("EOL").optional(statement0))
         .skip("}");
     
     wf::Parser statement = statement0.ors({
@@ -49,12 +40,11 @@ public:
         wf::rule<wf::ast::VarStem>().skip("def").then(wf::Parser::name()).skip("=").then(expr),
         
         wf::rule<wf::ast::Assgin>().then(wf::Parser::name()).skip("=").then(expr),
-        calling,
+        wf::rule<wf::ast::Calling>().then(wf::Parser::name()).skip("(").then(expr).skip(")"),
         expr,
     });
     
-    wf::Parser nullLine = wf::rule<wf::ast::NullStem>().skip("EOL");
-    wf::Parser program = wf::rule().ors({statement, nullLine}).skip("EOL");
+    wf::Parser program = wf::rule().ors({statement, wf::rule()}).skip("EOL");
 
     BasicParser() {
         operators.add("=", 1,   wf::Associative::RIGHT);
