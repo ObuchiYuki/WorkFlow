@@ -33,7 +33,16 @@ public:
         wf::rule<wf::ast::Expression>().skip("(").then(expr0).skip(")"),
     });
     
-    wf::Parser expr = expr0.expression(primary, ops);
+    wf::Parser calling0 = wf::rule();
+
+    wf::Parser basicexpr = expr0.expression(primary, ops);
+    
+    wf::Parser expr = wf::rule<wf::ast::Expression>().ors({
+        basicexpr,
+        calling0,
+    });
+    
+    wf::Parser calling = calling0.then(wf::rule<wf::ast::Calling>().then(wf::Parser::name()).skip("(").then(expr).skip(")"));
     
     wf::Parser statement0 = wf::rule();
     
@@ -47,8 +56,8 @@ public:
         wf::rule<wf::ast::WhileStem>().skip("while").then(expr).then(block),
         wf::rule<wf::ast::VarStem>().skip("def").then(wf::Parser::name()).skip("=").then(expr),
         
-        wf::rule<wf::ast::Calling>().then(wf::Parser::name()).skip("(").then(expr).skip(")"),
         wf::rule<wf::ast::Assgin>().then(wf::Parser::name()).skip("=").then(expr),
+        calling,
         expr,
     });
     

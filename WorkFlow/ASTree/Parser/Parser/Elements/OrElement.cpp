@@ -39,6 +39,10 @@ auto OrElement::parse(Lexer& lexer, std::vector<ast::NodePtr> &res) const -> voi
     res.push_back(parser->parse(lexer));
 }
 
+auto OrElement::insertChoise(_ParserPtr parser) -> void {
+    parsers.push_back(parser);
+}
+
 auto OrElement::description() const -> const std::string {
     return "[Or]";
 }

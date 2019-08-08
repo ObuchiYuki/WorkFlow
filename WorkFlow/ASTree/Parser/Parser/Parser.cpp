@@ -95,6 +95,18 @@ auto Parser::expression(Parser subParserw, Operators ops) -> Parser{
     return *this;
 }
 
+auto Parser::insertChoise(Parser parserw) -> Parser {
+    auto& elm0 = parser->getElements()[0];
+    auto orElm = std::dynamic_pointer_cast<OrElement>(elm0);
+    
+    if (orElm) {
+        orElm->insertChoise(parserw.parser);
+        
+        return *this;
+    }
+    throw std::runtime_error("[Parser::insertChoise] Parser.elements[0] is not OrElement. Check if elements[0] is OrElement.");
+}
+
 auto Parser::_integer() -> Parser {
     let e_int = ElementPtr(new IntegerElement());
     

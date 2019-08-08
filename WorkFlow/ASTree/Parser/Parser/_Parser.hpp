@@ -16,9 +16,13 @@ namespace wf {
     template<class T> // T: Node
     class _Parser {
     public:
+        // MARK: - Constructor -
         virtual ~_Parser() {};
+        
+        // MARK: - Properties -
         std::vector<ElementPtr> elements;
-                 
+        
+        // MARK: - Methods -
         /// Lexer& が Perserにマッチしているかを調べます。
         auto match(Lexer& lexer, int gap) -> bool const {
             var rstride = 0;
@@ -33,7 +37,6 @@ namespace wf {
             }
             
             return true;
-            
         }
                  
         /// Lexerの値を元に実際にパースを行います。
@@ -81,7 +84,7 @@ namespace wf {
             return rstride;
         }
           
-        auto addElement(ElementPtr element) -> void{
+        auto addElement(ElementPtr element) -> void {
            
             elements.push_back(element);
         }

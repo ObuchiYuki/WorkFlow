@@ -28,3 +28,7 @@ auto _AnyParser::addElement(ElementPtr element) -> void {
 auto _AnyParser::rstride(Lexer& lexer, int gap) -> int const {
     return _holder->rstride(lexer, gap);
 }
+
+auto _AnyParser::getElements() -> std::vector<ElementPtr>&{
+    return _holder->getElements();
+}

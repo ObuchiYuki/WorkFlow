@@ -39,6 +39,8 @@ public:
     
     // MARK: - Overrided Methods -
     
+    
+    auto insertChoise(_ParserPtr parser) -> void;
     auto rstride(Lexer& lexer, int gap) const -> int const override;
     auto description() const -> const std::string override;
     
