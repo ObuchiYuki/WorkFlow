@@ -4,7 +4,74 @@
 
 Work Flow is Script Language specialized to flow data process.
 
-Now Developing.
+
+
+### Basic Use
+
+```
+def for(Iterable itr, @body roop) = {...}
+
+for (1...100) { i in
+		print(i)
+}
+
+def a = 1
+def b = 5
+mut c = 3
+print(a + b + c) // 9
+
+a = 2 // error
+c = 2 // OK
+
+class Person {
+	// constant variable
+	def name: str
+	// mutable variable
+	mut age: int
+	
+	// self mutaling method
+	mut passYear:() = {
+			self.age += 1
+	} 
+	// no mutaling method
+	def getAge:() -> int = {
+			age		
+	}
+}
+
+protocol CanSayName {
+		def sayName:()
+}
+
+ratificate Person CanSayName {
+		def sayName:() = {
+				print(self.name)
+		}
+}
+```
+
+
+
+### Pipeline Use
+
+```
+import "file"
+import "~/Developer/libs/music"
+
+@pipeline
+def map[T, U](@input T, @body tranceform: (T)->(U)) {...}
+
+
+file.all(in: .current)                  // get all files in current dir
+    |> sort														  // sort by name
+    |> filter @.type == .music				  // filter with file type
+    |> map (@, Music(@))							  // create field (File, Misic)
+				|> @1 @.title										// field convertion expression
+       	|> map "album_" + @ 						// create name
+    |> each @0.filename = @1						// apply
+```
+
+
 
 
 
