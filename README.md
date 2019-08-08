@@ -8,29 +8,37 @@ Now Developing.
 
 
 
+### TODO
+
+- Separate Eval method from ASTNode
+- Eval of Function Calling
+- Class Definition
+- Type Checker
+
+
+
 ### Stages
 
 - Lexer :heavy_check_mark:
 
-- Abstract  Syntaxe Tree :heavy_check_mark:  $LL(n) ~~Parser$
-  - Calling Statement :heavy_check_mark:
-  - Def Statement :heavy_check_mark:
-  - While Statement :heavy_check_mark:
-  - If Statement :heavy_check_mark:
-  - Expression :heavy_check_mark:
-  - Assign Statement:heavy_check_mark:
+- Abstract  Syntaxe Tree :heavy_check_mark:  (with LL(n) Parser)
+  - Calling Statement ​ :heavy_check_mark:
+  - Def Statement  :heavy_check_mark:
+  - While Statement  :heavy_check_mark:
+  - If Statement  :heavy_check_mark:
+  - Expression  :heavy_check_mark:
+  - Assign Statement :heavy_check_mark:
+  - Func Definition :heavy_check_mark:
   
 - Evaluation △
-  - Print function (String only) :heavy_check_mark:
+  - Print function (string・int only)  :heavy_check_mark:
   - If Statement :heavy_check_mark:
-- Def Statement​ :heavy_check_mark:
-  - Comparison Expression (`<`, `>`) (Int only) :heavy_check_mark:
-  - Assign `+=`  (Int only):heavy_check_mark:
   - Def Statement :heavy_check_mark:
+  
+  - Comparison Expression (`<`, `>`) (Int only) :heavy_check_mark:
+  - Expression (`+-*/`) :heavy_check_mark:
+  - Assign `+=` `=`   (Int only):heavy_check_mark:
+  - Def Statement :heavy_check_mark:
+  - FuncDef :heavy_check_mark:
+  
 
-  
-  
-  
-  
-  
-  (Gitの使い方は個人なので適当です)
