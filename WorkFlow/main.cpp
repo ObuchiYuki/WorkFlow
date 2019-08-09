@@ -23,7 +23,7 @@ int main() {
     
     var lexer = wf::Lexer(ifs);
     
-    var env = wf::run::Environment();
+    var globalEnv = wf::run::Environment();
           
     
     // MARK: - Measure Start -
@@ -35,7 +35,7 @@ int main() {
             var parser = FuncParser();
             let ps = FuncParser().parse(lexer);
             
-            ps->eval(env);
+            ps->eval(globalEnv);
         }
     }catch(wf::WorkFlowError e) {
         rm::debug::out(e.message());

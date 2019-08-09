@@ -14,31 +14,33 @@
 #include <unordered_map>
 
 #include "Token.hpp"
+#include "WorkFlowError.hpp"
 #include "Value.hpp"
 
 
 namespace wf {namespace run{
 
-class Environment {
-private:
-    std::unordered_map<std::string, Value> variables = {};
+class Environment;
+typedef std::shared_ptr<Environment> EnvironmentPtr;
 
+class Environment: public std::enable_shared_from_this<Environment> {
 public:
-    auto get(std::string name) -> Value {
-        return variables.at(name);
-    }
-    auto set(std::string name, Value token) {
-        variables[name] = token;
-    }
+    std::unordered_map<std::string, Value> variables = {};
+    std::vector<EnvironmentPtr> sub_environments = {};
+    
+
+    auto get(std::string name) const -> Value;
+    auto set(std::string name, Value token) -> void;
+    auto createSubEnv() -> EnvironmentPtr;
     
     friend std::ostream& operator << (std::ostream &os, const Environment self) {
-        for (const auto &item: self.variables){
-            os << item.first << " => " << item.second << "\n";
-        }
+        for (let &item: self.variables){ os << item.first << " => " << item.second << std::endl; }
         
         return os;
     }
 };
+
+
 
 }}
 

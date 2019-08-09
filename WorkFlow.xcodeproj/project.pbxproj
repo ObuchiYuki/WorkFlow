@@ -11,6 +11,7 @@
 		B65CACCF22F6634100350646 /* VarStem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B65CACCE22F6634100350646 /* VarStem.cpp */; };
 		B6669AEB22FD38FE0084AF52 /* AssginStem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6669AE922FD38FE0084AF52 /* AssginStem.cpp */; };
 		B6669AEE22FD3A920084AF52 /* ExAssign.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6669AEC22FD3A920084AF52 /* ExAssign.cpp */; };
+		B668203C22FD782C007A2B7B /* Environment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B668203B22FD782C007A2B7B /* Environment.cpp */; };
 		B685E76122F527840056BFF2 /* Token.hpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E71C22F5277F0056BFF2 /* Token.hpp */; };
 		B685E76222F527840056BFF2 /* Lexer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E71E22F5277F0056BFF2 /* Lexer.cpp */; };
 		B685E76322F527840056BFF2 /* Lexer.hpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E71F22F5277F0056BFF2 /* Lexer.hpp */; };
@@ -87,6 +88,7 @@
 		B6669AEA22FD38FE0084AF52 /* AssginStem.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AssginStem.hpp; sourceTree = "<group>"; };
 		B6669AEC22FD3A920084AF52 /* ExAssign.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ExAssign.cpp; sourceTree = "<group>"; };
 		B6669AED22FD3A920084AF52 /* ExAssign.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ExAssign.hpp; sourceTree = "<group>"; };
+		B668203B22FD782C007A2B7B /* Environment.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Environment.cpp; sourceTree = "<group>"; };
 		B67A7D4E22DDBDDA00ABA47C /* WorkFlow */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = WorkFlow; sourceTree = BUILT_PRODUCTS_DIR; };
 		B67A7D5822DDBDF200ABA47C /* main.wf */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.wf; sourceTree = "<group>"; };
 		B685E71C22F5277F0056BFF2 /* Token.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Token.hpp; sourceTree = "<group>"; };
@@ -341,6 +343,7 @@
 			children = (
 				B685E75622F5277F0056BFF2 /* Runner.hpp */,
 				B685E75722F5277F0056BFF2 /* Environment.hpp */,
+				B668203B22FD782C007A2B7B /* Environment.cpp */,
 				B60691EF22F5C77900AA2063 /* Value.hpp */,
 			);
 			path = Runner;
@@ -438,6 +441,7 @@
 				B6669AEB22FD38FE0084AF52 /* AssginStem.cpp in Sources */,
 				B685E76222F527840056BFF2 /* Lexer.cpp in Sources */,
 				B685E76322F527840056BFF2 /* Lexer.hpp in Sources */,
+				B668203C22FD782C007A2B7B /* Environment.cpp in Sources */,
 				B685E76422F527840056BFF2 /* Lexer.hpp in Sources */,
 				B685E76522F527840056BFF2 /* ASTree.hpp in Sources */,
 				B685E76622F527840056BFF2 /* ParserImpl.h in Sources */,
