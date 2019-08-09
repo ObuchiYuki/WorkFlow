@@ -18,5 +18,6 @@
 #include "AssginStem.hpp"
 #include "WhileStem.hpp"
 #include "NullStem.hpp"
+#include "ExAssign.hpp"
 
 #endif /* Statement_h */

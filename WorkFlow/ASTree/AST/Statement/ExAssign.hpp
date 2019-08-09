@@ -13,8 +13,21 @@
 
 namespace wf {namespace ast {
 
-class AddAssign: public Node {
+class AddAssignStem: public Node {
+public:
+    // MARK: - Properties -
     
+    var target() const -> NodePtr;
+    var value() const -> NodePtr;
+    
+    var description() const -> std::string override;
+    
+    // MARK: - Constructor -
+    AddAssignStem(std::vector<NodePtr> _children, Location _location) : Node(_children, _location) {};
+
+    // MARK: - Methods -
+
+    auto eval(wf::run::Environment& env) const -> wf::run::Value override;
 };
 
 }}
