@@ -63,7 +63,7 @@ auto OrElement::chooseParser(Lexer& lexer, int index) const -> _ParserPtr const 
             if (parser->match(lexer, index)){
                 matched_parser_memo[absIndex] = parser;
                 
-                rm::debug("[OrElement::chooseParser]", "⭕️ parser selected.", parser->description());
+                rm::debug::out("[OrElement::chooseParser]", "⭕️ parser selected.", parser->description());
                 return parser;
             }
         }

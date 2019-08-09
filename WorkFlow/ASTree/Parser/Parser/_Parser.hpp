@@ -52,7 +52,7 @@ namespace wf {
             if (rsize == 0) {
                 #ifdef _DEBUG
                 if (!rm::type::equals<ast::NullStem, T>()){
-                    rm::warn("[_Parser::parse] Nothing matched. Something wrong? ",
+                    rm::debug::warn("[_Parser::parse] Nothing matched. Something wrong? ",
                     lexer.peek(0)->value, lexer.peek(1)->value, lexer.peek(2)->value,
                     "... will be omitted.");
                 }

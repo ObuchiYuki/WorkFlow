@@ -25,8 +25,7 @@
 using namespace wf;
 
 int main() {
-    auto t1 = std::chrono::high_resolution_clock::now();
-
+    rm::debug::startMeasure();
     let path = "/Users/yuki/Developer/Git/WorkFlow/main.wf";
     var ifs = std::ifstream(path);
     
@@ -39,17 +38,10 @@ int main() {
         let ps = FuncParser().program.parse(lexer);
         
         ps->eval(env);
-        
+
     }
     
-
-    auto t2 = std::chrono::high_resolution_clock::now();
-
-    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(t2 - t1).count();
-
-    print("⏰", duration / double(1000 * 1000), "s");
-    
-    // take almost 1 sec....
+    rm::debug::endMeasure();
     
     return 0;
     
