@@ -25,11 +25,9 @@ int Node::numChildren() const {
 }
 
 auto Node::eval(wf::run::Environment& env) const -> wf::run::Value {
-    rm::debug::warn("[Node] Node with no class must not be evalated. Or you may forget to override eval. This node run all children's eval.");
-    for (let &child: children) {
-        child->eval(env);
-    }
-    return wf::run::Value::voidValue();
+    rm::debug::warn("[Node] Node with no class must not be evalated. Or you may forget to override eval. This node first children's eval.");
+    
+    return children[0]->eval(env);
 }
 
 

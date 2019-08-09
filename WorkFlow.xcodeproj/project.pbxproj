@@ -54,6 +54,8 @@
 		B685E79522F527840056BFF2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E76022F5277F0056BFF2 /* main.cpp */; };
 		B69E884422FA74890064BE9B /* Element.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B69E884322FA74890064BE9B /* Element.cpp */; };
 		B69F407722FBA61200795378 /* FuncStem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B69F407522FBA61200795378 /* FuncStem.cpp */; };
+		B6B2B35F22FD832A006F19AA /* Argument.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6B2B35D22FD832A006F19AA /* Argument.cpp */; };
+		B6B2B36222FD8674006F19AA /* ArgumentList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6B2B36022FD8674006F19AA /* ArgumentList.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -143,6 +145,10 @@
 		B69F407522FBA61200795378 /* FuncStem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FuncStem.cpp; sourceTree = "<group>"; };
 		B69F407622FBA61200795378 /* FuncStem.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = FuncStem.hpp; sourceTree = "<group>"; };
 		B69F407822FBBBE500795378 /* vector.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = vector.hpp; sourceTree = "<group>"; };
+		B6B2B35D22FD832A006F19AA /* Argument.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Argument.cpp; sourceTree = "<group>"; };
+		B6B2B35E22FD832A006F19AA /* Argument.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Argument.hpp; sourceTree = "<group>"; };
+		B6B2B36022FD8674006F19AA /* ArgumentList.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ArgumentList.cpp; sourceTree = "<group>"; };
+		B6B2B36122FD8674006F19AA /* ArgumentList.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ArgumentList.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,6 +293,10 @@
 			children = (
 				B685E74122F5277F0056BFF2 /* PrimaryNode.hpp */,
 				B69F407322FBA49300795378 /* ParameterList.hpp */,
+				B6B2B35E22FD832A006F19AA /* Argument.hpp */,
+				B6B2B35D22FD832A006F19AA /* Argument.cpp */,
+				B6B2B36122FD8674006F19AA /* ArgumentList.hpp */,
+				B6B2B36022FD8674006F19AA /* ArgumentList.cpp */,
 			);
 			path = PrimaryNode;
 			sourceTree = "<group>";
@@ -441,8 +451,10 @@
 				B6669AEB22FD38FE0084AF52 /* AssginStem.cpp in Sources */,
 				B685E76222F527840056BFF2 /* Lexer.cpp in Sources */,
 				B685E76322F527840056BFF2 /* Lexer.hpp in Sources */,
+				B6B2B35F22FD832A006F19AA /* Argument.cpp in Sources */,
 				B668203C22FD782C007A2B7B /* Environment.cpp in Sources */,
 				B685E76422F527840056BFF2 /* Lexer.hpp in Sources */,
+				B6B2B36222FD8674006F19AA /* ArgumentList.cpp in Sources */,
 				B685E76522F527840056BFF2 /* ASTree.hpp in Sources */,
 				B685E76622F527840056BFF2 /* ParserImpl.h in Sources */,
 				B685E76722F527840056BFF2 /* BasicParser.hpp in Sources */,

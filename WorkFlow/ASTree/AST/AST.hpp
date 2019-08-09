@@ -15,6 +15,8 @@
 #include "Expression.hpp"
 #include "BinaryOperation.hpp"
 #include "Calling.hpp"
+#include "Argument.hpp"
+#include "ArgumentList.hpp"
 #include "Statement.hpp"
 
 #endif /* AST_h */

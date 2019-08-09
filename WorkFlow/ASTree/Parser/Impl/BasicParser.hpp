@@ -18,8 +18,8 @@ public:
     /// 演算子を格納します。
     wf::Operators operators = wf::Operators();
     
-    /// 式を表します。(1 + 3 * 3)...、実態はexprにあります。
-    wf::Parser expr0 = wf::rule<wf::ast::Expression>();
+    /// 式を表します。(1 + 3 * 3)...、実態はbasicExprにあります。
+    wf::Parser basicExpr0 = wf::rule<wf::ast::Expression>();
     
     /// 基本のノードを表します。
     /// Int、String、Name、式など
@@ -27,11 +27,26 @@ public:
         wf::Parser::integer(),
         wf::Parser::name(),
         wf::Parser::string(),
-        wf::rule<wf::ast::Expression>().skip("(").then(expr0).skip(")"),
+        wf::rule<wf::ast::Expression>().skip("(").then(basicExpr0).skip(")"),
     });
 
     /// 式を表します。(1 + 3 * 3)...
-    wf::Parser expr = expr0.expression(primary, operators);
+    wf::Parser basicExpr = basicExpr0.expression(primary, operators);
+    
+    /// 関数呼び出しです。実態はcallingにあります。
+    wf::Parser calling0 = wf::rule<wf::ast::Calling>();
+    
+    /// 式を表します。
+    wf::Parser expr = wf::rule().ors({
+        calling0,
+        basicExpr,
+    });
+    
+    wf::Parser argment = wf::rule<wf::ast::Argument>().then(expr);
+    wf::Parser argments = wf::rule<wf::ast::ArgumentList>().optional(expr).optionalRepeat(wf::rule().skip(",").then(expr));
+    
+    /// 関数呼び出しです。
+    wf::Parser calling = calling0.then(wf::Parser::name()).skip("(").optional(argments).skip(")");
     
     /// 文を表します。実態はstatementにあります。
     wf::Parser statement0 = wf::rule();
@@ -53,7 +68,7 @@ public:
         wf::rule<wf::ast::IfStem>().skip("if").then(expr).then(block).optional(wf::rule().skip("else").then(block)),
         wf::rule<wf::ast::WhileStem>().skip("while").then(expr).then(block),
         wf::rule<wf::ast::VarStem>().skip("def").then(wf::Parser::name()).skip("=").then(expr),
-        wf::rule<wf::ast::Calling>().then(wf::Parser::name()).skip("(").optional(expr).skip(")"),
+        expr,
         assign,
     });
     
@@ -74,6 +89,7 @@ public:
         
         wf::Parser::addReservedWord("if");
         wf::Parser::addReservedWord("while");
+        wf::Parser::addReservedWord("mut");
         wf::Parser::addReservedWord("def");
         wf::Parser::addReservedWord("else");
     }

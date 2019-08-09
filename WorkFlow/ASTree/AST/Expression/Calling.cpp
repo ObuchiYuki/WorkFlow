@@ -50,6 +50,8 @@ auto Calling::eval(wf::run::Environment& env) const -> wf::run::Value {
         print(args()->eval(env).integer());
         
     }else{
+        let calling =  std::dynamic_pointer_cast<wf::ast::Calling>(env.get(fnname).runnable());
+
         
         throw wf::WorkFlowError("Build-in funtion named " + fnname + " not found.");
     }
