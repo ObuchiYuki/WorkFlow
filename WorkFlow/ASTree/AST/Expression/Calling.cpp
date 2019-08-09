@@ -12,6 +12,8 @@
 #include <exception>
 
 #include "WorkFlowError.hpp"
+#include "Argument.hpp"
+#include "ArgumentList.hpp"
 
 using namespace wf::ast;
 
@@ -22,9 +24,9 @@ auto Calling::target() const -> NodePtr{
     return children[0];
 }
 
-auto Calling::args() const -> NodePtr {
+auto Calling::args() const -> std::shared_ptr<ArgumentList> {
     if (numChildren() == 2){
-        return children[1];
+        return std::dynamic_pointer_cast<ArgumentList>(children[1]);
     }
     return nullptr;
 }

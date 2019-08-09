@@ -10,13 +10,14 @@
 #define Calling_h
 
 #include "Expression.hpp"
+#include "ArgumentList.hpp"
 
 namespace wf {namespace ast{
 
 class Calling: public Expression {
 public:
-    auto target() const -> NodePtr;
-    auto args() const -> NodePtr;
+    var target() const -> NodePtr;
+    var args() const -> std::shared_ptr<ArgumentList>;
     
     Calling(std::vector<NodePtr> _children, Location _location);
         

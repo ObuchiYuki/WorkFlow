@@ -15,7 +15,10 @@ namespace wf {namespace ast{
 
 class ArgumentList: public Node {
 public:
+    var numArgument() const -> int;
+    
     auto arg(int index) const -> NodePtr;
+    
     
     ArgumentList(std::vector<NodePtr> _children, Location _location) : Node(_children, _location) {}
     

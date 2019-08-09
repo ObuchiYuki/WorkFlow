@@ -11,6 +11,9 @@
 
 using namespace wf::ast;
 
+var ArgumentList::numArgument() const -> int{
+    return numChildren();
+}
 auto ArgumentList::arg(int index) const -> NodePtr {
     if (numChildren() < index) {
         return nullptr;

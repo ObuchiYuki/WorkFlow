@@ -77,7 +77,7 @@ file.all(in: .current)                  // get all files in current dir
 
 ### TODO
 
-- Separate Eval method from ASTNode
+- 
 - Eval of Function Calling
 - Class Definition
 - Type Checker
