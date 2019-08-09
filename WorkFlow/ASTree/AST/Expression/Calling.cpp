@@ -18,22 +18,22 @@ using namespace wf::ast;
 Calling::Calling(std::vector<NodePtr> _children, Location _location) :
 Expression(_children, _location) {}
 
-auto Calling::target() -> NodePtr{
+auto Calling::target() const -> NodePtr{
     return children[0];
 }
 
-auto Calling::args() -> NodePtr {
+auto Calling::args() const -> NodePtr {
     if (numChildren() == 2){
         return children[1];
     }
     return nullptr;
 }
 
-auto Calling::description() -> std::string const {
+auto Calling::description() const -> std::string {
     return "(" + target()->description() + "(" + args()->description() + ")" + ")";
 }
 
-auto Calling::eval(wf::run::Environment& env) -> wf::run::Value {
+auto Calling::eval(wf::run::Environment& env) const -> wf::run::Value {
     let leaf = nodeAsLeaf(target());
     
     if (!leaf) return wf::run::Value::voidValue();

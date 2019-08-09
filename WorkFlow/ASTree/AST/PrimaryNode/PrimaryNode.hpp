@@ -30,7 +30,7 @@ public:
             
     virtual ~PrimaryNode() {};
     
-    auto description() -> const std::string override {
+    auto description() const -> std::string override {
         return token->value;
     };
 };
@@ -46,13 +46,13 @@ public:
 /// 整数リテラルを表します。
 class IntegerLiteral: public PrimaryNode {
 public:
-    auto value() -> int const {
+    auto value() const -> int {
         return std::stoi(token->value);
     }
             
     IntegerLiteral(token::TokenPtr _token, Location _location) : PrimaryNode(_token, _location) {}
     
-    wf::run::Value eval(wf::run::Environment& env) override {
+    auto eval(wf::run::Environment& env) const -> wf::run::Value override {
         return wf::run::Value(value());
     }
 };
@@ -60,13 +60,13 @@ public:
 /// 不動小数点リテラルを表します。
 class FloatLiteral: public PrimaryNode {
 public:
-    auto value() -> float const {
+    auto value() const -> float {
         return std::stod(token->value);
     }
             
     FloatLiteral(token::TokenPtr _token, Location _location) : PrimaryNode(_token, _location) {}
     
-    wf::run::Value eval(wf::run::Environment& env) override {
+    auto eval(wf::run::Environment& env) const -> wf::run::Value override {
         return wf::run::Value(value());
     }
 };
@@ -89,7 +89,7 @@ public:
             
     Name(token::TokenPtr _token, Location _location) : PrimaryNode(_token, _location) {}
     
-    auto eval(wf::run::Environment& env) -> wf::run::Value override {
+    auto eval(wf::run::Environment& env) const -> wf::run::Value override {
         try {
             return env.get(token->value);
         } catch (std::out_of_range e) {

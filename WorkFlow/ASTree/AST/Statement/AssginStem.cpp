@@ -10,18 +10,18 @@
 
 using namespace wf::ast;
 
-var AssginStem::target() -> NodePtr {
+var AssginStem::target() const -> NodePtr {
     return children[0];
 }
-var AssginStem::value() -> NodePtr{
+var AssginStem::value() const -> NodePtr{
     return children[2];
 }
 
-var AssginStem::description() -> std::string const override {
+var AssginStem::description() const -> std::string {
     return "(" + target()->description() + " = " + value()->description() + ")";
 }
 
-wf::run::Value AssginStem::eval(wf::run::Environment& env) override {
+auto AssginStem::eval(wf::run::Environment& env) const -> wf::run::Value {
     let s_target = nodeAsLeaf(target())->token->value;
     var r_value = value()->eval(env);
 

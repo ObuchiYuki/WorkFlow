@@ -40,12 +40,12 @@ public:
     std::vector<std::shared_ptr<Node>> children;
             
     /// ノードの場所です。
-    Location location;
+    const Location location;
         
     // MARK: - Methods -
             
     auto appendChild(std::shared_ptr<Node> child) -> void;
-    auto numChildren() -> int;
+    auto numChildren() const -> int;
             
     virtual var description() const -> std::string;
     virtual auto eval(wf::run::Environment& env) const -> wf::run::Value;

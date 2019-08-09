@@ -10,20 +10,21 @@
 
 using namespace wf::ast;
 
-auto WhileStem::condition() -> NodePtr {
+auto WhileStem::condition() const -> NodePtr {
     return children[0];
 }
-auto WhileStem::block() -> NodePtr {
+auto WhileStem::block() const -> NodePtr {
     return children[1];
 }
+
 WhileStem::WhileStem(std::vector<NodePtr> _children, Location _location) :
 Node(_children, _location) {}
 
-auto WhileStem::description() -> std::string const {
+auto WhileStem::description() const -> std::string {
     return "(while " + condition()->description() + " " + block()->description() + ")";
 }
 
-wf::run::Value WhileStem::eval(wf::run::Environment &env) {
+auto WhileStem::eval(wf::run::Environment &env) const -> wf::run::Value {
     while (condition()->eval(env).boolean()) {
         block()->eval(env);
     }

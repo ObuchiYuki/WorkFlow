@@ -23,9 +23,9 @@ public:
     
     FuncStem(std::vector<NodePtr> _children, Location _location) : Node(_children, _location) {};
     
-    auto eval(wf::run::Environment& env) -> wf::run::Value override;
+    auto eval(wf::run::Environment& env) const -> wf::run::Value override;
     
-    var description() -> std::string const override {
+    var description() const -> std::string override {
         return "(def " + name() + parameters()->description() + body()->description() + ")";
     }
     

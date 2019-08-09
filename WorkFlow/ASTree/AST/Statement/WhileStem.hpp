@@ -22,14 +22,14 @@ namespace wf {namespace ast {
 class WhileStem: public Node {
 public:
         
-    auto condition() -> NodePtr;
-    auto block() -> NodePtr;
+    auto condition() const -> NodePtr;
+    auto block() const -> NodePtr;
         
     WhileStem(std::vector<NodePtr> _children, Location _location);
         
-    auto description() -> std::string const override;
+    auto description() const -> std::string override;
 
-    wf::run::Value eval(wf::run::Environment &env) override;
+    auto eval(wf::run::Environment &env) const -> wf::run::Value override;
 };
 
 }}

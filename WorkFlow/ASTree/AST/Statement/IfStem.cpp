@@ -10,22 +10,22 @@
 
 using namespace wf::ast;
 
-auto IfStem::condition() -> NodePtr {
+auto IfStem::condition()  const -> NodePtr {
     return children[0];
 }
 
-auto IfStem::block() -> NodePtr {
+auto IfStem::block() const -> NodePtr {
     return children[1];
 }
 
-auto IfStem::elseBlock() -> NodePtr {
+auto IfStem::elseBlock() const -> NodePtr {
     if (numChildren() == 3) {
         return children[2];
     }
     return nullptr;
 }
 
-auto IfStem::description() -> std::string const {
+auto IfStem::description() const -> std::string {
     if (elseBlock() != nullptr) {
         return "(if " + condition()->description() + " " + block()->description() + ")" +
         "(else)" + elseBlock()->description() + ")";
@@ -35,7 +35,7 @@ auto IfStem::description() -> std::string const {
     
 }
 
-auto IfStem::eval(wf::run::Environment& env) -> wf::run::Value {
+auto IfStem::eval(wf::run::Environment& env) const -> wf::run::Value {
     
     if (condition()->eval(env).boolean()) {
         block()->eval(env);

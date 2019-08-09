@@ -13,7 +13,7 @@
 
 using namespace wf::ast;
 
-auto Expression::description() -> std::string const {
+auto Expression::description() const -> std::string {
     
     return children[0]->description();
 }

@@ -15,15 +15,15 @@ namespace wf { namespace ast {
 
 class BinaryOperation: public Node {
 public:
-    auto left() -> NodePtr;
-    auto right() -> NodePtr;
+    auto left() const -> NodePtr;
+    auto right() const -> NodePtr;
     
-    auto op() -> NodePtr;
+    auto op() const -> NodePtr;
             
     BinaryOperation(std::vector<NodePtr> _children, Location _location);
     
-    const std::string description() override;
-    wf::run::Value eval(wf::run::Environment& env) override;
+    var description() const -> std::string override;
+    auto eval(wf::run::Environment& env) const -> wf::run::Value override;
 };
 
 }}

@@ -10,21 +10,21 @@
 
 using namespace wf::ast;
 
-var VarStem::target() -> NodePtr {
+var VarStem::target() const -> NodePtr {
     return children[0];
 }
-var VarStem::init() -> NodePtr {
+var VarStem::init() const -> NodePtr {
     return children[1];
 }
 
 VarStem::VarStem(std::vector<NodePtr> _children, Location _location) :
 Node(_children, _location) {};
 
-var VarStem::description() -> std::string const {
+var VarStem::description() const -> std::string {
     return "(def " + target()->description() + " = " + init()->description() + ")";
 }
 
-auto VarStem::eval(wf::run::Environment& env) -> wf::run::Value {
+auto VarStem::eval(wf::run::Environment& env) const -> wf::run::Value {
     let s_target = nodeAsLeaf(target())->token->value;
     var r_value = init()->eval(env);
 

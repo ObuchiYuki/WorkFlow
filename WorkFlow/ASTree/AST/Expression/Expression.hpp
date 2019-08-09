@@ -19,9 +19,9 @@ public:
     
     Expression(std::vector<NodePtr> _children, Location _location);
             
-    auto description() -> std::string const override;
+    auto description() const -> std::string override;
     
-    virtual auto eval(wf::run::Environment& env) -> wf::run::Value override {
+    auto eval(wf::run::Environment& env) const -> wf::run::Value override {
         return children[0]->eval(env);
     }
 };

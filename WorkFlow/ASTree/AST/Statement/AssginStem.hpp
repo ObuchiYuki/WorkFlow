@@ -18,16 +18,16 @@ namespace wf {namespace ast {
     public:
         
         // MARK: - Propertires -
-        var target() -> NodePtr;
-        var value() -> NodePtr;
+        var target() const -> NodePtr;
+        var value() const -> NodePtr;
         
         // MARK: - Constructor -
         AssginStem(std::vector<NodePtr> _children, Location _location) : Node(_children, _location) {}
         
         // MARK: - Methods -
-        auto description() -> std::string const override:
+        auto description() const -> std::string override;
 
-        wf::run::Value eval(wf::run::Environment& env) override;
+        auto eval(wf::run::Environment& env) const -> wf::run::Value override;
         
     };
 

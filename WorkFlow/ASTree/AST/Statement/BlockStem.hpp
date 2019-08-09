@@ -24,9 +24,9 @@ public:
         
     BlockStem(std::vector<NodePtr> _children, Location _location);
         
-    auto description() -> std::string const override;
+    var description() const -> std::string override;
         
-    wf::run::Value eval(wf::run::Environment &env) override;
+    auto eval(wf::run::Environment &env) const -> wf::run::Value override;
 };
 
 

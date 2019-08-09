@@ -21,11 +21,11 @@ public:
     NullStem(std::vector<NodePtr> _children, Location _location) :
     Node(_children, _location) {}
     
-    auto description() -> std::string const override {
+    auto description() const -> std::string override {
         return "[NullStem]";
     }
     
-    wf::run::Value eval(wf::run::Environment &env) override {
+    auto eval(wf::run::Environment &env) const -> wf::run::Value override {
         return wf::run::Value::voidValue();
     }
 };

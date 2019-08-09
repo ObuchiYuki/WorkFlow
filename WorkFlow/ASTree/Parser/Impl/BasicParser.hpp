@@ -45,7 +45,7 @@ public:
     wf::Parser assign = wf::rule().ors({
         wf::rule<wf::ast::AssginStem>().then(wf::Parser::name()).skip("=").then(expr),
         
-    })
+    });
     
     /// 文を表します。(if while def...)
     wf::Parser statement = statement0.ors({

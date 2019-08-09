@@ -10,15 +10,15 @@
 
 using namespace wf::ast;
 
-auto BinaryOperation::right() -> NodePtr {
+auto BinaryOperation::right() const -> NodePtr {
     return children[2];
 }
 
-auto BinaryOperation::left() -> NodePtr {
+auto BinaryOperation::left() const -> NodePtr {
     return children[0];
 }
 
-auto BinaryOperation::op() -> NodePtr {
+auto BinaryOperation::op() const -> NodePtr {
     return children[1];
 }
     
@@ -26,11 +26,11 @@ BinaryOperation::BinaryOperation(std::vector<NodePtr> _children, Location _locat
 Node(_children, _location)
 {};
 
-const std::string BinaryOperation::description() {
+auto BinaryOperation::description() const -> std::string {
     return "(" + left()->description() + " " + op()->description() + " " + right()->description() + ")";
 }
 
-wf::run::Value BinaryOperation::eval(wf::run::Environment& env) {
+auto BinaryOperation::eval(wf::run::Environment& env) const -> wf::run::Value {
     let op_s = wf::ast::nodeAsLeaf(op())->token->value;
     let lsh = left()->eval(env);
     let rsh = right()->eval(env);

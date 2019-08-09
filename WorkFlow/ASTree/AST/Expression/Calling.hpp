@@ -15,16 +15,14 @@ namespace wf {namespace ast{
 
 class Calling: public Expression {
 public:
-    auto target() -> NodePtr;
-    auto args() -> NodePtr;
+    auto target() const -> NodePtr;
+    auto args() const -> NodePtr;
     
     Calling(std::vector<NodePtr> _children, Location _location);
         
-    auto description() -> std::string const override;
+    auto description() const -> std::string override;
     
-    auto eval(wf::run::Environment& env) -> wf::run::Value override;
-    
-    auto call(NodePtr arg, wf::run::Environment& env) -> wf::run::Value; 
+    auto eval(wf::run::Environment& env) const -> wf::run::Value override;
 };
 
 

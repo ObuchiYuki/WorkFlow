@@ -9,6 +9,8 @@
 #ifndef ExAssign_hpp
 #define ExAssign_hpp
 
+#include "Node.hpp"
+
 namespace wf {namespace ast {
 
 class AddAssign: public Node {

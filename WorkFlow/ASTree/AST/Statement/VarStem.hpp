@@ -19,14 +19,14 @@ namespace wf {namespace ast{
 
 class VarStem: public Node {
 public:
-    var target() -> NodePtr;
-    var init() -> NodePtr;
+    var target() const -> NodePtr;
+    var init() const -> NodePtr;
             
     VarStem(std::vector<NodePtr> _children, Location _location);
             
-    var description() -> std::string const override;
+    var description() const -> std::string override;
         
-    auto eval(wf::run::Environment& env) -> wf::run::Value override;
+    auto eval(wf::run::Environment& env) const -> wf::run::Value override;
 };
 
 }}

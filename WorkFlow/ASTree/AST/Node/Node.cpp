@@ -20,11 +20,11 @@ void Node::appendChild(std::shared_ptr<Node> child) {
     children.push_back(child);
 }
 
-int Node::numChildren() {
+int Node::numChildren() const {
     return static_cast<int>(children.size());
 }
 
-auto Node::eval(wf::run::Environment& env) -> wf::run::Value {
+auto Node::eval(wf::run::Environment& env) const -> wf::run::Value {
     rm::debug::warn("[Node] Node with no class must not be evalated. Or you may forget to override eval. This node run all children's eval.");
     for (let &child: children) {
         child->eval(env);
@@ -33,7 +33,7 @@ auto Node::eval(wf::run::Environment& env) -> wf::run::Value {
 }
 
 
-auto Node::description() -> std::string const{
+auto Node::description() const -> std::string {
     return "[space]";
 }
 // MARK: - Leaf - 
@@ -45,10 +45,10 @@ Node({}, _location) ,token(_token) {
     
 }
 
-auto Leaf::description() -> std::string const {
+auto Leaf::description() const -> std::string {
     return "[Leaf undefined]";
 }
 
-auto Leaf::eval(wf::run::Environment& env) -> wf::run::Value {
+auto Leaf::eval(wf::run::Environment& env) const -> wf::run::Value {
     return wf::run::Value(token->value);
 }

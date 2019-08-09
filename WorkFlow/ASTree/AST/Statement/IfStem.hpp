@@ -20,16 +20,16 @@ namespace wf {namespace ast{
 
 class IfStem:public Node {
 public:
-    auto condition() -> NodePtr;
-    auto block() -> NodePtr;
+    auto condition() const -> NodePtr;
+    auto block() const -> NodePtr;
         
-    auto elseBlock() -> NodePtr;
+    auto elseBlock()  const -> NodePtr;
         
-    auto description() -> std::string const override;
+    auto description() const -> std::string override;
         
     IfStem(std::vector<NodePtr> _children, Location _location);
         
-    auto eval(wf::run::Environment& env) -> wf::run::Value override;
+    auto eval(wf::run::Environment& env) const -> wf::run::Value override;
 };
 
 }}
