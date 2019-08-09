@@ -39,16 +39,3 @@ auto Node::description() const -> std::string {
 // MARK: - Leaf - 
 
 
-
-Leaf::Leaf(std::shared_ptr<wf::token::Token> _token, Location _location):
-Node({}, _location) ,token(_token) {
-    
-}
-
-auto Leaf::description() const -> std::string {
-    return "[Leaf undefined]";
-}
-
-auto Leaf::eval(wf::run::Environment& env) const -> wf::run::Value {
-    return wf::run::Value(token->value);
-}

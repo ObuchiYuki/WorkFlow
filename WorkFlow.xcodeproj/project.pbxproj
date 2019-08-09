@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B61C3AA322FD3EC100953591 /* Leaf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B61C3AA122FD3EC100953591 /* Leaf.cpp */; };
 		B65CACCF22F6634100350646 /* VarStem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B65CACCE22F6634100350646 /* VarStem.cpp */; };
 		B6669AEB22FD38FE0084AF52 /* AssginStem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6669AE922FD38FE0084AF52 /* AssginStem.cpp */; };
 		B6669AEE22FD3A920084AF52 /* ExAssign.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6669AEC22FD3A920084AF52 /* ExAssign.cpp */; };
@@ -70,6 +71,8 @@
 		B604B05022F7DB4E00AA6B16 /* description.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = description.hpp; sourceTree = "<group>"; };
 		B604B05122F7E60100AA6B16 /* debug.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = debug.hpp; sourceTree = "<group>"; };
 		B60691EF22F5C77900AA2063 /* Value.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Value.hpp; sourceTree = "<group>"; };
+		B61C3AA122FD3EC100953591 /* Leaf.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Leaf.cpp; sourceTree = "<group>"; };
+		B61C3AA222FD3EC100953591 /* Leaf.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Leaf.hpp; sourceTree = "<group>"; };
 		B63C209A22F569DF0070C83A /* type.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = type.hpp; sourceTree = "<group>"; };
 		B63C20A022F574DE0070C83A /* TokenElements.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TokenElements.hpp; sourceTree = "<group>"; };
 		B65CACCE22F6634100350646 /* VarStem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = VarStem.cpp; sourceTree = "<group>"; };
@@ -327,6 +330,8 @@
 			children = (
 				B685E75122F5277F0056BFF2 /* Node.hpp */,
 				B685E75022F5277F0056BFF2 /* Node.cpp */,
+				B61C3AA222FD3EC100953591 /* Leaf.hpp */,
+				B61C3AA122FD3EC100953591 /* Leaf.cpp */,
 			);
 			path = Node;
 			sourceTree = "<group>";
@@ -446,6 +451,7 @@
 				B685E76F22F527840056BFF2 /* TreeElement.cpp in Sources */,
 				B685E77022F527840056BFF2 /* Elements.hpp in Sources */,
 				B685E77122F527840056BFF2 /* ExprElement.cpp in Sources */,
+				B61C3AA322FD3EC100953591 /* Leaf.cpp in Sources */,
 				B69E884422FA74890064BE9B /* Element.cpp in Sources */,
 				B685E77222F527840056BFF2 /* SkipElement.cpp in Sources */,
 				B685E77322F527840056BFF2 /* _AnyParser.hpp in Sources */,
