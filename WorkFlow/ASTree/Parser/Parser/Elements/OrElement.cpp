@@ -14,6 +14,7 @@
 #include "Lexer.hpp"
 
 #include "OrElement.hpp"
+#include "WorkFlowError.hpp"
 
 using namespace wf;
 
@@ -67,6 +68,6 @@ auto OrElement::chooseParser(Lexer& lexer, int index) const -> _ParserPtr const 
             }
         }
         
-        throw std::runtime_error("[OrElement::chooseParser] cannot find any matching parser. For line "+lexer.description(absIndex));
+        throw wf::WorkFlowError("[OrElement::chooseParser] cannot find any matching parser. For " + lexer.description(absIndex), lexer);
     }
 }

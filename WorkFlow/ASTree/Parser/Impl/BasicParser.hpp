@@ -11,6 +11,7 @@
 
 #include "Lexer.hpp"
 #include "Parser.hpp"
+#include "WorkFlowError.hpp"
 
 class BasicParser {
 public:
@@ -31,7 +32,7 @@ public:
     
     wf::Parser block = wf::rule<wf::ast::BlockStem>()
         .skip("{").optional(statement0)
-        .optionalRepeat(wf::rule().skip("EOL").optional(statement0))
+        .optionalRepeat(wf::rule().skipEol().optional(statement0))
         .skip("}");
     
     wf::Parser statement = statement0.ors({
@@ -44,7 +45,7 @@ public:
         expr,
     });
     
-    wf::Parser program = wf::rule().ors({statement, wf::rule()}).skip("EOL");
+    wf::Parser program = wf::rule().ors({statement, wf::rule()}).skipEol();
 
     BasicParser() {
         operators.add("=", 1,   wf::Associative::RIGHT);
@@ -65,7 +66,10 @@ public:
     }
     
     wf::ast::NodePtr parse(wf::Lexer& lexer) {
-        return program.parse(lexer);
+        if (program.match(lexer)){
+            return program.parse(lexer);
+        }
+        throw wf::WorkFlowError("Syntax Error at: " + lexer.description(0), lexer);
     }
 };
 

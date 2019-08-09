@@ -12,6 +12,7 @@
 #include <string>
 
 #include "rmkit.h"
+#include "WorkFlowError.hpp"
 
 using namespace wf;
 
@@ -113,7 +114,15 @@ auto Parser::insertChoise(Parser parserw) -> Parser {
         
         return *this;
     }
-    throw std::runtime_error("[Parser::insertChoise] Parser.elements[0] is not OrElement. Check if elements[0] is OrElement.");
+    throw wf::WorkFlowError("[Parser::insertChoise] Parser.elements[0] is not OrElement. Check if elements[0] is OrElement.");
+}
+
+auto Parser::skipEol() -> Parser {
+    let e_skip =  ElementPtr(new SkipElement(std::vector<std::string>({"EOL", ";"})));
+    
+    parser->addElement(e_skip);
+    
+    return *this;
 }
 
 auto Parser::_integer() -> Parser {

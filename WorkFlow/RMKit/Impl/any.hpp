@@ -38,7 +38,7 @@ namespace rm {
  list.push_back(100);
  list.push_back(3.14);
  list.push_back("World");
- 
+
  */
 class any {
 // ==============================================================================//

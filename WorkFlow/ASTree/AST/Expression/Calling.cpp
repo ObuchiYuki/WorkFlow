@@ -11,6 +11,8 @@
 
 #include <exception>
 
+#include "WorkFlowError.hpp"
+
 using namespace wf::ast;
 
 Calling::Calling(std::vector<NodePtr> _children, Location _location) :
@@ -42,7 +44,7 @@ auto Calling::eval(wf::run::Environment& env) -> wf::run::Value {
         
     }else{
         
-        throw std::runtime_error("Build-in funtion named " + fnname + " not found.");
+        throw wf::WorkFlowError("Build-in funtion named " + fnname + " not found.");
     }
     
     return wf::run::Value::voidValue();

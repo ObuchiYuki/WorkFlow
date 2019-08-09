@@ -40,6 +40,7 @@ public:
     auto optional(Parser parserw) -> Parser;
     auto optionalRepeat(Parser parserw) -> Parser;
     auto insertChoise(Parser parserw) -> Parser;
+    auto skipEol() -> Parser;
             
     static auto integer() -> Parser;
     static auto string() -> Parser;

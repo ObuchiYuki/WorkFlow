@@ -14,7 +14,7 @@
 #include "Lexer/Lexer.hpp"
 #include "ASTree.hpp"
 #include "Runner.hpp"
-
+#include "WorkFlowError.hpp"
 
 int main() {
     
@@ -29,12 +29,16 @@ int main() {
     // MARK: - Measure Start -
     rm::debug::startMeasure();
 
-    while (!lexer.isEnd()) {
+    try {
+        while (!lexer.isEnd()) {
         
-        let ps = FuncParser().program.parse(lexer);
-        
-        ps->eval(env);
-
+            var parser = FuncParser();
+            let ps = FuncParser().parse(lexer);
+            
+            ps->eval(env);
+        }
+    }catch(wf::WorkFlowError e) {
+        rm::debug::out(e.message());
     }
     
     // MARK: - Measure End -

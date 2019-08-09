@@ -15,6 +15,7 @@
 #include "Parser.hpp"
 #include "Lexer.hpp"
 #include "BinaryOperation.hpp"
+#include "WorkFlowError.hpp"
 
 using namespace wf;
 
@@ -67,7 +68,7 @@ public:
         try {
             return map.at(name);
         }catch(std::out_of_range e) {
-            throw std::runtime_error("[_Operators::get] operator named " + name + " not found.");
+            throw wf::WorkFlowError("[_Operators::get] operator named " + name + " not found.");
         }
     }
     

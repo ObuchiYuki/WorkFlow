@@ -16,6 +16,7 @@
 #include "location.hpp"
 #include "Node.hpp"
 #include "Token.hpp"
+#include "WorkFlowError.hpp"
 
 namespace wf { namespace ast{
 
@@ -92,7 +93,7 @@ public:
         try {
             return env.get(token->value);
         } catch (std::out_of_range e) {
-            throw std::runtime_error("[Name] Variable named '" + token->value + "' is not defined.");
+            throw wf::WorkFlowError("Variable named '" + token->value + "' is not defined.");
         }
         
     }

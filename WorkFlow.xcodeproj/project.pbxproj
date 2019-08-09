@@ -72,6 +72,7 @@
 		B63C20A022F574DE0070C83A /* TokenElements.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TokenElements.hpp; sourceTree = "<group>"; };
 		B65CACCE22F6634100350646 /* VarStem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = VarStem.cpp; sourceTree = "<group>"; };
 		B65CACD022F6651C00350646 /* Calling.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Calling.hpp; sourceTree = "<group>"; };
+		B6669AE322FD0BDB0084AF52 /* WorkFlowError.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = WorkFlowError.hpp; sourceTree = "<group>"; };
 		B67A7D4E22DDBDDA00ABA47C /* WorkFlow */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = WorkFlow; sourceTree = BUILT_PRODUCTS_DIR; };
 		B67A7D5822DDBDF200ABA47C /* main.wf */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.wf; sourceTree = "<group>"; };
 		B685E71C22F5277F0056BFF2 /* Token.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Token.hpp; sourceTree = "<group>"; };
@@ -346,6 +347,7 @@
 			isa = PBXGroup;
 			children = (
 				B685E75E22F5277F0056BFF2 /* location.hpp */,
+				B6669AE322FD0BDB0084AF52 /* WorkFlowError.hpp */,
 			);
 			path = DataClass;
 			sourceTree = "<group>";
