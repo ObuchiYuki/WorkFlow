@@ -23,7 +23,10 @@ auto Calling::target() -> NodePtr{
 }
 
 auto Calling::args() -> NodePtr {
-    return children[1];
+    if (numChildren() == 2){
+        return children[1];
+    }
+    return nullptr;
 }
 
 auto Calling::description() -> std::string const {
@@ -36,10 +39,14 @@ auto Calling::eval(wf::run::Environment& env) -> wf::run::Value {
     if (!leaf) return wf::run::Value::voidValue();
     
     let fnname = leaf->token->value;
+    
     if (fnname == "prints") {
+        if (!args()) throw wf::WorkFlowError("Function \"prints\" require 1 argument.");
         
         print(args()->eval(env).string());
     }else if (fnname == "printi") {
+        if (!args()) throw wf::WorkFlowError("Function \"printi\" require 1 argument.");
+        
         print(args()->eval(env).integer());
         
     }else{

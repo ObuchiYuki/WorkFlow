@@ -17,7 +17,7 @@ class BasicParser {
 public:
     wf::Operators operators = wf::Operators();
     
-    wf::Parser expr0 = wf::rule();
+    wf::Parser expr0 = wf::rule<wf::ast::Expression>();
     
     wf::Parser primary = wf::rule().ors({
         wf::Parser::integer(),
@@ -41,8 +41,7 @@ public:
         wf::rule<wf::ast::VarStem>().skip("def").then(wf::Parser::name()).skip("=").then(expr),
         
         wf::rule<wf::ast::Assgin>().then(wf::Parser::name()).skip("=").then(expr),
-        wf::rule<wf::ast::Calling>().then(wf::Parser::name()).skip("(").then(expr).skip(")"),
-        expr,
+        wf::rule<wf::ast::Calling>().then(wf::Parser::name()).skip("(").optional(expr).skip(")"),
     });
     
     wf::Parser program = wf::rule().ors({statement, wf::rule()}).skipEol();
@@ -69,7 +68,7 @@ public:
         if (program.match(lexer)){
             return program.parse(lexer);
         }
-        throw wf::WorkFlowError("Syntax Error at: " + lexer.description(0));
+        throw wf::WorkFlowError("Syntax Error around: " + lexer.description(0));
     }
 };
 
