@@ -42,14 +42,18 @@ public:
         .optionalRepeat(wf::rule().skipEol().optional(statement0))
         .skip("}");
     
+    wf::Parser assign = wf::rule().ors({
+        wf::rule<wf::ast::AssginStem>().then(wf::Parser::name()).skip("=").then(expr),
+        
+    })
+    
     /// 文を表します。(if while def...)
     wf::Parser statement = statement0.ors({
         wf::rule<wf::ast::IfStem>().skip("if").then(expr).then(block).optional(wf::rule().skip("else").then(block)),
         wf::rule<wf::ast::WhileStem>().skip("while").then(expr).then(block),
         wf::rule<wf::ast::VarStem>().skip("def").then(wf::Parser::name()).skip("=").then(expr),
-        
-        wf::rule<wf::ast::Assgin>().then(wf::Parser::name()).skip("=").then(expr),
         wf::rule<wf::ast::Calling>().then(wf::Parser::name()).skip("(").optional(expr).skip(")"),
+        assign,
     });
     
     /// プログラムとしての一つのまとまりを表します。

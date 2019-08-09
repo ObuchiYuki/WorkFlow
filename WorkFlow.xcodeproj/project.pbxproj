@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		B65CACCF22F6634100350646 /* VarStem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B65CACCE22F6634100350646 /* VarStem.cpp */; };
+		B6669AEB22FD38FE0084AF52 /* AssginStem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6669AE922FD38FE0084AF52 /* AssginStem.cpp */; };
+		B6669AEE22FD3A920084AF52 /* ExAssign.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6669AEC22FD3A920084AF52 /* ExAssign.cpp */; };
 		B685E76122F527840056BFF2 /* Token.hpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E71C22F5277F0056BFF2 /* Token.hpp */; };
 		B685E76222F527840056BFF2 /* Lexer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E71E22F5277F0056BFF2 /* Lexer.cpp */; };
 		B685E76322F527840056BFF2 /* Lexer.hpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E71F22F5277F0056BFF2 /* Lexer.hpp */; };
@@ -73,6 +75,15 @@
 		B65CACCE22F6634100350646 /* VarStem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = VarStem.cpp; sourceTree = "<group>"; };
 		B65CACD022F6651C00350646 /* Calling.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Calling.hpp; sourceTree = "<group>"; };
 		B6669AE322FD0BDB0084AF52 /* WorkFlowError.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = WorkFlowError.hpp; sourceTree = "<group>"; };
+		B6669AE422FD2D3C0084AF52 /* VarStem.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = VarStem.hpp; sourceTree = "<group>"; };
+		B6669AE522FD2D9E0084AF52 /* IfStem.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IfStem.hpp; sourceTree = "<group>"; };
+		B6669AE622FD2DE20084AF52 /* BlockStem.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BlockStem.hpp; sourceTree = "<group>"; };
+		B6669AE722FD384D0084AF52 /* WhileStem.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = WhileStem.hpp; sourceTree = "<group>"; };
+		B6669AE822FD38800084AF52 /* NullStem.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = NullStem.hpp; sourceTree = "<group>"; };
+		B6669AE922FD38FE0084AF52 /* AssginStem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AssginStem.cpp; sourceTree = "<group>"; };
+		B6669AEA22FD38FE0084AF52 /* AssginStem.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AssginStem.hpp; sourceTree = "<group>"; };
+		B6669AEC22FD3A920084AF52 /* ExAssign.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ExAssign.cpp; sourceTree = "<group>"; };
+		B6669AED22FD3A920084AF52 /* ExAssign.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ExAssign.hpp; sourceTree = "<group>"; };
 		B67A7D4E22DDBDDA00ABA47C /* WorkFlow */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = WorkFlow; sourceTree = BUILT_PRODUCTS_DIR; };
 		B67A7D5822DDBDF200ABA47C /* main.wf */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.wf; sourceTree = "<group>"; };
 		B685E71C22F5277F0056BFF2 /* Token.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Token.hpp; sourceTree = "<group>"; };
@@ -279,12 +290,21 @@
 			isa = PBXGroup;
 			children = (
 				B685E74722F5277F0056BFF2 /* Statement.hpp */,
+				B6669AE522FD2D9E0084AF52 /* IfStem.hpp */,
 				B685E74522F5277F0056BFF2 /* IfStem.cpp */,
+				B6669AE722FD384D0084AF52 /* WhileStem.hpp */,
 				B685E74622F5277F0056BFF2 /* WhileStem.cpp */,
+				B6669AE622FD2DE20084AF52 /* BlockStem.hpp */,
 				B685E74822F5277F0056BFF2 /* BlockStem.cpp */,
+				B6669AE422FD2D3C0084AF52 /* VarStem.hpp */,
 				B65CACCE22F6634100350646 /* VarStem.cpp */,
 				B69F407622FBA61200795378 /* FuncStem.hpp */,
 				B69F407522FBA61200795378 /* FuncStem.cpp */,
+				B6669AE822FD38800084AF52 /* NullStem.hpp */,
+				B6669AED22FD3A920084AF52 /* ExAssign.hpp */,
+				B6669AEC22FD3A920084AF52 /* ExAssign.cpp */,
+				B6669AEA22FD38FE0084AF52 /* AssginStem.hpp */,
+				B6669AE922FD38FE0084AF52 /* AssginStem.cpp */,
 			);
 			path = Statement;
 			sourceTree = "<group>";
@@ -410,6 +430,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B685E76122F527840056BFF2 /* Token.hpp in Sources */,
+				B6669AEB22FD38FE0084AF52 /* AssginStem.cpp in Sources */,
 				B685E76222F527840056BFF2 /* Lexer.cpp in Sources */,
 				B685E76322F527840056BFF2 /* Lexer.hpp in Sources */,
 				B685E76422F527840056BFF2 /* Lexer.hpp in Sources */,
@@ -439,6 +460,7 @@
 				B685E78622F527840056BFF2 /* Calling.cpp in Sources */,
 				B685E78722F527840056BFF2 /* Expression.cpp in Sources */,
 				B685E78922F527840056BFF2 /* Node.cpp in Sources */,
+				B6669AEE22FD3A920084AF52 /* ExAssign.cpp in Sources */,
 				B685E78A22F527840056BFF2 /* Node.hpp in Sources */,
 				B685E78B22F527840056BFF2 /* BinaryOperation.cpp in Sources */,
 				B65CACCF22F6634100350646 /* VarStem.cpp in Sources */,
