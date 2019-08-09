@@ -69,7 +69,7 @@ public:
         if (program.match(lexer)){
             return program.parse(lexer);
         }
-        throw wf::WorkFlowError("Syntax Error at: " + lexer.description(0), lexer);
+        throw wf::WorkFlowError("Syntax Error at: " + lexer.description(0));
     }
 };
 

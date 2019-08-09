@@ -68,6 +68,6 @@ auto OrElement::chooseParser(Lexer& lexer, int index) const -> _ParserPtr const 
             }
         }
         
-        throw wf::WorkFlowError("[OrElement::chooseParser] cannot find any matching parser. For " + lexer.description(absIndex), lexer);
+        throw wf::WorkFlowError("[OrElement::chooseParser] cannot find any matching parser. For " + lexer.description(absIndex));
     }
 }

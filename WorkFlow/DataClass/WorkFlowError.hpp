@@ -20,22 +20,14 @@ namespace wf {
 
 
 class WorkFlowError: public std::runtime_error {
-    rm::optional<wf::Lexer> lexer;
     std::string _message;
     
 public:
-    WorkFlowError(std::string __message, wf::Lexer _lexer):
-    runtime_error("") , lexer(_lexer), _message(__message){};
-    
     WorkFlowError(std::string __message):
-    runtime_error("") , lexer(nil), _message(__message){};
+    runtime_error("") , _message(__message){};
     
     var message() {
-        if (lexer){
-            return std::string("[WorkFlowError] ") + _message + " around " + lexer->peek(0)->location.description();
-        }else{
-            return std::string("[WorkFlowError] ") + _message;
-        }
+        return std::string("[WorkFlowError] ") + _message;
     }
     
 };
