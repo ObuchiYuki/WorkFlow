@@ -7,6 +7,7 @@
 //
 
 #include "AssginStem.hpp"
+#include "Leaf.hpp"
 
 using namespace wf::ast;
 

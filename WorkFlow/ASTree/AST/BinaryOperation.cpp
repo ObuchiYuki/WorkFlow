@@ -7,6 +7,7 @@
 //
 
 #include "BinaryOperation.hpp"
+#include "Leaf.hpp"
 
 using namespace wf::ast;
 

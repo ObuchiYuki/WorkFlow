@@ -15,6 +15,7 @@
 
 #include "location.hpp"
 #include "Node.hpp"
+#include "Leaf.hpp"
 #include "Token.hpp"
 #include "WorkFlowError.hpp"
 
