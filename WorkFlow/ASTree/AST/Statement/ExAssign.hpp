@@ -9,6 +9,12 @@
 #ifndef ExAssign_hpp
 #define ExAssign_hpp
 
-#include <stdio.h>
+namespace wf {namespace ast {
+
+class AddAssign: public Node {
+    
+};
+
+}}
 
 #endif /* ExAssign_hpp */

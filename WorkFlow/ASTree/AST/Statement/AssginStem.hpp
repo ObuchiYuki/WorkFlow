@@ -16,28 +16,19 @@ namespace wf {namespace ast {
 
     class AssginStem: public Node {
     public:
-        auto target() -> NodePtr {
-            return children[0];
-        }
-        auto value() -> NodePtr{
-            return children[2];
-        }
-            
-        AssginStem(std::vector<NodePtr> _children, Location _location) :
-            Node(_children, _location) {}
-            
-        auto description() -> std::string const override {
-            return "(" + target()->description() + " = " + value()->description() + ")";
-        }
+        
+        // MARK: - Propertires -
+        var target() -> NodePtr;
+        var value() -> NodePtr;
+        
+        // MARK: - Constructor -
+        AssginStem(std::vector<NodePtr> _children, Location _location) : Node(_children, _location) {}
+        
+        // MARK: - Methods -
+        auto description() -> std::string const override:
 
-        wf::run::Value eval(wf::run::Environment& env) override {
-            let s_target = nodeAsLeaf(target())->token->value;
-            var r_value = value()->eval(env);
-
-            env.set(s_target, r_value);
-            
-            return wf::run::Value::voidValue();
-        }
+        wf::run::Value eval(wf::run::Environment& env) override;
+        
     };
 
 }}
