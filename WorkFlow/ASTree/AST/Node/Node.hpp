@@ -47,8 +47,8 @@ public:
     auto appendChild(std::shared_ptr<Node> child) -> void;
     auto numChildren() -> int;
             
-    virtual auto description() -> const std::string;
-    virtual auto eval(wf::run::Environment& env) -> wf::run::Value;
+    virtual var description() const -> std::string;
+    virtual auto eval(wf::run::Environment& env) const -> wf::run::Value;
     
     // MARK: - Constructor -
     Node(std::vector<std::shared_ptr<Node>> _children, Location _location);
@@ -72,8 +72,8 @@ public:
             
     virtual ~Leaf(){}
             
-    auto description() -> const std::string override;
-    auto eval(wf::run::Environment& env) -> wf::run::Value override;
+    auto description() const -> std::string override;
+    auto eval(wf::run::Environment& env) const -> wf::run::Value override;
 };
 
 inline LeafPtr nodeAsLeaf(NodePtr node){
