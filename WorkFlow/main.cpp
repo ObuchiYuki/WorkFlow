@@ -6,12 +6,7 @@
 //  Copyright © 2019 yuki. All rights reserved.
 //
 
-
-#include <iostream>
 #include <fstream>
-#include <vector>
-#include <string>
-#include <chrono>
 
 #include "Common.hpp"
 #include "rmkit.h"
@@ -21,19 +16,20 @@
 #include "Runner.hpp"
 
 
-
-using namespace wf;
-
 int main() {
-    rm::debug::startMeasure();
+    
     let path = "/Users/yuki/Developer/Git/WorkFlow/main.wf";
     var ifs = std::ifstream(path);
     
-    var lexer = wf::Lexer(&ifs);
+    var lexer = wf::Lexer(ifs);
     
     var env = wf::run::Environment();
-             
-    while (lexer.peek(0)->type != token::TokenType::ENDFILE) {
+          
+    
+    // MARK: - Measure Start -
+    rm::debug::startMeasure();
+
+    while (!lexer.isEnd()) {
         
         let ps = FuncParser().program.parse(lexer);
         
@@ -41,8 +37,6 @@ int main() {
 
     }
     
+    // MARK: - Measure End -
     rm::debug::endMeasure();
-    
-    return 0;
-    
 }

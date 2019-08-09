@@ -32,7 +32,7 @@ void warn(const T&... rest) {
     rm::debug::out(rest...);
 }
 
-static std::chrono::time_point<std::__1::chrono::steady_clock, std::chrono::duration<long long, std::ratio<1, 1000000000>>> __startTime;
+static std::chrono::time_point<std::chrono::steady_clock, std::chrono::duration<long long, std::ratio<1, 1000000000>>> __startTime;
 
 static inline auto startMeasure() {
     __startTime = std::chrono::high_resolution_clock::now();

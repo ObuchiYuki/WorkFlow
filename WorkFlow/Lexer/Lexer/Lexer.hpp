@@ -27,7 +27,7 @@ namespace wf {
         int lineNumber;
         
         /// Fileの読み取り&用のReaderです。
-        std::ifstream* reader;
+        std::ifstream& reader;
         
         /// 現在の行のToken列です。
         std::vector<token::TokenPtr> queue;
@@ -58,7 +58,7 @@ namespace wf {
         // ======================================================= //
         // MARK: - Constructor -
         
-        Lexer(std::ifstream* _reader) :
+        Lexer(std::ifstream& _reader) :
         reader(_reader), lineNumber(1) , hasMoreLine(true), queue({}) {}
         
         // ======================================================= //
@@ -69,6 +69,11 @@ namespace wf {
         
         /// 先のQueueを先読みします。メモリから消すことはありません。
         token::TokenPtr peek(int stride);
+        
+        /// ファイルが読み終わったかどうかです。
+        var isEnd() {
+            return peek(0)->type == token::TokenType::ENDFILE;
+        }
         
         
         auto description(int gap) -> const std::string{

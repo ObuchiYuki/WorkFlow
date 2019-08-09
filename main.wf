@@ -1,15 +1,1 @@
-def fizzbizz(i) {
-    if i % 3 == 0 {
-        if i % 5 == 0 {
-            prints("FizzBizz")
-        } else {
-            prints("Fizz")
-        }
-    } else {
-        if i % 5 == 0 {
-            prints("Bizz")
-        } else {
-            printi(i)
-        }
-    }
-}
+printi(1 + 12 * 2)

@@ -240,7 +240,7 @@ TokenPtr wf::Lexer::peek(int stride) {
 const void wf::Lexer::readLine() {
     var lineBuffer = new std::string();
     
-    if (!getline(*reader, *lineBuffer)) {
+    if (!getline(reader, *lineBuffer)) {
         hasMoreLine = false;
         return;
     }
