@@ -1,2 +1,3 @@
-def a = "hello"
-prints(a)
+def a = 1
+a += 1
+printi(a)
