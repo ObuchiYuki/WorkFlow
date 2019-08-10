@@ -35,7 +35,7 @@ auto Calling::description() const -> std::string {
     return "(" + target()->description() + "(" + args()->description() + ")" + ")";
 }
 
-auto Calling::eval(wf::run::EnvironmentPtrenv) const -> wf::run::Value {
+auto Calling::eval(wf::run::EnvironmentPtr env) const -> wf::run::Value {
     let leaf = nodeAsLeaf(target());
     
     if (!leaf) return wf::run::Value::voidValue();
@@ -52,7 +52,7 @@ auto Calling::eval(wf::run::EnvironmentPtrenv) const -> wf::run::Value {
         print(args()->eval(env).integer());
         
     }else{
-        let calling =  std::dynamic_pointer_cast<wf::ast::Calling>(env.get(fnname).runnable());
+        let calling =  std::dynamic_pointer_cast<wf::ast::Calling>(env->get(fnname).runnable());
 
         
         throw wf::WorkFlowError("Build-in funtion named " + fnname + " not found.");

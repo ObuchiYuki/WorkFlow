@@ -12,6 +12,6 @@
 using namespace wf::ast;
 
 
-auto Argument::eval(wf::run::EnvironmentPtrenv) const -> wf::run::Value {
+auto Argument::eval(wf::run::EnvironmentPtr env) const -> wf::run::Value {
     return children[0]->eval(env);
 }

@@ -38,7 +38,7 @@ auto ArgumentList::arguments() const -> std::vector<std::shared_ptr<Argument>> {
 }
 
 
-auto ArgumentList::eval(wf::run::EnvironmentPtrenv) const -> wf::run::Value {
+auto ArgumentList::eval(wf::run::EnvironmentPtr env) const -> wf::run::Value {
     throw wf::WorkFlowError("ArgumentList must not be evalated. Something is wrong.");
 }
 

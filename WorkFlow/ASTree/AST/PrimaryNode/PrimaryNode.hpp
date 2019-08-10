@@ -53,7 +53,7 @@ public:
             
     IntegerLiteral(token::TokenPtr _token, Location _location) : PrimaryNode(_token, _location) {}
     
-    auto eval(wf::run::EnvironmentPtrenv) const -> wf::run::Value override {
+    auto eval(wf::run::EnvironmentPtr env) const -> wf::run::Value override {
         return wf::run::Value(value());
     }
 };
@@ -67,7 +67,7 @@ public:
             
     FloatLiteral(token::TokenPtr _token, Location _location) : PrimaryNode(_token, _location) {}
     
-    auto eval(wf::run::EnvironmentPtrenv) const -> wf::run::Value override {
+    auto eval(wf::run::EnvironmentPtr env) const -> wf::run::Value override {
         return wf::run::Value(value());
     }
 };
@@ -90,9 +90,9 @@ public:
             
     Name(token::TokenPtr _token, Location _location) : PrimaryNode(_token, _location) {}
     
-    auto eval(wf::run::EnvironmentPtrenv) const -> wf::run::Value override {
+    auto eval(wf::run::EnvironmentPtr env) const -> wf::run::Value override {
         try {
-            return env.get(token->value);
+            return env->get(token->value);
         } catch (std::out_of_range e) {
             throw wf::WorkFlowError("Variable named '" + token->value + "' is not defined.");
         }

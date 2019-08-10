@@ -31,7 +31,7 @@ auto BinaryOperation::description() const -> std::string {
     return "(" + left()->description() + " " + op()->description() + " " + right()->description() + ")";
 }
 
-auto BinaryOperation::eval(wf::run::EnvironmentPtrenv) const -> wf::run::Value {
+auto BinaryOperation::eval(wf::run::EnvironmentPtr env) const -> wf::run::Value {
     let op_s = wf::ast::nodeAsLeaf(op())->token->value;
     let lsh = left()->eval(env);
     let rsh = right()->eval(env);
@@ -52,8 +52,6 @@ auto BinaryOperation::eval(wf::run::EnvironmentPtrenv) const -> wf::run::Value {
         return wf::run::Value(lsh.integer() / rsh.integer());
     }else if (op_s == "==") {
         return wf::run::Value(lsh.integer() == rsh.integer());
-    }else if (op_s == "+=") {
-        env.set(wf::ast::nodeAsLeaf(left())->token->value, wf::run::Value(lsh.integer() + rsh.integer()));
     }
     
     return wf::run::Value::voidValue();

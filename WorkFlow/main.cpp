@@ -23,7 +23,7 @@ int main() {
     
     var lexer = wf::Lexer(ifs);
     
-    var globalEnv = wf::run::Environment();
+    var globalEnv = std::shared_ptr<wf::run::Environment>(new wf::run::Environment());
           
     
     // MARK: - Measure Start -

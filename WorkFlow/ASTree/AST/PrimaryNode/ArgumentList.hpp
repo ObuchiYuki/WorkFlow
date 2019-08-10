@@ -24,7 +24,7 @@ public:
     
     ArgumentList(std::vector<NodePtr> _children, Location _location) : Node(_children, _location) {}
     
-    auto eval(wf::run::EnvironmentPtrenv) const -> wf::run::Value override;
+    auto eval(wf::run::EnvironmentPtr env) const -> wf::run::Value override;
 };
 
 

@@ -25,11 +25,11 @@ var VarStem::description() const -> std::string {
     return "(def " + target()->description() + " = " + init()->description() + ")";
 }
 
-auto VarStem::eval(wf::run::EnvironmentPtrenv) const -> wf::run::Value {
+auto VarStem::eval(wf::run::EnvironmentPtr env) const -> wf::run::Value {
     let s_target = nodeAsLeaf(target())->token->value;
     var r_value = init()->eval(env);
 
-    env.set(s_target, r_value);
+    env->set(s_target, r_value);
     
     
     return wf::run::Value::voidValue();

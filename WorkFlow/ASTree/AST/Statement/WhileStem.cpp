@@ -24,7 +24,7 @@ auto WhileStem::description() const -> std::string {
     return "(while " + condition()->description() + " " + block()->description() + ")";
 }
 
-auto WhileStem::eval(wf::run::Environment &env) const -> wf::run::Value {
+auto WhileStem::eval(wf::run::EnvironmentPtr env) const -> wf::run::Value {
     while (condition()->eval(env).boolean()) {
         block()->eval(env);
     }

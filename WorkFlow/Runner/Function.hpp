@@ -33,12 +33,12 @@ private:
     
 public:
     
-    auto call(std::shared_ptr<wf::ast::ArgumentList> arguments, wf::run::EnvironmentPtrenv) {
+    auto call(std::shared_ptr<wf::ast::ArgumentList> arguments, wf::run::EnvironmentPtr env) {
         if (arguments->numArgument() != numParamators()) {
             throw wf::WorkFlowError(_createArgNumErrorMessage(arguments->numArgument()));
         }
         
-        var subEnv = env.createSubEnv();
+        var subEnv = env->createSubEnv();
         for (int i=0; i<arguments->numArgument();i++) {
             subEnv->set(paramators->name(i), arguments->arg(i)->eval(env));
         }
@@ -56,10 +56,10 @@ public:
     
 private:
     auto _createArgNumErrorMessage(int givenArgnum) const -> std::string {
-        "[Function::call] This function " + identifier + " requires "
-        + std::to_string(numParamators()) + "arguments" + ", but " + std::to_string(givenArgnum) + "were given."
+        return "[Function::call] This function " + identifier + " requires "
+        + std::to_string(numParamators()) + "arguments" + ", but " + std::to_string(givenArgnum) + "were given.";
     }
-}
+};
 
 }}
 

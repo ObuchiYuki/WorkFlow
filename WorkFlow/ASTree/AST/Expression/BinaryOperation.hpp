@@ -23,7 +23,7 @@ public:
     BinaryOperation(std::vector<NodePtr> _children, Location _location);
     
     var description() const -> std::string override;
-    auto eval(wf::run::EnvironmentPtrenv) const -> wf::run::Value override;
+    auto eval(wf::run::EnvironmentPtr env) const -> wf::run::Value override;
 };
 
 }}

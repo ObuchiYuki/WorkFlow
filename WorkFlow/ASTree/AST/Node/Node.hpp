@@ -48,7 +48,7 @@ public:
     auto numChildren() const -> int;
             
     virtual var description() const -> std::string;
-    virtual auto eval(wf::run::EnvironmentPtrenv) const -> wf::run::Value;
+    virtual auto eval(wf::run::EnvironmentPtr env) const -> wf::run::Value;
     
     // MARK: - Constructor -
     Node(std::vector<std::shared_ptr<Node>> _children, Location _location);
