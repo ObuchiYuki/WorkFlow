@@ -27,7 +27,7 @@ public:
 
     // MARK: - Methods -
 
-    auto eval(wf::run::Environment& env) const -> wf::run::Value override;
+    auto eval(wf::run::EnvironmentPtrenv) const -> wf::run::Value override;
 };
 
 
@@ -45,7 +45,7 @@ public:
 
     // MARK: - Methods -
 
-    auto eval(wf::run::Environment& env) const -> wf::run::Value override;
+    auto eval(wf::run::EnvironmentPtrenv) const -> wf::run::Value override;
 };
 
 }}

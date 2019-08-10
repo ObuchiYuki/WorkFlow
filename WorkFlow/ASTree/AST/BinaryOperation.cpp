@@ -31,7 +31,7 @@ auto BinaryOperation::description() const -> std::string {
     return "(" + left()->description() + " " + op()->description() + " " + right()->description() + ")";
 }
 
-auto BinaryOperation::eval(wf::run::Environment& env) const -> wf::run::Value {
+auto BinaryOperation::eval(wf::run::EnvironmentPtrenv) const -> wf::run::Value {
     let op_s = wf::ast::nodeAsLeaf(op())->token->value;
     let lsh = left()->eval(env);
     let rsh = right()->eval(env);

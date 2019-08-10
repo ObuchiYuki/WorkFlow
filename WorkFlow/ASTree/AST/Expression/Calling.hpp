@@ -23,7 +23,7 @@ public:
         
     auto description() const -> std::string override;
     
-    auto eval(wf::run::Environment& env) const -> wf::run::Value override;
+    auto eval(wf::run::EnvironmentPtrenv) const -> wf::run::Value override;
 };
 
 

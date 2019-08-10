@@ -29,7 +29,7 @@ public:
         
     IfStem(std::vector<NodePtr> _children, Location _location);
         
-    auto eval(wf::run::Environment& env) const -> wf::run::Value override;
+    auto eval(wf::run::EnvironmentPtrenv) const -> wf::run::Value override;
 };
 
 }}

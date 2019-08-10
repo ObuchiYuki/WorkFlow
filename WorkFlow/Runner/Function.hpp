@@ -33,7 +33,7 @@ private:
     
 public:
     
-    auto call(std::shared_ptr<wf::ast::ArgumentList> arguments, wf::run::Environment& env) {
+    auto call(std::shared_ptr<wf::ast::ArgumentList> arguments, wf::run::EnvironmentPtrenv) {
         if (arguments->numArgument() != numParamators()) {
             throw wf::WorkFlowError(_createArgNumErrorMessage(arguments->numArgument()));
         }
