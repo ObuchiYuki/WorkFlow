@@ -42,21 +42,6 @@ auto Calling::eval(wf::run::EnvironmentPtr env) const -> wf::run::Value {
     
     let fnname = leaf->token->value;
     
-    if (fnname == "prints") {
-        if (!args()) throw wf::WorkFlowError("Function \"prints\" require 1 argument.");
-        
-        print(args()->eval(env).string());
-    }else if (fnname == "printi") {
-        if (!args()) throw wf::WorkFlowError("Function \"printi\" require 1 argument.");
-        
-        print(args()->eval(env).integer());
-        
-    }else{
-        let calling =  std::dynamic_pointer_cast<wf::ast::Calling>(env->get(fnname).runnable());
-
-        
-        throw wf::WorkFlowError("Build-in funtion named " + fnname + " not found.");
-    }
     
     return wf::run::Value::voidValue();
 }

@@ -22,9 +22,15 @@ int main() {
     var ifs = std::ifstream(path);
     
     var lexer = wf::Lexer(ifs);
+
+    let f = BasicParser().argments.parse(lexer);
     
+    print(f);
+    
+    return 0;
     var globalEnv = std::shared_ptr<wf::run::Environment>(new wf::run::Environment());
           
+
     // MARK: - Measure Start -
     rm::debug::startMeasure();
 
@@ -35,7 +41,6 @@ int main() {
             let ps = FuncParser().parse(lexer);
             
             print(ps->description());
-            ps->eval(globalEnv);
             
         }
     }catch(wf::WorkFlowError e) {

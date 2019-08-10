@@ -11,10 +11,21 @@
 
 using namespace wf::ast;
 
-
-var Argument::value() const -> NodePtr{
-    return children[0];
+var Argument::label() const -> NodePtr {
+    if (numChildren() == 2) {
+        return children[0];
+    }else{
+        return nullptr;
+    }
 }
+var Argument::value() const -> NodePtr{
+    if (numChildren() == 2) {
+        return children[1];
+    }else{
+        return children[0];
+    }
+}
+
 auto Argument::eval(wf::run::EnvironmentPtr env) const -> wf::run::Value {
-    return children[0]->eval(env);
+    return value()->eval(env);
 }

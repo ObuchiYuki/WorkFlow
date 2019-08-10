@@ -1,3 +1,1 @@
-def hello(to world, with him) {
-    prints(world)
-}
+in: world, with: "Marry"

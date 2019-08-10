@@ -15,6 +15,7 @@ namespace wf {namespace ast {
 
 class Argument: public Node {
 public:
+    var label() const -> NodePtr;
     var value() const -> NodePtr;
     
     Argument(std::vector<NodePtr> _children, Location _location) : Node(_children, _location) {}
@@ -22,7 +23,11 @@ public:
     auto eval(wf::run::EnvironmentPtr env) const -> wf::run::Value override;
     
     var description() const -> std::string override {
-        return value()->description();
+        if (numChildren() == 2) {
+            return label()->description() + " " + value()->description();
+        }else{
+            return value()->description();
+        }
     }
 };
 

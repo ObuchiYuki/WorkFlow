@@ -42,8 +42,11 @@ public:
         basicExpr,
     });
     
-    wf::Parser argment = wf::rule<wf::ast::Argument>().then(expr);
-    wf::Parser argments = wf::rule<wf::ast::ArgumentList>().optional(expr).optionalRepeat(wf::rule().skip(",").then(expr));
+    wf::Parser argment = wf::rule<wf::ast::Argument>()
+        .optional(wf::rule().then(wf::Parser::name()).skip(":"))
+        .then(expr);
+    
+    wf::Parser argments = wf::rule<wf::ast::ArgumentList>().then(argment).optionalRepeat(wf::rule().skip(",").then(argment));
     
     /// 関数呼び出しです。
     wf::Parser calling = calling0.then(wf::Parser::name()).skip("(").optional(argments).skip(")");
