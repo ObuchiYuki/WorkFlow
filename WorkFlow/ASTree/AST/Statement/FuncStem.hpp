@@ -12,21 +12,22 @@
 #include "Node.hpp"
 #include "ParameterList.hpp"
 #include "Statement.hpp"
+#include "PrimaryNode.hpp"
 
 namespace wf {namespace ast{
 
 class FuncStem: public Node {
 public:
-    var name() const -> std::string;
-    var parameters() const -> NodePtr;
-    var body() const -> NodePtr;
+    var name() const -> std::shared_ptr<wf::ast::Name>;
+    var parameters() const -> std::shared_ptr<wf::ast::ParameterList>;
+    var body() const -> std::shared_ptr<wf::ast::BlockStem>;
     
     FuncStem(std::vector<NodePtr> _children, Location _location) : Node(_children, _location) {};
     
     auto eval(wf::run::EnvironmentPtr env) const -> wf::run::Value override;
     
     var description() const -> std::string override {
-        return "(def " + name() + parameters()->description() + body()->description() + ")";
+        return "(def " + name()->description() + parameters()->description() + body()->description() + ")";
     }
     
 };

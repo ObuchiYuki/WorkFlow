@@ -26,11 +26,12 @@
 namespace wf {namespace run{
 
 class Function {
-private:
-    /**
-     def hello(to world, with him) -> hello(to, with)
-     */
+public:
+    
+    ///def hello(to world, with him) -> hello(to, with)
     std::string identifier;
+private:
+    
     std::shared_ptr<wf::ast::ParameterList> paramators;
     std::shared_ptr<wf::ast::BlockStem> block;
     

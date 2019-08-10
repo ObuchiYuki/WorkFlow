@@ -11,21 +11,23 @@
 
 using namespace wf::ast;
 
-var FuncStem::name() const -> std::string {
+var FuncStem::name() const -> std::shared_ptr<Name> {
     
-    return nodeAsLeaf(children[0])->token->value;
+    return std::dynamic_pointer_cast<ast::Name>(children[0]);
 }
-var FuncStem::parameters() const -> NodePtr {
+var FuncStem::parameters() const -> std::shared_ptr<wf::ast::ParameterList> {
     
-    return children[1];
+    return std::dynamic_pointer_cast<ast::ParameterList>(children[1]);
 }
-var FuncStem::body() const -> NodePtr {
-    return children[2];
+var FuncStem::body() const -> std::shared_ptr<wf::ast::BlockStem> {
+    
+    return std::dynamic_pointer_cast<ast::BlockStem>(children[2]);
 }
 
 auto FuncStem::eval(wf::run::EnvironmentPtr env)  const-> wf::run::Value {
     
-    env->set(name(), wf::run::Value(body()));
+    let func = std::shared_ptr<wf::run::Function>(new wf::run::Function(name(), parameters(), body()));
+    env->set(func->identifier, wf::run::Value(func));
     
     return wf::run::Value::voidValue();
 }
