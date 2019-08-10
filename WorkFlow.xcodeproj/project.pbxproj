@@ -56,6 +56,7 @@
 		B69F407722FBA61200795378 /* FuncStem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B69F407522FBA61200795378 /* FuncStem.cpp */; };
 		B6B2B35F22FD832A006F19AA /* Argument.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6B2B35D22FD832A006F19AA /* Argument.cpp */; };
 		B6B2B36222FD8674006F19AA /* ArgumentList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6B2B36022FD8674006F19AA /* ArgumentList.cpp */; };
+		B6E6F66922FD96A70060D5A6 /* Function.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6E6F66722FD96A70060D5A6 /* Function.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -149,6 +150,8 @@
 		B6B2B35E22FD832A006F19AA /* Argument.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Argument.hpp; sourceTree = "<group>"; };
 		B6B2B36022FD8674006F19AA /* ArgumentList.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ArgumentList.cpp; sourceTree = "<group>"; };
 		B6B2B36122FD8674006F19AA /* ArgumentList.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ArgumentList.hpp; sourceTree = "<group>"; };
+		B6E6F66722FD96A70060D5A6 /* Function.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Function.cpp; sourceTree = "<group>"; };
+		B6E6F66822FD96A70060D5A6 /* Function.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Function.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -355,6 +358,8 @@
 				B685E75722F5277F0056BFF2 /* Environment.hpp */,
 				B668203B22FD782C007A2B7B /* Environment.cpp */,
 				B60691EF22F5C77900AA2063 /* Value.hpp */,
+				B6E6F66822FD96A70060D5A6 /* Function.hpp */,
+				B6E6F66722FD96A70060D5A6 /* Function.cpp */,
 			);
 			path = Runner;
 			sourceTree = "<group>";
@@ -484,6 +489,7 @@
 				B685E78922F527840056BFF2 /* Node.cpp in Sources */,
 				B6669AEE22FD3A920084AF52 /* ExAssign.cpp in Sources */,
 				B685E78A22F527840056BFF2 /* Node.hpp in Sources */,
+				B6E6F66922FD96A70060D5A6 /* Function.cpp in Sources */,
 				B685E78B22F527840056BFF2 /* BinaryOperation.cpp in Sources */,
 				B65CACCF22F6634100350646 /* VarStem.cpp in Sources */,
 				B685E78C22F527840056BFF2 /* AST.hpp in Sources */,
