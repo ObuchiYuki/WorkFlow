@@ -20,18 +20,41 @@
 #include "BlockStem.hpp"
 #include "Argument.hpp"
 #include "ArgumentList.hpp"
+#include "PrimaryNode.hpp"
 
 
 namespace wf {namespace run{
 
 class Function {
 private:
+    /**
+     def hello(to world, with him) -> hello(to, with)
+     */
     std::string identifier;
-    std::shared_ptr<wf::ast::BlockStem> block;
     std::shared_ptr<wf::ast::ParameterList> paramators;
+    std::shared_ptr<wf::ast::BlockStem> block;
     
     
 public:
+    auto createIdentifier(std::string name, ast::ParameterList paramators) -> std::string {
+        var idName = name + "(";
+        
+        idName += paramators.label(0);
+        for (int i = 1, c = paramators.numParamaters(); i < c; ++i) {
+            idName += ", " + paramators.label(i);
+        }
+        
+        idName += ")";
+        
+        return idName;
+    }
+    
+    Function(std::shared_ptr<ast::Name> name, std::shared_ptr<ast::ParameterList> _paramators, std::shared_ptr<ast::BlockStem> _block) :
+    paramators(_paramators), block(_block)
+    {
+        var id = name->token->value + "(";
+        
+    }
     
     auto call(std::shared_ptr<wf::ast::ArgumentList> arguments, wf::run::EnvironmentPtr env) {
         if (arguments->numArgument() != numParamators()) {

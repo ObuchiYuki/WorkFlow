@@ -7,6 +7,7 @@
 //
 
 #include "FuncStem.hpp"
+#include "Function.hpp"
 
 using namespace wf::ast;
 
@@ -23,6 +24,7 @@ var FuncStem::body() const -> NodePtr {
 }
 
 auto FuncStem::eval(wf::run::EnvironmentPtr env)  const-> wf::run::Value {
+    
     env->set(name(), wf::run::Value(body()));
     
     return wf::run::Value::voidValue();

@@ -23,16 +23,6 @@ auto BlockStem::eval(wf::run::EnvironmentPtr env) const -> wf::run::Value {
 }
 
 auto BlockStem::description() const -> std::string {
-    var sstr = std::stringstream();
-    
-    sstr << "(";
-    
-    for (let &statement: children){
-        sstr << statement->description();
-        sstr << " ";
-    }
-    
-    sstr << ")";
-    
-    return sstr.str();
+    return "(" + rm::description::vector(children, [](auto e){return e->description();}) + ")";
+
 }

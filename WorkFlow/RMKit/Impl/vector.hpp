@@ -24,9 +24,10 @@ public:
         return itr != this->end();
         
     }
-    template<typename U>
-    auto map(std::function<T(U)> tranceform) -> rm::vector<U> {
-        rm::vector<U> result;
+    
+    template<typename Func>
+    auto map(Func tranceform) -> rm::vector<decltype(tranceform(this->at(0)))> {
+        rm::vector<decltype(tranceform(this->at(0)))> result;
         
         for (const auto &elm: *this) {
             result.push_back(tranceform(elm));

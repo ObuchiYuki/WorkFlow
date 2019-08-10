@@ -12,6 +12,7 @@
 		B6669AEB22FD38FE0084AF52 /* AssginStem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6669AE922FD38FE0084AF52 /* AssginStem.cpp */; };
 		B6669AEE22FD3A920084AF52 /* ExAssign.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6669AEC22FD3A920084AF52 /* ExAssign.cpp */; };
 		B668203C22FD782C007A2B7B /* Environment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B668203B22FD782C007A2B7B /* Environment.cpp */; };
+		B66EC7D422FE5BE90038DA21 /* Parameter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B66EC7D222FE5BE90038DA21 /* Parameter.cpp */; };
 		B685E76122F527840056BFF2 /* Token.hpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E71C22F5277F0056BFF2 /* Token.hpp */; };
 		B685E76222F527840056BFF2 /* Lexer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E71E22F5277F0056BFF2 /* Lexer.cpp */; };
 		B685E76322F527840056BFF2 /* Lexer.hpp in Sources */ = {isa = PBXBuildFile; fileRef = B685E71F22F5277F0056BFF2 /* Lexer.hpp */; };
@@ -92,6 +93,8 @@
 		B6669AEC22FD3A920084AF52 /* ExAssign.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ExAssign.cpp; sourceTree = "<group>"; };
 		B6669AED22FD3A920084AF52 /* ExAssign.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ExAssign.hpp; sourceTree = "<group>"; };
 		B668203B22FD782C007A2B7B /* Environment.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Environment.cpp; sourceTree = "<group>"; };
+		B66EC7D222FE5BE90038DA21 /* Parameter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Parameter.cpp; sourceTree = "<group>"; };
+		B66EC7D322FE5BE90038DA21 /* Parameter.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Parameter.hpp; sourceTree = "<group>"; };
 		B67A7D4E22DDBDDA00ABA47C /* WorkFlow */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = WorkFlow; sourceTree = BUILT_PRODUCTS_DIR; };
 		B67A7D5822DDBDF200ABA47C /* main.wf */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.wf; sourceTree = "<group>"; };
 		B685E71C22F5277F0056BFF2 /* Token.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Token.hpp; sourceTree = "<group>"; };
@@ -296,6 +299,8 @@
 			children = (
 				B685E74122F5277F0056BFF2 /* PrimaryNode.hpp */,
 				B69F407322FBA49300795378 /* ParameterList.hpp */,
+				B66EC7D322FE5BE90038DA21 /* Parameter.hpp */,
+				B66EC7D222FE5BE90038DA21 /* Parameter.cpp */,
 				B6B2B35E22FD832A006F19AA /* Argument.hpp */,
 				B6B2B35D22FD832A006F19AA /* Argument.cpp */,
 				B6B2B36122FD8674006F19AA /* ArgumentList.hpp */,
@@ -459,6 +464,7 @@
 				B6B2B35F22FD832A006F19AA /* Argument.cpp in Sources */,
 				B668203C22FD782C007A2B7B /* Environment.cpp in Sources */,
 				B685E76422F527840056BFF2 /* Lexer.hpp in Sources */,
+				B66EC7D422FE5BE90038DA21 /* Parameter.cpp in Sources */,
 				B6B2B36222FD8674006F19AA /* ArgumentList.cpp in Sources */,
 				B685E76522F527840056BFF2 /* ASTree.hpp in Sources */,
 				B685E76622F527840056BFF2 /* ParserImpl.h in Sources */,

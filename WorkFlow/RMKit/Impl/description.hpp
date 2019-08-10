@@ -17,8 +17,8 @@
 namespace rm {namespace description {
     
 /// テンプレートで渡されたVectorを変換して出力します。
-template <typename T>
-inline std::string vector(std::vector<T>& vector, std::function<T(std::string)> tranceform){
+template <typename T, typename Func>
+inline std::string vector(const std::vector<T>& vector, Func tranceform){
     std::string decra = "[]";
     if (vector.empty()) return decra;
     
@@ -33,7 +33,7 @@ inline std::string vector(std::vector<T>& vector, std::function<T(std::string)> 
 }
 
 /// Vectorを出力します。
-inline std::string vector(std::vector<std::string>& vector){
+inline std::string vector(const std::vector<std::string>& vector){
     std::string decra = "[]";
     if (vector.empty()) return decra;
     

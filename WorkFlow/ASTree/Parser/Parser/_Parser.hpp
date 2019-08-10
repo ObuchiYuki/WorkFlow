@@ -90,16 +90,9 @@ namespace wf {
         }
         
         auto description() -> std::string const {
-            auto dec = std::vector<std::string>();
-            
-            for (let &e:elements) {
-                dec.push_back(e->description());
-            }
-            
-            
             return "_Parser<" + rm::type::type_name<T>() + ">(elements = " +
-                        rm::description::vector(dec)
-                    + ")";
+                rm::description::vector(elements, [](let e){return e->description();})
+            + ")";
         }
     };
 }
