@@ -1,1 +1,3 @@
-(a hello, as zs);;;;;
+def hello(to world, with him) {
+    prints(world)
+}

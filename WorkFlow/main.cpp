@@ -25,14 +25,6 @@ int main() {
     
     var globalEnv = std::shared_ptr<wf::run::Environment>(new wf::run::Environment());
           
-    while (!lexer.isEnd()) {
-        print(lexer.readNext()->value);
-    }
-    let f = FuncParser().paramList.match(lexer);
-    print(f);
-    
-    return 0;
-    
     // MARK: - Measure Start -
     rm::debug::startMeasure();
 

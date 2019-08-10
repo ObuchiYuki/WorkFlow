@@ -25,31 +25,15 @@ public:
        Node(_children, _location) {}
             
     
-    var allParamaters() -> std::vector<std::shared_ptr<wf::ast::Parameter>> {
-        var dec = std::vector<std::shared_ptr<wf::ast::Parameter>>(numParamaters());
-        for (let& child: children) {
-            dec.push_back(std::dynamic_pointer_cast<wf::ast::Parameter>(child));
-        }
-        return dec;
-    }
+    var allParamaters() -> std::vector<std::shared_ptr<wf::ast::Parameter>>;
     
-    var numParamaters() -> int {
-        return static_cast<int>(children.size());
-    }
+    var numParamaters() -> int;
     
-    var paramater(int i) const -> std::shared_ptr<wf::ast::Parameter> {
-        return std::dynamic_pointer_cast<wf::ast::Parameter>(children[i]);
-    }
-    var name(int i) const -> std::string {
-        return paramater(i)->name();
-    }
-    var label(int i) const -> std::string{
-        return paramater(i)->label();
-    }
+    var paramater(int i) const -> std::shared_ptr<wf::ast::Parameter>;
+    var name(int i) const -> std::string;
+    var label(int i) const -> std::string;
     
-    var description() const -> std::string override {
-        return "(" + rm::description::join(children, ", ", [](auto e){return e->description();}) + ")";
-    }
+    var description() const -> std::string override;
     
 };
 
