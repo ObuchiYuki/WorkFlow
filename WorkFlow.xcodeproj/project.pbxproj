@@ -202,9 +202,9 @@
 		B685E71B22F5277F0056BFF2 /* Lexer */ = {
 			isa = PBXGroup;
 			children = (
+				B685E72022F5277F0056BFF2 /* Lexer.hpp */,
 				B685E71C22F5277F0056BFF2 /* Token.hpp */,
 				B685E71D22F5277F0056BFF2 /* Lexer */,
-				B685E72022F5277F0056BFF2 /* Lexer.hpp */,
 			);
 			path = Lexer;
 			sourceTree = "<group>";

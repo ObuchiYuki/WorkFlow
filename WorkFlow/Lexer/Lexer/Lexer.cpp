@@ -98,7 +98,7 @@ namespace wfh {
     }
     
     bool isMultiCharSymbol(std::string op){
-        for (let &ops: {"|>", "+=", "-=", "==", "!=", "->"}) {
+        for (let &ops: {"|>", "+=", "-=", "==", "!=", "->", "*=", "/=", ">=", "<="}) {
             if (op == ops) return true;
         }
         return false;
@@ -173,9 +173,9 @@ namespace wfh {
         return TokenPtr(new wf::token::Token({env.lineno, env.columun}, TokenType::SYMBOL, std::string(1, c)));
     }
     TokenPtr readSymbol(_ReadingEnvironment& env) {
-        let s = std::string(env.line[env.columun], 1);
+        let s = std::string{env.line[env.columun]};
         
-        let token = TokenPtr(new wf::token::Token({env.lineno, env.columun},TokenType::IDENTIFIER, s));
+        let token = TokenPtr(new wf::token::Token({env.lineno, env.columun}, TokenType::IDENTIFIER, s));
         
         return token;
     }

@@ -16,18 +16,20 @@ namespace wf {namespace ast{
 
 class Parameter: public Node {
 public:
-    var label() -> std::string {
+    var label() const -> std::string {
         return nodeAsLeaf(children[0])->token->value;
     }
     
-    var name() -> std::string {
+    var name() const -> std::string {
         return nodeAsLeaf(children[1])->token->value;
     }
     
     Parameter(std::vector<wf::ast::NodePtr> children, wf::Location _location):
     Node(children, _location) {};
 
-    
+    std::string description() const override {
+        return "(" + label() + " " + name() + ")";
+    }
 };
 
 }}

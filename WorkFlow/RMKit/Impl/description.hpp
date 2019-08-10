@@ -18,6 +18,16 @@ namespace rm {namespace description {
     
 /// テンプレートで渡されたVectorを変換して出力します。
 template <typename T, typename Func>
+inline std::string join(const std::vector<T>& vector, const std::string sep = ", ", Func tranceform = [](std::string s){return s;}){
+    if (vector.empty()) return "";
+    
+    std::string decra = tranceform(vector.front());
+    for (decltype(vector.size()) i = 1, c = vector.size(); i < c; ++i) decra += sep + tranceform(vector[i]);
+    return decra;
+}
+
+/// テンプレートで渡されたVectorを変換して出力します。
+template <typename T, typename Func>
 inline std::string vector(const std::vector<T>& vector, Func tranceform){
     std::string decra = "[]";
     if (vector.empty()) return decra;

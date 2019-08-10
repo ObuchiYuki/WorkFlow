@@ -32,7 +32,8 @@ auto Node::eval(wf::run::EnvironmentPtr env) const -> wf::run::Value {
 
 
 auto Node::description() const -> std::string {
-    return "[space]";
+    rm::debug::warn("[Node::description] Node with no class have no description. Or you may forget to override description. This node returns [node].");
+    return "[node]";
 }
 // MARK: - Leaf - 
 

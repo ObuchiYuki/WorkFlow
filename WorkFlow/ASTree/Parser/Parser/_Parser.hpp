@@ -29,7 +29,11 @@ namespace wf {
             var rgap = gap;
             
             for (let &element: elements) {
-                if (!element->isMatch(lexer, rgap)) return false;
+                if (!element->isMatch(lexer, rgap)){
+                    rm::debug::out("[_Parser::match]", "Matching stop at element ", lexer.peek(rgap)->value);
+                    return false;
+                }
+                    
                 let a = element->getRstride(lexer, rgap);
                     
                 rstride += a;

@@ -47,6 +47,10 @@ public:
         return paramater(i)->label();
     }
     
+    var description() const -> std::string override {
+        return "(" + rm::description::join(children, ", ", [](auto e){return e->description();}) + ")";
+    }
+    
 };
 
 
