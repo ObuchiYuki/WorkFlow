@@ -12,6 +12,9 @@
 using namespace wf::ast;
 
 
+var Argument::value() const -> NodePtr{
+    return children[0];
+}
 auto Argument::eval(wf::run::EnvironmentPtr env) const -> wf::run::Value {
     return children[0]->eval(env);
 }

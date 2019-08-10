@@ -37,7 +37,7 @@ private:
     
     
 public:
-    auto createIdentifier(std::string name, ast::ParameterList paramators) -> std::string {
+    static auto createIdentifier(std::string name, ast::ParameterList paramators) -> std::string {
         var idName = name + "(";
         
         idName += paramators.label(0);
@@ -53,7 +53,7 @@ public:
     Function(std::shared_ptr<ast::Name> name, std::shared_ptr<ast::ParameterList> _paramators, std::shared_ptr<ast::BlockStem> _block) :
     paramators(_paramators), block(_block)
     {
-        var id = name->token->value + "(";
+        identifier = Function::createIdentifier(name->token->value, *_paramators);
         
     }
     
