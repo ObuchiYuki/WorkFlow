@@ -90,7 +90,7 @@ namespace wfh {
     }
     /// 引数がSymbolどうか
     bool isSymbol(const unsigned char c) {
-        return strchr(";,", c);
+        return strchr(";,:", c);
     }
     
     bool isOperatorFirstElement(const unsigned char c) {
@@ -175,7 +175,7 @@ namespace wfh {
     TokenPtr readSymbol(_ReadingEnvironment& env) {
         let s = std::string{env.line[env.columun]};
         
-        let token = TokenPtr(new wf::token::Token({env.lineno, env.columun}, TokenType::IDENTIFIER, s));
+        let token = TokenPtr(new wf::token::Token({env.lineno, env.columun}, TokenType::SYMBOL, s));
         
         return token;
     }

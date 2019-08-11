@@ -30,10 +30,8 @@ namespace wf {
             
             for (let &element: elements) {
                 if (!element->isMatch(lexer, rgap)){
-                    //rm::debug::out("[_Parser::match]", "Matching stop at element ", lexer.peek(rgap)->value);
                     return false;
                 }
-                print(rgap);
                     
                 let a = element->getRstride(lexer, rgap);
                     

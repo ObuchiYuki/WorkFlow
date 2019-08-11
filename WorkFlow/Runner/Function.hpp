@@ -37,18 +37,7 @@ private:
     
     
 public:
-    static auto createIdentifier(std::string name, ast::ParameterList paramators) -> std::string {
-        var idName = name + "(";
-        
-        idName += paramators.label(0);
-        for (int i = 1, c = paramators.numParamaters(); i < c; ++i) {
-            idName += ", " + paramators.label(i);
-        }
-        
-        idName += ")";
-        
-        return idName;
-    }
+    static auto createIdentifier(std::string name, ast::ParameterList paramators) -> std::string;
     
     Function(std::shared_ptr<ast::Name> name, std::shared_ptr<ast::ParameterList> _paramators, std::shared_ptr<ast::BlockStem> _block) :
     paramators(_paramators), block(_block)
@@ -57,32 +46,14 @@ public:
         
     }
     
-    auto call(std::shared_ptr<wf::ast::ArgumentList> arguments, wf::run::EnvironmentPtr env) {
-        if (arguments->numArgument() != numParamators()) {
-            throw wf::WorkFlowError(_createArgNumErrorMessage(arguments->numArgument()));
-        }
-        
-        var subEnv = env->createSubEnv();
-        for (int i=0; i<arguments->numArgument();i++) {
-            subEnv->set(paramators->name(i), arguments->arg(i)->eval(env));
-        }
-        
-        block->eval(subEnv);
-
-    }
-    auto numParamators() const -> int {
-        return paramators->numChildren();
-    }
+    auto call(std::shared_ptr<wf::ast::ArgumentList> arguments, wf::run::EnvironmentPtr env);
     
-    auto description() -> std::string {
-        return "[Function] " + identifier;
-    }
+    auto numParamators() const -> int;
+    
+    auto description() -> std::string;
     
 private:
-    auto _createArgNumErrorMessage(int givenArgnum) const -> std::string {
-        return "[Function::call] This function " + identifier + " requires "
-        + std::to_string(numParamators()) + "arguments" + ", but " + std::to_string(givenArgnum) + "were given.";
-    }
+    auto _createArgNumErrorMessage(int givenArgnum) const -> std::string;
 };
 
 }}

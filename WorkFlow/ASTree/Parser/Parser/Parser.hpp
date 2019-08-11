@@ -11,6 +11,8 @@
 
 #include "Elements/ExprElement.hpp"
 #include "_AnyParser.hpp"
+#include "_Parser.hpp"
+#include "FallThroughNode.hpp"
 
 namespace wf {
 // MARK: - Parser -
@@ -53,8 +55,12 @@ public:
 };
 
 template<class T = wf::ast::Node>
-Parser rule() {
+inline Parser rule() {
     return Parser(_ParserPtr(new _AnyParser(new _Parser<T>)));
+}
+
+inline Parser ruleWithNoOmit() {
+    return Parser(_ParserPtr(new _AnyParser(new _Parser<wf::ast::FallThroughNode>())));
 }
 
 }

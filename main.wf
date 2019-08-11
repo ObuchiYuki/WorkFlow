@@ -1,1 +1,5 @@
-in: world, with: "Marry"
+def hello(to world, with her){
+    prints(at: world)
+}
+
+hello(in: world, with: "Marry")

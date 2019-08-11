@@ -43,7 +43,7 @@ public:
     });
     
     wf::Parser argment = wf::rule<wf::ast::Argument>()
-        .optional(wf::rule().then(wf::Parser::name()).skip(":"))
+        .optional(wf::ruleWithNoOmit().then(wf::Parser::name()).skip(":"))
         .then(expr);
     
     wf::Parser argments = wf::rule<wf::ast::ArgumentList>().then(argment).optionalRepeat(wf::rule().skip(",").then(argment));
