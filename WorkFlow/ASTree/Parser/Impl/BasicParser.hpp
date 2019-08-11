@@ -43,7 +43,7 @@ public:
     });
     
     wf::Parser argment = wf::rule<wf::ast::Argument>()
-        .optional(wf::ruleWithNoOmit().then(wf::Parser::name()).skip(":"))
+        .optional(wf::rule().then(wf::Parser::name()).skip(":"))
         .then(expr);
     
     wf::Parser argments = wf::rule<wf::ast::ArgumentList>().then(argment).optionalRepeat(wf::rule().skip(",").then(argment));
@@ -71,8 +71,9 @@ public:
         wf::rule<wf::ast::IfStem>().skip("if").then(expr).then(block).optional(wf::rule().skip("else").then(block)),
         wf::rule<wf::ast::WhileStem>().skip("while").then(expr).then(block),
         wf::rule<wf::ast::VarStem>().skip("def").then(wf::Parser::name()).skip("=").then(expr),
-        expr,
         assign,
+        expr,
+        
     });
     
     /// プログラムとしての一つのまとまりを表します。

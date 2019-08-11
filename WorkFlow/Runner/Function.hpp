@@ -38,6 +38,7 @@ private:
     
 public:
     static auto createIdentifier(std::string name, ast::ParameterList paramators) -> std::string;
+    static auto createIdentifier(std::string name, ast::ArgumentList arguments) -> std::string;
     
     Function(std::shared_ptr<ast::Name> name, std::shared_ptr<ast::ParameterList> _paramators, std::shared_ptr<ast::BlockStem> _block) :
     paramators(_paramators), block(_block)
@@ -46,7 +47,7 @@ public:
         
     }
     
-    auto call(std::shared_ptr<wf::ast::ArgumentList> arguments, wf::run::EnvironmentPtr env);
+    auto call(std::shared_ptr<wf::ast::ArgumentList> arguments, wf::run::EnvironmentPtr env) const -> wf::run::Value;
     
     auto numParamators() const -> int;
     

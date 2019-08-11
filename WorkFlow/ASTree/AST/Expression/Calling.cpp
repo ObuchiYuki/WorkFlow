@@ -14,14 +14,16 @@
 #include "WorkFlowError.hpp"
 #include "Argument.hpp"
 #include "ArgumentList.hpp"
+#include "Function.hpp"
 
 using namespace wf::ast;
 
 Calling::Calling(std::vector<NodePtr> _children, Location _location) :
 Expression(_children, _location) {}
 
-auto Calling::target() const -> NodePtr{
-    return children[0];
+auto Calling::target() const -> std::shared_ptr<Name> {
+    
+    return std::dynamic_pointer_cast<Name>(children[0]);
 }
 
 auto Calling::args() const -> std::shared_ptr<ArgumentList> {
@@ -36,12 +38,19 @@ auto Calling::description() const -> std::string {
 }
 
 auto Calling::eval(wf::run::EnvironmentPtr env) const -> wf::run::Value {
-    let leaf = nodeAsLeaf(target());
     
-    if (!leaf) return wf::run::Value::voidValue();
+    let id = wf::run::Function::createIdentifier(target()->token->value, *args());
     
-    let fnname = leaf->token->value;
-    
-    
-    return wf::run::Value::voidValue();
+    if (id == "prints()") {
+        print(args()->arg(0)->value()->eval(env).string());
+        
+        return wf::run::Value::voidValue();
+    }else if (id == "printi()") {
+        print(args()->arg(0)->value()->eval(env).integer());
+        
+        return wf::run::Value::voidValue();
+    }else{
+        let func = env->get(id)._value.as<std::shared_ptr<wf::run::Function>>();
+        return func->call(args(), env);
+    }
 }

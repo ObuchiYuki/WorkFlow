@@ -34,7 +34,7 @@ int main() {
             var parser = FuncParser();
             let ps = FuncParser().parse(lexer);
             
-            print(ps->description());
+            ps->eval(globalEnv);
             
         }
     }catch(wf::WorkFlowError e) {

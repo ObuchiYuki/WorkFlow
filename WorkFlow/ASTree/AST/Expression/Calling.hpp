@@ -11,12 +11,13 @@
 
 #include "Expression.hpp"
 #include "ArgumentList.hpp"
+#include "PrimaryNode.hpp"
 
 namespace wf {namespace ast{
 
 class Calling: public Expression {
 public:
-    var target() const -> NodePtr;
+    var target() const -> std::shared_ptr<Name>;;
     var args() const -> std::shared_ptr<ArgumentList>;
     
     Calling(std::vector<NodePtr> _children, Location _location);

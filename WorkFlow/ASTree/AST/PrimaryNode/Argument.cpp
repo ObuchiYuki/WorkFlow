@@ -8,14 +8,21 @@
 
 #include "Argument.hpp"
 
+#include <string>
+#include "rmkit.h"
+
+#include "Leaf.hpp"
 
 using namespace wf::ast;
 
-var Argument::label() const -> NodePtr {
+var Argument::label() const -> std::string {
     if (numChildren() == 2) {
-        return children[0];
+        let a = children[0];
+        
+        
+        return nodeAsLeaf(children[0])->token->value;
     }else{
-        return nullptr;
+        return "";
     }
 }
 var Argument::value() const -> NodePtr{

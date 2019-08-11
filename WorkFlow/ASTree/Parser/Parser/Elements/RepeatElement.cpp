@@ -10,6 +10,7 @@
 #include "RepeatElement.hpp"
 
 #include <vector>
+#include <memory>
 
 #include "Parser.hpp"
 #include "Lexer.hpp"
@@ -45,7 +46,10 @@ auto RepeatElement::parse(Lexer& lexer, std::vector<ast::NodePtr> &res) const ->
     while (parser->match(lexer, 0)) {
         let node = parser->parse(lexer);
         
-        if (node->numChildren() > 0) res.push_back(node);
+        if (node->numChildren() > 0 || rm::type::dynamic_is<ast::Node, ast::Leaf>(node)) {
+            res.push_back(node);
+        }
+            
         if (isOnce) break;
     }
 }

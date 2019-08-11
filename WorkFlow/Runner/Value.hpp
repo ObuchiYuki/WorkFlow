@@ -26,9 +26,9 @@ namespace wf {namespace run {
 
 /// evalの実行に使用される値です。
 class Value {
-private:
-    rm::any _value;
 public:
+    rm::any _value;
+    
     Value() : _value(nil) {}
     Value(rm::any __value): _value(__value) {};
     
@@ -48,10 +48,6 @@ public:
     }
     float floating() const{
         return _value.as<float>();
-    }
-    
-    wf::ast::NodePtr runnable() const {
-        return _value.as<wf::ast::NodePtr>();
     }
     
     friend std::ostream& operator << (std::ostream &os, const Value a) {

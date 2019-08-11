@@ -1,5 +1,24 @@
-def hello(to world, with her){
-    prints(at: world)
+def fizzbizz(at index) {
+    if index % 3 == 0 {
+        if index % 5 == 0 {
+            prints("FizzBizz")
+        }else{
+            prints("Fizz")
+        }
+    }else{
+        if index % 5 == 0 {
+            prints("Bizz")
+        }else{
+            printi(index)
+        }
+    }
 }
 
-hello(in: world, with: "Marry")
+def i = 0
+
+while i < 1000 {
+    i += 1
+    
+    fizzbizz(at: i)
+}
+

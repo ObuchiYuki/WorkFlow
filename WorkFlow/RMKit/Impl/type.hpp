@@ -10,6 +10,7 @@
 #define type_h
 
 #include <string>
+#include <memory>
 #include <typeinfo>
 
 namespace rm {
@@ -28,6 +29,11 @@ private:
         return result;
     }
 public:
+    
+    template<typename T, typename S>
+    static inline const bool dynamic_is(std::shared_ptr<T> pointer) {
+        return std::dynamic_pointer_cast<S>(pointer) != nullptr;
+    }
     
     /// テンプレートに与えられた型が等しいかを比較します。
     template<typename T, typename S>
