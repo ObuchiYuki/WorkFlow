@@ -77,8 +77,6 @@ file.all(in: .current)                  // get all files in current dir
 
 ### TODO
 
-- 
-- Eval of Function Calling
 - Class Definition
 - Type Checker
 
@@ -101,11 +99,11 @@ file.all(in: .current)                  // get all files in current dir
   - Print function (string・int only)  :heavy_check_mark:
   - If Statement :heavy_check_mark:
   - Def Statement :heavy_check_mark:
-  
   - Comparison Expression (`<`, `>`) (Int only) :heavy_check_mark:
   - Expression (`+-*/`) :heavy_check_mark:
   - Assign `+=` `=`   (Int only):heavy_check_mark:
   - Def Statement :heavy_check_mark:
   - FuncDef :heavy_check_mark:
+  - FuncCalling :heavy_check_mark:
   
 
