@@ -1,4 +1,4 @@
-def fizzbizz(at index) {
+def fizzbizz(at index: Int) {
     if index % 3 == 0 {
         if index % 5 == 0 {
             prints("FizzBizz")
@@ -14,9 +14,9 @@ def fizzbizz(at index) {
     }
 }
 
-def i = 0
+def i:Int = 0
 
-while i < 1000 {
+while i < 100 {
     i += 1
     
     fizzbizz(at: i)

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B61C3AA322FD3EC100953591 /* Leaf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B61C3AA122FD3EC100953591 /* Leaf.cpp */; };
+		B63FD47123010F1A0020EEC1 /* TypeSpecifier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B63FD46F23010F1A0020EEC1 /* TypeSpecifier.cpp */; };
 		B65CACCF22F6634100350646 /* VarStem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B65CACCE22F6634100350646 /* VarStem.cpp */; };
 		B6669AEB22FD38FE0084AF52 /* AssginStem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6669AE922FD38FE0084AF52 /* AssginStem.cpp */; };
 		B6669AEE22FD3A920084AF52 /* ExAssign.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6669AEC22FD3A920084AF52 /* ExAssign.cpp */; };
@@ -81,6 +82,8 @@
 		B61C3AA222FD3EC100953591 /* Leaf.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Leaf.hpp; sourceTree = "<group>"; };
 		B63C209A22F569DF0070C83A /* type.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = type.hpp; sourceTree = "<group>"; };
 		B63C20A022F574DE0070C83A /* TokenElements.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TokenElements.hpp; sourceTree = "<group>"; };
+		B63FD46F23010F1A0020EEC1 /* TypeSpecifier.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TypeSpecifier.cpp; sourceTree = "<group>"; };
+		B63FD47023010F1A0020EEC1 /* TypeSpecifier.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TypeSpecifier.hpp; sourceTree = "<group>"; };
 		B65CACCE22F6634100350646 /* VarStem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = VarStem.cpp; sourceTree = "<group>"; };
 		B65CACD022F6651C00350646 /* Calling.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Calling.hpp; sourceTree = "<group>"; };
 		B6669AE322FD0BDB0084AF52 /* WorkFlowError.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = WorkFlowError.hpp; sourceTree = "<group>"; };
@@ -310,6 +313,8 @@
 				B6B2B36122FD8674006F19AA /* ArgumentList.hpp */,
 				B6B2B36022FD8674006F19AA /* ArgumentList.cpp */,
 				B6FF9DE922FF95590040C188 /* FallThroughNode.hpp */,
+				B63FD47023010F1A0020EEC1 /* TypeSpecifier.hpp */,
+				B63FD46F23010F1A0020EEC1 /* TypeSpecifier.cpp */,
 			);
 			path = PrimaryNode;
 			sourceTree = "<group>";
@@ -496,6 +501,7 @@
 				B685E78322F527840056BFF2 /* BlockStem.cpp in Sources */,
 				B685E78422F527840056BFF2 /* Expression.hpp in Sources */,
 				B685E78622F527840056BFF2 /* Calling.cpp in Sources */,
+				B63FD47123010F1A0020EEC1 /* TypeSpecifier.cpp in Sources */,
 				B685E78722F527840056BFF2 /* Expression.cpp in Sources */,
 				B685E78922F527840056BFF2 /* Node.cpp in Sources */,
 				B6669AEE22FD3A920084AF52 /* ExAssign.cpp in Sources */,

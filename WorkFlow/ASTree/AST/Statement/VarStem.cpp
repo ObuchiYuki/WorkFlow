@@ -15,7 +15,7 @@ var VarStem::target() const -> NodePtr {
     return children[0];
 }
 var VarStem::init() const -> NodePtr {
-    return children[1];
+    return children[2];
 }
 
 VarStem::VarStem(std::vector<NodePtr> _children, Location _location) :

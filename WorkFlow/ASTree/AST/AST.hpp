@@ -18,5 +18,6 @@
 #include "Argument.hpp"
 #include "ArgumentList.hpp"
 #include "Statement.hpp"
+#include "TypeSpecifier.hpp"
 
 #endif /* AST_h */

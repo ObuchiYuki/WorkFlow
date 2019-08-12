@@ -26,11 +26,12 @@ public:
     WorkFlowError(std::string __message):
     runtime_error("") , _message(__message){};
     
-    var message() {
+    virtual var message() const -> std::string {
         return std::string("[WorkFlowError] ") + _message;
     }
     
 };
+
 
 }
 #endif /* WorkFlowError_h */
