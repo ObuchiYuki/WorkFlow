@@ -1,24 +1,6 @@
-def fizzbizz(at index: Int) {
-    if index % 3 == 0 {
-        if index % 5 == 0 {
-            prints("FizzBizz")
-        }else{
-            prints("Fizz")
-        }
-    }else{
-        if index % 5 == 0 {
-            prints("Bizz")
-        }else{
-            printi(index)
-        }
-    }
-}
-
 def i:Int = 0
-
 while i < 100 {
     i += 1
     
-    fizzbizz(at: i)
+    printi(i)
 }
-

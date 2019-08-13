@@ -89,6 +89,12 @@ inline std::string TokenTypeDescription(TokenType tokenType){
             }
         }
         
+        friend std::ostream& operator << (std::ostream &os, const Token token) {
+            os << "[Token<" << TokenTypeDescription(token.type) << ">](" <<  token.value <<")";
+            
+            return os;
+        }
+        
     };
         
     /// END OF FILE

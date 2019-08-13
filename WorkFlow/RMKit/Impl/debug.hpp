@@ -47,5 +47,4 @@ static inline auto endMeasure(std::string message = "") {
 }
 
 }}
-
 #endif /* debug_h */

@@ -39,6 +39,10 @@ namespace wfh {
         /// 今読んでいる行の場所です。読み込みに応じて変化します。
         int columun;
         
+        auto current() const -> const unsigned char {
+            return line[columun];
+        }
+        
         _ReadingEnvironment(const std::string _line, const int _lineno) :
         line(_line), lineno(_lineno), columun(0) {}
     };
@@ -76,24 +80,12 @@ namespace wfh {
     bool isBracketType(const unsigned char c) {
         return strchr("()[]{}", c);
     }
-    
-    bool isParentheses(const unsigned char c) {
-        return strchr("()", c);
-    }
-    
-    bool isBraces(const unsigned char c) {
-        return strchr("{}", c);
-    }
-    
-    bool isBracket(const unsigned char c) {
-        return strchr("[]", c);
-    }
     /// 引数がSymbolどうか
-    bool isSymbol(const unsigned char c) {
+    auto isSymbol(const unsigned char c) -> const bool {
         return strchr(";,:", c);
     }
     
-    bool isOperatorFirstElement(const unsigned char c) {
+    auto isOperatorMember(const unsigned char c) -> const bool{
         return strchr("|<>+=-*&%!~?/.", c);
     }
     
@@ -104,6 +96,13 @@ namespace wfh {
         return false;
     }
     
+    auto isLineComment(_ReadingEnvironment& env) -> const bool {
+        return (env.current() == '/' and env.line[env.columun + 1] == '/');
+        
+    }
+
+
+
     // ======================================== //
     // MARK: - Reading autos -
     
@@ -180,21 +179,23 @@ namespace wfh {
         return token;
     }
     TokenPtr readOperator(_ReadingEnvironment& env) {
-        let ops = (std::string() + env.line[env.columun]) + env.line[env.columun+1];
         
-        if (isMultiCharSymbol(ops)){
+        var ops = std::string();
+        
+        while (isOperatorMember(env.current())) {
+            ops += env.current();
             env.columun += 1;
-            let token = TokenPtr(new wf::token::Token({env.lineno, env.columun},TokenType::OPERATOR, ops));
-            
-            return token;
         }
         
-        let op = new std::string(1, env.line[env.columun]);
-        
-        let token = TokenPtr(new wf::token::Token({env.lineno, env.columun},TokenType::OPERATOR, *op));
+        let token = TokenPtr(new wf::token::Token({env.lineno, env.columun},TokenType::OPERATOR, ops));
         
         return token;
     }
+
+auto readComment(_ReadingEnvironment& env) -> void {
+    env.columun = env.line.size() + 1;
+}
+
 }
 // ===================================================================================== //
 // MARK: - Implementions -
@@ -246,12 +247,18 @@ const void wf::Lexer::readLine() {
     }
     
     let endPos = lineBuffer->size();
+    if (endPos == 0) {
+        return;
+    }
     var env = wfh::_ReadingEnvironment(*lineBuffer, lineNumber);
     
     while (env.columun < endPos) {
         let c = (*lineBuffer)[env.columun];
         
-        if (c == '\"') {
+        if(wfh::isLineComment(env)){ 
+            wfh::readComment(env);
+            
+        }else if (c == '\"') {
             queue.push_back(wfh::readStringLiteral(env));
             
         }else if (wfh::isNumber(c)) {
@@ -266,7 +273,7 @@ const void wf::Lexer::readLine() {
         }else if (wfh::isSymbol(c)) {
             queue.push_back(wfh::readSymbol(env));
             
-        }else if (wfh::isOperatorFirstElement(c)) {
+        }else if (wfh::isOperatorMember(c)) {
             queue.push_back(wfh::readOperator(env));
             
         }else if (wfh::isDirectiveFirstElement(c)){
