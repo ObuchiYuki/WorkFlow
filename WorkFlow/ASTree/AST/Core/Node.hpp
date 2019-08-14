@@ -13,6 +13,7 @@
 #include <memory>
 
 #include "rmkit.h"
+#include "Type.hpp"
 
 #include "Lexer.hpp"
 #include "location.hpp"

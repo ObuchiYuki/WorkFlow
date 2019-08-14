@@ -20,12 +20,13 @@ namespace wf {namespace ast{
 
 class VarStem: public Node {
 public:
+    
     var target() const -> std::string;
     var typeSpecifier() const -> std::shared_ptr<TypeSpecifier>;
     var init() const -> NodePtr;
             
     VarStem(std::vector<NodePtr> _children, Location _location);
-            
+    
     var description() const -> std::string override;
         
     auto eval(wf::run::EnvironmentPtr env) const -> wf::run::Value override;
