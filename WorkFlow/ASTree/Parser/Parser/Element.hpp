@@ -31,11 +31,15 @@ namespace wf {
     public:
         // MARK: - Methods -
         
+        
+        
         /// 要素が現在のLexer+gapにマッチするかを返します。
         auto isMatch(Lexer& lexer, int gap) const -> bool const;
         
         /// 現在のLexer+gapに関しての相対的トークン量を返します。
         auto getRstride(Lexer& lexer, int gap) const -> int const;
+        
+        virtual var isEdgeParser() const -> bool = 0;
         
         /// lexerを元に要素をパースします。結果はresに収納されます。
         virtual auto parse(Lexer& lexer, std::vector<wf::ast::NodePtr>& res) const -> void = 0;

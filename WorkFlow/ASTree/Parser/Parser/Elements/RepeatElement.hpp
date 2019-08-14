@@ -32,6 +32,7 @@ public:
     RepeatElement(_ParserPtr _parser, bool _once = false, bool _optional = false) :
     parser(_parser), isOnce(_once), isOptional(_optional) {}
     
+    var isEdgeParser() const -> bool override {return false;}
     auto match(Lexer& lexer, int gap) const -> const bool override;
     auto parse(Lexer& lexer, std::vector<ast::NodePtr>& res) const -> void override;
     auto rstride(Lexer& lexer, int gap) const -> const int override;

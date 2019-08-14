@@ -19,5 +19,6 @@
 #include "WhileStem.hpp"
 #include "NullStem.hpp"
 #include "ExAssign.hpp"
+#include "ClassStem.hpp"
 
 #endif /* Statement_h */

@@ -23,6 +23,7 @@ public:
         varStem,
         funcDef,
         classDef,
+        wf::rule().skipEol(),
     });
     
     wf::Parser classBody = classBody0

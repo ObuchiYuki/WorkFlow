@@ -24,6 +24,7 @@ class TreeElement: public Element {
 public:
     TreeElement(_ParserPtr _parser);
     
+    var isEdgeParser() const -> bool override {return false;}
     auto match(Lexer& lexer, int gap) const -> const bool override;
     auto parse(Lexer& lexer, std::vector<ast::NodePtr>& res) const -> void override;
     auto rstride(Lexer& lexer, int gap) const -> const int override;

@@ -76,6 +76,7 @@ private:
 public:
     ExprElement(_ParserPtr _factor, Operators& _operators) : factor(_factor), operators(_operators) {}
 
+    var isEdgeParser() const -> bool override {return false;}
     auto parse(Lexer& lexer, std::vector<ast::NodePtr>& res) const -> void override;
     auto match(Lexer& lexer, int gap) const -> const bool override;
     auto rstride(Lexer& lexer, int gap) const -> const int override;

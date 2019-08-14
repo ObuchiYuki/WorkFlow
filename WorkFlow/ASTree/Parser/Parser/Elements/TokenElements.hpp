@@ -32,6 +32,9 @@ public:
     virtual ~TokenElement(){}
     
     // MARK: - Overrided Methods -
+    
+    var isEdgeParser() const -> bool override {return true;}
+    
     auto match(Lexer& lexer, int gap) const -> bool const override {
         
         return isMatch(lexer.peek(gap));

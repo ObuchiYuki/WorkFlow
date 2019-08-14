@@ -27,6 +27,7 @@ public:
     SkipElement(std::string _skipToken);
     SkipElement(std::vector<std::string> _skipTokens);
 
+    var isEdgeParser() const -> bool override {return true;}
     auto match(Lexer& lexer, int gap) const -> const bool override;
     auto parse(Lexer& lexer, std::vector<ast::NodePtr>& res) const -> void override;
     auto rstride(Lexer& lexer, int gap) const -> const int override;

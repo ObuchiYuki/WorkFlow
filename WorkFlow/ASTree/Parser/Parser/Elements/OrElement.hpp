@@ -39,7 +39,7 @@ public:
     
     // MARK: - Overrided Methods -
     
-    
+    var isEdgeParser() const -> bool override {return false;}
     auto insertChoise(_ParserPtr parser) -> void;
     auto rstride(Lexer& lexer, int gap) const -> int const override;
     auto description() const -> const std::string override;

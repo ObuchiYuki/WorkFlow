@@ -61,6 +61,7 @@ auto OrElement::chooseParser(Lexer& lexer, int index) const -> _ParserPtr const 
         return parser;
     } catch (std::exception e) {
         for (let &parser: parsers){
+
             if (parser->match(lexer, index)){
                 matched_parser_memo[absIndex] = parser;
                 

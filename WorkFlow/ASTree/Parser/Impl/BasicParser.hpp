@@ -12,6 +12,7 @@
 #include "Lexer.hpp"
 #include "Parser.hpp"
 #include "WorkFlowError.hpp"
+#include "ParserDebuger.hpp"
 
 class BasicParser {
 public:
@@ -108,7 +109,8 @@ public:
         if (program.match(lexer)){
             return program.parse(lexer);
         }
-        throw wf::WorkFlowError("Syntax Error around: " + lexer.description(0));
+        print(wf::ParserDebuger::getMaxMatch());
+        throw wf::WorkFlowError("Syntax Error around: " + lexer.description(wf::ParserDebuger::getMaxMatch()));
     }
 };
 

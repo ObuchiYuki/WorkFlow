@@ -12,6 +12,7 @@
 #include "Lexer.hpp"
 
 #include "Element.hpp"
+#include "ParserDebuger.hpp"
 
 using namespace wf;
 
@@ -23,7 +24,13 @@ auto Element::isMatch(Lexer& lexer, int gap) const -> bool const {
         
     } catch (std::exception e) {
         let result = match(lexer, gap);
+ 
         match_memo[absIndex] = result;
+        
+        if (isEdgeParser() && result) {
+            print("ここ", lexer.absIndex(gap));
+            ParserDebuger::registerMaxMatch(lexer.absIndex(gap));
+        }
         
         return result;
     }
