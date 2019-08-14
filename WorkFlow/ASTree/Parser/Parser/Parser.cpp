@@ -154,6 +154,14 @@ auto Parser::_op() -> Parser {
     return *this;
 }
 
+auto Parser::_directive() -> Parser {
+    let e_ops = ElementPtr(new DerectiveElement());
+    
+    parser->addElement(e_ops);
+    
+    return *this;
+}
+
 
 auto Parser::integer() -> Parser {
     return rule()._integer();
@@ -166,6 +174,9 @@ auto Parser::name() -> Parser {
 }
 auto Parser::op() -> Parser {
     return rule()._op();
+}
+auto Parser::directive() -> Parser {
+    return rule()._directive();
 }
 
 auto Parser::addReservedWord(std::string word) -> void {

@@ -1,6 +1,4 @@
-class Person {
-    def name = "name"
-    def name = "name"
-    def name 
+class Int {
+    def _value: @int
     
 }

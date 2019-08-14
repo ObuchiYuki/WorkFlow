@@ -23,6 +23,10 @@ int main() {
     
     var lexer = wf::Lexer(ifs);
 
+    while(!lexer.isEnd()) {
+        print(*lexer.readNext());
+    }
+    return 0;
     var globalEnv = std::shared_ptr<wf::run::Environment>(new wf::run::Environment());
 
     // MARK: - Measure Start -
@@ -34,7 +38,6 @@ int main() {
             var parser = ClassParser();
             let ps = parser.parse(lexer);
             
-            ps->eval(globalEnv);
             print(ps->description());
         }
     }catch(wf::WorkFlowError e) {

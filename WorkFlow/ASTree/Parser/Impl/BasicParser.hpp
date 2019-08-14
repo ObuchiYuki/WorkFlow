@@ -20,7 +20,11 @@ public:
     wf::Operators operators = wf::Operators();
     
     /// タイプ指定子
-    wf::Parser typespecifier = wf::rule<wf::ast::TypeSpecifier>().skip(":").then(wf::Parser::name());
+    wf::Parser typespecifier = wf::rule<wf::ast::TypeSpecifier>()
+        .skip(":").then(wf::rule().ors({
+            wf::Parser::name(),
+            wf::Parser::directive(),
+        }));
     
     /// 式を表します。(1 + 3 * 3)...、実態はbasicExprにあります。
     wf::Parser basicExpr0 = wf::rule<wf::ast::Expression>();
@@ -70,14 +74,14 @@ public:
         wf::rule<wf::ast::DecAssignStem>().then(wf::Parser::name()).skip("-=").then(expr),
     });
     
-    wf::Parser varStem = wf::rule<wf::ast::varStem>().skip("def").then(wf::Parser::name()).optional(typespecifier).skip("=").then(expr);
+    wf::Parser VarStem = wf::rule<wf::ast::VarStem>().skip("def").then(wf::Parser::name()).optional(typespecifier).skip("=").then(expr);
     
     /// 文を表します。(if while def...)
     wf::Parser statement = statement0.ors({
         wf::rule<wf::ast::IfStem>().skip("if").then(expr).then(block).optional(wf::rule().skip("else").then(block)),
         wf::rule<wf::ast::WhileStem>().skip("while").then(expr).then(block),
         
-        varStem,
+        VarStem,
         assign,
         expr,
         

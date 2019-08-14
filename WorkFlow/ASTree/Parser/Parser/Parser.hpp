@@ -24,6 +24,7 @@ private:
     auto _string() -> Parser;
     auto _name() -> Parser;
     auto _op() -> Parser;
+    auto _directive() -> Parser;
 public:
     _ParserPtr parser;
     
@@ -48,6 +49,7 @@ public:
     static auto string() -> Parser;
     static auto name() -> Parser;
     static auto op() -> Parser;
+    static auto directive() -> Parser;
     
     auto description() const -> const std::string;
     
