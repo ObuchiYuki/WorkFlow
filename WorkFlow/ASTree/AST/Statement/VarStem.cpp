@@ -11,6 +11,10 @@
 
 using namespace wf::ast;
 
+var VarStem::valueType() -> type::TypePtr {
+    return init()->returnType();
+}
+
 var VarStem::target() const -> std::string {
     
     return nodeAsLeaf(children[0])->token->value;

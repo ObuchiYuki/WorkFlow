@@ -16,19 +16,20 @@
 #include "Node.hpp"
 #include "TypeSpecifier.hpp"
 #include "Type.hpp"
+#include "Expression.hpp"
 
 namespace wf {namespace ast{
 
 /**
  def i = 1
+ iの方は常に自動で予測する
  */
 class VarStem: public Node {
 public:
-    type::TypePtr valueType; // == init() return type
-    
+    var valueType() const -> type::TypePtr;
     
     var target() const -> std::string; // nonnull
-    var init() const -> NodePtr; // nullable
+    var init() const -> Expression; // nullable
             
     VarStem(std::vector<NodePtr> _children, Location _location);
     
