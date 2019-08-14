@@ -30,11 +30,11 @@ int main() {
 
     try {
         while (!lexer.isEnd()) {
+            
             var parser = ClassParser();
             let ps = parser.parse(lexer);
             
             print(ps->description());
-            
         }
     }catch(wf::WorkFlowError e) {
         rm::debug::out(e.message());

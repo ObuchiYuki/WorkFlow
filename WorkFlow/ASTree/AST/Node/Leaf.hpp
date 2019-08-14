@@ -33,7 +33,8 @@ public:
     Leaf(std::shared_ptr<wf::token::Token> _token, Location _location);
             
     virtual ~Leaf(){}
-            
+    
+    auto llvm() const -> std::string override;
     auto description() const -> std::string override;
     auto eval(wf::run::EnvironmentPtr env) const -> wf::run::Value override;
 };
