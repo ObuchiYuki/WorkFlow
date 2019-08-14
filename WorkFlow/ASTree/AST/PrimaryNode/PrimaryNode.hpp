@@ -81,6 +81,10 @@ class Directive: public PrimaryNode {
 public:
     
     Directive(token::TokenPtr _token, Location _location) : PrimaryNode(_token, _location) {}
+    
+    var description() const -> std::string override {
+        return "@" + token->value;
+    };
 };
 
 class Operator: public PrimaryNode {

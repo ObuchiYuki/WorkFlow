@@ -1,4 +1,1 @@
-class Int {
-    def _value: @int
-    
-}
+def a = 1 * 2 + 12 * 2

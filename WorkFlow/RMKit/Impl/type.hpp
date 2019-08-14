@@ -6,8 +6,8 @@
 //  Copyright © 2019 yuki. All rights reserved.
 //
 
-#ifndef type_h
-#define type_h
+#ifndef rm_type_h
+#define rm_type_h
 
 #include <string>
 #include <memory>

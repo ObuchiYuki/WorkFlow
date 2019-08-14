@@ -106,6 +106,7 @@
 		B67A7D5822DDBDF200ABA47C /* main.wf */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.wf; sourceTree = "<group>"; };
 		B67C32112303926F00B4CD9D /* ParserDebuger.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ParserDebuger.hpp; sourceTree = "<group>"; };
 		B67C32132303983F00B4CD9D /* ParserDebuger.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ParserDebuger.cpp; sourceTree = "<group>"; };
+		B67C32152303A64F00B4CD9D /* TypeMemo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TypeMemo.md; sourceTree = "<group>"; };
 		B685E71C22F5277F0056BFF2 /* Token.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Token.hpp; sourceTree = "<group>"; };
 		B685E71E22F5277F0056BFF2 /* Lexer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Lexer.cpp; sourceTree = "<group>"; };
 		B685E71F22F5277F0056BFF2 /* Lexer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Lexer.hpp; sourceTree = "<group>"; };
@@ -185,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				B67A7D5822DDBDF200ABA47C /* main.wf */,
+				B67C32152303A64F00B4CD9D /* TypeMemo.md */,
 				B685E71A22F5277F0056BFF2 /* WorkFlow */,
 				B67A7D4F22DDBDDA00ABA47C /* Products */,
 			);

@@ -20,7 +20,7 @@ public:
     .skip("class").then(wf::Parser::name()).then(classBody0);
      
     wf::Parser inclassStem = wf::rule().ors({
-        varStem,
+        VarStem,
         funcDef,
         classDef
     });
