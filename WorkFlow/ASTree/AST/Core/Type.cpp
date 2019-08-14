@@ -8,7 +8,7 @@
 
 #include "Type.hpp"
 
-using namespace wf::ast;
+using namespace wf::type;
 
 auto Type::isChildrenOf(Type type) const -> bool {
     if (parent == nullptr) {return false;} // null チェック

@@ -12,8 +12,8 @@
 
 using namespace wf::ast;
 
-var TypeSpecifier::type() const -> TypePtr {
+var TypeSpecifier::type() const -> type::TypePtr {
     let name = nodeAsLeaf(children[0])->token->value;
-    return TypePtr(new Type(name));
+    return type::TypePtr(new type::Type(name));
 }
 

@@ -14,29 +14,33 @@
 
 #include "rmkit.h"
 
-namespace wf {namespace ast {
+namespace wf {namespace type {
 
 class Type;
 
 typedef std::shared_ptr<Type> TypePtr;
 
+#include "Property.hpp"
+#include "Argument.hpp"
+#include "Methods.hpp"
+
 /// 型を表します。
 class Type {
 public:
     // MARK: - Properties -
-    /// 型名
     const std::string name;
     const TypePtr parent;
+
     
-    var description() -> std::string {return name;}
+    
     
     // MARK: - Methods -
     
     auto isChildrenOf(Type type) const -> bool;
+    auto description() -> std::string {return name;}
     
     // MARK: - Constructor -
     Type(std::string _name) : name(_name) , parent(nullptr) {}
-    
     Type(std::string _name, TypePtr _parent) : name(_name) , parent(_parent) {}
     
     // MARK: - Operator -

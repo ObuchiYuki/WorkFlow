@@ -18,7 +18,7 @@ auto Expression::description() const -> std::string {
     
     return children[0]->description();
 }
-auto Expression::returnTyep() const -> TypePtr {
+auto Expression::returnTyep() const -> type::TypePtr {
     throw wf::WorkFlowError("[Expression::returnTyep] 'this' method must be overrided to return type.");
 }
 

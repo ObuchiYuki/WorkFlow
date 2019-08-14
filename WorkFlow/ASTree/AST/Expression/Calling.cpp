@@ -33,11 +33,11 @@ auto Calling::args() const -> std::shared_ptr<ArgumentList> {
     return nullptr;
 }
 
-var Calling::returnTyep() const -> TypePtr {
+var Calling::returnTyep() const -> type::TypePtr {
     let index = (numChildren() == 3) ? 2 : 1;
     let name = nodeAsLeaf(children[index])->token->value;
     
-    return TypePtr(new Type(name));
+    return type::TypePtr(new type::Type(name));
 }
 
 auto Calling::description() const -> std::string {

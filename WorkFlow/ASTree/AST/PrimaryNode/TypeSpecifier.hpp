@@ -19,7 +19,7 @@ namespace wf {namespace ast{
 
 class TypeSpecifier: public Node {
 public:
-    var type() const -> TypePtr;
+    var type() const -> type::TypePtr;
     
     TypeSpecifier(std::vector<NodePtr> _children, Location _location) : Node(_children, _location) {}
     

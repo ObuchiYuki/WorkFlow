@@ -24,7 +24,7 @@ public:
     // MARK: - Methods -
             
     var description() const -> std::string override;
-    virtual var returnTyep() const -> wf::ast::TypePtr;
+    virtual var returnTyep() const -> wf::type::TypePtr;
     
     auto eval(wf::run::EnvironmentPtr env) const -> wf::run::Value override {
         return children[0]->eval(env);
