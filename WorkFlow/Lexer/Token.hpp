@@ -83,7 +83,7 @@ inline std::string TokenTypeDescription(TokenType tokenType){
         
         auto description() const -> std::string {
             if (type == TokenType::ENDLINE) {
-                return "\\n";
+                return "\n";
             }else{
                 return value;
             }

@@ -1,10 +1,6 @@
 class Person {
     def name = "name"
     def name = "name"
-    def name = "name"
-    
-    def hello(at name: String) {
-        prints("hello")
-    }
+    def name 
     
 }
