@@ -17,7 +17,7 @@
 #include "WorkFlowError.hpp"
 
 int main() {
-    
+
     let path = "/Users/yuki/Developer/Git/WorkFlow/main.wf";
     var ifs = std::ifstream(path);
     
@@ -31,11 +31,11 @@ int main() {
     try {
         while (!lexer.isEnd()) {
         
-            var parser = FuncParser();
-            let ps = FuncParser().parse(lexer);
+            var parser = ClassParser();
+            let ps = parser.parse(lexer);
             
             ps->eval(globalEnv);
-            
+            print(ps->description());
         }
     }catch(wf::WorkFlowError e) {
         rm::debug::out(e.message());

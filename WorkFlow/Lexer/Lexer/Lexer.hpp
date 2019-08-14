@@ -23,17 +23,21 @@ namespace wf {
         // MARK: - Private -
     private:
         // MARK: - Properties -
-        
-        int lineNumber;
-        
+
         /// Fileの読み取り&用のReaderです。
         std::ifstream& reader;
         
-        /// 現在の行のToken列です。
-        std::vector<token::TokenPtr> queue;
+        // 1から始まる行番号です。
+        int lineNumber;
+    
+        /// 現在読み終わったトークンの場所です。
+        int index = 0;
         
         /// 現在の行が最終行かどうかです。
         bool hasMoreLine;
+        
+        /// 現在の行のToken列です。
+        mutable std::vector<token::TokenPtr> queue;
         
         // MARK: - Methods -
         
@@ -43,17 +47,8 @@ namespace wf {
         /// 現在の行を解釈します。
         const void readLine();
         
-        // MARK: - Public -
-        
-        /// 現在読み終わったトークンの場所です。
-        int index = 0;
         
     public:
-        
-        
-        int absIndex(int gap) {
-            return index + gap;
-        }
 
         // ======================================================= //
         // MARK: - Constructor -
@@ -64,11 +59,16 @@ namespace wf {
         // ======================================================= //
         // MARK: - Methods -
         
+        /// 現在の絶対インデックスです。
+        int absIndex(int gap) {
+            return index + gap;
+        }
+
         /// 次のQueueを読みます。読んだところからメモリから消します。
-        token::TokenPtr readNext();
+        auto readNext() -> token::TokenPtr;
         
         /// 先のQueueを先読みします。メモリから消すことはありません。
-        token::TokenPtr peek(int stride);
+        auto peek(int stride) -> token::TokenPtr;
         
         /// ファイルが読み終わったかどうかです。
         var isEnd() {

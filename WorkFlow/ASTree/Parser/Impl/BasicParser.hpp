@@ -69,14 +69,14 @@ public:
         wf::rule<wf::ast::DecAssignStem>().then(wf::Parser::name()).skip("-=").then(expr),
     });
     
-    wf::Parser varstem = wf::rule<wf::ast::VarStem>().skip("def").then(wf::Parser::name()).optional(typespecifier).skip("=").then(expr);
+    wf::Parser varStem = wf::rule<wf::ast::varStem>().skip("def").then(wf::Parser::name()).optional(typespecifier).skip("=").then(expr);
     
     /// 文を表します。(if while def...)
     wf::Parser statement = statement0.ors({
         wf::rule<wf::ast::IfStem>().skip("if").then(expr).then(block).optional(wf::rule().skip("else").then(block)),
         wf::rule<wf::ast::WhileStem>().skip("while").then(expr).then(block),
         
-        varstem,
+        varStem,
         assign,
         expr,
         
@@ -104,7 +104,7 @@ public:
         wf::Parser::addReservedWord("else");
     }
     
-    wf::ast::NodePtr parse(wf::Lexer& lexer) {
+    auto parse(wf::Lexer& lexer) -> wf::ast::NodePtr{
         if (program.match(lexer)){
             return program.parse(lexer);
         }

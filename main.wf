@@ -1,6 +1,5 @@
-def i:Int = 0
-while i < 100 {
-    i += 1
-    
-    printi(i)
+class Person {
+    def name = "name"
+    def name = "name"
+    def name = "name"
 }

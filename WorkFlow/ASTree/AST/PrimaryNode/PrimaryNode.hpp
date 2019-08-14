@@ -41,6 +41,10 @@ class StringLiteral: public PrimaryNode {
 public:
             
     StringLiteral(token::TokenPtr _token, Location _location) : PrimaryNode(_token, _location) {}
+    
+    var description() const -> std::string override {
+        return "\"" + token->value + "\"";
+    };
 };
 
 

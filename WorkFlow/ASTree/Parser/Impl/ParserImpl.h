@@ -11,5 +11,6 @@
 
 #include "BasicParser.hpp"
 #include "FuncParser.hpp"
+#include "ClassParser.hpp"
 
 #endif /* ParserImpl_h */

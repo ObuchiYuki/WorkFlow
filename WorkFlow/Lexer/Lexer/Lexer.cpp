@@ -28,78 +28,73 @@ namespace wfh {
     // MARK: - Classes -
     
     /// 字句解析時の環境をカプセル化します。
-    class _ReadingEnvironment{
-    public:
-        /// 現在読んでいる行です。
-        const std::string line;
+class _ReadingEnvironment{
+public:
+    /// 現在読んでいる行です。
+    const std::string line;
         
-        /// 現在読んでいる行の行数です。
-        const int lineno;
+    /// 現在読んでいる行の行数です。
+    const int lineno;
         
-        /// 今読んでいる行の場所です。読み込みに応じて変化します。
-        int columun;
+    /// 今読んでいる行の場所です。読み込みに応じて変化します。
+    int columun;
         
-        auto current() const -> const unsigned char {
-            return line[columun];
-        }
+    auto current() const -> const unsigned char {
+        return line[columun];
+    }
         
-        _ReadingEnvironment(const std::string _line, const int _lineno) :
-        line(_line), lineno(_lineno), columun(0) {}
-    };
+    _ReadingEnvironment(const std::string _line, const int _lineno) :
+    line(_line), lineno(_lineno), columun(0) {}
+};
     
-    // =============================================================== //
-    // MARK: - autotions -
+// =============================================================== //
+// MARK: - autotions -
     
-    // ======================================== //
-    // MARK: - Checking autos -
-    /// 引数が数字かどうか
-    bool isNumber(const unsigned char c) {
-        return ('0' <= c && c <= '9');
-    }
+// ======================================== //
+// MARK: - Checking autos -
+/// 引数が数字かどうか
+bool isNumber(const unsigned char c) {
+    return ('0' <= c && c <= '9');
+}
+
     
-    /// 引数がNameの最初の文字になれるか
-    bool isNameFirstElement(const unsigned char c) {
-        return
-        ('a' <= c && c <= 'z') ||
-        ('A' <= c && c <= 'Z') ||
-        c == '_';
-    }
+/// 引数はDirectiveの最初の文字か
+bool isDirectiveFirstElement(const unsigned char c) {
+    return c == '@';
+}
     
-    /// 引数はDirectiveの最初の文字か
-    bool isDirectiveFirstElement(const unsigned char c) {
-        return c == '@';
-    }
+bool isBracketType(const unsigned char c) {
+    return strchr("()[]{}", c);
+}
+/// 引数がSymbolどうか
+auto isSymbol(const unsigned char c) -> const bool {
+    return strchr(";,:", c);
+}
     
-    /// 引数がNameの最初以外の文字になれるか
-    bool isNameElement(const unsigned char c) {
-        return
-        isNameFirstElement(c) ||
-        isNumber(c);
-    }
+auto isOperatorMember(const unsigned char c) -> const bool{
+    return strchr("|<>+=-*&%!~?/.", c);
+}
     
-    bool isBracketType(const unsigned char c) {
-        return strchr("()[]{}", c);
-    }
-    /// 引数がSymbolどうか
-    auto isSymbol(const unsigned char c) -> const bool {
-        return strchr(";,:", c);
-    }
     
-    auto isOperatorMember(const unsigned char c) -> const bool{
-        return strchr("|<>+=-*&%!~?/.", c);
-    }
-    
-    bool isMultiCharSymbol(std::string op){
-        for (let &ops: {"|>", "+=", "-=", "==", "!=", "->", "*=", "/=", ">=", "<="}) {
-            if (op == ops) return true;
-        }
-        return false;
-    }
-    
-    auto isLineComment(_ReadingEnvironment& env) -> const bool {
-        return (env.current() == '/' and env.line[env.columun + 1] == '/');
+auto isLineComment(_ReadingEnvironment& env) -> const bool {
+    return (env.current() == '/' and env.line[env.columun + 1] == '/');
         
-    }
+}
+auto isWhiteSpace(const unsigned char c) -> const bool {
+    return c == ' ' or c == '\t' or c == '\n';
+}
+
+/// 引数がNameの最初の文字になれるか
+bool isNameElement(const unsigned char c) {
+    return !(
+             isBracketType(c) or
+             isWhiteSpace(c) or
+             isOperatorMember(c) or
+             isSymbol(c) or
+             isDirectiveFirstElement(c)
+             );
+}
+
 
 
 
@@ -185,6 +180,7 @@ namespace wfh {
         while (isOperatorMember(env.current())) {
             ops += env.current();
             env.columun += 1;
+            
         }
         
         let token = TokenPtr(new wf::token::Token({env.lineno, env.columun},TokenType::OPERATOR, ops));
@@ -192,8 +188,17 @@ namespace wfh {
         return token;
     }
 
+auto readWhiteSpace(_ReadingEnvironment& env) -> void {
+    unsigned char c = env.current();
+    while (c == ' ' or c == '\t' or c == '\n'){
+        env.columun += 1;
+        c = env.current();
+    }
+    env.columun -= 1;
+}
+
 auto readComment(_ReadingEnvironment& env) -> void {
-    env.columun = env.line.size() + 1;
+    env.columun = (int)env.line.size() + 1;
 }
 
 }
@@ -255,7 +260,7 @@ const void wf::Lexer::readLine() {
     while (env.columun < endPos) {
         let c = (*lineBuffer)[env.columun];
         
-        if(wfh::isLineComment(env)){ 
+        if(wfh::isLineComment(env)){
             wfh::readComment(env);
             
         }else if (c == '\"') {
@@ -263,9 +268,6 @@ const void wf::Lexer::readLine() {
             
         }else if (wfh::isNumber(c)) {
             queue.push_back(wfh::readIntergerLiteral(env));
-            
-        }else if (wfh::isNameFirstElement(c)){
-            queue.push_back(wfh::readName(env));
             
         }else if (wfh::isBracketType(c)) {
             queue.push_back(wfh::readBracketType(env));
@@ -279,6 +281,12 @@ const void wf::Lexer::readLine() {
         }else if (wfh::isDirectiveFirstElement(c)){
 
             queue.push_back(wfh::readDirective(env));
+        }else if (wfh::isWhiteSpace(c)){
+            
+            wfh::readWhiteSpace(env);
+            
+        }else {
+            queue.push_back(wfh::readName(env));
         }
         
         env.columun += 1;
@@ -286,4 +294,5 @@ const void wf::Lexer::readLine() {
     
     queue.push_back(wf::token::EOLToken);
 }
+
 
