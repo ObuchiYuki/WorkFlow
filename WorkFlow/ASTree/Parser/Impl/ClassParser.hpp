@@ -22,8 +22,7 @@ public:
     wf::Parser inclassStem = wf::rule().ors({
         varStem,
         funcDef,
-        classDef,
-        wf::rule().skipEol(),
+        classDef
     });
     
     wf::Parser classBody = classBody0

@@ -28,7 +28,6 @@ auto Element::isMatch(Lexer& lexer, int gap) const -> bool const {
         match_memo[absIndex] = result;
         
         if (isEdgeParser() && result) {
-            print("ここ", lexer.absIndex(gap));
             ParserDebuger::registerMaxMatch(lexer.absIndex(gap));
         }
         

@@ -109,8 +109,8 @@ public:
         if (program.match(lexer)){
             return program.parse(lexer);
         }
-        print(wf::ParserDebuger::getMaxMatch());
-        throw wf::WorkFlowError("Syntax Error around: " + lexer.description(wf::ParserDebuger::getMaxMatch()));
+
+        throw wf::WorkFlowError("Syntax Error around: " + lexer.description(wf::ParserDebuger::getMaxMatch() + 1));
     }
 };
 
