@@ -112,7 +112,7 @@
 		B67C322D2304158F00B4CD9D /* Type.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Type.hpp; path = ../ASTree/AST/Core/Type.hpp; sourceTree = "<group>"; };
 		B67D9FF22304324900340660 /* Property.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Property.hpp; sourceTree = "<group>"; };
 		B67D9FF32304327200340660 /* Argument.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Argument.hpp; sourceTree = "<group>"; };
-		B67D9FF4230433C500340660 /* Methods.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Methods.hpp; sourceTree = "<group>"; };
+		B67D9FF4230433C500340660 /* Method.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Method.hpp; sourceTree = "<group>"; };
 		B685E71C22F5277F0056BFF2 /* Token.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Token.hpp; sourceTree = "<group>"; };
 		B685E71E22F5277F0056BFF2 /* Lexer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Lexer.cpp; sourceTree = "<group>"; };
 		B685E71F22F5277F0056BFF2 /* Lexer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Lexer.hpp; sourceTree = "<group>"; };
@@ -213,7 +213,7 @@
 				B67C322C2304158F00B4CD9D /* Type.cpp */,
 				B67D9FF22304324900340660 /* Property.hpp */,
 				B67D9FF32304327200340660 /* Argument.hpp */,
-				B67D9FF4230433C500340660 /* Methods.hpp */,
+				B67D9FF4230433C500340660 /* Method.hpp */,
 			);
 			path = Type;
 			sourceTree = "<group>";

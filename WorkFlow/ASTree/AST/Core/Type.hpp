@@ -22,7 +22,7 @@ typedef std::shared_ptr<Type> TypePtr;
 
 #include "Property.hpp"
 #include "Argument.hpp"
-#include "Methods.hpp"
+#include "Method.hpp"
 
 /// 型を表します。
 class Type {
@@ -30,9 +30,9 @@ public:
     // MARK: - Properties -
     const std::string name;
     const TypePtr parent;
-
     
-    
+    std::vector<Property> properties;
+    std::vector<Method> methods;
     
     // MARK: - Methods -
     
