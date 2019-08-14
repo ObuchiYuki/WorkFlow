@@ -16,7 +16,7 @@
 #include <exception>
 #include <stdexcept>
 
-#include "type.hpp"
+#include "typeinfo.hpp"
 #include "optional.hpp"
 
 namespace rm {

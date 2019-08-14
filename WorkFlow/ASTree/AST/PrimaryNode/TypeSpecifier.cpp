@@ -8,10 +8,12 @@
 
 #include "TypeSpecifier.hpp"
 #include "Leaf.hpp"
+#include "Type.hpp"
 
 using namespace wf::ast;
 
-var TypeSpecifier::type() -> std::string {
-    return nodeAsLeaf(children[0])->token->value;
+var TypeSpecifier::type() const -> TypePtr {
+    let name = nodeAsLeaf(children[0])->token->value;
+    return TypePtr(new Type(name));
 }
 

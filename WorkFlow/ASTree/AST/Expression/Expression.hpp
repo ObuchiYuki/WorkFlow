@@ -10,16 +10,21 @@
 #define Expression_hpp
 
 #include "Node.hpp"
+#include "Type.hpp"
+
 
 namespace wf { namespace ast {
 
 class Expression: public Node {
 public:
+    // MARK: - Constructor -
+    Expression(std::vector<NodePtr> _children, Location _location);
     virtual ~Expression(){}
     
-    Expression(std::vector<NodePtr> _children, Location _location);
+    // MARK: - Methods -
             
-    auto description() const -> std::string override;
+    var description() const -> std::string override;
+    virtual var returnTyep() const -> wf::ast::TypePtr;
     
     auto eval(wf::run::EnvironmentPtr env) const -> wf::run::Value override {
         return children[0]->eval(env);

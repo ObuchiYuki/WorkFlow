@@ -27,10 +27,17 @@ auto Calling::target() const -> std::shared_ptr<Name> {
 }
 
 auto Calling::args() const -> std::shared_ptr<ArgumentList> {
-    if (numChildren() == 2){
+    if (numChildren() == 3){ // argあり
         return std::dynamic_pointer_cast<ArgumentList>(children[1]);
     }
     return nullptr;
+}
+
+var Calling::returnTyep() const -> TypePtr {
+    let index = (numChildren() == 3) ? 2 : 1;
+    let name = nodeAsLeaf(children[index])->token->value;
+    
+    return TypePtr(new Type(name));
 }
 
 auto Calling::description() const -> std::string {

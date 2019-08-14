@@ -20,6 +20,8 @@ auto Type::isChildrenOf(Type type) const -> bool {
     }
 }
 
+rm::vector<TypePtr> Type::_registeredType = {};
+
 TypePtr Type::Int =          TypePtr(new Type("Int"));
 TypePtr Type::String =       TypePtr(new Type("String"));
 TypePtr Type::Array =        TypePtr(new Type("Array"));

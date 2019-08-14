@@ -28,12 +28,15 @@ public:
     const std::string name;
     const TypePtr parent;
     
+    var description() -> std::string {return name;}
+    
     // MARK: - Methods -
     
     auto isChildrenOf(Type type) const -> bool;
     
     // MARK: - Constructor -
     Type(std::string _name) : name(_name) , parent(nullptr) {}
+    
     Type(std::string _name, TypePtr _parent) : name(_name) , parent(_parent) {}
     
     // MARK: - Operator -
@@ -48,6 +51,10 @@ public:
     static TypePtr Array;
     static TypePtr Dictionary;
     static TypePtr Float;
+    
+private:
+    
+    static rm::vector<TypePtr> _registeredType;
 };
 
 

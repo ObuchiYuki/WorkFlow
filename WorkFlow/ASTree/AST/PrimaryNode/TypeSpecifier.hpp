@@ -12,16 +12,20 @@
 #include <string>
 
 #include "Node.hpp"
+#include "Type.hpp"
 
 
 namespace wf {namespace ast{
 
 class TypeSpecifier: public Node {
 public:
-    var type() -> std::string;
+    var type() const -> TypePtr;
     
     TypeSpecifier(std::vector<NodePtr> _children, Location _location) : Node(_children, _location) {}
     
+    std::string description() const override {
+        return type()->description() + ":";
+    }
     
 };
 

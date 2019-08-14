@@ -17,11 +17,15 @@ namespace wf {namespace ast{
 
 class Calling: public Expression {
 public:
-    var target() const -> std::shared_ptr<Name>;;
+    // MARK: - Properties -
+    var target() const -> std::shared_ptr<Name>;
     var args() const -> std::shared_ptr<ArgumentList>;
+    var returnTyep() const -> TypePtr override;
     
+    // MARK: - Constructor -
     Calling(std::vector<NodePtr> _children, Location _location);
-        
+    
+    // MARK: - Methods -
     auto description() const -> std::string override;
     
     auto eval(wf::run::EnvironmentPtr env) const -> wf::run::Value override;

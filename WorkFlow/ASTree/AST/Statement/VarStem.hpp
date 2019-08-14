@@ -15,15 +15,20 @@
 #include "Environment.hpp"
 #include "Node.hpp"
 #include "TypeSpecifier.hpp"
+#include "Type.hpp"
 
 namespace wf {namespace ast{
 
+/**
+ def i = 1
+ */
 class VarStem: public Node {
 public:
+    TypePtr valueType; // == init() return type
     
-    var target() const -> std::string;
-    var typeSpecifier() const -> std::shared_ptr<TypeSpecifier>;
-    var init() const -> NodePtr;
+    
+    var target() const -> std::string; // nonnull
+    var init() const -> NodePtr; // nullable
             
     VarStem(std::vector<NodePtr> _children, Location _location);
     

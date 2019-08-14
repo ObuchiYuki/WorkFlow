@@ -74,7 +74,7 @@ public:
         wf::rule<wf::ast::DecAssignStem>().then(wf::Parser::name()).skip("-=").then(expr),
     });
     
-    wf::Parser VarStem = wf::rule<wf::ast::VarStem>().skip("def").then(wf::Parser::name()).optional(typespecifier).skip("=").then(expr);
+    wf::Parser VarStem = wf::rule<wf::ast::VarStem>().skip("def").then(wf::Parser::name()).skip("=").then(expr);
     
     /// 文を表します。(if while def...)
     wf::Parser statement = statement0.ors({

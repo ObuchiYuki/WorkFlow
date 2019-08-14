@@ -83,7 +83,7 @@
 		B60691EF22F5C77900AA2063 /* Value.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Value.hpp; sourceTree = "<group>"; };
 		B61C3AA122FD3EC100953591 /* Leaf.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Leaf.cpp; sourceTree = "<group>"; };
 		B61C3AA222FD3EC100953591 /* Leaf.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Leaf.hpp; sourceTree = "<group>"; };
-		B63C209A22F569DF0070C83A /* type.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = type.hpp; sourceTree = "<group>"; };
+		B63C209A22F569DF0070C83A /* typeinfo.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = typeinfo.hpp; sourceTree = "<group>"; };
 		B63C20A022F574DE0070C83A /* TokenElements.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TokenElements.hpp; sourceTree = "<group>"; };
 		B63FD46F23010F1A0020EEC1 /* TypeSpecifier.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TypeSpecifier.cpp; sourceTree = "<group>"; };
 		B63FD47023010F1A0020EEC1 /* TypeSpecifier.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TypeSpecifier.hpp; sourceTree = "<group>"; };
@@ -401,8 +401,8 @@
 		B685E75822F5277F0056BFF2 /* RMKit */ = {
 			isa = PBXGroup;
 			children = (
-				B685E75922F5277F0056BFF2 /* Impl */,
 				B685E75C22F5277F0056BFF2 /* rmkit.h */,
+				B685E75922F5277F0056BFF2 /* Impl */,
 			);
 			path = RMKit;
 			sourceTree = "<group>";
@@ -412,7 +412,7 @@
 			children = (
 				B685E75A22F5277F0056BFF2 /* any.hpp */,
 				B685E75B22F5277F0056BFF2 /* optional.hpp */,
-				B63C209A22F569DF0070C83A /* type.hpp */,
+				B63C209A22F569DF0070C83A /* typeinfo.hpp */,
 				B604B05022F7DB4E00AA6B16 /* description.hpp */,
 				B604B05122F7E60100AA6B16 /* debug.hpp */,
 				B69F407822FBBBE500795378 /* vector.hpp */,

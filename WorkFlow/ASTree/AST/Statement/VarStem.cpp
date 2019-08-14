@@ -17,18 +17,9 @@ var VarStem::target() const -> std::string {
 }
 
 var VarStem::init() const -> NodePtr {
-    
-    if (typeSpecifier() == nullptr) {
-        return children[1];
-    }else{
-        return children[2];
-    }
+    return children[1];
 }
 
-var VarStem::typeSpecifier() const -> std::shared_ptr<TypeSpecifier> {
-    return std::dynamic_pointer_cast<TypeSpecifier>(children[1]);
-    
-}
 
 VarStem::VarStem(std::vector<NodePtr> _children, Location _location) :
 Node(_children, _location) {};
@@ -42,7 +33,6 @@ auto VarStem::eval(wf::run::EnvironmentPtr env) const -> wf::run::Value {
     var r_value = init()->eval(env);
 
     env->set(s_target, r_value);
-    
     
     return wf::run::Value::voidValue();
 }
