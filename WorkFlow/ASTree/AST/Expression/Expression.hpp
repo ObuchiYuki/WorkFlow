@@ -17,6 +17,7 @@
 
 namespace wf { namespace ast {
 
+
 class Expression: public Node {
 public:
     // MARK: - Constructor -
