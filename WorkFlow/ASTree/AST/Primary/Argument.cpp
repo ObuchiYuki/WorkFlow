@@ -25,10 +25,12 @@ var Argument::label() const -> std::string {
         return "";
     }
 }
-var Argument::value() const -> NodePtr{
+var Argument::value() const -> ExpressionPtr {
+    
     if (numChildren() == 2) {
-        return children[1];
+
+        return std::dynamic_pointer_cast<Expression>(children[1]);
     }else{
-        return children[0];
+        return std::dynamic_pointer_cast<Expression>(children[0]);
     }
 }

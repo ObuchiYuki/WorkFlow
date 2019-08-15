@@ -35,6 +35,13 @@ public:
             
     VarStem(std::vector<NodePtr> _children, Location _location);
     
+    /// 今だけ
+    auto eval(wf::run::EnvironmentPtr env) -> wf::run::Value override {
+        env->set(target(), init()->eval(env));
+        
+        return wf::run::Value::voidValue();
+    }
+    
     auto typeCheck(type::TypeEnvironment& env) -> void override {
         env.registerProperty(type::PropertyPtr(new type::Property(target(), valueType(env))));
         

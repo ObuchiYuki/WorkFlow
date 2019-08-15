@@ -13,6 +13,7 @@
 #include "ParameterList.hpp"
 #include "Statement.hpp"
 #include "PrimaryNode.hpp"
+#include "Function.hpp"
 
 namespace wf {namespace ast{
 
@@ -24,6 +25,14 @@ public:
     
     FuncStem(std::vector<NodePtr> _children, Location _location) : Node(_children, _location) {};
         
+    /// 今だけ
+    auto eval(wf::run::EnvironmentPtr env) -> wf::run::Value override {
+        let func = wf::run::Function(name(), parameters(), body());
+        env->set(func.identifier, wf::run::Value(func));
+        
+        return wf::run::Value::voidValue();
+    }
+    
     var description() const -> std::string override {
         return "(def " + name()->description() + parameters()->description() + body()->description() + ")";
     }

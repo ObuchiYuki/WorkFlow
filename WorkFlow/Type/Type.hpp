@@ -29,6 +29,7 @@ namespace wf {namespace type {
 /// 型を表します。
 class Type {
 public:
+    
     // MARK: - Properties -
     const std::string name;
     const TypePtr parent;
@@ -38,11 +39,23 @@ public:
     std::vector<PropertyPtr> properties;
     
     // MARK: - Methods -
-    
+public:
     auto registerType(TypePtr type) -> void;
     auto registerProperty(PropertyPtr prop) -> void;
     
     auto isChildrenOf(Type type) const -> bool;
+    
+    auto getType(std::string name) -> wf::type::TypePtr {
+        for (let& prop: properties) {
+            if (prop->name == name){
+                return prop->type;
+            }
+        }
+        if (parent == nullptr) {return nullptr;}
+        
+        return parent->getType(name);
+    }
+    
     virtual var description() -> std::string {return name;}
     
     // MARK: - Constructor -

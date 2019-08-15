@@ -1,5 +1,9 @@
 def hw = "Hello" + " " + "World"
-def i = 1 * 3 + 2 - 12 * 7
+def i = 1 * 3 + 2 + 12 * 7
 def rep = "Hello!" * 10
 
 def repp = hw * i
+
+if (i == 89) {
+    print(re)
+}

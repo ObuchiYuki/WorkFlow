@@ -17,29 +17,11 @@
 
 namespace wf {namespace type {
 
-class TypeEnvironment {
-private:
-    std::vector<PropertyPtr> properties = {};
-    
+class TypeEnvironment :public Type {
 public:
     
-    auto registerProperty(PropertyPtr property) {
-        
-        properties.push_back(property);
-    }
-    
-    auto getType(std::string name) -> wf::type::TypePtr {
-        for (let& prop: properties) {
-            if (prop->name == name){
-                return prop->type;
-            }
-        }
-        
-        return nullptr;
-    }
-    
-    TypeEnvironment() {}
-    
+    TypeEnvironment(std::string _name, TypePtr _parent) : Type(_name, _parent) {}
+    TypeEnvironment(std::string _name) : Type(_name) {}
 };
 
 }}

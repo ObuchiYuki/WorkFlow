@@ -12,6 +12,7 @@
 
 using namespace wf::type;
 
+TypePtr PrimitiveType::Void =        TypePtr(new Type("Void"));
 TypePtr PrimitiveType::Int =          TypePtr(new Type("Int"));
 TypePtr PrimitiveType::Bool =         TypePtr(new Type("Bool"));
 TypePtr PrimitiveType::String =       TypePtr(new Type("String"));
@@ -31,7 +32,10 @@ auto PrimitiveType::registerAll() -> void {
     Type::global->registerProperty(std::make_shared<Function>(Function("-", {Int, Int}, Int)));
     Type::global->registerProperty(std::make_shared<Function>(Function("*", {Int, Int}, Int)));
     Type::global->registerProperty(std::make_shared<Function>(Function("/", {Int, Int}, Int)));
+    Type::global->registerProperty(std::make_shared<Function>(Function("==", {Int, Int}, Bool)));
     
     Type::global->registerProperty(std::make_shared<Function>(Function("+", {String, String}, String)));
     Type::global->registerProperty(std::make_shared<Function>(Function("*", {String, Int}, String)));
+    
+    Type::global->registerProperty(std::make_shared<Function>(Function("print", {String}, Void)));
 }

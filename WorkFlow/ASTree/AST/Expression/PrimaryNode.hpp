@@ -31,6 +31,11 @@ public:
             
     virtual ~PrimaryNode() {};
     
+    /// 今だけ
+    auto eval(wf::run::EnvironmentPtr env) -> wf::run::Value override {
+        return wf::run::Value(token->value);
+    }
+    
     auto description() const -> std::string override {
         return token->value;
     };
@@ -61,6 +66,11 @@ public:
     
     var returnType(wf::type::TypeEnvironment& env) -> wf::type::TypePtr override {
         return type::PrimitiveType::Int;
+    }
+    
+    /// 今だけ
+    auto eval(wf::run::EnvironmentPtr env) -> wf::run::Value override {
+        return wf::run::Value(value());
     }
             
     IntegerLiteral(token::TokenPtr _token, Location _location) : PrimaryNode(_token, _location) {}
@@ -104,8 +114,18 @@ public:
     
     var returnType(wf::type::TypeEnvironment& env) -> wf::type::TypePtr override {
         let name = token->value;
+        let type = env.getType(name);
         
-        return env.getType(name);
+        if (!type) {
+            throw WorkFlowError("Variable named " + name + " is not defined.");
+        }
+        
+        return type;
+    }
+    
+    /// 今だけ
+    auto eval(wf::run::EnvironmentPtr env) -> wf::run::Value override {
+        return env->get(token->value);
     }
     
     Name(token::TokenPtr _token, Location _location) : PrimaryNode(_token, _location) {}

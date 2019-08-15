@@ -19,6 +19,7 @@ class PrimitiveType {
 public:
     
     static TypePtr Int;
+    static TypePtr Void;
     static TypePtr Bool;
     static TypePtr String;
     static TypePtr Array;

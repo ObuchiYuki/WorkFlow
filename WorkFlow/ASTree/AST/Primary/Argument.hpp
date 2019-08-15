@@ -10,6 +10,8 @@
 #define Arguments_hpp
 
 #include "Node.hpp"
+#include "TypeUmbrella.hpp"
+#include "Expression.hpp"
 #include "rmkit.h"
 
 namespace wf {namespace ast {
@@ -17,7 +19,11 @@ namespace wf {namespace ast {
 class Argument: public Node {
 public:
     var label() const -> std::string;
-    var value() const -> NodePtr;
+    var value() const -> ExpressionPtr;
+    
+    auto returnType(type::TypeEnvironment &env) -> type::TypePtr {
+        return value()->returnType(env);
+    }
     
     Argument(std::vector<NodePtr> _children, Location _location) : Node(_children, _location) {}
         

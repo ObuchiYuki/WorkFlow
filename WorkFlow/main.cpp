@@ -25,7 +25,7 @@ int main() {
         
     wf::type::PrimitiveType::registerAll();
     
-    wf::type::TypeEnvironment globalEnv;
+    auto globalEnv = wf::type::TypeEnvironment("__global", wf::type::Type::global);
     
     // MARK: - Measure Start -
     rm::debug::startMeasure();

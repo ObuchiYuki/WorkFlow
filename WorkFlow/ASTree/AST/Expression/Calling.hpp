@@ -16,11 +16,29 @@
 namespace wf {namespace ast{
 
 class Calling: public Expression {
+    type::TypePtr _checkedReturn;
 public:
     // MARK: - Properties -
-    var target() const -> std::shared_ptr<Name>;
+    
+    var target() const -> std::string;
     var args() const -> std::shared_ptr<ArgumentList>;
     var returnType(wf::type::TypeEnvironment& env) -> type::TypePtr override;
+    
+    auto typeCheck(type::TypeEnvironment& env) -> void override {
+        let func_s = env.getType(target());
+        
+        if (func_s != nullptr) {
+            let func_type = std::dynamic_pointer_cast<type::FunctionType>(func_s);
+            
+            if (func_type->arguments == args()->argumentTypes(env)) {
+                
+                _checkedReturn = func_type->returnType;
+                return;
+            }
+        }
+        
+        throw WorkFlowError("Function " + target() + " for this arg type is not defined.");
+    }
     
     // MARK: - Constructor -
     Calling(std::vector<NodePtr> _children, Location _location);

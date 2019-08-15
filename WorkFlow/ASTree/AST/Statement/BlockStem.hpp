@@ -23,6 +23,14 @@ public:
         
     BlockStem(std::vector<NodePtr> _children, Location _location);
         
+    /// 今だけ
+    auto eval(wf::run::EnvironmentPtr env) -> wf::run::Value override {
+        for (let& child: children) {
+            child->eval(env);
+        }
+        
+        return wf::run::Value::voidValue();
+    }
     var description() const -> std::string override;
         
 };

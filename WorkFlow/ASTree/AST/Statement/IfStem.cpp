@@ -10,12 +10,14 @@
 
 using namespace wf::ast;
 
-auto IfStem::condition()  const -> NodePtr {
-    return children[0];
+auto IfStem::condition() const -> std::shared_ptr<Expression> {
+    
+    return std::dynamic_pointer_cast<Expression>(children[0]);
 }
 
-auto IfStem::block() const -> NodePtr {
-    return children[1];
+auto IfStem::block() const -> std::shared_ptr<BlockStem> {
+    
+    return std::dynamic_pointer_cast<BlockStem>(children[1]);
 }
 
 auto IfStem::elseBlock() const -> NodePtr {

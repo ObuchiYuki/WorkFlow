@@ -6,8 +6,8 @@
 //  Copyright © 2019 yuki. All rights reserved.
 //
 
-#ifndef Function_hpp
-#define Function_hpp
+#ifndef run_Function_hpp
+#define run_Function_hpp
 
 #include <string>
 #include <vector>

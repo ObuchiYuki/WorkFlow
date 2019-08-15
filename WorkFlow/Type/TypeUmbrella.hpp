@@ -11,5 +11,7 @@
 
 #include "Type.hpp"
 #include "TypeEnv.hpp"
+#include "FunctionType.hpp"
+#include "Function.hpp"
 
 #endif /* TypeUmbrella_h */

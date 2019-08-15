@@ -27,7 +27,7 @@ public:
     // MARK: - Methods -
             
     var description() const -> std::string override;
-    
+
     virtual var returnType(wf::type::TypeEnvironment& env) -> wf::type::TypePtr;
 };
 

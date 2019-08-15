@@ -18,7 +18,8 @@ class ArgumentList: public Node {
 public:
     var numArgument() const -> int;
     
-    auto arguments() const -> std::vector<std::shared_ptr<Argument>>;
+    auto arguments() const -> rm::vector<std::shared_ptr<Argument>>;
+    auto argumentTypes(type::TypeEnvironment &env) const -> std::vector<type::TypePtr>;
     
     auto arg(int index) const -> std::shared_ptr<Argument>;
     

@@ -21,6 +21,16 @@ using namespace wf::ast;
 var ArgumentList::numArgument() const -> int{
     return numChildren();
 }
+
+auto ArgumentList::argumentTypes(type::TypeEnvironment &env) const -> std::vector<type::TypePtr> {
+    var dec = std::vector<type::TypePtr>();
+    for (let& arg: arguments()) {
+        
+        dec.push_back(arg->returnType(env));
+    }
+    return dec;
+}
+
 auto ArgumentList::arg(int index) const -> std::shared_ptr<Argument> {
     if (numChildren() < index) {
         return nullptr;
@@ -28,8 +38,8 @@ auto ArgumentList::arg(int index) const -> std::shared_ptr<Argument> {
     return std::dynamic_pointer_cast<Argument>(children[index]);
 }
 
-auto ArgumentList::arguments() const -> std::vector<std::shared_ptr<Argument>> {
-    var vecr = std::vector<std::shared_ptr<Argument>>();
+auto ArgumentList::arguments() const -> rm::vector<std::shared_ptr<Argument>> {
+    var vecr = rm::vector<std::shared_ptr<Argument>>();
     for (let& child: children) {
         vecr.push_back(std::dynamic_pointer_cast<Argument>(child));
     }
