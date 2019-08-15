@@ -7,6 +7,7 @@
 //
 
 #include "Node.hpp"
+#include "WorkFlowError.hpp"
 
 using namespace wf::ast;
 
@@ -19,6 +20,17 @@ children(_children), location(_location){
 void Node::appendChild(std::shared_ptr<Node> child) {
     children.push_back(child);
 }
+
+auto Node::typeRegister(type::TypePtr type) -> void {
+    throw WorkFlowError("Node::typeRegister: Node with no class cannnot register any types.");
+}
+
+auto Node::typeCheck(type::TypeEnvironment& env) -> void{
+    for (let& child : children) {
+        child->typeCheck(env);
+    }
+}
+
 
 int Node::numChildren() const {
     return static_cast<int>(children.size());

@@ -25,14 +25,14 @@ auto BinaryOperation::right() const -> ExpressionPtr {
     return std::dynamic_pointer_cast<Expression>(children[2]);
 }
 
-auto BinaryOperation::op() const -> type::FunctionTypePtr {
+auto BinaryOperation::op(wf::type::TypeEnvironment& env) const -> type::FunctionTypePtr {
     let name = nodeAsLeaf(children[1])->token->value;
     
     for (let& prop: type::Type::global->properties){
         let funp = std::dynamic_pointer_cast<type::FunctionType>(prop->type);
         if(funp == nullptr) continue;
                 
-        if (prop->name == name && funp->match({left()->returnType(), right()->returnType()})) {
+        if (prop->name == name && funp->match({left()->returnType(env), right()->returnType(env)})) {
             return funp;
         }
     }
@@ -42,5 +42,6 @@ auto BinaryOperation::op() const -> type::FunctionTypePtr {
 
 auto BinaryOperation::description() const -> std::string {
     let name = nodeAsLeaf(children[1])->token->value;
+    
     return "(" + left()->description() + " " + name + " " + right()->description() + ")";
 }

@@ -86,6 +86,8 @@
 		B65CACCE22F6634100350646 /* VarStem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = VarStem.cpp; sourceTree = "<group>"; };
 		B65CACD022F6651C00350646 /* Calling.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Calling.hpp; sourceTree = "<group>"; };
 		B65EBECC2304FB8900DD8635 /* Function.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Function.hpp; sourceTree = "<group>"; };
+		B65EBECD2305065100DD8635 /* TypeEnv.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TypeEnv.hpp; sourceTree = "<group>"; };
+		B65EBECE2305146100DD8635 /* TypeUmbrella.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TypeUmbrella.hpp; sourceTree = "<group>"; };
 		B6669AE322FD0BDB0084AF52 /* WorkFlowError.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = WorkFlowError.hpp; sourceTree = "<group>"; };
 		B6669AE422FD2D3C0084AF52 /* VarStem.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = VarStem.hpp; sourceTree = "<group>"; };
 		B6669AE522FD2D9E0084AF52 /* IfStem.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IfStem.hpp; sourceTree = "<group>"; };
@@ -202,11 +204,13 @@
 		B67C322F23042F1600B4CD9D /* Type */ = {
 			isa = PBXGroup;
 			children = (
+				B65EBECE2305146100DD8635 /* TypeUmbrella.hpp */,
 				B67C322D2304158F00B4CD9D /* Type.hpp */,
 				B67C322C2304158F00B4CD9D /* Type.cpp */,
 				B6D08CFA2304EE660010D18A /* FunctionType.hpp */,
 				B67D9FF22304324900340660 /* Property.hpp */,
 				B65EBECC2304FB8900DD8635 /* Function.hpp */,
+				B65EBECD2305065100DD8635 /* TypeEnv.hpp */,
 				B67D9FF52304D43F00340660 /* PrimitiveType.hpp */,
 				B67D9FF62304D49500340660 /* PrimitiveType.cpp */,
 			);

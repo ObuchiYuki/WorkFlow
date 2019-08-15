@@ -13,6 +13,7 @@
 
 #include "Lexer/Lexer.hpp"
 #include "ASTree.hpp"
+#include "TypeUmbrella.hpp"
 #include "WorkFlowError.hpp"
 
 int main() {
@@ -24,21 +25,18 @@ int main() {
         
     wf::type::PrimitiveType::registerAll();
     
+    wf::type::TypeEnvironment globalEnv;
+    
     // MARK: - Measure Start -
     rm::debug::startMeasure();
     
-    try {
-        while (!lexer.isEnd()) {
+    while (!lexer.isEnd()) {
             
-            var parser = ClassParser();
-            let ps = parser.parse(lexer);
-              
-            print(ps->description());
-        }
-    }catch(wf::WorkFlowError e) {
-        rm::debug::out(e.message());
+        var parser = ClassParser();
+        let ps = parser.parse(lexer);
+            
+        print(ps->description());
     }
-    
     
     // MARK: - Measure End -
     rm::debug::endMeasure();

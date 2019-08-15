@@ -34,7 +34,7 @@ public:
     ClassParser() {
         wf::Parser::addReservedWord("class");
         
-        program.insertChoise(classDef);
+        programLine.insertChoise(classDef);
     }
 };
 

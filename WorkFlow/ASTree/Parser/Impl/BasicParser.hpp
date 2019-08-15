@@ -87,8 +87,9 @@ public:
         
     });
     
-    /// プログラムとしての一つのまとまりを表します。
-    wf::Parser program = wf::rule().ors({statement, wf::rule<wf::ast::NullStem>()}).skipEol();
+    wf::Parser programLine = wf::rule().ors({statement, wf::rule<wf::ast::NullStem>()}).skipEol();
+    
+    wf::Parser program = wf::rule<wf::ast::BlockStem>().optionalRepeat(programLine);
 
     BasicParser() {
         // MARK: - Add Operators -

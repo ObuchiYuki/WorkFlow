@@ -25,12 +25,17 @@ namespace wf {namespace ast{
  */
 class VarStem: public Node {
 public:
-    var valueType() const -> type::TypePtr;
+    var valueType(wf::type::TypeEnvironment& env) const -> type::TypePtr;
     
     var target() const -> std::string;
     var init() const -> ExpressionPtr;
             
     VarStem(std::vector<NodePtr> _children, Location _location);
+    
+    auto typeCheck(type::TypeEnvironment& env) -> void {
+        env.registerProperty(type::PropertyPtr(new type::Property(target(), valueType(env))));
+        
+    }
     
     var description() const -> std::string override;
         

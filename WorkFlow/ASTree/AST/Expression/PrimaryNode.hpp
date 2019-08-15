@@ -42,7 +42,7 @@ public:
             
     StringLiteral(token::TokenPtr _token, Location _location) : PrimaryNode(_token, _location) {}
     
-    var returnType() const -> wf::type::TypePtr override {
+    var returnType(wf::type::TypeEnvironment& env) const -> wf::type::TypePtr override {
         return type::PrimitiveType::String;
     }
     var description() const -> std::string override {
@@ -58,7 +58,7 @@ public:
         return std::stoi(token->value);
     }
     
-    var returnType() const -> wf::type::TypePtr override {
+    var returnType(wf::type::TypeEnvironment& env) const -> wf::type::TypePtr override {
         return type::PrimitiveType::Int;
     }
             
@@ -73,7 +73,7 @@ public:
         return std::stod(token->value);
     }
     
-    var returnType() const -> wf::type::TypePtr override {
+    var returnType(wf::type::TypeEnvironment& env) const -> wf::type::TypePtr override {
         return type::PrimitiveType::Float;
     }
             
@@ -100,8 +100,12 @@ public:
 
 class Name: public PrimaryNode {
 public:
-            
-    const type::TypePtr returnType;
+    
+    var returnType(wf::type::TypeEnvironment& env) const -> wf::type::TypePtr override {
+        let name = token->value;
+        
+        return env.getType(name);
+    }
     
     Name(token::TokenPtr _token, Location _location) : PrimaryNode(_token, _location) {}
 };

@@ -20,10 +20,10 @@ public:
     var left() const -> ExpressionPtr;
     var right() const -> ExpressionPtr;
     
-    var op() const -> type::FunctionTypePtr;
+    var op(wf::type::TypeEnvironment& env) const -> type::FunctionTypePtr;
     
-    var returnType() const -> wf::type::TypePtr override {
-        return op()->returnType;
+    var returnType(wf::type::TypeEnvironment& env) const -> wf::type::TypePtr override {
+        return op(env)->returnType;
     }
             
     BinaryOperation(std::vector<NodePtr> _children, Location _location) : Expression(_children, _location) {}

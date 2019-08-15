@@ -13,7 +13,7 @@
 #include <memory>
 
 #include "rmkit.h"
-#include "Type.hpp"
+#include "TypeUmbrella.hpp"
 
 #include "Lexer.hpp"
 #include "Location.hpp"
@@ -46,6 +46,9 @@ public:
             
     auto appendChild(std::shared_ptr<Node> child) -> void;
     auto numChildren() const -> int;
+    
+    auto typeRegister(type::TypePtr type) -> void;
+    auto typeCheck(type::TypeEnvironment& env) -> void;
     
     virtual var description() const -> std::string;
     

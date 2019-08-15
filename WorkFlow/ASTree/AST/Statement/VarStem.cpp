@@ -12,8 +12,8 @@
 
 using namespace wf::ast;
 
-var VarStem::valueType() const -> type::TypePtr {
-    return init()->returnType();
+var VarStem::valueType(wf::type::TypeEnvironment& env) const -> type::TypePtr {
+    return init()->returnType(env);
 }
 
 var VarStem::target() const -> std::string {
@@ -31,5 +31,5 @@ VarStem::VarStem(std::vector<NodePtr> _children, Location _location) :
 Node(_children, _location) {};
 
 var VarStem::description() const -> std::string {
-    return "(def " + target() + ":" + valueType()->name + " = " + init()->description() + ")";
+    return "(def " + target() + " = " + init()->description() + ")";
 }
