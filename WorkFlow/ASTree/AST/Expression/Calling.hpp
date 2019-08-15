@@ -20,7 +20,7 @@ public:
     // MARK: - Properties -
     var target() const -> std::shared_ptr<Name>;
     var args() const -> std::shared_ptr<ArgumentList>;
-    var returnTyep() const -> type::TypePtr override;
+    var returnType() const -> type::TypePtr override;
     
     // MARK: - Constructor -
     Calling(std::vector<NodePtr> _children, Location _location);

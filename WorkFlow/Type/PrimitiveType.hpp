@@ -33,7 +33,7 @@ public:
         TypeManager::shared.registerType(Dictionary);
         TypeManager::shared.registerType(Float);
     }
-}
+};
 
 }}
 

@@ -29,8 +29,8 @@ public:
         return _registeredType.contains(type);
     }
 private:
-    rm::vector<TypePtr> _registeredType;
-}
+    static rm::vector<TypePtr> _registeredType;
+};
 
 }}
 

@@ -8,24 +8,21 @@
 
 #include "BinaryOperation.hpp"
 #include "Leaf.hpp"
+#include "Expression.hpp"
 
 using namespace wf::ast;
 
-auto BinaryOperation::right() const -> NodePtr {
+auto BinaryOperation::right() const -> Expression {
     return children[2];
 }
 
-auto BinaryOperation::left() const -> NodePtr {
+auto BinaryOperation::left() const -> Expression {
     return children[0];
 }
 
-auto BinaryOperation::op() const -> NodePtr {
-    return children[1];
-}
+auto BinaryOperation::op() const -> Operation {
     
-BinaryOperation::BinaryOperation(std::vector<NodePtr> _children, Location _location) :
-Node(_children, _location)
-{};
+}
 
 auto BinaryOperation::description() const -> std::string {
     return "(" + left()->description() + " " + op()->description() + " " + right()->description() + ")";

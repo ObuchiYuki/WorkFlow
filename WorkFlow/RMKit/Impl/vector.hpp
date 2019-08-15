@@ -18,7 +18,7 @@ template<typename T>
 class vector: public std::vector<T> {
 public:
     // MARK: - Methods -
-    auto contains(const T& element) -> const bool {
+    auto contains(const T& element) const -> bool {
         auto itr = std::find(this->begin(), this->end(), element);
         
         return itr != this->end();
@@ -26,7 +26,7 @@ public:
     }
     
     template<typename Func>
-    auto map(Func tranceform) -> rm::vector<decltype(tranceform(this->at(0)))> {
+    auto map(Func tranceform) const -> rm::vector<decltype(tranceform(this->at(0)))> {
         rm::vector<decltype(tranceform(this->at(0)))> result;
         
         for (const auto &elm: *this) {

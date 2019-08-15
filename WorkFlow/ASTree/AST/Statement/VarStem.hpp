@@ -28,8 +28,8 @@ class VarStem: public Node {
 public:
     var valueType() const -> type::TypePtr;
     
-    var target() const -> std::string; // nonnull
-    var init() const -> Expression; // nullable
+    var target() const -> std::string;
+    var init() const -> ExpressionPtr;
             
     VarStem(std::vector<NodePtr> _children, Location _location);
     

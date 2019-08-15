@@ -9,6 +9,8 @@
 #ifndef Expression_hpp
 #define Expression_hpp
 
+#include <memory>
+
 #include "Node.hpp"
 #include "Type.hpp"
 
@@ -24,12 +26,16 @@ public:
     // MARK: - Methods -
             
     var description() const -> std::string override;
-    virtual var returnTyep() const -> wf::type::TypePtr;
+    
+    virtual var returnType() const -> wf::type::TypePtr;
     
     auto eval(wf::run::EnvironmentPtr env) const -> wf::run::Value override {
         return children[0]->eval(env);
     }
 };
+
+typedef std::shared_ptr<Expression> ExpressionPtr;
+
     
 }}
 

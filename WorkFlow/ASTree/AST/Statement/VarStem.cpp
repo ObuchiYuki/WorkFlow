@@ -6,12 +6,13 @@
 //  Copyright © 2019 yuki. All rights reserved.
 //
 
+#include <memory>
 #include "VarStem.hpp"
 #include "Leaf.hpp"
 
 using namespace wf::ast;
 
-var VarStem::valueType() -> type::TypePtr {
+var VarStem::valueType() const -> type::TypePtr {
     return init()->returnType();
 }
 
@@ -20,8 +21,9 @@ var VarStem::target() const -> std::string {
     return nodeAsLeaf(children[0])->token->value;
 }
 
-var VarStem::init() const -> NodePtr {
-    return children[1];
+var VarStem::init() const -> ExpressionPtr {
+    
+    return std::dynamic_pointer_cast<Expression>(children[1]);
 }
 
 

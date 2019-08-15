@@ -10,17 +10,19 @@
 #define BinaryOperation_hpp
 
 #include "Node.hpp"
+#include "Operation.hpp"
+#include "Expression.hpp"
 
 namespace wf { namespace ast {
 
-class BinaryOperation: public Node {
+class BinaryOperation: public Expression {
 public:
-    auto left() const -> NodePtr;
-    auto right() const -> NodePtr;
+    auto left() const -> ExpressionPtr;
+    auto right() const -> ExpressionPtr;
     
-    auto op() const -> NodePtr;
+    auto op() const -> type::Operation;
             
-    BinaryOperation(std::vector<NodePtr> _children, Location _location);
+    BinaryOperation(std::vector<NodePtr> _children, Location _location) : Expression(_children, _location) {}
     
     var description() const -> std::string override;
     auto eval(wf::run::EnvironmentPtr env) const -> wf::run::Value override;
