@@ -28,10 +28,7 @@ public:
     var description() const -> std::string override;
     
     virtual var returnType() const -> wf::type::TypePtr;
-    
-    auto eval(wf::run::EnvironmentPtr env) const -> wf::run::Value override {
-        return children[0]->eval(env);
-    }
+
 };
 
 typedef std::shared_ptr<Expression> ExpressionPtr;

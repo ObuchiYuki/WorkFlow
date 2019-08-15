@@ -46,25 +46,12 @@ public:
     
     // MARK: - Methods -
     
-    auto registerType(TypePtr type) {
-        types.push_back(type);
-    }
-    auto registerProperty(PropertyPtr prop) {
-        properties.push_back(prop);
-    }
-    auto registerMethod(MethodPtr method) {
-        methods.push_back(method);
-    }
+    auto registerType(TypePtr type);
+    auto registerProperty(PropertyPtr prop);
+    auto registerMethod(MethodPtr method);
     
-    auto searchOperation(std::string name, TypePtr left, TypePtr right) -> OperationPtr {
-        for (let& method: methods) {
-            let opr = std::dynamic_pointer_cast<Operation>(method);
-            if  (opr != nullptr && opr->name == name && opr->left() == left && opr->right() == right) {
-                return opr;
-            }
-        }
-        return nullptr;
-    }
+    auto searchOperation(std::string name, TypePtr left, TypePtr right) -> OperationPtr;
+    
     auto isChildrenOf(Type type) const -> bool;
     auto description() -> std::string {return name;}
     

@@ -34,9 +34,7 @@ public:
             
     virtual ~Leaf(){}
     
-    auto llvm() const -> std::string override;
     auto description() const -> std::string override;
-    auto eval(wf::run::EnvironmentPtr env) const -> wf::run::Value override;
 };
 
 inline LeafPtr nodeAsLeaf(NodePtr node){

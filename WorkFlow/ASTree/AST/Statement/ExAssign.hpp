@@ -25,9 +25,6 @@ public:
     // MARK: - Constructor -
     AddAssignStem(std::vector<NodePtr> _children, Location _location) : Node(_children, _location) {};
 
-    // MARK: - Methods -
-
-    auto eval(wf::run::EnvironmentPtr env) const -> wf::run::Value override;
 };
 
 
@@ -43,9 +40,6 @@ public:
     // MARK: - Constructor -
     DecAssignStem(std::vector<NodePtr> _children, Location _location) : Node(_children, _location) {};
 
-    // MARK: - Methods -
-
-    auto eval(wf::run::EnvironmentPtr env) const -> wf::run::Value override;
 };
 
 }}

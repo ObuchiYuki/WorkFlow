@@ -24,18 +24,6 @@ int Node::numChildren() const {
     return static_cast<int>(children.size());
 }
 
-auto Node::eval(wf::run::EnvironmentPtr env) const -> wf::run::Value {
-    rm::debug::warn("[Node] Node with no class must not be evalated. Or you may forget to override eval. This node first children's eval.");
-    
-    return children[0]->eval(env);
-}
-
-var Node::llvm() const -> std::string {
-    rm::debug::warn("[Node::description] Node with no class have no LLVM. Or you may forget to override llvm. This node return comment.");
-    
-    return "; Node with no class. Something Wrong...";
-}
-
 auto Node::description() const -> std::string {
     rm::debug::warn("[Node::description] Node with no class have no description. Or you may forget to override description. This node returns [node].");
     return "[node]";

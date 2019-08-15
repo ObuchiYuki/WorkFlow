@@ -23,9 +23,7 @@ public:
     auto arg(int index) const -> std::shared_ptr<Argument>;
     
     ArgumentList(std::vector<NodePtr> _children, Location _location) : Node(_children, _location) {}
-    
-    auto eval(wf::run::EnvironmentPtr env) const -> wf::run::Value override;
-    
+        
     var description() const -> std::string override{
         return "(" + rm::description::join(arguments(), ", ", [](auto e){return e->description();}) + ")";
     }

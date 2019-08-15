@@ -25,7 +25,6 @@ public:
     BinaryOperation(std::vector<NodePtr> _children, Location _location) : Expression(_children, _location) {}
     
     var description() const -> std::string override;
-    auto eval(wf::run::EnvironmentPtr env) const -> wf::run::Value override;
 };
 
 }}

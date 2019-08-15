@@ -18,9 +18,7 @@ public:
     var description() const -> std::string override{
         return children[0]->description();
     }
-    auto eval(wf::run::EnvironmentPtr env) const -> wf::run::Value override {
-        return children[0]->eval(env);
-    }
+    
 };
 
 }}

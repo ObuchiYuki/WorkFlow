@@ -20,4 +20,28 @@ auto Type::isChildrenOf(Type type) const -> bool {
     }
 }
 
+auto Type::registerType(TypePtr type) {
+    types.push_back(type);
+}
+
+auto Type::registerProperty(PropertyPtr prop) {
+    properties.push_back(prop);
+}
+
+auto Type::registerMethod(MethodPtr method) {
+    methods.push_back(method);
+}
+
+
+auto Type::searchOperation(std::string name, TypePtr left, TypePtr right) -> OperationPtr {
+    for (let& method: methods) {
+        let opr = std::dynamic_pointer_cast<Operation>(method);
+        if  (opr != nullptr && opr->name == name && opr->left() == left && opr->right() == right) {
+            return opr;
+        }
+    }
+    return nullptr;
+}
+
+
 TypePtr Type::global = TypePtr(new Type("__global"));

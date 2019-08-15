@@ -30,10 +30,6 @@ public:
         return "(class " + classname() + classBody()->description() + ")";
     }
     
-    auto eval(wf::run::EnvironmentPtr env) const -> wf::run::Value override {
-        return wf::run::Value::voidValue();
-    }
-    
 };
 
 }}

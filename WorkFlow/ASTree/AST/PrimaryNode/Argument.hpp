@@ -20,9 +20,7 @@ public:
     var value() const -> NodePtr;
     
     Argument(std::vector<NodePtr> _children, Location _location) : Node(_children, _location) {}
-    
-    auto eval(wf::run::EnvironmentPtr env) const -> wf::run::Value override;
-    
+        
     var description() const -> std::string override {
         if (numChildren() == 2) {
             return label() + " " + value()->description();

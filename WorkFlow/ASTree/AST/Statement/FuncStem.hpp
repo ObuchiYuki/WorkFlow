@@ -23,9 +23,7 @@ public:
     var body() const -> std::shared_ptr<wf::ast::BlockStem>;
     
     FuncStem(std::vector<NodePtr> _children, Location _location) : Node(_children, _location) {};
-    
-    auto eval(wf::run::EnvironmentPtr env) const -> wf::run::Value override;
-    
+        
     var description() const -> std::string override {
         return "(def " + name()->description() + parameters()->description() + body()->description() + ")";
     }

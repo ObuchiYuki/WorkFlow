@@ -1,8 +1,1 @@
-def hello(man: Person) {
-    def name = man.name
-    
-}
-
-class Person {
-    def name:String
-}
+def i = 0

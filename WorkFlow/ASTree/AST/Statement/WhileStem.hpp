@@ -28,8 +28,6 @@ public:
     WhileStem(std::vector<NodePtr> _children, Location _location);
         
     auto description() const -> std::string override;
-
-    auto eval(wf::run::EnvironmentPtr env) const -> wf::run::Value override;
 };
 
 }}

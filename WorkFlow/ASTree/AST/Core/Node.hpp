@@ -48,9 +48,7 @@ public:
     auto appendChild(std::shared_ptr<Node> child) -> void;
     auto numChildren() const -> int;
     
-    virtual var llvm() const -> std::string;
     virtual var description() const -> std::string;
-    virtual auto eval(wf::run::EnvironmentPtr env) const -> wf::run::Value;
     
     // MARK: - Constructor -
     Node(std::vector<std::shared_ptr<Node>> _children, Location _location);

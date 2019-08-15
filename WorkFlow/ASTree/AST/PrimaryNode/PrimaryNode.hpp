@@ -57,9 +57,6 @@ public:
             
     IntegerLiteral(token::TokenPtr _token, Location _location) : PrimaryNode(_token, _location) {}
     
-    auto eval(wf::run::EnvironmentPtr env) const -> wf::run::Value override {
-        return wf::run::Value(value());
-    }
 };
 
 /// 不動小数点リテラルを表します。
@@ -71,9 +68,6 @@ public:
             
     FloatLiteral(token::TokenPtr _token, Location _location) : PrimaryNode(_token, _location) {}
     
-    auto eval(wf::run::EnvironmentPtr env) const -> wf::run::Value override {
-        return wf::run::Value(value());
-    }
 };
 
 /// コンパイラディレクティブを表します。
@@ -97,15 +91,6 @@ class Name: public PrimaryNode {
 public:
             
     Name(token::TokenPtr _token, Location _location) : PrimaryNode(_token, _location) {}
-    
-    auto eval(wf::run::EnvironmentPtr env) const -> wf::run::Value override {
-        try {
-            return env->get(token->value);
-        } catch (std::out_of_range e) {
-            throw wf::WorkFlowError("Variable named '" + token->value + "' is not defined.");
-        }
-        
-    }
 };
 
 
