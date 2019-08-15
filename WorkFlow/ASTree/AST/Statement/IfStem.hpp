@@ -11,8 +11,7 @@
 
 #include <string>
 
-#include "location.hpp"
-#include "Environment.hpp"
+#include "Location.hpp"
 #include "Node.hpp"
 
 namespace wf {namespace ast{

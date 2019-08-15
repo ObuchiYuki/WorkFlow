@@ -13,9 +13,7 @@
 #include <vector>
 
 #include "Node.hpp"
-#include "location.hpp"
-#include "Value.hpp"
-#include "Environment.hpp"
+#include "Location.hpp"
 
 namespace wf {namespace ast {
 

@@ -7,7 +7,6 @@
 //
 
 #include "FuncStem.hpp"
-#include "Function.hpp"
 
 using namespace wf::ast;
 
@@ -24,10 +23,3 @@ var FuncStem::body() const -> std::shared_ptr<wf::ast::BlockStem> {
     return std::dynamic_pointer_cast<ast::BlockStem>(children[2]);
 }
 
-auto FuncStem::eval(wf::run::EnvironmentPtr env)  const-> wf::run::Value {
-    
-    let func = std::shared_ptr<wf::run::Function>(new wf::run::Function(name(), parameters(), body()));
-    env->set(func->identifier, wf::run::Value(func));
-    
-    return wf::run::Value::voidValue();
-}

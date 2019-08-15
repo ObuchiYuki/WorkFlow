@@ -13,7 +13,7 @@
 #include <memory>
 #include <vector>
 
-#include "location.hpp"
+#include "Location.hpp"
 #include "Node.hpp"
 #include "Leaf.hpp"
 #include "Token.hpp"

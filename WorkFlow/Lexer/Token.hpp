@@ -13,7 +13,7 @@
 #include <iostream>
 #include <memory>
 
-#include "location.hpp"
+#include "Location.hpp"
 
 namespace wf {namespace token {
     // =============================================================== //

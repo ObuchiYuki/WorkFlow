@@ -14,7 +14,6 @@
 #include "WorkFlowError.hpp"
 #include "Argument.hpp"
 #include "ArgumentList.hpp"
-#include "Function.hpp"
 
 using namespace wf::ast;
 
@@ -42,22 +41,4 @@ var Calling::returnType() const -> type::TypePtr {
 
 auto Calling::description() const -> std::string {
     return "(" + target()->description() + "(" + args()->description() + ")" + ")";
-}
-
-auto Calling::eval(wf::run::EnvironmentPtr env) const -> wf::run::Value {
-    
-    let id = wf::run::Function::createIdentifier(target()->token->value, *args());
-    
-    if (id == "prints()") {
-        print(args()->arg(0)->value()->eval(env).string());
-        
-        return wf::run::Value::voidValue();
-    }else if (id == "printi()") {
-        print(args()->arg(0)->value()->eval(env).integer());
-        
-        return wf::run::Value::voidValue();
-    }else{
-        let func = env->get(id)._value.as<std::shared_ptr<wf::run::Function>>();
-        return func->call(args(), env);
-    }
 }

@@ -14,14 +14,6 @@ using namespace wf::ast;
 
 BlockStem::BlockStem(std::vector<NodePtr> _children, Location _location) : Node(_children, _location) {};
 
-auto BlockStem::eval(wf::run::EnvironmentPtr env) const -> wf::run::Value {
-    for (let &child: children){
-        child->eval(env);
-    }
-    
-    return wf::run::Value::voidValue();
-}
-
 auto BlockStem::description() const -> std::string {
     return "(" + rm::description::vector(children, [](auto e){return e->description();}) + ")";
 

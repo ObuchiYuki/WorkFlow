@@ -16,8 +16,7 @@
 #include "Type.hpp"
 
 #include "Lexer.hpp"
-#include "location.hpp"
-#include "Environment.hpp"
+#include "Location.hpp"
 
 namespace wf {namespace ast {
     

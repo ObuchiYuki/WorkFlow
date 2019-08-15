@@ -46,9 +46,9 @@ public:
     
     // MARK: - Methods -
     
-    auto registerType(TypePtr type);
-    auto registerProperty(PropertyPtr prop);
-    auto registerMethod(MethodPtr method);
+    auto registerType(TypePtr type) -> void;
+    auto registerProperty(PropertyPtr prop) -> void;
+    auto registerMethod(MethodPtr method) -> void;
     
     auto searchOperation(std::string name, TypePtr left, TypePtr right) -> OperationPtr;
     

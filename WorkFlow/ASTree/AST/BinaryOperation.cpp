@@ -34,8 +34,3 @@ auto BinaryOperation::description() const -> std::string {
     return "";
     //return "(" + left()->description() + " " + op()->description() + " " + right()->description() + ")";
 }
-
-auto BinaryOperation::eval(wf::run::EnvironmentPtr env) const -> wf::run::Value {
-    // FIXME: - none -
-    return wf::run::Value::voidValue();
-}

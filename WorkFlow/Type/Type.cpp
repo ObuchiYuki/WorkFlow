@@ -20,15 +20,15 @@ auto Type::isChildrenOf(Type type) const -> bool {
     }
 }
 
-auto Type::registerType(TypePtr type) {
+auto Type::registerType(TypePtr type) -> void{
     types.push_back(type);
 }
 
-auto Type::registerProperty(PropertyPtr prop) {
+auto Type::registerProperty(PropertyPtr prop) -> void {
     properties.push_back(prop);
 }
 
-auto Type::registerMethod(MethodPtr method) {
+auto Type::registerMethod(MethodPtr method) -> void {
     methods.push_back(method);
 }
 

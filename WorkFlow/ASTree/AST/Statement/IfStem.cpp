@@ -35,19 +35,6 @@ auto IfStem::description() const -> std::string {
     
 }
 
-auto IfStem::eval(wf::run::EnvironmentPtr env) const -> wf::run::Value {
-    
-    if (condition()->eval(env).boolean()) {
-        block()->eval(env);
-    }else{
-        if (elseBlock()) {
-            elseBlock()->eval(env);
-        }
-    }
-    
-    return wf::run::Value::voidValue();
-}
-
 IfStem::IfStem(std::vector<NodePtr> _children, Location _location) :
 Node(_children, _location) {}
 

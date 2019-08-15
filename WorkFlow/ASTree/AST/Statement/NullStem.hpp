@@ -10,7 +10,7 @@
 #define NullStem_h
 
 #include "Node.hpp"
-#include "location.hpp"
+#include "Location.hpp"
 #include "Lexer.hpp"
 
 

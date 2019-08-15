@@ -13,7 +13,6 @@
 
 #include "Lexer/Lexer.hpp"
 #include "ASTree.hpp"
-#include "Runner.hpp"
 #include "WorkFlowError.hpp"
 
 int main() {
@@ -23,8 +22,6 @@ int main() {
     
     var lexer = wf::Lexer(ifs);
         
-    var globalEnv = std::shared_ptr<wf::run::Environment>(new wf::run::Environment());
-
     // MARK: - Measure Start -
     rm::debug::startMeasure();
     
@@ -34,7 +31,7 @@ int main() {
             var parser = ClassParser();
             let ps = parser.parse(lexer);
               
-            ps->eval(globalEnv);
+            print(ps->description());
         }
     }catch(wf::WorkFlowError e) {
         rm::debug::out(e.message());
