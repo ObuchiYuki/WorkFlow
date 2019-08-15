@@ -42,6 +42,9 @@ public:
             
     StringLiteral(token::TokenPtr _token, Location _location) : PrimaryNode(_token, _location) {}
     
+    var returnType() const -> wf::type::TypePtr override {
+        return type::PrimitiveType::String;
+    }
     var description() const -> std::string override {
         return "\"" + token->value + "\"";
     };
@@ -54,6 +57,10 @@ public:
     auto value() const -> int {
         return std::stoi(token->value);
     }
+    
+    var returnType() const -> wf::type::TypePtr override {
+        return type::PrimitiveType::Int;
+    }
             
     IntegerLiteral(token::TokenPtr _token, Location _location) : PrimaryNode(_token, _location) {}
     
@@ -64,6 +71,10 @@ class FloatLiteral: public PrimaryNode {
 public:
     auto value() const -> float {
         return std::stod(token->value);
+    }
+    
+    var returnType() const -> wf::type::TypePtr override {
+        return type::PrimitiveType::Float;
     }
             
     FloatLiteral(token::TokenPtr _token, Location _location) : PrimaryNode(_token, _location) {}
@@ -90,6 +101,8 @@ public:
 class Name: public PrimaryNode {
 public:
             
+    const type::TypePtr returnType;
+    
     Name(token::TokenPtr _token, Location _location) : PrimaryNode(_token, _location) {}
 };
 

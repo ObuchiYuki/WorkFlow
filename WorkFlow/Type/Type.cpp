@@ -28,20 +28,4 @@ auto Type::registerProperty(PropertyPtr prop) -> void {
     properties.push_back(prop);
 }
 
-auto Type::registerMethod(MethodPtr method) -> void {
-    methods.push_back(method);
-}
-
-
-auto Type::searchOperation(std::string name, TypePtr left, TypePtr right) -> OperationPtr {
-    for (let& method: methods) {
-        let opr = std::dynamic_pointer_cast<Operation>(method);
-        if  (opr != nullptr && opr->name == name && opr->left() == left && opr->right() == right) {
-            return opr;
-        }
-    }
-    return nullptr;
-}
-
-
 TypePtr Type::global = TypePtr(new Type("__global"));

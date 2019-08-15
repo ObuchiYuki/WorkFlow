@@ -1,13 +1,13 @@
 //
-//  Property.h
+//  Property.hpp
 //  WorkFlow
 //
 //  Created by yuki on 2019/08/14.
 //  Copyright © 2019 yuki. All rights reserved.
 //
 
-#ifndef Property_h
-#define Property_h
+#ifndef Property_hpp
+#define Property_hpp
 
 #include <memory>
 namespace wf {namespace type {

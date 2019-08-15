@@ -11,6 +11,7 @@
 #include "BinaryOperation.hpp"
 #include "Leaf.hpp"
 #include "Expression.hpp"
+#include "WorkFlowError.hpp"
 
 using namespace wf::ast;
 
@@ -24,13 +25,22 @@ auto BinaryOperation::right() const -> ExpressionPtr {
     return std::dynamic_pointer_cast<Expression>(children[2]);
 }
 
-auto BinaryOperation::op() const -> wf::type::OperationPtr {
+auto BinaryOperation::op() const -> type::FunctionTypePtr {
     let name = nodeAsLeaf(children[1])->token->value;
     
-    return type::Type::global->searchOperation(name, left()->returnType(), right()->returnType());
+    for (let& prop: type::Type::global->properties){
+        let funp = std::dynamic_pointer_cast<type::FunctionType>(prop->type);
+        if(funp == nullptr) continue;
+                
+        if (prop->name == name && funp->match({left()->returnType(), right()->returnType()})) {
+            return funp;
+        }
+    }
+    
+    throw WorkFlowError("BinaryOperation: Operator " + name + " is not defined.");
 }
 
 auto BinaryOperation::description() const -> std::string {
-    return "";
-    //return "(" + left()->description() + " " + op()->description() + " " + right()->description() + ")";
+    let name = nodeAsLeaf(children[1])->token->value;
+    return "(" + left()->description() + " " + name + " " + right()->description() + ")";
 }

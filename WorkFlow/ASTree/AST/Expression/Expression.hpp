@@ -28,7 +28,6 @@ public:
     var description() const -> std::string override;
     
     virtual var returnType() const -> wf::type::TypePtr;
-
 };
 
 typedef std::shared_ptr<Expression> ExpressionPtr;

@@ -10,11 +10,6 @@
 
 using namespace wf::ast;
 
-Leaf::Leaf(std::shared_ptr<wf::token::Token> _token, Location _location):
-Node({}, _location) ,token(_token) {
-    
-}
-
 auto Leaf::description() const -> std::string {
     return "[Leaf undefined]";
 }

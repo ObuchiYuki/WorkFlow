@@ -16,20 +16,23 @@
 #include "Node.hpp"
 
 #include "Location.hpp"
+#include "Expression.hpp"
 
 
 namespace wf {namespace ast {
 
 /// 子ノードを持たない端のノードを表します。
 /// tokenとしての値を持ちます。
-class Leaf: public Node {
+class Leaf: public Expression {
 public:
     // MARK: - Methods -
         
     ///値のトークンです。
     std::shared_ptr<wf::token::Token> token;
             
-    Leaf(std::shared_ptr<wf::token::Token> _token, Location _location);
+    Leaf(std::shared_ptr<wf::token::Token> _token, Location _location) :
+        Expression({}, _location) ,token(_token)
+        {};
             
     virtual ~Leaf(){}
     

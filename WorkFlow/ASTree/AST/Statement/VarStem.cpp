@@ -31,5 +31,5 @@ VarStem::VarStem(std::vector<NodePtr> _children, Location _location) :
 Node(_children, _location) {};
 
 var VarStem::description() const -> std::string {
-    return "(def " + target() + " = " + init()->description() + ")";
+    return "(def " + target() + ":" + valueType()->name + " = " + init()->description() + ")";
 }

@@ -17,10 +17,14 @@ namespace wf { namespace ast {
 
 class BinaryOperation: public Expression {
 public:
-    auto left() const -> ExpressionPtr;
-    auto right() const -> ExpressionPtr;
+    var left() const -> ExpressionPtr;
+    var right() const -> ExpressionPtr;
     
-    auto op() const -> type::OperationPtr;
+    var op() const -> type::FunctionTypePtr;
+    
+    var returnType() const -> wf::type::TypePtr override {
+        return op()->returnType;
+    }
             
     BinaryOperation(std::vector<NodePtr> _children, Location _location) : Expression(_children, _location) {}
     

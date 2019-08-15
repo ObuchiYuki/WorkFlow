@@ -23,9 +23,6 @@ typedef std::shared_ptr<Type> TypePtr;
 }}
 
 #include "Property.hpp"
-#include "Argument.hpp"
-#include "Method.hpp"
-#include "Operation.hpp"
 
 namespace wf {namespace type {
 
@@ -39,21 +36,14 @@ public:
     // MARK: - Type Restriction -
     std::vector<TypePtr> types;
     std::vector<PropertyPtr> properties;
-    std::vector<MethodPtr> methods;
-    
-    std::vector<PropertyPtr> staticProperties;
-    std::vector<MethodPtr> staticMethods;
     
     // MARK: - Methods -
     
     auto registerType(TypePtr type) -> void;
     auto registerProperty(PropertyPtr prop) -> void;
-    auto registerMethod(MethodPtr method) -> void;
-    
-    auto searchOperation(std::string name, TypePtr left, TypePtr right) -> OperationPtr;
     
     auto isChildrenOf(Type type) const -> bool;
-    auto description() -> std::string {return name;}
+    virtual var description() -> std::string {return name;}
     
     // MARK: - Constructor -
     Type(std::string _name) : name(_name) , parent(nullptr) {}
@@ -70,5 +60,9 @@ public:
 
 
 }}
+
+#include "FunctionType.hpp"
+#include "PrimitiveType.hpp"
+
 
 #endif /* Type_hpp */

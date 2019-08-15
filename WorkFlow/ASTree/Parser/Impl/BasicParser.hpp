@@ -27,7 +27,7 @@ public:
         }));
     
     /// 式を表します。(1 + 3 * 3)...、実態はbasicExprにあります。
-    wf::Parser basicExpr0 = wf::rule<wf::ast::Expression>();
+    wf::Parser basicExpr0 = wf::rule();
     
     /// 基本のノードを表します。
     /// Int、String、Name、式など
@@ -35,7 +35,7 @@ public:
         wf::Parser::integer(),
         wf::Parser::name(),
         wf::Parser::string(),
-        wf::rule<wf::ast::Expression>().skip("(").then(basicExpr0).skip(")"),
+        wf::rule().skip("(").then(basicExpr0).skip(")"),
     });
 
     /// 式を表します。(1 + 3 * 3)...

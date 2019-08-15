@@ -22,6 +22,8 @@ int main() {
     
     var lexer = wf::Lexer(ifs);
         
+    wf::type::PrimitiveType::registerAll();
+    
     // MARK: - Measure Start -
     rm::debug::startMeasure();
     

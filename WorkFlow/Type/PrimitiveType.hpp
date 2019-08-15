@@ -10,6 +10,7 @@
 #define PrimitiveType_h
 
 #include "Type.hpp"
+#include "FunctionType.hpp"
 
 namespace wf {namespace type{
 
@@ -24,15 +25,7 @@ public:
     static TypePtr Dictionary;
     static TypePtr Float;
     
-    PrimitiveType() {
-        
-        Type::global->registerType(Int);
-        Type::global->registerType(Bool);
-        Type::global->registerType(String);
-        Type::global->registerType(Array);
-        Type::global->registerType(Dictionary);
-        Type::global->registerType(Float);
-    }
+    static auto registerAll() -> void;
 };
 
 }}
