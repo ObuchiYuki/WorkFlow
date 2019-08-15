@@ -19,3 +19,5 @@ auto Type::isChildrenOf(Type type) const -> bool {
         return parent->isChildrenOf(type);
     }
 }
+
+TypePtr Type::global = TypePtr(new Type("__global"));

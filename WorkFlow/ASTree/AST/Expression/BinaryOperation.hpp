@@ -10,8 +10,8 @@
 #define BinaryOperation_hpp
 
 #include "Node.hpp"
-#include "Operation.hpp"
 #include "Expression.hpp"
+#include "Type.hpp"
 
 namespace wf { namespace ast {
 
@@ -20,7 +20,7 @@ public:
     auto left() const -> ExpressionPtr;
     auto right() const -> ExpressionPtr;
     
-    auto op() const -> type::Operation;
+    auto op() const -> type::OperationPtr;
             
     BinaryOperation(std::vector<NodePtr> _children, Location _location) : Expression(_children, _location) {}
     

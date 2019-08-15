@@ -6,50 +6,36 @@
 //  Copyright © 2019 yuki. All rights reserved.
 //
 
+#include <memory>
+
 #include "BinaryOperation.hpp"
 #include "Leaf.hpp"
 #include "Expression.hpp"
 
 using namespace wf::ast;
 
-auto BinaryOperation::right() const -> Expression {
-    return children[2];
-}
-
-auto BinaryOperation::left() const -> Expression {
-    return children[0];
-}
-
-auto BinaryOperation::op() const -> Operation {
+auto BinaryOperation::left() const -> ExpressionPtr {
     
+    return std::dynamic_pointer_cast<Expression>(children[0]);
+}
+
+auto BinaryOperation::right() const -> ExpressionPtr {
+    
+    return std::dynamic_pointer_cast<Expression>(children[2]);
+}
+
+auto BinaryOperation::op() const -> wf::type::OperationPtr {
+    let name = nodeAsLeaf(children[1])->token->value;
+    
+    return type::Type::global->searchOperation(name, left()->returnType(), right()->returnType());
 }
 
 auto BinaryOperation::description() const -> std::string {
-    return "(" + left()->description() + " " + op()->description() + " " + right()->description() + ")";
+    return "";
+    //return "(" + left()->description() + " " + op()->description() + " " + right()->description() + ")";
 }
 
 auto BinaryOperation::eval(wf::run::EnvironmentPtr env) const -> wf::run::Value {
-    let op_s = wf::ast::nodeAsLeaf(op())->token->value;
-    let lsh = left()->eval(env);
-    let rsh = right()->eval(env);
-
-    if (op_s == "<") {
-        return wf::run::Value(lsh.integer() < rsh.integer());
-    }else if (op_s == ">") {
-        return wf::run::Value(lsh.integer() > rsh.integer());
-    }else if (op_s == "%") {
-        return wf::run::Value(lsh.integer() % rsh.integer());
-    }else if (op_s == "+") {
-        return wf::run::Value(lsh.integer() + rsh.integer());
-    }else if (op_s == "-") {
-        return wf::run::Value(lsh.integer() - rsh.integer());
-    }else if (op_s == "*") {
-        return wf::run::Value(lsh.integer() * rsh.integer());
-    }else if (op_s == "/") {
-        return wf::run::Value(lsh.integer() / rsh.integer());
-    }else if (op_s == "==") {
-        return wf::run::Value(lsh.integer() == rsh.integer());
-    }
-    
+    // FIXME: - none -
     return wf::run::Value::voidValue();
 }

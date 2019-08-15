@@ -10,7 +10,6 @@
 #define PrimitiveType_h
 
 #include "Type.hpp"
-#include "TypeManager.hpp"
 
 namespace wf {namespace type{
 
@@ -26,12 +25,13 @@ public:
     static TypePtr Float;
     
     PrimitiveType() {
-        TypeManager::shared.registerType(Int);
-        TypeManager::shared.registerType(Bool);
-        TypeManager::shared.registerType(String);
-        TypeManager::shared.registerType(Array);
-        TypeManager::shared.registerType(Dictionary);
-        TypeManager::shared.registerType(Float);
+        
+        Type::global->registerType(Int);
+        Type::global->registerType(Bool);
+        Type::global->registerType(String);
+        Type::global->registerType(Array);
+        Type::global->registerType(Dictionary);
+        Type::global->registerType(Float);
     }
 };
 

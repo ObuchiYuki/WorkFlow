@@ -9,6 +9,9 @@
 #ifndef Property_h
 #define Property_h
 
+#include <memory>
+namespace wf {namespace type {
+
 class Property {
 public:
     const std::string name;
@@ -17,6 +20,10 @@ public:
     Property(std::string _name, TypePtr _type) : name(_name), type(_type) {}
     
 };
+
+typedef std::shared_ptr<Property> PropertyPtr;
+
+}}
 
 
 #endif /* Property_h */
