@@ -16,13 +16,17 @@
 namespace wf { namespace ast {
 
 class BinaryOperation: public Expression {
+    
+    type::FunctionTypePtr _checkedOp;
+    
 public:
+    
     var left() const -> ExpressionPtr;
     var right() const -> ExpressionPtr;
     
-    var op(wf::type::TypeEnvironment& env) const -> type::FunctionTypePtr;
+    var op(wf::type::TypeEnvironment& env) -> type::FunctionTypePtr;
     
-    var returnType(wf::type::TypeEnvironment& env) const -> wf::type::TypePtr override {
+    var returnType(wf::type::TypeEnvironment& env) -> wf::type::TypePtr override {
         return op(env)->returnType;
     }
             

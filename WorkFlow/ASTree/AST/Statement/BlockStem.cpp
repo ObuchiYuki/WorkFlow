@@ -15,6 +15,6 @@ using namespace wf::ast;
 BlockStem::BlockStem(std::vector<NodePtr> _children, Location _location) : Node(_children, _location) {};
 
 auto BlockStem::description() const -> std::string {
-    return "(" + rm::description::vector(children, [](auto e){return e->description();}) + ")";
+    return "(\n" + rm::description::join(children, ",\n" , [](auto e){return e->description();}) + "\n)";
 
 }

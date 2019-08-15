@@ -12,8 +12,12 @@
 
 using namespace wf::ast;
 
-var VarStem::valueType(wf::type::TypeEnvironment& env) const -> type::TypePtr {
-    return init()->returnType(env);
+var VarStem::valueType(wf::type::TypeEnvironment& env) -> type::TypePtr {
+    let typee = init()->returnType(env);
+    
+    _checkedType = typee;
+    
+    return typee;
 }
 
 var VarStem::target() const -> std::string {
@@ -31,5 +35,5 @@ VarStem::VarStem(std::vector<NodePtr> _children, Location _location) :
 Node(_children, _location) {};
 
 var VarStem::description() const -> std::string {
-    return "(def " + target() + " = " + init()->description() + ")";
+    return "(def " + target() + ":" + _checkedType->name + " = " + init()->description() + ")";
 }

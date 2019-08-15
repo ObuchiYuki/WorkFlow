@@ -24,15 +24,18 @@ namespace wf {namespace ast{
  iの方は常に自動で予測する
  */
 class VarStem: public Node {
+    type::TypePtr _checkedType;
+    
 public:
-    var valueType(wf::type::TypeEnvironment& env) const -> type::TypePtr;
+    
+    var valueType(wf::type::TypeEnvironment& env) -> type::TypePtr;
     
     var target() const -> std::string;
     var init() const -> ExpressionPtr;
             
     VarStem(std::vector<NodePtr> _children, Location _location);
     
-    auto typeCheck(type::TypeEnvironment& env) -> void {
+    auto typeCheck(type::TypeEnvironment& env) -> void override {
         env.registerProperty(type::PropertyPtr(new type::Property(target(), valueType(env))));
         
     }

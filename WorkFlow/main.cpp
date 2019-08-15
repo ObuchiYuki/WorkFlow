@@ -30,12 +30,17 @@ int main() {
     // MARK: - Measure Start -
     rm::debug::startMeasure();
     
-    while (!lexer.isEnd()) {
-            
+    try{
         var parser = ClassParser();
         let ps = parser.parse(lexer);
             
+        ps->typeCheck(globalEnv);
+        
         print(ps->description());
+        
+    }catch(wf::WorkFlowError e){
+        
+        print(e.message());
     }
     
     // MARK: - Measure End -
