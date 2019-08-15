@@ -10,6 +10,8 @@
 		B61C3AA322FD3EC100953591 /* Leaf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B61C3AA122FD3EC100953591 /* Leaf.cpp */; };
 		B63FD47123010F1A0020EEC1 /* TypeSpecifier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B63FD46F23010F1A0020EEC1 /* TypeSpecifier.cpp */; };
 		B65CACCF22F6634100350646 /* VarStem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B65CACCE22F6634100350646 /* VarStem.cpp */; };
+		B65EBEDC2305301100DD8635 /* Environment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B65EBED92305301100DD8635 /* Environment.cpp */; };
+		B65EBEDD2305301100DD8635 /* Function.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B65EBEDA2305301100DD8635 /* Function.cpp */; };
 		B6669AEB22FD38FE0084AF52 /* AssginStem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6669AE922FD38FE0084AF52 /* AssginStem.cpp */; };
 		B6669AEE22FD3A920084AF52 /* ExAssign.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6669AEC22FD3A920084AF52 /* ExAssign.cpp */; };
 		B66EC7D422FE5BE90038DA21 /* Parameter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B66EC7D222FE5BE90038DA21 /* Parameter.cpp */; };
@@ -88,6 +90,12 @@
 		B65EBECC2304FB8900DD8635 /* Function.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Function.hpp; sourceTree = "<group>"; };
 		B65EBECD2305065100DD8635 /* TypeEnv.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TypeEnv.hpp; sourceTree = "<group>"; };
 		B65EBECE2305146100DD8635 /* TypeUmbrella.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TypeUmbrella.hpp; sourceTree = "<group>"; };
+		B65EBED62305301100DD8635 /* Function.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Function.hpp; sourceTree = "<group>"; };
+		B65EBED72305301100DD8635 /* Environment.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Environment.hpp; sourceTree = "<group>"; };
+		B65EBED82305301100DD8635 /* Value.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Value.hpp; sourceTree = "<group>"; };
+		B65EBED92305301100DD8635 /* Environment.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Environment.cpp; sourceTree = "<group>"; };
+		B65EBEDA2305301100DD8635 /* Function.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Function.cpp; sourceTree = "<group>"; };
+		B65EBEDB2305301100DD8635 /* Runner.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Runner.hpp; sourceTree = "<group>"; };
 		B6669AE322FD0BDB0084AF52 /* WorkFlowError.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = WorkFlowError.hpp; sourceTree = "<group>"; };
 		B6669AE422FD2D3C0084AF52 /* VarStem.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = VarStem.hpp; sourceTree = "<group>"; };
 		B6669AE522FD2D9E0084AF52 /* IfStem.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IfStem.hpp; sourceTree = "<group>"; };
@@ -183,6 +191,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B65EBED223052FA900DD8635 /* Run */ = {
+			isa = PBXGroup;
+			children = (
+				B65EBEDB2305301100DD8635 /* Runner.hpp */,
+				B65EBED72305301100DD8635 /* Environment.hpp */,
+				B65EBED92305301100DD8635 /* Environment.cpp */,
+				B65EBED62305301100DD8635 /* Function.hpp */,
+				B65EBEDA2305301100DD8635 /* Function.cpp */,
+				B65EBED82305301100DD8635 /* Value.hpp */,
+			);
+			path = Run;
+			sourceTree = "<group>";
+		};
 		B67A7D4522DDBDDA00ABA47C = {
 			isa = PBXGroup;
 			children = (
@@ -222,6 +243,7 @@
 			children = (
 				B685E76022F5277F0056BFF2 /* main.cpp */,
 				B685E75822F5277F0056BFF2 /* RMKit */,
+				B65EBED223052FA900DD8635 /* Run */,
 				B67C322F23042F1600B4CD9D /* Type */,
 				B685E72122F5277F0056BFF2 /* ASTree */,
 				B685E71B22F5277F0056BFF2 /* Lexer */,
@@ -488,6 +510,7 @@
 				B685E76122F527840056BFF2 /* Token.hpp in Sources */,
 				B6669AEB22FD38FE0084AF52 /* AssginStem.cpp in Sources */,
 				B685E76222F527840056BFF2 /* Lexer.cpp in Sources */,
+				B65EBEDC2305301100DD8635 /* Environment.cpp in Sources */,
 				B685E76322F527840056BFF2 /* Lexer.hpp in Sources */,
 				B6B2B35F22FD832A006F19AA /* Argument.cpp in Sources */,
 				B6A18D00230385C500BF8560 /* ClassStem.cpp in Sources */,
@@ -526,6 +549,7 @@
 				B67D9FF72304D49500340660 /* PrimitiveType.cpp in Sources */,
 				B685E78922F527840056BFF2 /* Node.cpp in Sources */,
 				B6669AEE22FD3A920084AF52 /* ExAssign.cpp in Sources */,
+				B65EBEDD2305301100DD8635 /* Function.cpp in Sources */,
 				B685E78A22F527840056BFF2 /* Node.hpp in Sources */,
 				B685E78B22F527840056BFF2 /* BinaryOperation.cpp in Sources */,
 				B65CACCF22F6634100350646 /* VarStem.cpp in Sources */,

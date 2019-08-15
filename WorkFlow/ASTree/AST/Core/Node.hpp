@@ -33,6 +33,13 @@ typedef std::shared_ptr<Node> NodePtr;
 // ====================================================================== //
 // MARK: - Type Structure Definitions -
 
+}}
+
+#include "Value.hpp"
+#include "Environment.hpp"
+#include "WorkFlowError.hpp"
+
+namespace wf {namespace ast {
 class Node  {
 public:
     // MARK: - Properties -
@@ -49,6 +56,7 @@ public:
     
     virtual auto typeRegister(type::TypePtr type) -> void;
     virtual auto typeCheck(type::TypeEnvironment& env) -> void;
+    virtual auto eval(wf::run::EnvironmentPtr env) -> wf::run::Value;
     
     virtual var description() const -> std::string;
     

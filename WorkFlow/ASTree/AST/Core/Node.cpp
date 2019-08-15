@@ -31,6 +31,10 @@ auto Node::typeCheck(type::TypeEnvironment& env) -> void{
     }
 }
 
+auto Node::eval(wf::run::EnvironmentPtr env) -> wf::run::Value {
+    throw WorkFlowError("Node::eval: Node with no class cannot be evalated. Or you may forget to override Node::eval.");
+}
+
 
 int Node::numChildren() const {
     return static_cast<int>(children.size());
