@@ -5,5 +5,5 @@ def rep = "Hello!" * 10
 def repp = hw * i
 
 if (i == 89) {
-    print(re)
+    print(rep)
 }

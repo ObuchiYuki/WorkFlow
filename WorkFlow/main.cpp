@@ -15,9 +15,20 @@
 #include "ASTree.hpp"
 #include "TypeUmbrella.hpp"
 #include "WorkFlowError.hpp"
+#include "LLVM.h"
 
 int main() {
-
+    var context = wf::llvm::Context("@main", "i32");
+    
+    context.assign("%a", "i32", "10");
+    context.blank();
+    context.assign("%b", "i32", "5");
+    context.blank();
+    context.add("%r", "i32", "%a", "%b");
+    
+    print(context.llvmstring());
+    
+    return 0;
     let path = "/Users/yuki/Developer/Git/WorkFlow/main.wf";
     var ifs = std::ifstream(path);
     

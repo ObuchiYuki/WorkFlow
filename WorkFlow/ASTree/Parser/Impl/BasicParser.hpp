@@ -84,7 +84,6 @@ public:
         VarStem,
         assign,
         expr,
-        
     });
     
     wf::Parser programLine = wf::rule().ors({statement, wf::rule<wf::ast::NullStem>()}).skipEol();
